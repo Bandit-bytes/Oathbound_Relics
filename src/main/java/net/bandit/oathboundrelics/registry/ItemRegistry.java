@@ -149,6 +149,24 @@ public final class ItemRegistry {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()
     );
 
+    public static final Supplier<Item> GOLD_RING = ITEMS.registerItem(
+            "gold_ring",
+            GoldRingItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant()
+    );
+
+    public static final Supplier<Item> CYAN_RING = ITEMS.registerItem(
+            "cyan_ring",
+            CyanRingItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()
+    );
+
+    public static final Supplier<Item> NEBULA_RING = ITEMS.registerItem(
+            "nebula_ring",
+            NebulaRingItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+    );
+
     private ItemRegistry() {
     }
 

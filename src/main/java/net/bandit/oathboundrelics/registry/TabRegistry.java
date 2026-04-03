@@ -39,6 +39,9 @@ public class TabRegistry {
             ItemRegistry.EYE_OF_THE_SLEEPLESS_WITNESS,
             ItemRegistry.CENSER_OF_HOLLOW_PRAYER,
             ItemRegistry.CHAIN_OF_THE_PENITENT,
+            ItemRegistry.GOLD_RING,
+            ItemRegistry.CYAN_RING,
+            ItemRegistry.NEBULA_RING,
             ItemRegistry.LETHARGIC_GREATSWORD
     );
 

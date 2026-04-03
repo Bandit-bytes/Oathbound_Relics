@@ -4,7 +4,8 @@ import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.bandit.oathboundrelics.registry.EffectRegistry;
 import net.bandit.oathboundrelics.registry.ItemRegistry;
 import net.bandit.oathboundrelics.util.BearerCurioUtil;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -51,25 +52,37 @@ public final class OathboundBearerCurioEvents {
             return;
         }
 
-        player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, SHORT, 0, false, false, true));
+        refreshEffectIfNeeded(player, MobEffects.ABSORPTION, 220, 0, 80, false, false, true);
 
         if (player.getHealth() <= player.getMaxHealth() * 0.5F) {
-            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, SHORT, 0, false, false, true));
+            refreshEffectIfNeeded(player, MobEffects.REGENERATION, 80, 0, 20, false, false, true);
         }
 
         if (BearerCurioUtil.countNewBearerCurios(player) >= 3) {
-            player.addEffect(new MobEffectInstance(MobEffects.HUNGER, MEDIUM, 0, false, false, true));
+            refreshEffectIfNeeded(player, MobEffects.HUNGER, 120, 0, 40, false, false, true);
         }
     }
 
     private static void tickSleeplessEye(Player player) {
-        if (!BearerCurioUtil.hasEquipped(player, ItemRegistry.EYE_OF_THE_SLEEPLESS_WITNESS.get())) {
+        boolean equipped = BearerCurioUtil.hasEquipped(player, ItemRegistry.EYE_OF_THE_SLEEPLESS_WITNESS.get());
+
+        if (!equipped) {
+            removeInfiniteEffectIfOwned(player, MobEffects.NIGHT_VISION, 0);
             return;
         }
 
-        player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 220, 0, false, false, true));
+        ensureInfiniteEffect(player, MobEffects.NIGHT_VISION, 0, false, false, true);
 
-        double radius = player.getDeltaMovement().horizontalDistanceSqr() < 0.001D ? 24.0D : 12.0D;
+        boolean oakskinActive =
+                player.onGround()
+                        && !player.isSprinting()
+                        && player.getDeltaMovement().horizontalDistanceSqr() < 0.02D;
+
+        if (oakskinActive) {
+            refreshEffectIfNeeded(player, MobEffects.DAMAGE_RESISTANCE, 80, 0, 20, false, false, true);
+        }
+
+        double radius = oakskinActive ? 24.0D : 14.0D;
 
         List<Monster> monsters = player.level().getEntitiesOfClass(
                 Monster.class,
@@ -78,18 +91,8 @@ public final class OathboundBearerCurioEvents {
         );
 
         for (Monster monster : monsters) {
-            boolean debuffed =
-                    monster.hasEffect(MobEffects.WEAKNESS)
-                            || monster.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)
-                            || monster.hasEffect(EffectRegistry.MARTYRS_CLAIM)
-                            || monster.hasEffect(EffectRegistry.JUDGED);
-
-            if (debuffed) {
-                monster.addEffect(new MobEffectInstance(MobEffects.GLOWING, MEDIUM, 0, false, false, true));
-            }
+            refreshEffectIfNeeded(monster, MobEffects.GLOWING, 60, 0, 20, false, false, true);
         }
-
-        player.addEffect(new MobEffectInstance(MobEffects.HUNGER, SHORT, 0, false, false, true));
     }
 
     private static void tickCenser(Player player) {
@@ -104,16 +107,47 @@ public final class OathboundBearerCurioEvents {
         );
 
         for (Monster monster : monsters) {
-            monster.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, MEDIUM, 0, false, true, true));
-            monster.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, MEDIUM, 0, false, true, true));
+            refreshEffectIfNeeded(monster, MobEffects.WEAKNESS, 80, 0, 20, false, true, true);
+            refreshEffectIfNeeded(monster, MobEffects.MOVEMENT_SLOWDOWN, 80, 0, 20, false, true, true);
         }
 
         if (!monsters.isEmpty()) {
-            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, MEDIUM, 0, false, false, true));
+            refreshEffectIfNeeded(player, MobEffects.REGENERATION, 80, 0, 20, false, false, true);
         }
 
         if (monsters.size() >= 3) {
-            player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, MEDIUM, 1, false, false, true));
+            refreshEffectIfNeeded(player, MobEffects.ABSORPTION, 100, 1, 30, false, false, true);
+        }
+    }
+
+    private static void refreshEffectIfNeeded(
+            LivingEntity entity,
+            Holder<MobEffect> effect,
+            int duration,
+            int amplifier,
+            int refreshThreshold,
+            boolean ambient,
+            boolean visible,
+            boolean showIcon
+    ) {
+        MobEffectInstance current = entity.getEffect(effect);
+
+        if (current == null) {
+            entity.addEffect(new MobEffectInstance(effect, duration, amplifier, ambient, visible, showIcon));
+            return;
+        }
+
+        if (current.getAmplifier() > amplifier) {
+            return;
+        }
+
+        if (current.getAmplifier() < amplifier) {
+            entity.addEffect(new MobEffectInstance(effect, duration, amplifier, ambient, visible, showIcon));
+            return;
+        }
+
+        if (current.getDuration() <= refreshThreshold) {
+            entity.addEffect(new MobEffectInstance(effect, duration, amplifier, ambient, visible, showIcon));
         }
     }
 
@@ -162,7 +196,7 @@ public final class OathboundBearerCurioEvents {
             if (stored > 0.0F) {
                 float bonus = Math.min(stored, 12.0F);
                 event.setNewDamage(event.getNewDamage() + bonus);
-                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0, false, true, true));
+                refreshEffectIfNeeded(target, MobEffects.GLOWING, 100, 0, 20, false, true, true);
                 BearerCurioUtil.clearPenance(player);
             }
         }
@@ -203,7 +237,7 @@ public final class OathboundBearerCurioEvents {
         }
 
         int currentStacks = 0;
-        var existing = target.getEffect(EffectRegistry.MARTYRS_CLAIM);
+        MobEffectInstance existing = target.getEffect(EffectRegistry.MARTYRS_CLAIM);
         if (existing != null) {
             currentStacks = existing.getAmplifier() + 1;
         }
@@ -250,8 +284,48 @@ public final class OathboundBearerCurioEvents {
             return;
         }
 
-        player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, LONG, 1, false, true, true));
-        player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, LONG, 1, false, true, true));
+        refreshEffectIfNeeded(player, MobEffects.DIG_SPEED, LONG, 1, 40, false, true, true);
+        refreshEffectIfNeeded(player, MobEffects.ABSORPTION, LONG, 1, 40, false, true, true);
         BearerCurioUtil.clearLastMartyrTarget(player);
+    }
+    private static void ensureInfiniteEffect(
+            LivingEntity entity,
+            Holder<MobEffect> effect,
+            int amplifier,
+            boolean ambient,
+            boolean visible,
+            boolean showIcon
+    ) {
+        MobEffectInstance current = entity.getEffect(effect);
+
+        if (current == null
+                || !current.isInfiniteDuration()
+                || current.getAmplifier() != amplifier
+                || current.isAmbient() != ambient
+                || current.isVisible() != visible
+                || current.showIcon() != showIcon) {
+            entity.addEffect(new MobEffectInstance(
+                    effect,
+                    MobEffectInstance.INFINITE_DURATION,
+                    amplifier,
+                    ambient,
+                    visible,
+                    showIcon
+            ));
+        }
+    }
+
+    private static void removeInfiniteEffectIfOwned(
+            LivingEntity entity,
+            Holder<MobEffect> effect,
+            int amplifier
+    ) {
+        MobEffectInstance current = entity.getEffect(effect);
+
+        if (current != null
+                && current.isInfiniteDuration()
+                && current.getAmplifier() == amplifier) {
+            entity.removeEffect(effect);
+        }
     }
 }

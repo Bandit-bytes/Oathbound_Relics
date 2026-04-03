@@ -117,9 +117,9 @@
   "tooltip.oathboundrelics.chain_of_the_penitent.desc_3": "Marked strikes briefly reveal their victim.",
 
   "tooltip.oathboundrelics.eye_of_the_sleepless_witness.flavor": "It never closes. It only waits for you to look back.",
-  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_1": "Passive: Grants night vision while worn.",
-  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_2": "Debilitated nearby hostiles are revealed through a ghostly glow.",
-  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_3": "Drawback: Rest grows thin, and hunger follows.",
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_1": "Passive: Grants night vision and reveals nearby hostiles through a ghostly glow.",
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_2": "Oakskin: While grounded and not sprinting, gain Resistance I.",
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_3": "The Eye grows strongest when the bearer stands their ground.",
 
   "tooltip.oathboundrelics.censer_of_hollow_prayer.flavor": "Its smoke smells like old vows and empty sanctuaries.",
   "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_1": "Passive: Nearby monsters are slowed and weakened.",
@@ -199,5 +199,24 @@
   "tooltip.oathboundrelics.relic_of_the_last_breath.flavor": "It waits in silence for the one breath you were never meant to keep.",
   "tooltip.oathboundrelics.relic_of_the_last_breath.desc_1": "Passive: Survive a lethal hit once every 5 minutes.",
   "tooltip.oathboundrelics.relic_of_the_last_breath.desc_2": "The Relic refuses to surrender its bearer to death so easily.",
-  "tooltip.oathboundrelics.relic_of_the_last_breath.desc_3": "What it preserves is not always left untouched."
+  "tooltip.oathboundrelics.relic_of_the_last_breath.desc_3": "What it preserves is not always left untouched.",
+
+  "item.oathboundrelics.gold_ring": "Gold Ring",
+  "item.oathboundrelics.cyan_ring": "Cyan Ring",
+  "item.oathboundrelics.nebula_ring": "Nebula Ring",
+
+  "tooltip.oathboundrelics.gold_ring.flavor": "A modest band with just enough stubbornness to matter.",
+  "tooltip.oathboundrelics.gold_ring.desc_1": "Passive: Grants +1 Armor while worn.",
+  "tooltip.oathboundrelics.gold_ring.desc_2": "A simple ward against ordinary harm.",
+  "tooltip.oathboundrelics.gold_ring.desc_3": "Plain, dependable, and harder than it looks.",
+
+  "tooltip.oathboundrelics.cyan_ring.flavor": "Its pale glow settles over the skin like quiet frost.",
+  "tooltip.oathboundrelics.cyan_ring.desc_1": "Passive: Grants +2 Armor while worn.",
+  "tooltip.oathboundrelics.cyan_ring.desc_2": "The ring hardens the bearer against cleaner, colder blows.",
+  "tooltip.oathboundrelics.cyan_ring.desc_3": "A calmer strength, but stronger all the same.",
+
+  "tooltip.oathboundrelics.nebula_ring.flavor": "A dim star-field turns inside the metal when danger draws near.",
+  "tooltip.oathboundrelics.nebula_ring.desc_1": "Passive: Grants +3 Armor while worn.",
+  "tooltip.oathboundrelics.nebula_ring.desc_2": "Passive: Adds +1 Ring slot while worn.",
+  "tooltip.oathboundrelics.nebula_ring.desc_3": "The Ring bends space just enough to make room for one more treasure."
 }
