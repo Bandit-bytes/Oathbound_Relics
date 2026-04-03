@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "oathboundrelics:voidstep_band", "weight": 5 },
+        { "type": "minecraft:item", "name": "oathboundrelics:oathbound_reliquary", "weight": 2 },
+        { "type": "minecraft:item", "name": "oathboundrelics:tablet_of_exaltation", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone", "weight": 1 }
+      ]
+    }
+  ]
+}

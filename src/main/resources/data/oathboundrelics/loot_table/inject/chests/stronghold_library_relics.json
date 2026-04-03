@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "oathboundrelics:censer_of_hollow_prayer", "weight": 3 },
+        { "type": "minecraft:item", "name": "oathboundrelics:eye_of_the_sleepless_witness", "weight": 2 },
+        { "type": "minecraft:item", "name": "oathboundrelics:oathbound_reliquary", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:tablet_of_coveting", "weight": 2 },
+        { "type": "minecraft:item", "name": "oathboundrelics:tablet_of_stillness", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone", "weight": 1 }
+      ]
+    }
+  ]
+}

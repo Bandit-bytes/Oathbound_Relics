@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    " O ",
+    "SCS"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "O": {
+      "item": "oathboundrelics:oblivion_stone"
+    },
+    "S": {
+      "item": "minecraft:soul_sand"
+    }
+  },
+  "result": {
+    "id": "oathboundrelics:burdened_flail_idol",
+    "count": 1
+  }
+}

@@ -4,8 +4,8 @@ import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -17,7 +17,7 @@ public class TabRegistry {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, OathboundRelicsMod.MOD_ID);
 
-    private static final List<Supplier<? extends Item>> TAB_ITEMS = List.of(
+    private static final List<Supplier<? extends ItemLike>> TAB_ITEMS = List.of(
             ItemRegistry.OATHBOUND_RELIC,
             ItemRegistry.ASHEN_NAIL,
             ItemRegistry.GRAVEBELL_LOCKET,
@@ -42,7 +42,25 @@ public class TabRegistry {
             ItemRegistry.GOLD_RING,
             ItemRegistry.CYAN_RING,
             ItemRegistry.NEBULA_RING,
-            ItemRegistry.LETHARGIC_GREATSWORD
+            ItemRegistry.TABLET_OF_COVETING,
+            ItemRegistry.TABLET_OF_EXALTATION,
+            ItemRegistry.TABLET_OF_STILLNESS,
+            ItemRegistry.BURDENED_FLAIL_IDOL,
+            ItemRegistry.MIRRORSTEEL_IDOL,
+            ItemRegistry.HOLLOW_FANG_IDOL,
+            ItemRegistry.VOID_ASHES,
+            ItemRegistry.SOUL_GEM,
+            ItemRegistry.AREDRITE_GEM,
+            ItemRegistry.AREDRITE_HELMET,
+            ItemRegistry.AREDRITE_CHESTPLATE,
+            ItemRegistry.AREDRITE_LEGGINGS,
+            ItemRegistry.AREDRITE_BOOTS,
+            BlockRegistry.AREDRITE_BLOCK,
+            BlockRegistry.AREDRITE_ORE,
+            ItemRegistry.OBLIVION_STONE,
+            ItemRegistry.LETHARGIC_GREATSWORD,
+            ItemRegistry.VANITYS_EDGE,
+            ItemRegistry.COVETFANG
     );
 
     public static final Supplier<CreativeModeTab> OATHBOUND_TAB = CREATIVE_MODE_TABS.register(
@@ -51,8 +69,8 @@ public class TabRegistry {
                     .title(Component.translatable("itemGroup." + OathboundRelicsMod.MOD_ID + ".oathbound_tab"))
                     .icon(() -> new ItemStack(ItemRegistry.OATHBOUND_RELIC.get()))
                     .displayItems((parameters, output) -> {
-                        for (Supplier<? extends Item> item : TAB_ITEMS) {
-                            output.accept(item.get());
+                        for (Supplier<? extends ItemLike> entry : TAB_ITEMS) {
+                            output.accept(entry.get());
                         }
                     })
                     .build()

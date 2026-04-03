@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "DOD",
+    " R "
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "O": {
+      "item": "oathboundrelics:oblivion_stone"
+    },
+    "R": {
+      "item": "oathboundrelics:gold_ring"
+    }
+  },
+  "result": {
+    "id": "oathboundrelics:cyan_ring",
+    "count": 1
+  }
+}

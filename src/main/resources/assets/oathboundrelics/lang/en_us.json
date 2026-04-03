@@ -3,6 +3,7 @@
   "itemGroup.oathboundrelics.oathbound_tab": "Oathbound Relics",
 
   "item.oathboundrelics.ashen_nail": "Ashen Nail",
+  "item.oathboundrelics.soul_gem": "Soul Gem",
   "item.oathboundrelics.gravebell_locket": "Gravebell Locket",
   "item.oathboundrelics.hunters_sigil": "Hunter's Sigil",
   "item.oathboundrelics.pilgrims_thorn": "Pilgrim's Thorn",
@@ -37,7 +38,7 @@
   "tooltip.oathboundrelics.oathbound_relic.curse_3": " - Shattered Plate: Armor is %s less effective.",
   "tooltip.oathboundrelics.oathbound_relic.curse_4": " - Oppression: You deal %s less damage.",
   "tooltip.oathboundrelics.oathbound_relic.curse_5": " - Living Ember: Fire clings to you for at least %s while burning.",
-  "tooltip.oathboundrelics.oathbound_relic.curse_6": " - Soul Fracture: On respawn, suffer weakness for %s and slowness for %s.",
+  "tooltip.oathboundrelics.oathbound_relic.curse_6": " - Soul Fracture: On respawn, part of your soul was left behind. Retrieve it.",
   "tooltip.oathboundrelics.oathbound_relic.curse_7": " - Wakeful Doom: Sleep offers no refuge to the Branded.",
   "tooltip.oathboundrelics.oathbound_relic.blessings": "Six blessings reward those who endure:",
   "tooltip.oathboundrelics.oathbound_relic.blessing_1": " - Fortune of Blood: +%s Looting.",
@@ -218,5 +219,132 @@
   "tooltip.oathboundrelics.nebula_ring.flavor": "A dim star-field turns inside the metal when danger draws near.",
   "tooltip.oathboundrelics.nebula_ring.desc_1": "Passive: Grants +3 Armor while worn.",
   "tooltip.oathboundrelics.nebula_ring.desc_2": "Passive: Adds +1 Ring slot while worn.",
-  "tooltip.oathboundrelics.nebula_ring.desc_3": "The Ring bends space just enough to make room for one more treasure."
+  "tooltip.oathboundrelics.nebula_ring.desc_3": "The Ring bends space just enough to make room for one more treasure.",
+
+  "tooltip.oathboundrelics.soul_gem": "A torn fragment of a Branded soul.",
+
+  "item.oathboundrelics.vanitys_edge": "Pride: Vanity's Edge",
+
+  "message.oathboundrelics.vanitys_edge.locked": "The blade rejects you. Your Branded time is still lacking.",
+
+  "tooltip.oathboundrelics.vanitys_edge.flavor": "Pride once lifted the cursed. Now it waits to devour them.",
+  "tooltip.oathboundrelics.vanitys_edge.requires_brand": "Only the Branded may wield its power.",
+  "tooltip.oathboundrelics.vanitys_edge.requires_time": "It answers only to those who have spent nearly all their days beneath the Oath.",
+
+  "tooltip.oathboundrelics.vanitys_edge.passive_header": "Passives:",
+  "tooltip.oathboundrelics.vanitys_edge.passive_full_damage": " - Always deals its full damage",
+  "tooltip.oathboundrelics.vanitys_edge.passive_high_health_damage": " - Above half health, gain +2 damage for every 2 HP above the midpoint",
+  "tooltip.oathboundrelics.vanitys_edge.passive_high_health_speed": " - Above 80% health, gain +10% Attack Speed",
+  "tooltip.oathboundrelics.vanitys_edge.passive_nonkill_cost": " - If a hit does not kill, lose 1 HP",
+  "tooltip.oathboundrelics.vanitys_edge.passive_kill_stacks": " - Kills grant +0.1 Attack Speed for 3 minutes, stacking independently",
+
+  "tooltip.oathboundrelics.vanitys_edge.held_header": "While held:",
+  "tooltip.oathboundrelics.vanitys_edge.held_allies": " - Nearby allies, companions, and pets lose 50% Attack Speed and Attack Damage",
+
+  "tooltip.oathboundrelics.vanitys_edge.inventory_header": "While in inventory:",
+  "tooltip.oathboundrelics.vanitys_edge.inventory_armor_penalty": " - For every 2 Armor, lose 1 Attack Damage",
+  "tooltip.oathboundrelics.vanitys_edge.inventory_mid_health": " - Between 50% and 30% health, lose 50% Damage and Attack Speed",
+  "tooltip.oathboundrelics.vanitys_edge.inventory_low_health": " - Below 30% health, you fall into Losing Pride or Bravery for 10 minutes",
+
+  "effect.oathboundrelics.pride_suppression": "Pride Suppression",
+  "effect.oathboundrelics.losing_pride": "Losing Pride",
+  "effect.oathboundrelics.bravery": "Bravery",
+
+  "item.oathboundrelics.oblivion_stone": "Oblivion Stone",
+  "tooltip.oathboundrelics.oblivion_stone.flavor": "A dead stone that remembers what the world was trying to forget.",
+  "tooltip.oathboundrelics.oblivion_stone.line_1": " - A rare crafting stone used in higher relic works",
+  "tooltip.oathboundrelics.oblivion_stone.line_2": " - Found only in the rarest forbidden caches",
+  "tooltip.oathboundrelics.oblivion_stone.line_3": " - Also drops from the Warden, Wither, and Ender Dragon",
+
+  "item.oathboundrelics.covetfang": "Envy: Covetfang",
+
+  "message.oathboundrelics.covetfang.locked": "The blade covets more suffering before it will answer you.",
+  "tooltip.oathboundrelics.covetfang.flavor": "It does not want power. It wants the power that belongs to someone else.",
+  "tooltip.oathboundrelics.covetfang.requires_brand": "Only the Branded may wield its hunger.",
+  "tooltip.oathboundrelics.covetfang.requires_time": "It answers only to those who have spent nearly all their days beneath the Oath.",
+  "tooltip.oathboundrelics.covetfang.passive_header": "Passives:",
+  "tooltip.oathboundrelics.covetfang.passive_full_damage": " - Always deals its full damage",
+  "tooltip.oathboundrelics.covetfang.passive_superiority": " - Gains bonus damage against targets stronger, healthier, faster, or more blessed than you",
+  "tooltip.oathboundrelics.covetfang.passive_claim": " - Right-click a target to Claim it as your Coveted Target",
+  "tooltip.oathboundrelics.covetfang.passive_steal": " - Slaying a Coveted Target steals pieces of its strength",
+  "tooltip.oathboundrelics.covetfang.passive_cost": " - Failed kills wound you, and striking those beneath you wounds you further",
+  "tooltip.oathboundrelics.covetfang.inventory_header": "While in inventory:",
+  "tooltip.oathboundrelics.covetfang.inventory_blessings": " - Each beneficial effect on you reduces your Attack Damage",
+  "tooltip.oathboundrelics.covetfang.inventory_low_health": " - Below 30% health, you become swift only if something stronger is near",
+
+  "item.oathboundrelics.aredrite_gem": "Aredrite Gem",
+  "block.oathboundrelics.aredrite_ore": "Aredrite Ore",
+  "block.oathboundrelics.aredrite_block": "Aredrite Block",
+
+  "tooltip.oathboundrelics.aredrite.flavor": "A cold gem born where the world thins and the void stares back.",
+  "tooltip.oathboundrelics.aredrite.line_1": " - A rare End-born gemstone used in higher relic works",
+  "tooltip.oathboundrelics.aredrite.line_2": " - Hums faintly with distant, unfriendly power",
+
+  "item.oathboundrelics.aredrite_helmet": "Aredrite Helm",
+  "item.oathboundrelics.aredrite_chestplate": "Aredrite Chestplate",
+  "item.oathboundrelics.aredrite_leggings": "Aredrite Legguards",
+  "item.oathboundrelics.aredrite_boots": "Aredrite Greaves",
+
+  "tooltip.oathboundrelics.aredrite_armor.flavor": "The End kept this metal buried for a reason.",
+
+  "tooltip.oathboundrelics.aredrite_helmet.line_1": " - Strips Blindness and Darkness from the wearer",
+  "tooltip.oathboundrelics.aredrite_helmet.line_2": " - Reveals nearby hidden threats",
+
+  "tooltip.oathboundrelics.aredrite_chestplate.line_1": " - Grants warding when health runs low",
+  "tooltip.oathboundrelics.aredrite_chestplate.line_2": " - Endures when lesser armor would fold",
+
+  "tooltip.oathboundrelics.aredrite_leggings.line_1": " - Increases movement speed",
+  "tooltip.oathboundrelics.aredrite_leggings.line_2": " - Swifter still in the End and while Branded",
+
+  "tooltip.oathboundrelics.aredrite_boots.line_1": " - Negates fall damage in the End",
+  "tooltip.oathboundrelics.aredrite_boots.line_2": " - Greatly reduces fall damage elsewhere",
+
+  "tooltip.oathboundrelics.aredrite_armor.set_bonus": "Set Bonus:",
+  "tooltip.oathboundrelics.aredrite_armor.set_bonus_2": " - 2 Pieces: Witnessed",
+  "tooltip.oathboundrelics.aredrite_armor.set_bonus_3": " - 3 Pieces: Hollow Pressure",
+  "tooltip.oathboundrelics.aredrite_armor.set_bonus_4": " - 4 Pieces: Last Horizon",
+
+  "item.oathboundrelics.tablet_of_stillness": "Tablet of Stillness",
+  "item.oathboundrelics.tablet_of_exaltation": "Tablet of Exaltation",
+  "item.oathboundrelics.tablet_of_coveting": "Tablet of Coveting",
+
+  "tooltip.oathboundrelics.tablet_of_stillness.flavor": "The stone remembers a vow of weight, hunger, and surrender.",
+  "tooltip.oathboundrelics.tablet_of_stillness.line_1": " - A ritual tablet tied to the Sin of Sloth",
+  "tooltip.oathboundrelics.tablet_of_stillness.line_2": " - Used to awaken the blank form of Lethargic Flail",
+  "tooltip.oathboundrelics.tablet_of_stillness.line_3": " - It is never crafted, only discovered",
+
+  "tooltip.oathboundrelics.tablet_of_exaltation.flavor": "Its script reads like praise, but every line cuts like judgment.",
+  "tooltip.oathboundrelics.tablet_of_exaltation.line_1": " - A ritual tablet tied to the Sin of Pride",
+  "tooltip.oathboundrelics.tablet_of_exaltation.line_2": " - Used to awaken the blank form of Vanity's Edge",
+  "tooltip.oathboundrelics.tablet_of_exaltation.line_3": " - It is never crafted, only discovered",
+
+  "tooltip.oathboundrelics.tablet_of_coveting.flavor": "The glyphs shift when watched too long, as if they want what is yours.",
+  "tooltip.oathboundrelics.tablet_of_coveting.line_1": " - A ritual tablet tied to the Sin of Envy",
+  "tooltip.oathboundrelics.tablet_of_coveting.line_2": " - Used to awaken the blank form of Covetfang",
+  "tooltip.oathboundrelics.tablet_of_coveting.line_3": " - It is never crafted, only discovered",
+
+  "item.oathboundrelics.burdened_flail_idol": "Burdened Flail Idol",
+  "item.oathboundrelics.mirrorsteel_idol": "Mirrorsteel Idol",
+  "item.oathboundrelics.hollow_fang_idol": "Hollow Fang Idol",
+  "item.oathboundrelics.void_ashes": "Void Ashes",
+
+  "tooltip.oathboundrelics.burdened_flail_idol.flavor": "A ritual weight shaped in honor of collapse, hunger, and surrender.",
+  "tooltip.oathboundrelics.burdened_flail_idol.line_1": " - A forged idol required to awaken Sloth's weapon",
+  "tooltip.oathboundrelics.burdened_flail_idol.line_2": " - Worthless in battle, sacred in rite",
+  "tooltip.oathboundrelics.burdened_flail_idol.line_3": " - It remembers the shape of burden",
+
+  "tooltip.oathboundrelics.mirrorsteel_idol.flavor": "Polished like triumph, heavy like expectation.",
+  "tooltip.oathboundrelics.mirrorsteel_idol.line_1": " - A forged idol required to awaken Pride's weapon",
+  "tooltip.oathboundrelics.mirrorsteel_idol.line_2": " - It reflects only the bearer it deems worthy",
+  "tooltip.oathboundrelics.mirrorsteel_idol.line_3": " - It waits for exaltation",
+
+  "tooltip.oathboundrelics.hollow_fang_idol.flavor": "Its edges seem to lean toward things that are not theirs.",
+  "tooltip.oathboundrelics.hollow_fang_idol.line_1": " - A forged idol required to awaken Envy's weapon",
+  "tooltip.oathboundrelics.hollow_fang_idol.line_2": " - It hungers for what others possess",
+  "tooltip.oathboundrelics.hollow_fang_idol.line_3": " - It sharpens itself on longing",
+
+  "tooltip.oathboundrelics.void_ashes.flavor": "What remains when End-born power is burned past memory.",
+  "tooltip.oathboundrelics.void_ashes.line_1": " - Rare ash used in the highest Oathbound rites",
+  "tooltip.oathboundrelics.void_ashes.line_2": " - Can be gathered from slain Shulkers",
+  "tooltip.oathboundrelics.void_ashes.line_3": " - The last fuel before awakening"
 }

@@ -2,6 +2,7 @@ package net.bandit.oathboundrelics.client;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.bandit.oathboundrelics.client.renderer.HeavyCubeProjectileRenderer;
+import net.bandit.oathboundrelics.client.renderer.SoulGemRenderer;
 import net.bandit.oathboundrelics.registry.EntityRegistry;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -23,6 +24,10 @@ public final class ClientEvents {
         event.registerEntityRenderer(
                 EntityRegistry.HEAVY_CUBE_PROJECTILE.get(),
                 HeavyCubeProjectileRenderer::new
+        );
+        event.registerEntityRenderer(
+                EntityRegistry.SOUL_GEM.get(),
+                SoulGemRenderer::new
         );
     }
 }

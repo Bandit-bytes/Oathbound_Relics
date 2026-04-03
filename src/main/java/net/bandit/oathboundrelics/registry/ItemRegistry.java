@@ -2,9 +2,8 @@ package net.bandit.oathboundrelics.registry;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.bandit.oathboundrelics.curio.items.*;
-import net.bandit.oathboundrelics.items.BrandedTimeCheckerItem;
-import net.bandit.oathboundrelics.items.LethargicFlailItem;
-import net.bandit.oathboundrelics.items.OathboundRelicItem;
+import net.bandit.oathboundrelics.items.*;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
@@ -165,6 +164,139 @@ public final class ItemRegistry {
             "nebula_ring",
             NebulaRingItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+    );
+
+    public static final Supplier<Item> SOUL_GEM = ITEMS.registerItem(
+            "soul_gem",
+            SoulGemItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+    );
+
+    public static final Supplier<Item> VANITYS_EDGE = ITEMS.registerItem(
+            "vanitys_edge",
+            VanitysEdgeItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+    );
+
+    public static final Supplier<Item> COVETFANG = ITEMS.registerItem(
+            "covetfang",
+            CovetfangItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+    );
+
+    public static final Supplier<Item> OBLIVION_STONE = ITEMS.registerItem(
+            "oblivion_stone",
+            OblivionStoneItem::new,
+            new Item.Properties().stacksTo(16).rarity(Rarity.EPIC).fireResistant()
+    );
+
+    public static final Supplier<Item> AREDRITE_GEM = ITEMS.registerItem(
+            "aredrite_gem",
+            AredriteGemItem::new,
+            new Item.Properties().stacksTo(64).rarity(Rarity.EPIC).fireResistant()
+    );
+
+    public static final Supplier<Item> AREDRITE_HELMET = ITEMS.register(
+            "aredrite_helmet",
+            () -> new AredriteArmorItem(
+                    ArmorMaterialRegistry.AREDRITE,
+                    ArmorItem.Type.HELMET,
+                    new Item.Properties()
+                            .durability(ArmorItem.Type.HELMET.getDurability(37))
+                            .rarity(Rarity.EPIC)
+                            .fireResistant()
+            )
+    );
+
+    public static final Supplier<Item> AREDRITE_CHESTPLATE = ITEMS.register(
+            "aredrite_chestplate",
+            () -> new AredriteArmorItem(
+                    ArmorMaterialRegistry.AREDRITE,
+                    ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties()
+                            .durability(ArmorItem.Type.CHESTPLATE.getDurability(37))
+                            .rarity(Rarity.EPIC)
+                            .fireResistant()
+            )
+    );
+
+    public static final Supplier<Item> AREDRITE_LEGGINGS = ITEMS.register(
+            "aredrite_leggings",
+            () -> new AredriteArmorItem(
+                    ArmorMaterialRegistry.AREDRITE,
+                    ArmorItem.Type.LEGGINGS,
+                    new Item.Properties()
+                            .durability(ArmorItem.Type.LEGGINGS.getDurability(37))
+                            .rarity(Rarity.EPIC)
+                            .fireResistant()
+            )
+    );
+
+    public static final Supplier<Item> AREDRITE_BOOTS = ITEMS.register(
+            "aredrite_boots",
+            () -> new AredriteArmorItem(
+                    ArmorMaterialRegistry.AREDRITE,
+                    ArmorItem.Type.BOOTS,
+                    new Item.Properties()
+                            .durability(ArmorItem.Type.BOOTS.getDurability(37))
+                            .rarity(Rarity.EPIC)
+                            .fireResistant()
+            )
+    );
+
+    public static final Supplier<Item> TABLET_OF_STILLNESS = ITEMS.register(
+            "tablet_of_stillness",
+            () -> new SinTabletItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    "tablet_of_stillness"
+            )
+    );
+
+    public static final Supplier<Item> TABLET_OF_EXALTATION = ITEMS.register(
+            "tablet_of_exaltation",
+            () -> new SinTabletItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    "tablet_of_exaltation"
+            )
+    );
+
+    public static final Supplier<Item> TABLET_OF_COVETING = ITEMS.register(
+            "tablet_of_coveting",
+            () -> new SinTabletItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    "tablet_of_coveting"
+            )
+    );
+
+    public static final Supplier<Item> BURDENED_FLAIL_IDOL = ITEMS.register(
+            "burdened_flail_idol",
+            () -> new SinIdolItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    "burdened_flail_idol"
+            )
+    );
+
+    public static final Supplier<Item> MIRRORSTEEL_IDOL = ITEMS.register(
+            "mirrorsteel_idol",
+            () -> new SinIdolItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    "mirrorsteel_idol"
+            )
+    );
+
+    public static final Supplier<Item> HOLLOW_FANG_IDOL = ITEMS.register(
+            "hollow_fang_idol",
+            () -> new SinIdolItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    "hollow_fang_idol"
+            )
+    );
+
+    public static final Supplier<Item> VOID_ASHES = ITEMS.register(
+            "void_ashes",
+            () -> new VoidAshesItem(
+                    new Item.Properties().stacksTo(64).rarity(Rarity.RARE).fireResistant()
+            )
     );
 
     private ItemRegistry() {

@@ -28,6 +28,17 @@ public final class EffectRegistry {
     public static final DeferredHolder<MobEffect, MobEffect> JUDGED =
             MOB_EFFECTS.register("judged", JudgedMobEffect::new);
 
+    public static final DeferredHolder<MobEffect, MobEffect> PRIDE_SUPPRESSION =
+            MOB_EFFECTS.register("pride_suppression", PrideSuppressionMobEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> LOSING_PRIDE =
+            MOB_EFFECTS.register("losing_pride", LosingPrideMobEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> BRAVERY =
+            MOB_EFFECTS.register("bravery", BraveryMobEffect::new);
+
+
+
     private EffectRegistry() {
     }
 

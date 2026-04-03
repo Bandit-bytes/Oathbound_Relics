@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:archaeology",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "oathboundrelics:vulture_charm", "weight": 4 },
+        { "type": "minecraft:item", "name": "oathboundrelics:executioners_coin", "weight": 3 },
+        { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone", "weight": 1 }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,9 @@ public final class OathboundRelicsMod {
 
     public OathboundRelicsMod(IEventBus modBus, ModContainer modContainer) {
         ItemRegistry.register(modBus);
+        ArmorMaterialRegistry.register(modBus);
         TabRegistry.register(modBus);
+        BlockRegistry.register(modBus);
         EffectRegistry.register(modBus);
         EntityRegistry.register(modBus);
         AttachmentRegistry.register(modBus);

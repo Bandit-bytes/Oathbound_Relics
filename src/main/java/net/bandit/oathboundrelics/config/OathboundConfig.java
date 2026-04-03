@@ -23,6 +23,7 @@ public final class OathboundConfig {
     public final ModConfigSpec.BooleanValue enableLivingEmber;
     public final ModConfigSpec.BooleanValue enableSoulFracture;
     public final ModConfigSpec.BooleanValue enableWakefulDoom;
+    public final ModConfigSpec.BooleanValue giveStarterOathboundRelic;
 
     public final ModConfigSpec.DoubleValue incomingDamageMultiplier;
     public final ModConfigSpec.DoubleValue armorEffectiveness;
@@ -51,6 +52,9 @@ public final class OathboundConfig {
     public final ModConfigSpec.DoubleValue attackSpeedBonus;
     public final ModConfigSpec.DoubleValue absorptionThreshold;
     public final ModConfigSpec.DoubleValue absorptionAmount;
+
+    public final ModConfigSpec.DoubleValue soulFractureMaxHealthLossPerGem;
+    public final ModConfigSpec.DoubleValue soulGemPickupRadius;
 
     // Bound curios
     public final ModConfigSpec.BooleanValue enableAshenNail;
@@ -198,9 +202,86 @@ public final class OathboundConfig {
     public final ModConfigSpec.IntValue lethargicFlailCubeStunDurationTicks;
     public final ModConfigSpec.DoubleValue lethargicFlailCubeDamageMultiplier;
 
+    // Pride weapon
+    public final ModConfigSpec.BooleanValue enableVanitysEdge;
+    public final ModConfigSpec.IntValue vanitysEdgeMaintenanceIntervalTicks;
+    public final ModConfigSpec.IntValue vanitysEdgeAllyAuraIntervalTicks;
+
+    public final ModConfigSpec.DoubleValue vanitysEdgeHighHealthAttackSpeedThreshold;
+    public final ModConfigSpec.DoubleValue vanitysEdgeHighHealthAttackSpeedBonus;
+    public final ModConfigSpec.DoubleValue vanitysEdgeHighHealthBonusDamagePerTwoHp;
+
+    public final ModConfigSpec.DoubleValue vanitysEdgeAllySuppressionRadius;
+    public final ModConfigSpec.IntValue vanitysEdgeAllySuppressionDurationTicks;
+
+    public final ModConfigSpec.DoubleValue vanitysEdgeNonKillSelfDamage;
+
+    public final ModConfigSpec.IntValue vanitysEdgeKillStackDurationTicks;
+    public final ModConfigSpec.DoubleValue vanitysEdgeKillStackAttackSpeedBonus;
+
+    public final ModConfigSpec.DoubleValue vanitysEdgeArmorPenaltyPerTwoArmor;
+
+    public final ModConfigSpec.DoubleValue vanitysEdgeMidHealthUpperThreshold;
+    public final ModConfigSpec.DoubleValue vanitysEdgeMidHealthLowerThreshold;
+    public final ModConfigSpec.DoubleValue vanitysEdgeMidHealthDamagePenaltyMultiplier;
+    public final ModConfigSpec.DoubleValue vanitysEdgeMidHealthAttackSpeedPenaltyMultiplier;
+
+    public final ModConfigSpec.DoubleValue vanitysEdgeLowHealthThreshold;
+    public final ModConfigSpec.DoubleValue vanitysEdgeLosingPrideChance;
+    public final ModConfigSpec.IntValue vanitysEdgeOutcomeDurationTicks;
+
+    public final ModConfigSpec.DoubleValue vanitysEdgeLosingPrideHealingMultiplier;
+    public final ModConfigSpec.IntValue vanitysEdgeBraveryRegenerationAmplifier;
+
+    // Envy weapon
+    public final ModConfigSpec.BooleanValue enableCovetfang;
+    public final ModConfigSpec.IntValue covetfangMaintenanceIntervalTicks;
+
+    public final ModConfigSpec.IntValue covetfangClaimDurationTicks;
+    public final ModConfigSpec.IntValue covetfangClaimCooldownTicks;
+    public final ModConfigSpec.DoubleValue covetfangClaimTrackRadius;
+    public final ModConfigSpec.IntValue covetfangCovetedGlowDurationTicks;
+
+    public final ModConfigSpec.DoubleValue covetfangBonusDamagePerEnvyScore;
+    public final ModConfigSpec.DoubleValue covetfangCovetedTargetExtraDamage;
+    public final ModConfigSpec.DoubleValue covetfangBonusDamageCap;
+
+    public final ModConfigSpec.DoubleValue covetfangBaseNonKillSelfDamage;
+    public final ModConfigSpec.DoubleValue covetfangHollowComparisonExtraSelfDamage;
+
+    public final ModConfigSpec.IntValue covetfangStolenStrengthDurationTicks;
+    public final ModConfigSpec.DoubleValue covetfangStolenVitalityMaxHealthBonus;
+    public final ModConfigSpec.DoubleValue covetfangStolenPlatingArmorBonus;
+    public final ModConfigSpec.DoubleValue covetfangStolenSwiftnessMoveSpeedBonus;
+    public final ModConfigSpec.DoubleValue covetfangStolenFerocityAttackSpeedBonus;
+
+    public final ModConfigSpec.DoubleValue covetfangBeneficialEffectAttackDamagePenalty;
+
+    public final ModConfigSpec.DoubleValue covetfangLowHealthThreshold;
+    public final ModConfigSpec.DoubleValue covetfangDesperateWantScanRadius;
+    public final ModConfigSpec.DoubleValue covetfangDesperateWantHealOnHit;
+    public final ModConfigSpec.DoubleValue covetfangDesperateWantMoveSpeedBonus;
+
+    public final ModConfigSpec.DoubleValue covetfangHopelessComparisonDamagePenalty;
+    public final ModConfigSpec.DoubleValue covetfangHopelessComparisonMoveSpeedPenalty;
+
+    public final ModConfigSpec.DoubleValue covetfangCovetedPursuitMoveSpeedBonus;
+
 
     private OathboundConfig(ModConfigSpec.Builder builder) {
         builder.push("oathbound_relic");
+
+        giveStarterOathboundRelic = builder
+                .comment("If true, players receive an Oathbound Relic the first time they join the world.")
+                .define("giveStarterOathboundRelic", true);
+
+        soulFractureMaxHealthLossPerGem = builder
+                .comment("Maximum health points lost per unreclaimed Soul Gem. 1.0 = half a heart, 2.0 = one full heart.")
+                .defineInRange("soulFractureMaxHealthLossPerGem", 1.0D, 0.0D, 20.0D);
+
+        soulGemPickupRadius = builder
+                .comment("Radius in blocks for the owner to consume their Soul Gem.")
+                .defineInRange("soulGemPickupRadius", 1.25D, 0.25D, 8.0D);
 
         enableFrailty = builder
                 .comment("If true, Branded players take extra incoming damage.")
@@ -296,7 +377,7 @@ public final class OathboundConfig {
 
         xpMultiplier = builder
                 .comment("XP multiplier from kills. 2.0 = double XP.")
-                .defineInRange("xpMultiplier", 2.0D, 1.0D, 10.0D);
+                .defineInRange("xpMultiplier", 6.0D, 1.0D, 10.0D);
 
         enableEnchantingBlessing = builder
                 .comment("If true, the Branded player gets bonus enchanting power at nearby tables.")
@@ -598,6 +679,195 @@ public final class OathboundConfig {
                 .defineInRange("cubeDamageMultiplier", 0.75D, 0.0D, 100.0D);
 
         builder.pop();
+
+        builder.push("pride_weapon");
+
+        enableVanitysEdge = builder
+                .comment("If true, Pride: Vanity's Edge is enabled.")
+                .define("enabled", true);
+
+        vanitysEdgeMaintenanceIntervalTicks = builder
+                .comment("How often, in ticks, Vanity's Edge updates its dynamic state.")
+                .defineInRange("maintenanceIntervalTicks", 10, 1, 200);
+
+        vanitysEdgeAllyAuraIntervalTicks = builder
+                .comment("How often, in ticks, Vanity's Edge applies its ally suppression aura while held.")
+                .defineInRange("allyAuraIntervalTicks", 20, 1, 200);
+
+        vanitysEdgeHighHealthAttackSpeedThreshold = builder
+                .comment("Health percentage threshold for the high health attack speed bonus. 0.80 = above 80 percent health.")
+                .defineInRange("highHealthAttackSpeedThreshold", 0.80D, 0.0D, 1.0D);
+
+        vanitysEdgeHighHealthAttackSpeedBonus = builder
+                .comment("Attack speed bonus while above the high health threshold. 0.10 = +10 percent.")
+                .defineInRange("highHealthAttackSpeedBonus", 0.10D, 0.0D, 10.0D);
+
+        vanitysEdgeHighHealthBonusDamagePerTwoHp = builder
+                .comment("Bonus damage granted for every 2 HP above half health.")
+                .defineInRange("highHealthBonusDamagePerTwoHp", 2.0D, 0.0D, 100.0D);
+
+        vanitysEdgeAllySuppressionRadius = builder
+                .comment("Radius in blocks for suppressing allies, companions, and pets while the weapon is held.")
+                .defineInRange("allySuppressionRadius", 12.0D, 1.0D, 128.0D);
+
+        vanitysEdgeAllySuppressionDurationTicks = builder
+                .comment("Duration of the ally suppression debuff in ticks.")
+                .defineInRange("allySuppressionDurationTicks", 40, 0, 20 * 60 * 60);
+
+        vanitysEdgeNonKillSelfDamage = builder
+                .comment("Health points lost if a successful hit does not kill the target. 1.0 = half a heart.")
+                .defineInRange("nonKillSelfDamage", 1.0D, 0.0D, 20.0D);
+
+        vanitysEdgeKillStackDurationTicks = builder
+                .comment("Duration of each kill-based attack speed stack in ticks.")
+                .defineInRange("killStackDurationTicks", 20 * 60 * 3, 0, 20 * 60 * 60);
+
+        vanitysEdgeKillStackAttackSpeedBonus = builder
+                .comment("Attack speed granted by each kill stack.")
+                .defineInRange("killStackAttackSpeedBonus", 0.10D, 0.0D, 10.0D);
+
+        vanitysEdgeArmorPenaltyPerTwoArmor = builder
+                .comment("Attack damage lost for every 2 armor points while the weapon exists in inventory.")
+                .defineInRange("armorPenaltyPerTwoArmor", 1.0D, 0.0D, 100.0D);
+
+        vanitysEdgeMidHealthUpperThreshold = builder
+                .comment("Upper health threshold for the mid-health weakness band. 0.50 = 50 percent.")
+                .defineInRange("midHealthUpperThreshold", 0.50D, 0.0D, 1.0D);
+
+        vanitysEdgeMidHealthLowerThreshold = builder
+                .comment("Lower health threshold for the mid-health weakness band. 0.30 = 30 percent.")
+                .defineInRange("midHealthLowerThreshold", 0.0D, 0.0D, 1.0D);
+
+        vanitysEdgeMidHealthDamagePenaltyMultiplier = builder
+                .comment("Damage penalty multiplier applied in the mid-health band. -0.50 = 50 percent less damage.")
+                .defineInRange("midHealthDamagePenaltyMultiplier", -0.50D, -1.0D, 10.0D);
+
+        vanitysEdgeMidHealthAttackSpeedPenaltyMultiplier = builder
+                .comment("Attack speed penalty multiplier applied in the mid-health band. -0.50 = 50 percent less attack speed.")
+                .defineInRange("midHealthAttackSpeedPenaltyMultiplier", -0.50D, -1.0D, 10.0D);
+
+        vanitysEdgeLowHealthThreshold = builder
+                .comment("Health percentage threshold for rolling Losing Pride or Bravery. 0.30 = below 30 percent.")
+                .defineInRange("lowHealthThreshold", 0.30D, 0.0D, 1.0D);
+
+        vanitysEdgeLosingPrideChance = builder
+                .comment("Chance to receive Losing Pride when rolling below the low health threshold. 0.60 = 60 percent.")
+                .defineInRange("losingPrideChance", 0.60D, 0.0D, 1.0D);
+
+        vanitysEdgeOutcomeDurationTicks = builder
+                .comment("Duration of Losing Pride or Bravery in ticks.")
+                .defineInRange("outcomeDurationTicks", 20 * 60 * 10, 0, 20 * 60 * 60 * 24);
+
+        vanitysEdgeLosingPrideHealingMultiplier = builder
+                .comment("Incoming healing multiplier while Losing Pride is active. 0.80 = 20 percent less healing.")
+                .defineInRange("losingPrideHealingMultiplier", 0.80D, 0.0D, 10.0D);
+
+        vanitysEdgeBraveryRegenerationAmplifier = builder
+                .comment("Regeneration amplifier granted by Bravery. 4 = Regeneration V.")
+                .defineInRange("braveryRegenerationAmplifier", 4, 0, 255);
+
+        builder.pop();
+
+        builder.push("envy_weapon");
+
+        enableCovetfang = builder
+                .comment("If true, Envy: Covetfang is enabled.")
+                .define("enabled", true);
+
+        covetfangMaintenanceIntervalTicks = builder
+                .comment("How often, in ticks, Covetfang updates its dynamic state.")
+                .defineInRange("maintenanceIntervalTicks", 10, 1, 200);
+
+        covetfangClaimDurationTicks = builder
+                .comment("How long a claimed Coveted Target lasts, in ticks.")
+                .defineInRange("claimDurationTicks", 20 * 20, 1, 20 * 60 * 60);
+
+        covetfangClaimCooldownTicks = builder
+                .comment("Cooldown in ticks after claiming a Coveted Target.")
+                .defineInRange("claimCooldownTicks", 20 * 8, 0, 20 * 60 * 60);
+
+        covetfangClaimTrackRadius = builder
+                .comment("Maximum range in blocks for tracking the claimed Coveted Target.")
+                .defineInRange("claimTrackRadius", 48.0D, 1.0D, 256.0D);
+
+        covetfangCovetedGlowDurationTicks = builder
+                .comment("Glowing duration applied to the Coveted Target.")
+                .defineInRange("covetedGlowDurationTicks", 40, 0, 20 * 60 * 60);
+
+        covetfangBonusDamagePerEnvyScore = builder
+                .comment("Bonus damage granted per envy score category matched against the target.")
+                .defineInRange("bonusDamagePerEnvyScore", 2.0D, 0.0D, 100.0D);
+
+        covetfangCovetedTargetExtraDamage = builder
+                .comment("Extra bonus damage dealt to a claimed Coveted Target if it is genuinely superior to you.")
+                .defineInRange("covetedTargetExtraDamage", 2.0D, 0.0D, 100.0D);
+
+        covetfangBonusDamageCap = builder
+                .comment("Maximum total bonus damage Covetfang can gain from envy scoring.")
+                .defineInRange("bonusDamageCap", 12.0D, 0.0D, 1000.0D);
+
+        covetfangBaseNonKillSelfDamage = builder
+                .comment("Health points lost if a successful hit does not kill the target. 1.0 = half a heart.")
+                .defineInRange("baseNonKillSelfDamage", 1.0D, 0.0D, 20.0D);
+
+        covetfangHollowComparisonExtraSelfDamage = builder
+                .comment("Additional self-damage when striking something beneath you that gives no envy score and is not your claimed target.")
+                .defineInRange("hollowComparisonExtraSelfDamage", 1.0D, 0.0D, 20.0D);
+
+        covetfangStolenStrengthDurationTicks = builder
+                .comment("Duration in ticks for stolen strengths gained from slaying a claimed target.")
+                .defineInRange("stolenStrengthDurationTicks", 20 * 45, 0, 20 * 60 * 60 * 24);
+
+        covetfangStolenVitalityMaxHealthBonus = builder
+                .comment("Bonus max health granted when Covetfang steals vitality.")
+                .defineInRange("stolenVitalityMaxHealthBonus", 4.0D, 0.0D, 100.0D);
+
+        covetfangStolenPlatingArmorBonus = builder
+                .comment("Bonus armor granted when Covetfang steals plating.")
+                .defineInRange("stolenPlatingArmorBonus", 4.0D, 0.0D, 100.0D);
+
+        covetfangStolenSwiftnessMoveSpeedBonus = builder
+                .comment("Movement speed bonus granted when Covetfang steals swiftness. 0.15 = +15 percent.")
+                .defineInRange("stolenSwiftnessMoveSpeedBonus", 0.15D, 0.0D, 10.0D);
+
+        covetfangStolenFerocityAttackSpeedBonus = builder
+                .comment("Attack speed bonus granted when Covetfang steals ferocity.")
+                .defineInRange("stolenFerocityAttackSpeedBonus", 0.20D, 0.0D, 10.0D);
+
+        covetfangBeneficialEffectAttackDamagePenalty = builder
+                .comment("Attack damage lost for each beneficial effect on the wielder while Covetfang exists in inventory.")
+                .defineInRange("beneficialEffectAttackDamagePenalty", 1.0D, 0.0D, 100.0D);
+
+        covetfangLowHealthThreshold = builder
+                .comment("Health percentage threshold for Covetfang's desperate or hopeless comparison effects. 0.30 = below 30 percent.")
+                .defineInRange("lowHealthThreshold", 0.30D, 0.0D, 1.0D);
+
+        covetfangDesperateWantScanRadius = builder
+                .comment("Radius in blocks for checking whether something stronger is nearby while low on health.")
+                .defineInRange("desperateWantScanRadius", 16.0D, 1.0D, 256.0D);
+
+        covetfangDesperateWantHealOnHit = builder
+                .comment("Health restored on successful hit while below the low health threshold and something stronger is nearby. 1.0 = half a heart.")
+                .defineInRange("desperateWantHealOnHit", 1.0D, 0.0D, 20.0D);
+
+        covetfangDesperateWantMoveSpeedBonus = builder
+                .comment("Movement speed bonus while below the low health threshold and something stronger is nearby. 0.20 = +20 percent.")
+                .defineInRange("desperateWantMoveSpeedBonus", 0.20D, 0.0D, 10.0D);
+
+        covetfangHopelessComparisonDamagePenalty = builder
+                .comment("Damage penalty while below the low health threshold and nothing worthy of envy is nearby. -0.35 = 35 percent less damage.")
+                .defineInRange("hopelessComparisonDamagePenalty", -0.35D, -1.0D, 10.0D);
+
+        covetfangHopelessComparisonMoveSpeedPenalty = builder
+                .comment("Movement speed penalty while below the low health threshold and nothing worthy of envy is nearby. -0.20 = 20 percent slower.")
+                .defineInRange("hopelessComparisonMoveSpeedPenalty", -0.20D, -1.0D, 10.0D);
+
+        covetfangCovetedPursuitMoveSpeedBonus = builder
+                .comment("Movement speed bonus while actively pursuing a claimed Coveted Target. 0.10 = +10 percent.")
+                .defineInRange("covetedPursuitMoveSpeedBonus", 0.10D, 0.0D, 10.0D);
+
+        builder.pop();
+
         builder.push("bearer_curios");
 
         builder.push("oathbound_reliquary");
@@ -948,4 +1218,71 @@ public final class OathboundConfig {
     public static int lethargicFlailCubeCooldownTicks() { return CONFIG.lethargicFlailCubeCooldownTicks.get(); }
     public static int lethargicFlailCubeStunDurationTicks() { return CONFIG.lethargicFlailCubeStunDurationTicks.get(); }
     public static double lethargicFlailCubeDamageMultiplier() { return CONFIG.lethargicFlailCubeDamageMultiplier.get(); }
+
+    public static double soulFractureMaxHealthLossPerGem() { return CONFIG.soulFractureMaxHealthLossPerGem.get(); }
+    public static double soulGemPickupRadius() { return CONFIG.soulGemPickupRadius.get(); }
+
+    public static boolean enableVanitysEdge() { return CONFIG.enableVanitysEdge.get(); }
+    public static int vanitysEdgeMaintenanceIntervalTicks() { return CONFIG.vanitysEdgeMaintenanceIntervalTicks.get(); }
+    public static int vanitysEdgeAllyAuraIntervalTicks() { return CONFIG.vanitysEdgeAllyAuraIntervalTicks.get(); }
+
+    public static double vanitysEdgeHighHealthAttackSpeedThreshold() { return CONFIG.vanitysEdgeHighHealthAttackSpeedThreshold.get(); }
+    public static double vanitysEdgeHighHealthAttackSpeedBonus() { return CONFIG.vanitysEdgeHighHealthAttackSpeedBonus.get(); }
+    public static double vanitysEdgeHighHealthBonusDamagePerTwoHp() { return CONFIG.vanitysEdgeHighHealthBonusDamagePerTwoHp.get(); }
+
+    public static double vanitysEdgeAllySuppressionRadius() { return CONFIG.vanitysEdgeAllySuppressionRadius.get(); }
+    public static int vanitysEdgeAllySuppressionDurationTicks() { return CONFIG.vanitysEdgeAllySuppressionDurationTicks.get(); }
+
+    public static double vanitysEdgeNonKillSelfDamage() { return CONFIG.vanitysEdgeNonKillSelfDamage.get(); }
+
+    public static int vanitysEdgeKillStackDurationTicks() { return CONFIG.vanitysEdgeKillStackDurationTicks.get(); }
+    public static double vanitysEdgeKillStackAttackSpeedBonus() { return CONFIG.vanitysEdgeKillStackAttackSpeedBonus.get(); }
+
+    public static double vanitysEdgeArmorPenaltyPerTwoArmor() { return CONFIG.vanitysEdgeArmorPenaltyPerTwoArmor.get(); }
+
+    public static double vanitysEdgeMidHealthUpperThreshold() { return CONFIG.vanitysEdgeMidHealthUpperThreshold.get(); }
+    public static double vanitysEdgeMidHealthLowerThreshold() { return CONFIG.vanitysEdgeMidHealthLowerThreshold.get(); }
+    public static double vanitysEdgeMidHealthDamagePenaltyMultiplier() { return CONFIG.vanitysEdgeMidHealthDamagePenaltyMultiplier.get(); }
+    public static double vanitysEdgeMidHealthAttackSpeedPenaltyMultiplier() { return CONFIG.vanitysEdgeMidHealthAttackSpeedPenaltyMultiplier.get(); }
+
+    public static double vanitysEdgeLowHealthThreshold() { return CONFIG.vanitysEdgeLowHealthThreshold.get(); }
+    public static double vanitysEdgeLosingPrideChance() { return CONFIG.vanitysEdgeLosingPrideChance.get(); }
+    public static int vanitysEdgeOutcomeDurationTicks() { return CONFIG.vanitysEdgeOutcomeDurationTicks.get(); }
+
+    public static double vanitysEdgeLosingPrideHealingMultiplier() { return CONFIG.vanitysEdgeLosingPrideHealingMultiplier.get(); }
+    public static int vanitysEdgeBraveryRegenerationAmplifier() { return CONFIG.vanitysEdgeBraveryRegenerationAmplifier.get(); }
+
+    public static boolean enableCovetfang() { return CONFIG.enableCovetfang.get(); }
+    public static int covetfangMaintenanceIntervalTicks() { return CONFIG.covetfangMaintenanceIntervalTicks.get(); }
+
+    public static int covetfangClaimDurationTicks() { return CONFIG.covetfangClaimDurationTicks.get(); }
+    public static int covetfangClaimCooldownTicks() { return CONFIG.covetfangClaimCooldownTicks.get(); }
+    public static double covetfangClaimTrackRadius() { return CONFIG.covetfangClaimTrackRadius.get(); }
+    public static int covetfangCovetedGlowDurationTicks() { return CONFIG.covetfangCovetedGlowDurationTicks.get(); }
+
+    public static double covetfangBonusDamagePerEnvyScore() { return CONFIG.covetfangBonusDamagePerEnvyScore.get(); }
+    public static double covetfangCovetedTargetExtraDamage() { return CONFIG.covetfangCovetedTargetExtraDamage.get(); }
+    public static double covetfangBonusDamageCap() { return CONFIG.covetfangBonusDamageCap.get(); }
+
+    public static double covetfangBaseNonKillSelfDamage() { return CONFIG.covetfangBaseNonKillSelfDamage.get(); }
+    public static double covetfangHollowComparisonExtraSelfDamage() { return CONFIG.covetfangHollowComparisonExtraSelfDamage.get(); }
+
+    public static int covetfangStolenStrengthDurationTicks() { return CONFIG.covetfangStolenStrengthDurationTicks.get(); }
+    public static double covetfangStolenVitalityMaxHealthBonus() { return CONFIG.covetfangStolenVitalityMaxHealthBonus.get(); }
+    public static double covetfangStolenPlatingArmorBonus() { return CONFIG.covetfangStolenPlatingArmorBonus.get(); }
+    public static double covetfangStolenSwiftnessMoveSpeedBonus() { return CONFIG.covetfangStolenSwiftnessMoveSpeedBonus.get(); }
+    public static double covetfangStolenFerocityAttackSpeedBonus() { return CONFIG.covetfangStolenFerocityAttackSpeedBonus.get(); }
+
+    public static double covetfangBeneficialEffectAttackDamagePenalty() { return CONFIG.covetfangBeneficialEffectAttackDamagePenalty.get(); }
+
+    public static double covetfangLowHealthThreshold() { return CONFIG.covetfangLowHealthThreshold.get(); }
+    public static double covetfangDesperateWantScanRadius() { return CONFIG.covetfangDesperateWantScanRadius.get(); }
+    public static double covetfangDesperateWantHealOnHit() { return CONFIG.covetfangDesperateWantHealOnHit.get(); }
+    public static double covetfangDesperateWantMoveSpeedBonus() { return CONFIG.covetfangDesperateWantMoveSpeedBonus.get(); }
+
+    public static double covetfangHopelessComparisonDamagePenalty() { return CONFIG.covetfangHopelessComparisonDamagePenalty.get(); }
+    public static double covetfangHopelessComparisonMoveSpeedPenalty() { return CONFIG.covetfangHopelessComparisonMoveSpeedPenalty.get(); }
+
+    public static double covetfangCovetedPursuitMoveSpeedBonus() { return CONFIG.covetfangCovetedPursuitMoveSpeedBonus.get(); }
+    public static boolean giveStarterOathboundRelic() { return CONFIG.giveStarterOathboundRelic.get(); }
 }
