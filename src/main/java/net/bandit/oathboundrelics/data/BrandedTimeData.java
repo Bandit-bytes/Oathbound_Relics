@@ -7,70 +7,57 @@ import org.jetbrains.annotations.UnknownNullability;
 
 public class BrandedTimeData implements INBTSerializable<CompoundTag> {
 
-    private long totalWorldTicks;
-    private long brandedWorldTicks;
+    private long brandedProgressTicks;
 
-    public long getTotalWorldTicks() {
-        return totalWorldTicks;
+    public long getBrandedProgressTicks() {
+        return brandedProgressTicks;
     }
 
-    public long getBrandedWorldTicks() {
-        return brandedWorldTicks;
+    public void setBrandedProgressTicks(long ticks) {
+        this.brandedProgressTicks = Math.max(0L, ticks);
     }
 
-    public void setTotalWorldTicks(long totalWorldTicks) {
-        this.totalWorldTicks = Math.max(0L, totalWorldTicks);
-        if (this.brandedWorldTicks > this.totalWorldTicks) {
-            this.brandedWorldTicks = this.totalWorldTicks;
+    public void addBrandedProgressTicks(long amount) {
+        this.brandedProgressTicks = Math.max(0L, this.brandedProgressTicks + amount);
+    }
+
+    public void tick(boolean branded, long maxTicks) {
+        if (branded && brandedProgressTicks < maxTicks) {
+            brandedProgressTicks++;
         }
     }
 
-    public void setBrandedWorldTicks(long brandedWorldTicks) {
-        this.brandedWorldTicks = Math.max(0L, Math.min(brandedWorldTicks, this.totalWorldTicks));
-    }
-
-    public void setTicks(long totalWorldTicks, long brandedWorldTicks) {
-        this.totalWorldTicks = Math.max(0L, totalWorldTicks);
-        this.brandedWorldTicks = Math.max(0L, Math.min(brandedWorldTicks, this.totalWorldTicks));
-    }
-
-    public void addTotalWorldTicks(long amount) {
-        setTotalWorldTicks(this.totalWorldTicks + amount);
-    }
-
-    public void addBrandedWorldTicks(long amount) {
-        setBrandedWorldTicks(this.brandedWorldTicks + amount);
-    }
-
-    public void tick(boolean branded) {
-        totalWorldTicks++;
-        if (branded) {
-            brandedWorldTicks++;
-        }
-    }
-
-    public double getBrandedRatio() {
-        if (totalWorldTicks <= 0L) {
+    public double getProgressRatio(long maxTicks) {
+        if (maxTicks <= 0L) {
             return 0.0D;
         }
-        return (double) brandedWorldTicks / (double) totalWorldTicks;
+
+        return Math.min(1.0D, (double) brandedProgressTicks / (double) maxTicks);
     }
 
-    public boolean qualifies(long minimumTotalTicks, double requiredRatio) {
-        return totalWorldTicks >= minimumTotalTicks && getBrandedRatio() >= requiredRatio;
+    public boolean qualifies(long maxTicks, double requiredRatio) {
+        return getProgressRatio(maxTicks) >= requiredRatio;
     }
 
     @Override
     public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag tag = new CompoundTag();
-        tag.putLong("TotalWorldTicks", totalWorldTicks);
-        tag.putLong("BrandedWorldTicks", brandedWorldTicks);
+        tag.putLong("BrandedProgressTicks", brandedProgressTicks);
         return tag;
     }
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag compoundTag) {
-        totalWorldTicks = compoundTag.getLong("TotalWorldTicks");
-        brandedWorldTicks = compoundTag.getLong("BrandedWorldTicks");
+        if (compoundTag.contains("BrandedProgressTicks")) {
+            brandedProgressTicks = Math.max(0L, compoundTag.getLong("BrandedProgressTicks"));
+            return;
+        }
+
+        if (compoundTag.contains("BrandedWorldTicks")) {
+            brandedProgressTicks = Math.max(0L, compoundTag.getLong("BrandedWorldTicks"));
+            return;
+        }
+
+        brandedProgressTicks = 0L;
     }
 }

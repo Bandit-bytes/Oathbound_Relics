@@ -54,23 +54,23 @@
   "tooltip.oathboundrelics.dormant_without_brand": "Dormant unless the bearer is Branded.",
   "tooltip.oathboundrelics.forbidden_text": "Its meaning writhes beyond your grasp.",
 
-  "tooltip.oathboundrelics.ashen_nail.effect": "While burning, your attacks deal 35% more damage.",
-  "tooltip.oathboundrelics.gravebell_locket.effect": "On kill, gain Speed I for 8s and Regeneration I for 4s.",
-  "tooltip.oathboundrelics.hunters_sigil.effect": "Deal 25% more damage to enemies already targeting you.",
-  "tooltip.oathboundrelics.pilgrims_thorn.effect": "Gain 10% increased movement speed.",
+  "tooltip.oathboundrelics.ashen_nail.effects": "While burning, your attacks deal 35% more damage.",
+  "tooltip.oathboundrelics.gravebell_locket.effects": "On kill, gain Speed I for 8s and Regeneration I for 4s.",
+  "tooltip.oathboundrelics.hunters_sigil.effects": "Deal 25% more damage to enemies already targeting you.",
+  "tooltip.oathboundrelics.pilgrims_thorn.effects": "Gain 10% increased movement speed.",
 
-  "tooltip.oathboundrelics.shroud_of_the_forsaken.effect": "When struck to 3 hearts or less, gain brief protection. 60s cooldown.",
-  "tooltip.oathboundrelics.vulture_charm.effect": "Gain 50% more experience from kills.",
-  "tooltip.oathboundrelics.hollow_eye.effect": "See clearly in darkness and reveal nearby monsters.",
-  "tooltip.oathboundrelics.censer_of_ash.effect": "Burning enemies take 20% more damage and are easier to track.",
-  "tooltip.oathboundrelics.mourners_thread.effect": "On kill, restore hunger and a small amount of health.",
-  "tooltip.oathboundrelics.thornbound_carapace.effect": "Reflect 20% of incoming damage to attackers.",
-  "tooltip.oathboundrelics.voidstep_band.effect": "Negate fall damage.",
-  "tooltip.oathboundrelics.executioners_coin.effect": "Deal 30% more damage to enemies below 30% health.",
-  "tooltip.oathboundrelics.relic_of_the_last_breath.effect": "Survive a lethal hit once every 5 minutes.",
-  "tooltip.oathboundrelics.torch_of_gravesong.effect": "Deal 25% more damage to undead and gain Strength on undead kills.",
+  "tooltip.oathboundrelics.shroud_of_the_forsaken.effects": "When struck to 3 hearts or less, gain brief protection. 60s cooldown.",
+  "tooltip.oathboundrelics.vulture_charm.effects": "Gain 50% more experience from kills.",
+  "tooltip.oathboundrelics.hollow_eye.effects": "See clearly in darkness and reveal nearby monsters.",
+  "tooltip.oathboundrelics.censer_of_ash.effects": "Burning enemies take 20% more damage and are easier to track.",
+  "tooltip.oathboundrelics.mourners_thread.effects": "On kill, restore hunger and a small amount of health.",
+  "tooltip.oathboundrelics.thornbound_carapace.effects": "Reflect 20% of incoming damage to attackers.",
+  "tooltip.oathboundrelics.voidstep_band.effects": "Negate fall damage.",
+  "tooltip.oathboundrelics.executioners_coin.effects": "Deal 30% more damage to enemies below 30% health.",
+  "tooltip.oathboundrelics.relic_of_the_last_breath.effects": "Survive a lethal hit once every 5 minutes.",
+  "tooltip.oathboundrelics.torch_of_gravesong.effects": "Deal 25% more damage to undead and gain Strength on undead kills.",
 
-  "item.oathboundrelics.lethargic_flail": "Sloth: Lethargic Flail",
+  "item.oathboundrelics.lethargic_greatsword": "Sloth: Lethargic Greatsword",
   "tooltip.oathboundrelics.lethargic_flail.inventory_burden": "While carried, it drags at the body and deepens hunger.",
 
   "message.oathboundrelics.lethargic_flail.locked": "The weapon remains dormant. You have not yet endured enough Branded Time.",
@@ -79,5 +79,21 @@
   "tooltip.oathboundrelics.lethargic_flail.requires_time": "It answers only to those who have endured nearly all their days beneath the Oath.",
   "tooltip.oathboundrelics.lethargic_flail.held_effects_header": "While held:",
   "tooltip.oathboundrelics.lethargic_flail.held_slow": " - Movement Speed %s",
-  "tooltip.oathboundrelics.lethargic_flail.held_hunger": " - Hunger depletes %s faster"
+  "tooltip.oathboundrelics.lethargic_flail.held_hunger": " - Hunger depletes %s faster",
+  "message.oathboundrelics.branded_time.current": "Current Branded Time: %s",
+  "message.oathboundrelics.branded_time.max": "Time Required for Full Attunement: %s",
+
+
+  "tooltip.oathboundrelics.lethargic_flail.passive_header": "Passive:",
+  "tooltip.oathboundrelics.lethargic_flail.passive_full_damage": " - Always deals full damage",
+  "tooltip.oathboundrelics.lethargic_flail.passive_laziness": " - If a hit does not kill, gain 1 Laziness stack for 1 minute",
+
+
+  "tooltip.oathboundrelics.lethargic_flail.ability_header": "Abilities:",
+  "tooltip.oathboundrelics.lethargic_flail.ability_aoe": " - Shift + Left Click: 10 block sweep for 75% damage, gain 3 Laziness stacks, weakens enemies for 10s",
+  "tooltip.oathboundrelics.lethargic_flail.ability_cube": " - Right Click: Throw a heavy cube for 75% damage and stun for 10s (30s cooldown)",
+
+  "effect.oathboundrelics.laziness": "Laziness",
+  "effect.oathboundrelics.sloth_weakness": "Sloth Weakness",
+  "effect.oathboundrelics.heavy_stun": "Heavy Stun"
 }

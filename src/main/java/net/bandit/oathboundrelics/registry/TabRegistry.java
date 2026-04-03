@@ -34,7 +34,7 @@ public class TabRegistry {
             ItemRegistry.RELIC_OF_THE_LAST_BREATH,
             ItemRegistry.TORCH_OF_GRAVESONG,
             ItemRegistry.BRANDED_TIME_CHECKER,
-            ItemRegistry.LETHARGIC_FLAIL
+            ItemRegistry.LETHARGIC_GREATSWORD
     );
 
     public static final Supplier<CreativeModeTab> OATHBOUND_TAB = CREATIVE_MODE_TABS.register(

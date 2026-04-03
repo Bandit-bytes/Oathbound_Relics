@@ -29,7 +29,6 @@ public final class SlothWeaponUtil {
             return false;
         }
 
-        // Creative bypass for testing
         if (player.isCreative()) {
             return true;
         }
@@ -38,11 +37,11 @@ public final class SlothWeaponUtil {
     }
 
     public static boolean isHoldingLethargicFlail(Player player) {
-        return player.getMainHandItem().is(ItemRegistry.LETHARGIC_FLAIL.get())
-                || player.getOffhandItem().is(ItemRegistry.LETHARGIC_FLAIL.get());
+        return player.getMainHandItem().is(ItemRegistry.LETHARGIC_GREATSWORD.get())
+                || player.getOffhandItem().is(ItemRegistry.LETHARGIC_GREATSWORD.get());
     }
 
     public static boolean isHoldingLethargicFlailMainHand(Player player) {
-        return player.getMainHandItem().is(ItemRegistry.LETHARGIC_FLAIL.get());
+        return player.getMainHandItem().is(ItemRegistry.LETHARGIC_GREATSWORD.get());
     }
 }

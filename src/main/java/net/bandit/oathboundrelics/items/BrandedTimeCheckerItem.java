@@ -28,27 +28,30 @@ public class BrandedTimeCheckerItem extends Item {
         if (!level.isClientSide) {
             BrandedTimeData data = player.getData(AttachmentRegistry.BRANDED_TIME.get());
 
-            long totalTicks = data.getTotalWorldTicks();
-            long brandedTicks = data.getBrandedWorldTicks();
-            double ratioPercent = data.getBrandedRatio() * 100.0D;
+            long currentTicks = data.getBrandedProgressTicks();
+            long maxTicks = OathboundConfig.slothWeaponMaxBrandedTicks();
+            double progressPercent = data.getProgressRatio(maxTicks) * 100.0D;
 
             boolean qualifies = data.qualifies(
-                    OathboundConfig.slothWeaponMinimumTotalTicks(),
-                    OathboundConfig.slothWeaponRequiredBrandedRatio()
+                    maxTicks,
+                    OathboundConfig.slothWeaponRequiredBrandedPercent()
             );
 
             player.sendSystemMessage(
-                    Component.translatable("message.oathboundrelics.branded_time.total", formatTicks(totalTicks))
-                            .withStyle(ChatFormatting.GRAY)
-            );
-
-            player.sendSystemMessage(
-                    Component.translatable("message.oathboundrelics.branded_time.branded", formatTicks(brandedTicks))
+                    Component.translatable("message.oathboundrelics.branded_time.current", formatTicks(currentTicks))
                             .withStyle(ChatFormatting.DARK_PURPLE)
             );
 
             player.sendSystemMessage(
-                    Component.translatable("message.oathboundrelics.branded_time.percent", String.format("%.3f", ratioPercent) + "%")
+                    Component.translatable("message.oathboundrelics.branded_time.max", formatTicks(maxTicks))
+                            .withStyle(ChatFormatting.GRAY)
+            );
+
+            player.sendSystemMessage(
+                    Component.translatable(
+                                    "message.oathboundrelics.branded_time.percent",
+                                    String.format("%.3f", progressPercent) + "%"
+                            )
                             .withStyle(ChatFormatting.LIGHT_PURPLE)
             );
 
@@ -69,6 +72,7 @@ public class BrandedTimeCheckerItem extends Item {
         long seconds = totalSeconds % 60L;
         return hours + "h " + minutes + "m " + seconds + "s";
     }
+
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("tooltip.oathboundrelics.branded_time_checker.flavor")

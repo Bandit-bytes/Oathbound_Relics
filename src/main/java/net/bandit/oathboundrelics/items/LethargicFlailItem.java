@@ -1,6 +1,8 @@
 package net.bandit.oathboundrelics.items;
 
 import net.bandit.oathboundrelics.config.OathboundConfig;
+import net.bandit.oathboundrelics.entity.HeavyCubeProjectileEntity;
+import net.bandit.oathboundrelics.registry.EntityRegistry;
 import net.bandit.oathboundrelics.util.SlothWeaponUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -46,8 +48,25 @@ public class LethargicFlailItem extends SwordItem {
             return InteractionResultHolder.fail(stack);
         }
 
-        // Right-click cube special comes next.
-        return InteractionResultHolder.pass(stack);
+        if (player.getCooldowns().isOnCooldown(this)) {
+            return InteractionResultHolder.fail(stack);
+        }
+
+        if (!level.isClientSide) {
+            HeavyCubeProjectileEntity cube = new HeavyCubeProjectileEntity(
+                    EntityRegistry.HEAVY_CUBE_PROJECTILE.get(),
+                    level,
+                    player
+            );
+
+            cube.setBaseDamage((float) player.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE) * 0.75F);
+            cube.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.1F, 0.0F);
+
+            level.addFreshEntity(cube);
+            player.getCooldowns().addCooldown(this, 20 * 30);
+        }
+
+        return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
 
     @Override
@@ -65,6 +84,17 @@ public class LethargicFlailItem extends SwordItem {
 
         tooltip.add(Component.empty());
 
+        tooltip.add(Component.translatable("tooltip.oathboundrelics.lethargic_flail.passive_header")
+                .withStyle(ChatFormatting.GOLD));
+
+        tooltip.add(Component.translatable("tooltip.oathboundrelics.lethargic_flail.passive_full_damage")
+                .withStyle(ChatFormatting.GRAY));
+
+        tooltip.add(Component.translatable("tooltip.oathboundrelics.lethargic_flail.passive_laziness")
+                .withStyle(ChatFormatting.GRAY));
+
+        tooltip.add(Component.empty());
+
         tooltip.add(Component.translatable("tooltip.oathboundrelics.lethargic_flail.held_effects_header")
                 .withStyle(ChatFormatting.GOLD));
 
@@ -77,6 +107,17 @@ public class LethargicFlailItem extends SwordItem {
                 "tooltip.oathboundrelics.lethargic_flail.held_hunger",
                 formatPercentFromExhaustionPerSecond(OathboundConfig.lethargicFlailInventoryExhaustionPerSecond())
         ).withStyle(ChatFormatting.GRAY));
+
+        tooltip.add(Component.empty());
+
+        tooltip.add(Component.translatable("tooltip.oathboundrelics.lethargic_flail.ability_header")
+                .withStyle(ChatFormatting.GOLD));
+
+        tooltip.add(Component.translatable("tooltip.oathboundrelics.lethargic_flail.ability_aoe")
+                .withStyle(ChatFormatting.GRAY));
+
+        tooltip.add(Component.translatable("tooltip.oathboundrelics.lethargic_flail.ability_cube")
+                .withStyle(ChatFormatting.GRAY));
     }
 
     private static String formatSignedPercent(double value) {
@@ -84,8 +125,6 @@ public class LethargicFlailItem extends SwordItem {
     }
 
     private static String formatPercentFromExhaustionPerSecond(double value) {
-        // purely display wording for your chosen default
-        // 0.05 exhaustion per second is being used as the "50% faster" design target
         return Math.round((value / 0.05D) * 50.0D) + "%";
     }
 }

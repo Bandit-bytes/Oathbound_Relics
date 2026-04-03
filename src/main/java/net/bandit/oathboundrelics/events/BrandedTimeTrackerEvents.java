@@ -1,6 +1,7 @@
 package net.bandit.oathboundrelics.events;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
+import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.data.BrandedTimeData;
 import net.bandit.oathboundrelics.registry.AttachmentRegistry;
 import net.bandit.oathboundrelics.util.OathboundUtil;
@@ -24,6 +25,9 @@ public final class BrandedTimeTrackerEvents {
         }
 
         BrandedTimeData data = player.getData(AttachmentRegistry.BRANDED_TIME.get());
-        data.tick(OathboundUtil.isBranded(player));
+        data.tick(
+                OathboundUtil.isBranded(player),
+                OathboundConfig.slothWeaponMaxBrandedTicks()
+        );
     }
 }

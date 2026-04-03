@@ -317,7 +317,7 @@ public final class OathboundConfig {
                 .comment("Damage multiplier applied to the triggering hit. 0.60 = take 40% less damage from that hit.")
                 .defineInRange("damageMultiplier", 0.60D, 0.0D, 100.0D);
         shroudResistanceDurationTicks = builder
-                .comment("Resistance effect duration in ticks.")
+                .comment("Resistance effects duration in ticks.")
                 .defineInRange("resistanceDurationTicks", 20 * 5, 0, 20 * 60 * 60);
         shroudResistanceAmplifier = builder
                 .comment("Resistance amplifier. 1 = Resistance II.")
@@ -470,7 +470,7 @@ public final class OathboundConfig {
                 .defineInRange("slothWeaponRequiredBrandedPercent", 0.995D, 0.0D, 1.0D);
 
         lethargicFlailInventoryCheckIntervalTicks = builder
-                .comment("How often to scan the player's inventory for the weapon burden effect.")
+                .comment("How often to scan the player's inventory for the weapon burden effects.")
                 .defineInRange("inventoryCheckIntervalTicks", 10, 1, 200);
 
         lethargicFlailInventoryMoveSpeedMultiplier = builder

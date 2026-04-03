@@ -126,8 +126,8 @@ public class ItemRegistry {
             new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).fireResistant()
     );
 
-    public static final Supplier<Item> LETHARGIC_FLAIL = ITEMS.registerItem(
-            "lethargic_flail",
+    public static final Supplier<Item> LETHARGIC_GREATSWORD = ITEMS.registerItem(
+            "lethargic_greatsword",
             LethargicFlailItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
     );

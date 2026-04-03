@@ -22,6 +22,6 @@ public class GravebellLocketItem extends OathboundCurioItem {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
         tooltip.add(Component.empty());
-        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.gravebell_locket.effect");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.gravebell_locket.effects");
     }
 }
