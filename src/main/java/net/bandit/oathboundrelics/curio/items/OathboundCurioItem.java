@@ -4,6 +4,7 @@ import net.bandit.oathboundrelics.util.OathboundUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,12 +30,32 @@ public class OathboundCurioItem extends Item implements ICurioItem {
     }
 
     protected void addRelicEffectTooltip(List<Component> tooltip, String translationKey, Object... args) {
-        Component line = Component.translatable(translationKey, args);
+        MutableComponent line = Component.translatable(translationKey, args);
 
         if (shouldRevealTooltip()) {
-            tooltip.add(line.copy().withStyle(ChatFormatting.GOLD));
+            tooltip.add(line.withStyle(ChatFormatting.GOLD));
         } else {
-            tooltip.add(line.copy().withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.OBFUSCATED));
+            tooltip.add(line.withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.OBFUSCATED));
+        }
+    }
+
+    @Override
+    public boolean isFoil(ItemStack stack) {
+        return true;
+    }
+
+    protected void addFlavorTooltip(List<Component> tooltip, String translationKey) {
+        tooltip.add(Component.translatable(translationKey)
+                .withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.ITALIC));
+    }
+
+    protected void addHiddenOrVisibleLine(List<Component> tooltip, String translationKey) {
+        MutableComponent line = Component.translatable(translationKey);
+
+        if (shouldRevealTooltip()) {
+            tooltip.add(line.withStyle(ChatFormatting.GRAY));
+        } else {
+            tooltip.add(line.withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.OBFUSCATED));
         }
     }
 

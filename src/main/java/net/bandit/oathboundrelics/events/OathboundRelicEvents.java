@@ -287,25 +287,32 @@ public final class OathboundRelicEvents {
             // onPlayerTick
             if (OathboundConfig.enableHollowEye()
                     && OathboundUtil.hasCurio(player, ItemRegistry.HOLLOW_EYE.get())) {
-                player.addEffect(new MobEffectInstance(
-                        MobEffects.NIGHT_VISION,
-                        OathboundConfig.hollowEyeNightVisionDurationTicks(),
-                        0,
-                        false,
-                        false
-                ));
+
+                if (player.hasEffect(MobEffects.BLINDNESS)) {
+                    player.removeEffect(MobEffects.BLINDNESS);
+                }
+
+                if (player.hasEffect(MobEffects.DARKNESS)) {
+                    player.removeEffect(MobEffects.DARKNESS);
+                }
 
                 if (player.tickCount % OathboundConfig.hollowEyeRevealIntervalTicks() == 0) {
                     AABB area = player.getBoundingBox().inflate(OathboundConfig.hollowEyeRevealRadius());
 
-                    for (Monster monster : player.level().getEntitiesOfClass(Monster.class, area, Monster::isAlive)) {
-                        monster.addEffect(new MobEffectInstance(
-                                MobEffects.GLOWING,
-                                OathboundConfig.hollowEyeRevealDurationTicks(),
-                                0,
-                                false,
-                                false
-                        ));
+                    for (LivingEntity living : player.level().getEntitiesOfClass(
+                            LivingEntity.class,
+                            area,
+                            entity -> entity.isAlive() && entity != player
+                    )) {
+                        if (living.isInvisible()) {
+                            living.addEffect(new MobEffectInstance(
+                                    MobEffects.GLOWING,
+                                    OathboundConfig.hollowEyeRevealDurationTicks(),
+                                    0,
+                                    false,
+                                    false
+                            ));
+                        }
                     }
                 }
             }

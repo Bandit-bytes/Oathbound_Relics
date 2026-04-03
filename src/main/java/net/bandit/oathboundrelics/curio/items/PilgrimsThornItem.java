@@ -3,7 +3,6 @@ package net.bandit.oathboundrelics.curio.items;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import net.bandit.oathboundrelics.OathboundRelicsMod;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -13,7 +12,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import java.util.List;
 
@@ -58,4 +56,15 @@ public class PilgrimsThornItem extends OathboundCurioItem {
         return true;
     }
 
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
+
+        tooltip.add(Component.empty());
+        addFlavorTooltip(tooltip, "tooltip.oathboundrelics.pilgrims_thorn.flavor");
+        tooltip.add(Component.empty());
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.pilgrims_thorn.desc_1");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.pilgrims_thorn.desc_2");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.pilgrims_thorn.desc_3");
+    }
 }

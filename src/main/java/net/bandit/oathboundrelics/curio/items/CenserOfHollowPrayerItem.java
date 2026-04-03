@@ -6,9 +6,9 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class RelicOfTheLastBreathItem extends RelicCurioItem {
+public class CenserOfHollowPrayerItem extends OathboundCurioItem {
 
-    public RelicOfTheLastBreathItem(Properties properties) {
+    public CenserOfHollowPrayerItem(Properties properties) {
         super(properties.stacksTo(1));
     }
 
@@ -17,10 +17,13 @@ public class RelicOfTheLastBreathItem extends RelicCurioItem {
         super.appendHoverText(stack, context, tooltip, flag);
 
         tooltip.add(Component.empty());
-        addFlavorTooltip(tooltip, "tooltip.oathboundrelics.relic_of_the_last_breath.flavor");
+
+        addFlavorTooltip(tooltip, "tooltip.oathboundrelics.censer_of_hollow_prayer.flavor");
+
         tooltip.add(Component.empty());
-        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.relic_of_the_last_breath.desc_1");
-        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.relic_of_the_last_breath.desc_2");
-        addDetailTooltip(tooltip, "tooltip.oathboundrelics.relic_of_the_last_breath.desc_3");
+
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_1");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_2");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_3");
     }
 }

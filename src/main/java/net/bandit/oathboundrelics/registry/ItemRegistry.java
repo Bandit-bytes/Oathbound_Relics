@@ -1,20 +1,7 @@
 package net.bandit.oathboundrelics.registry;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
-import net.bandit.oathboundrelics.curio.items.AshenNailItem;
-import net.bandit.oathboundrelics.curio.items.CenserOfAshItem;
-import net.bandit.oathboundrelics.curio.items.ExecutionersCoinItem;
-import net.bandit.oathboundrelics.curio.items.GravebellLocketItem;
-import net.bandit.oathboundrelics.curio.items.HollowEyeItem;
-import net.bandit.oathboundrelics.curio.items.HuntersSigilItem;
-import net.bandit.oathboundrelics.curio.items.MournersThreadItem;
-import net.bandit.oathboundrelics.curio.items.PilgrimsThornItem;
-import net.bandit.oathboundrelics.curio.items.RelicOfTheLastBreathItem;
-import net.bandit.oathboundrelics.curio.items.ShroudOfTheForsakenItem;
-import net.bandit.oathboundrelics.curio.items.ThornboundCarapaceItem;
-import net.bandit.oathboundrelics.curio.items.TorchOfGravesongItem;
-import net.bandit.oathboundrelics.curio.items.VoidstepBandItem;
-import net.bandit.oathboundrelics.curio.items.VultureCharmItem;
+import net.bandit.oathboundrelics.curio.items.*;
 import net.bandit.oathboundrelics.items.BrandedTimeCheckerItem;
 import net.bandit.oathboundrelics.items.LethargicFlailItem;
 import net.bandit.oathboundrelics.items.OathboundRelicItem;
@@ -25,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class ItemRegistry {
+public final class ItemRegistry {
 
     public static final DeferredRegister.Items ITEMS =
             DeferredRegister.createItems(OathboundRelicsMod.MOD_ID);
@@ -130,6 +117,36 @@ public class ItemRegistry {
             "lethargic_greatsword",
             LethargicFlailItem::new,
             new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+    );
+
+    public static final Supplier<Item> OATHBOUND_RELIQUARY = ITEMS.registerItem(
+            "oathbound_reliquary",
+            OathboundReliquaryItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+    );
+
+    public static final Supplier<Item> CHAIN_OF_THE_PENITENT = ITEMS.registerItem(
+            "chain_of_the_penitent",
+            ChainOfThePenitentItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()
+    );
+
+    public static final Supplier<Item> EYE_OF_THE_SLEEPLESS_WITNESS = ITEMS.registerItem(
+            "eye_of_the_sleepless_witness",
+            EyeOfTheSleeplessWitnessItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()
+    );
+
+    public static final Supplier<Item> CENSER_OF_HOLLOW_PRAYER = ITEMS.registerItem(
+            "censer_of_hollow_prayer",
+            CenserOfHollowPrayerItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()
+    );
+
+    public static final Supplier<Item> NAIL_OF_THE_FIRST_MARTYR = ITEMS.registerItem(
+            "nail_of_the_first_martyr",
+            NailOfTheFirstMartyrItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()
     );
 
     private ItemRegistry() {

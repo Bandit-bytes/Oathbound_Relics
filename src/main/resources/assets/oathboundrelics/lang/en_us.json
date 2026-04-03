@@ -95,5 +95,109 @@
 
   "effect.oathboundrelics.laziness": "Laziness",
   "effect.oathboundrelics.sloth_weakness": "Sloth Weakness",
-  "effect.oathboundrelics.heavy_stun": "Heavy Stun"
+  "effect.oathboundrelics.heavy_stun": "Heavy Stun",
+
+  "item.oathboundrelics.oathbound_reliquary": "Oathbound Reliquary",
+  "item.oathboundrelics.chain_of_the_penitent": "Chain of the Penitent",
+  "item.oathboundrelics.eye_of_the_sleepless_witness": "Eye of the Sleepless Witness",
+  "item.oathboundrelics.censer_of_hollow_prayer": "Censer of Hollow Prayer",
+  "item.oathboundrelics.nail_of_the_first_martyr": "Nail of the First Martyr",
+
+  "effect.oathboundrelics.martyrs_claim": "Martyr's Claim",
+  "effect.oathboundrelics.judged": "Judged",
+
+  "tooltip.oathboundrelics.oathbound_reliquary.flavor": "A vessel that insists there is always room for one more burden.",
+  "tooltip.oathboundrelics.oathbound_reliquary.desc_1": "Passive: Wards the bearer with absorption and desperate renewal.",
+  "tooltip.oathboundrelics.oathbound_reliquary.desc_2": "Intended: Grants +2 Charm slots while worn.",
+  "tooltip.oathboundrelics.oathbound_reliquary.desc_3": "Drawback: Wearing too many oathbound relics stirs hunger.",
+
+  "tooltip.oathboundrelics.chain_of_the_penitent.flavor": "Pain remembers. The chain merely keeps count.",
+  "tooltip.oathboundrelics.chain_of_the_penitent.desc_1": "Passive: Damage taken is stored as Penance.",
+  "tooltip.oathboundrelics.chain_of_the_penitent.desc_2": "Your next melee strike consumes stored Penance for bonus damage.",
+  "tooltip.oathboundrelics.chain_of_the_penitent.desc_3": "Marked strikes briefly reveal their victim.",
+
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.flavor": "It never closes. It only waits for you to look back.",
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_1": "Passive: Grants night vision while worn.",
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_2": "Debilitated nearby hostiles are revealed through a ghostly glow.",
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_3": "Drawback: Rest grows thin, and hunger follows.",
+
+  "tooltip.oathboundrelics.censer_of_hollow_prayer.flavor": "Its smoke smells like old vows and empty sanctuaries.",
+  "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_1": "Passive: Nearby monsters are slowed and weakened.",
+  "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_2": "The bearer gains renewal while surrounded.",
+  "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_3": "In heavy crowds, the censer hardens the wearer further.",
+
+  "tooltip.oathboundrelics.nail_of_the_first_martyr.flavor": "It asks only one thing: finish what was started.",
+  "tooltip.oathboundrelics.nail_of_the_first_martyr.desc_1": "Passive: Repeated strikes build Martyr's Claim on one target.",
+  "tooltip.oathboundrelics.nail_of_the_first_martyr.desc_2": "At full stacks, the target becomes Judged.",
+  "tooltip.oathboundrelics.nail_of_the_first_martyr.desc_3": "Slaying the Judged grants haste and absorption.",
+
+  "tooltip.oathboundrelics.ashen_nail.flavor": "It drinks flame like an old vow finally spoken aloud.",
+  "tooltip.oathboundrelics.ashen_nail.desc_1": "Passive: While burning, your attacks deal 35% more damage.",
+  "tooltip.oathboundrelics.ashen_nail.desc_2": "The Nail turns pain into heat and heat into force.",
+  "tooltip.oathboundrelics.ashen_nail.desc_3": "Its hunger grows brightest in fire.",
+
+  "tooltip.oathboundrelics.gravebell_locket.flavor": "Each toll sounds like a burial you survived.",
+  "tooltip.oathboundrelics.gravebell_locket.desc_1": "Passive: On kill, gain Speed I for 8s and Regeneration I for 4s.",
+  "tooltip.oathboundrelics.gravebell_locket.desc_2": "Fresh death stirs the bell into motion.",
+  "tooltip.oathboundrelics.gravebell_locket.desc_3": "It refuses to let the victor stand still.",
+
+  "tooltip.oathboundrelics.hunters_sigil.flavor": "It favors prey bold enough to bare its teeth.",
+  "tooltip.oathboundrelics.hunters_sigil.desc_1": "Passive: Deal 25% more damage to enemies already targeting you.",
+  "tooltip.oathboundrelics.hunters_sigil.desc_2": "The Sigil rewards those who meet violence head-on.",
+  "tooltip.oathboundrelics.hunters_sigil.desc_3": "A marked hunter does not fear being seen.",
+
+  "tooltip.oathboundrelics.pilgrims_thorn.flavor": "A cruel little spur for long roads and longer penance.",
+  "tooltip.oathboundrelics.pilgrims_thorn.desc_1": "Passive: Gain 10% increased movement speed while Branded.",
+  "tooltip.oathboundrelics.pilgrims_thorn.desc_2": "The Thorn urges the bearer onward without mercy.",
+  "tooltip.oathboundrelics.pilgrims_thorn.desc_3": "Even grief can be outpaced.",
+
+  "tooltip.oathboundrelics.censer_of_ash.flavor": "Its cinders cling to the air like funeral incense.",
+  "tooltip.oathboundrelics.censer_of_ash.desc_1": "Passive: Burning enemies take 20% more damage.",
+  "tooltip.oathboundrelics.censer_of_ash.desc_2": "Ash-smoke makes fleeing prey easier to follow.",
+  "tooltip.oathboundrelics.censer_of_ash.desc_3": "The censer remembers where the fire last fed.",
+
+  "tooltip.oathboundrelics.executioners_coin.flavor": "It lands the same way every time: on someone's ending.",
+  "tooltip.oathboundrelics.executioners_coin.desc_1": "Passive: Deal 30% more damage to enemies below 30% health.",
+  "tooltip.oathboundrelics.executioners_coin.desc_2": "The Coin favors wounded prey and certain kills.",
+  "tooltip.oathboundrelics.executioners_coin.desc_3": "Once judgment begins, it asks for follow-through.",
+
+  "tooltip.oathboundrelics.hollow_eye.flavor": "An empty socket sees what living eyes were never meant to.",
+  "tooltip.oathboundrelics.hollow_eye.desc_1": "Passive: Blindness and Darkness struggle to cling to you.",
+  "tooltip.oathboundrelics.hollow_eye.desc_2": "Reveals invisible nearby creatures.",
+  "tooltip.oathboundrelics.hollow_eye.desc_3": "It does not brighten the world. It strips away the lie.",
+
+  "tooltip.oathboundrelics.mourners_thread.flavor": "A funerary stitch that tightens after every life cut short.",
+  "tooltip.oathboundrelics.mourners_thread.desc_1": "Passive: On kill, restore hunger and a small amount of health.",
+  "tooltip.oathboundrelics.mourners_thread.desc_2": "The Thread turns endings into sustenance.",
+  "tooltip.oathboundrelics.mourners_thread.desc_3": "Every corpse leaves something behind for it to gather.",
+
+  "tooltip.oathboundrelics.shroud_of_the_forsaken.flavor": "It settles over the doomed like a second skin.",
+  "tooltip.oathboundrelics.shroud_of_the_forsaken.desc_1": "Passive: When struck to 3 hearts or less, gain brief protection.",
+  "tooltip.oathboundrelics.shroud_of_the_forsaken.desc_2": "Cooldown: 60 seconds.",
+  "tooltip.oathboundrelics.shroud_of_the_forsaken.desc_3": "The Shroud is never kinder than when death comes close.",
+
+  "tooltip.oathboundrelics.thornbound_carapace.flavor": "Its shell was made by something that survived too often.",
+  "tooltip.oathboundrelics.thornbound_carapace.desc_1": "Passive: Reflect 20% of incoming damage to attackers.",
+  "tooltip.oathboundrelics.thornbound_carapace.desc_2": "Striking the bearer means bleeding for it.",
+  "tooltip.oathboundrelics.thornbound_carapace.desc_3": "Pain is answered in kind.",
+
+  "tooltip.oathboundrelics.torch_of_gravesong.flavor": "Its flame chants softly for the dead and loudly for the restless.",
+  "tooltip.oathboundrelics.torch_of_gravesong.desc_1": "Passive: Deal 25% more damage to undead.",
+  "tooltip.oathboundrelics.torch_of_gravesong.desc_2": "Undead kills grant a burst of Strength.",
+  "tooltip.oathboundrelics.torch_of_gravesong.desc_3": "The song grows warmer near old bones.",
+
+  "tooltip.oathboundrelics.voidstep_band.flavor": "A ring for those who have already made peace with the drop.",
+  "tooltip.oathboundrelics.voidstep_band.desc_1": "Passive: Negate fall damage.",
+  "tooltip.oathboundrelics.voidstep_band.desc_2": "The Band teaches the ground to forget you.",
+  "tooltip.oathboundrelics.voidstep_band.desc_3": "A failed step is still a step, if the void accepts it.",
+
+  "tooltip.oathboundrelics.vulture_charm.flavor": "It circles every battlefield long before the first body falls.",
+  "tooltip.oathboundrelics.vulture_charm.desc_1": "Passive: Gain 50% more experience from kills.",
+  "tooltip.oathboundrelics.vulture_charm.desc_2": "The Charm grows fat on endings.",
+  "tooltip.oathboundrelics.vulture_charm.desc_3": "It knows the worth of carrion better than gold.",
+
+  "tooltip.oathboundrelics.relic_of_the_last_breath.flavor": "It waits in silence for the one breath you were never meant to keep.",
+  "tooltip.oathboundrelics.relic_of_the_last_breath.desc_1": "Passive: Survive a lethal hit once every 5 minutes.",
+  "tooltip.oathboundrelics.relic_of_the_last_breath.desc_2": "The Relic refuses to surrender its bearer to death so easily.",
+  "tooltip.oathboundrelics.relic_of_the_last_breath.desc_3": "What it preserves is not always left untouched."
 }

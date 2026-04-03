@@ -1,9 +1,7 @@
 package net.bandit.oathboundrelics.registry;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
-import net.bandit.oathboundrelics.effects.HeavyStunMobEffect;
-import net.bandit.oathboundrelics.effects.LazinessMobEffect;
-import net.bandit.oathboundrelics.effects.SlothWeaknessMobEffect;
+import net.bandit.oathboundrelics.effects.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.neoforged.bus.api.IEventBus;
@@ -23,6 +21,12 @@ public final class EffectRegistry {
 
     public static final DeferredHolder<MobEffect, MobEffect> HEAVY_STUN =
             MOB_EFFECTS.register("heavy_stun", HeavyStunMobEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> MARTYRS_CLAIM =
+            MOB_EFFECTS.register("martyrs_claim", MartyrsClaimMobEffect::new);
+
+    public static final DeferredHolder<MobEffect, MobEffect> JUDGED =
+            MOB_EFFECTS.register("judged", JudgedMobEffect::new);
 
     private EffectRegistry() {
     }

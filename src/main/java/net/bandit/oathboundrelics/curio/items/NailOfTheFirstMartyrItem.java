@@ -6,9 +6,9 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class RelicOfTheLastBreathItem extends RelicCurioItem {
+public class NailOfTheFirstMartyrItem extends OathboundCurioItem {
 
-    public RelicOfTheLastBreathItem(Properties properties) {
+    public NailOfTheFirstMartyrItem(Properties properties) {
         super(properties.stacksTo(1));
     }
 
@@ -17,10 +17,13 @@ public class RelicOfTheLastBreathItem extends RelicCurioItem {
         super.appendHoverText(stack, context, tooltip, flag);
 
         tooltip.add(Component.empty());
-        addFlavorTooltip(tooltip, "tooltip.oathboundrelics.relic_of_the_last_breath.flavor");
+
+        addFlavorTooltip(tooltip, "tooltip.oathboundrelics.nail_of_the_first_martyr.flavor");
+
         tooltip.add(Component.empty());
-        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.relic_of_the_last_breath.desc_1");
-        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.relic_of_the_last_breath.desc_2");
-        addDetailTooltip(tooltip, "tooltip.oathboundrelics.relic_of_the_last_breath.desc_3");
+
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.nail_of_the_first_martyr.desc_1");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.nail_of_the_first_martyr.desc_2");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.nail_of_the_first_martyr.desc_3");
     }
 }

@@ -1,6 +1,5 @@
 package net.bandit.oathboundrelics.curio.items;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -21,7 +20,12 @@ public class HuntersSigilItem extends OathboundCurioItem {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
+
         tooltip.add(Component.empty());
-        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.hunters_sigil.effects");
+        addFlavorTooltip(tooltip, "tooltip.oathboundrelics.hunters_sigil.flavor");
+        tooltip.add(Component.empty());
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.hunters_sigil.desc_1");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.hunters_sigil.desc_2");
+        addRelicEffectTooltip(tooltip, "tooltip.oathboundrelics.hunters_sigil.desc_3");
     }
 }

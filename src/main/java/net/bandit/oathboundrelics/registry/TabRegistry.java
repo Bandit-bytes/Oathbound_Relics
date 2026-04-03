@@ -34,6 +34,11 @@ public class TabRegistry {
             ItemRegistry.RELIC_OF_THE_LAST_BREATH,
             ItemRegistry.TORCH_OF_GRAVESONG,
             ItemRegistry.BRANDED_TIME_CHECKER,
+            ItemRegistry.OATHBOUND_RELIQUARY,
+            ItemRegistry.NAIL_OF_THE_FIRST_MARTYR,
+            ItemRegistry.EYE_OF_THE_SLEEPLESS_WITNESS,
+            ItemRegistry.CENSER_OF_HOLLOW_PRAYER,
+            ItemRegistry.CHAIN_OF_THE_PENITENT,
             ItemRegistry.LETHARGIC_GREATSWORD
     );
 
