@@ -1,6 +1,7 @@
 package net.bandit.oathboundrelics.events;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
+import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.util.SlothCombatUtil;
 import net.bandit.oathboundrelics.util.SlothWeaponUtil;
 import net.minecraft.world.InteractionHand;
@@ -93,11 +94,12 @@ public final class SlothCombatEvents {
             return;
         }
 
-        float aoeDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE) * 0.75F;
+        float aoeDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE)
+                * (float) OathboundConfig.lethargicFlailSweepDamageMultiplier();
 
         List<LivingEntity> targets = player.level().getEntitiesOfClass(
                 LivingEntity.class,
-                player.getBoundingBox().inflate(10.0D),
+                player.getBoundingBox().inflate(OathboundConfig.lethargicFlailSweepRadius()),
                 target -> target.isAlive()
                         && target != player
                         && !target.isSpectator()
@@ -110,7 +112,7 @@ public final class SlothCombatEvents {
             }
         }
 
-        SlothCombatUtil.addLaziness(player, 3);
+        SlothCombatUtil.addLaziness(player, OathboundConfig.lethargicFlailSweepLazinessStacks());
         player.swing(InteractionHand.MAIN_HAND, true);
     }
 }

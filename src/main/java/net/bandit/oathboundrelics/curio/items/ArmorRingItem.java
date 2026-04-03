@@ -17,7 +17,6 @@ import java.util.List;
 
 public abstract class ArmorRingItem extends RelicCurioItem {
 
-    private final double armorAmount;
     private final String flavorKey;
     private final String desc1Key;
     private final String desc2Key;
@@ -25,19 +24,19 @@ public abstract class ArmorRingItem extends RelicCurioItem {
 
     protected ArmorRingItem(
             Properties properties,
-            double armorAmount,
             String flavorKey,
             String desc1Key,
             String desc2Key,
             String desc3Key
     ) {
         super(properties.stacksTo(1));
-        this.armorAmount = armorAmount;
         this.flavorKey = flavorKey;
         this.desc1Key = desc1Key;
         this.desc2Key = desc2Key;
         this.desc3Key = desc3Key;
     }
+    protected abstract boolean isRingEnabled();
+    protected abstract double getArmorBonus();
 
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(
@@ -53,14 +52,16 @@ public abstract class ArmorRingItem extends RelicCurioItem {
                 id.getPath() + "_armor"
         );
 
-        modifiers.put(
-                Attributes.ARMOR,
-                new AttributeModifier(
-                        armorId,
-                        armorAmount,
-                        AttributeModifier.Operation.ADD_VALUE
-                )
-        );
+        if (isRingEnabled() && getArmorBonus() > 0.0D) {
+            modifiers.put(
+                    Attributes.ARMOR,
+                    new AttributeModifier(
+                            armorId,
+                            getArmorBonus(),
+                            AttributeModifier.Operation.ADD_VALUE
+                    )
+            );
+        }
 
         return modifiers;
     }

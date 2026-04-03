@@ -80,10 +80,6 @@ public final class OathboundConfig {
     public final ModConfigSpec.DoubleValue vultureCharmXpMultiplier;
 
     public final ModConfigSpec.BooleanValue enableHollowEye;
-    public final ModConfigSpec.IntValue hollowEyeNightVisionDurationTicks;
-    public final ModConfigSpec.DoubleValue hollowEyeRevealRadius;
-    public final ModConfigSpec.IntValue hollowEyeRevealDurationTicks;
-    public final ModConfigSpec.IntValue hollowEyeRevealIntervalTicks;
 
     public final ModConfigSpec.BooleanValue enableCenserOfAsh;
     public final ModConfigSpec.DoubleValue censerOfAshDamageMultiplier;
@@ -124,6 +120,83 @@ public final class OathboundConfig {
     public final ModConfigSpec.IntValue lethargicFlailInventoryCheckIntervalTicks;
     public final ModConfigSpec.DoubleValue lethargicFlailInventoryMoveSpeedMultiplier;
     public final ModConfigSpec.DoubleValue lethargicFlailInventoryExhaustionPerSecond;
+
+    // Revised Hollow Eye
+    public final ModConfigSpec.BooleanValue hollowEyeClearBlindness;
+    public final ModConfigSpec.BooleanValue hollowEyeClearDarkness;
+    public final ModConfigSpec.DoubleValue hollowEyeRevealInvisibleRadius;
+    public final ModConfigSpec.IntValue hollowEyeRevealInvisibleDurationTicks;
+    public final ModConfigSpec.IntValue hollowEyeRevealInvisibleIntervalTicks;
+
+    // Bearer curios
+    public final ModConfigSpec.BooleanValue enableOathboundReliquary;
+    public final ModConfigSpec.IntValue oathboundReliquaryBonusCharmSlots;
+    public final ModConfigSpec.DoubleValue oathboundReliquaryLowHealthThreshold;
+    public final ModConfigSpec.IntValue oathboundReliquaryAbsorptionDurationTicks;
+    public final ModConfigSpec.IntValue oathboundReliquaryAbsorptionAmplifier;
+    public final ModConfigSpec.IntValue oathboundReliquaryRegenerationDurationTicks;
+    public final ModConfigSpec.IntValue oathboundReliquaryRegenerationAmplifier;
+    public final ModConfigSpec.IntValue oathboundReliquaryHungerCurioThreshold;
+    public final ModConfigSpec.IntValue oathboundReliquaryHungerDurationTicks;
+    public final ModConfigSpec.IntValue oathboundReliquaryHungerAmplifier;
+
+    public final ModConfigSpec.BooleanValue enableChainOfThePenitent;
+    public final ModConfigSpec.DoubleValue chainOfThePenitentPenanceGainMultiplier;
+    public final ModConfigSpec.DoubleValue chainOfThePenitentMaxPenance;
+    public final ModConfigSpec.DoubleValue chainOfThePenitentMaxBonusDamage;
+    public final ModConfigSpec.IntValue chainOfThePenitentMarkDurationTicks;
+
+    public final ModConfigSpec.BooleanValue enableEyeOfTheSleeplessWitness;
+    public final ModConfigSpec.BooleanValue eyeOfTheSleeplessWitnessNightVision;
+    public final ModConfigSpec.DoubleValue eyeOfTheSleeplessWitnessRevealRadiusMoving;
+    public final ModConfigSpec.DoubleValue eyeOfTheSleeplessWitnessRevealRadiusStill;
+    public final ModConfigSpec.IntValue eyeOfTheSleeplessWitnessGlowDurationTicks;
+    public final ModConfigSpec.IntValue eyeOfTheSleeplessWitnessOakskinDurationTicks;
+    public final ModConfigSpec.IntValue eyeOfTheSleeplessWitnessOakskinAmplifier;
+    public final ModConfigSpec.DoubleValue eyeOfTheSleeplessWitnessOakskinMovementThreshold;
+
+    public final ModConfigSpec.BooleanValue enableCenserOfHollowPrayer;
+    public final ModConfigSpec.DoubleValue censerOfHollowPrayerRadius;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerWeaknessDurationTicks;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerWeaknessAmplifier;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerSlownessDurationTicks;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerSlownessAmplifier;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerRegenerationDurationTicks;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerRegenerationAmplifier;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerCrowdThreshold;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerAbsorptionDurationTicks;
+    public final ModConfigSpec.IntValue censerOfHollowPrayerAbsorptionAmplifier;
+
+    public final ModConfigSpec.BooleanValue enableNailOfTheFirstMartyr;
+    public final ModConfigSpec.IntValue nailOfTheFirstMartyrClaimDurationTicks;
+    public final ModConfigSpec.IntValue nailOfTheFirstMartyrMaxStacks;
+    public final ModConfigSpec.IntValue nailOfTheFirstMartyrJudgedDurationTicks;
+    public final ModConfigSpec.IntValue nailOfTheFirstMartyrHasteDurationTicks;
+    public final ModConfigSpec.IntValue nailOfTheFirstMartyrHasteAmplifier;
+    public final ModConfigSpec.IntValue nailOfTheFirstMartyrAbsorptionDurationTicks;
+    public final ModConfigSpec.IntValue nailOfTheFirstMartyrAbsorptionAmplifier;
+
+    // Basic rings
+    public final ModConfigSpec.BooleanValue enableGoldRing;
+    public final ModConfigSpec.DoubleValue goldRingArmorBonus;
+
+    public final ModConfigSpec.BooleanValue enableCyanRing;
+    public final ModConfigSpec.DoubleValue cyanRingArmorBonus;
+
+    public final ModConfigSpec.BooleanValue enableNebulaRing;
+    public final ModConfigSpec.DoubleValue nebulaRingArmorBonus;
+    public final ModConfigSpec.IntValue nebulaRingExtraRingSlots;
+
+    // Expanded Sloth weapon
+    public final ModConfigSpec.BooleanValue enableCreativeBrandedTimeBypass;
+    public final ModConfigSpec.IntValue lethargicFlailLazinessDurationTicks;
+    public final ModConfigSpec.IntValue lethargicFlailSweepLazinessStacks;
+    public final ModConfigSpec.DoubleValue lethargicFlailSweepDamageMultiplier;
+    public final ModConfigSpec.DoubleValue lethargicFlailSweepRadius;
+    public final ModConfigSpec.IntValue lethargicFlailSweepEnemyDebuffDurationTicks;
+    public final ModConfigSpec.IntValue lethargicFlailCubeCooldownTicks;
+    public final ModConfigSpec.IntValue lethargicFlailCubeStunDurationTicks;
+    public final ModConfigSpec.DoubleValue lethargicFlailCubeDamageMultiplier;
 
 
     private OathboundConfig(ModConfigSpec.Builder builder) {
@@ -338,20 +411,28 @@ public final class OathboundConfig {
 
         builder.push("hollow_eye");
         enableHollowEye = builder
-                .comment("If true, Hollow Eye grants night vision and reveals nearby monsters.")
+                .comment("If true, Hollow Eye strips away blindness, darkness, and nearby invisibility.")
                 .define("enabled", true);
-        hollowEyeNightVisionDurationTicks = builder
-                .comment("Night Vision refresh duration in ticks.")
-                .defineInRange("nightVisionDurationTicks", 220, 0, 20 * 60 * 60);
-        hollowEyeRevealRadius = builder
-                .comment("Reveal radius in blocks.")
-                .defineInRange("revealRadius", 24.0D, 1.0D, 256.0D);
-        hollowEyeRevealDurationTicks = builder
-                .comment("Glowing duration applied to nearby monsters, in ticks.")
-                .defineInRange("revealDurationTicks", 40, 0, 20 * 60 * 60);
-        hollowEyeRevealIntervalTicks = builder
-                .comment("How often to reveal nearby monsters, in ticks.")
-                .defineInRange("revealIntervalTicks", 20, 1, 1200);
+
+        hollowEyeClearBlindness = builder
+                .comment("If true, Hollow Eye removes Blindness from the wearer.")
+                .define("clearBlindness", true);
+
+        hollowEyeClearDarkness = builder
+                .comment("If true, Hollow Eye removes Darkness from the wearer.")
+                .define("clearDarkness", true);
+
+        hollowEyeRevealInvisibleRadius = builder
+                .comment("Radius in blocks for revealing invisible nearby entities.")
+                .defineInRange("revealInvisibleRadius", 16.0D, 1.0D, 256.0D);
+
+        hollowEyeRevealInvisibleDurationTicks = builder
+                .comment("Glowing duration applied to invisible nearby entities.")
+                .defineInRange("revealInvisibleDurationTicks", 60, 0, 20 * 60 * 60);
+
+        hollowEyeRevealInvisibleIntervalTicks = builder
+                .comment("How often to scan for invisible nearby entities.")
+                .defineInRange("revealInvisibleIntervalTicks", 20, 1, 1200);
         builder.pop();
 
         builder.push("censer_of_ash");
@@ -480,6 +561,218 @@ public final class OathboundConfig {
         lethargicFlailInventoryExhaustionPerSecond = builder
                 .comment("Extra exhaustion added per second while the weapon exists anywhere in inventory.")
                 .defineInRange("inventoryExhaustionPerSecond", 0.05D, 0.0D, 10.0D);
+        enableCreativeBrandedTimeBypass = builder
+                .comment("If true, creative players may always use the Lethargic Flail.")
+                .define("enableCreativeBrandedTimeBypass", true);
+
+        lethargicFlailLazinessDurationTicks = builder
+                .comment("Base duration of Laziness stacks in ticks.")
+                .defineInRange("lazinessDurationTicks", 20 * 60, 0, 20 * 60 * 60);
+
+        lethargicFlailSweepLazinessStacks = builder
+                .comment("How many Laziness stacks are added when using the sweeping attack.")
+                .defineInRange("sweepLazinessStacks", 3, 0, 64);
+
+        lethargicFlailSweepDamageMultiplier = builder
+                .comment("Damage multiplier for the sweeping attack. 0.75 = 75% damage.")
+                .defineInRange("sweepDamageMultiplier", 0.75D, 0.0D, 100.0D);
+
+        lethargicFlailSweepRadius = builder
+                .comment("Radius in blocks for the sweeping attack.")
+                .defineInRange("sweepRadius", 10.0D, 1.0D, 128.0D);
+
+        lethargicFlailSweepEnemyDebuffDurationTicks = builder
+                .comment("Duration of the enemy debuff applied by the sweeping attack.")
+                .defineInRange("sweepEnemyDebuffDurationTicks", 20 * 10, 0, 20 * 60 * 60);
+
+        lethargicFlailCubeCooldownTicks = builder
+                .comment("Cooldown in ticks for the thrown cube attack.")
+                .defineInRange("cubeCooldownTicks", 20 * 30, 0, 20 * 60 * 60);
+
+        lethargicFlailCubeStunDurationTicks = builder
+                .comment("Stun duration in ticks for the thrown cube attack.")
+                .defineInRange("cubeStunDurationTicks", 20 * 10, 0, 20 * 60 * 60);
+
+        lethargicFlailCubeDamageMultiplier = builder
+                .comment("Damage multiplier for the thrown cube. 0.75 = 75% damage.")
+                .defineInRange("cubeDamageMultiplier", 0.75D, 0.0D, 100.0D);
+
+        builder.pop();
+        builder.push("bearer_curios");
+
+        builder.push("oathbound_reliquary");
+        enableOathboundReliquary = builder
+                .comment("If true, Oathbound Reliquary is enabled.")
+                .define("enabled", true);
+        oathboundReliquaryBonusCharmSlots = builder
+                .comment("Additional charm slots granted while the Reliquary is worn.")
+                .defineInRange("bonusCharmSlots", 2, 0, 16);
+        oathboundReliquaryLowHealthThreshold = builder
+                .comment("Health threshold in health points for the emergency regeneration effect.")
+                .defineInRange("lowHealthThreshold", 10.0D, 0.0D, 40.0D);
+        oathboundReliquaryAbsorptionDurationTicks = builder
+                .comment("Absorption refresh duration in ticks.")
+                .defineInRange("absorptionDurationTicks", 220, 0, 20 * 60 * 60);
+        oathboundReliquaryAbsorptionAmplifier = builder
+                .comment("Absorption amplifier. 0 = Absorption I.")
+                .defineInRange("absorptionAmplifier", 0, 0, 255);
+        oathboundReliquaryRegenerationDurationTicks = builder
+                .comment("Regeneration duration while below the low health threshold.")
+                .defineInRange("regenerationDurationTicks", 80, 0, 20 * 60 * 60);
+        oathboundReliquaryRegenerationAmplifier = builder
+                .comment("Regeneration amplifier. 0 = Regeneration I.")
+                .defineInRange("regenerationAmplifier", 0, 0, 255);
+        oathboundReliquaryHungerCurioThreshold = builder
+                .comment("How many of the newer bearer curios must be equipped before the Reliquary adds Hunger.")
+                .defineInRange("hungerCurioThreshold", 3, 0, 16);
+        oathboundReliquaryHungerDurationTicks = builder
+                .comment("Hunger duration in ticks while overburdened.")
+                .defineInRange("hungerDurationTicks", 120, 0, 20 * 60 * 60);
+        oathboundReliquaryHungerAmplifier = builder
+                .comment("Hunger amplifier. 0 = Hunger I.")
+                .defineInRange("hungerAmplifier", 0, 0, 255);
+        builder.pop();
+
+        builder.push("chain_of_the_penitent");
+        enableChainOfThePenitent = builder
+                .comment("If true, Chain of the Penitent stores damage taken as Penance.")
+                .define("enabled", true);
+        chainOfThePenitentPenanceGainMultiplier = builder
+                .comment("How much Penance is gained from damage taken.")
+                .defineInRange("penanceGainMultiplier", 1.5D, 0.0D, 100.0D);
+        chainOfThePenitentMaxPenance = builder
+                .comment("Maximum stored Penance.")
+                .defineInRange("maxPenance", 40.0D, 0.0D, 1000.0D);
+        chainOfThePenitentMaxBonusDamage = builder
+                .comment("Maximum bonus damage added when consuming stored Penance.")
+                .defineInRange("maxBonusDamage", 12.0D, 0.0D, 1000.0D);
+        chainOfThePenitentMarkDurationTicks = builder
+                .comment("Glowing duration applied to the struck target when Penance is consumed.")
+                .defineInRange("markDurationTicks", 100, 0, 20 * 60 * 60);
+        builder.pop();
+
+        builder.push("eye_of_the_sleepless_witness");
+        enableEyeOfTheSleeplessWitness = builder
+                .comment("If true, Eye of the Sleepless Witness is enabled.")
+                .define("enabled", true);
+        eyeOfTheSleeplessWitnessNightVision = builder
+                .comment("If true, the bearer receives infinite Night Vision while worn.")
+                .define("nightVision", true);
+        eyeOfTheSleeplessWitnessRevealRadiusMoving = builder
+                .comment("Nearby hostile reveal radius while moving.")
+                .defineInRange("revealRadiusMoving", 14.0D, 1.0D, 256.0D);
+        eyeOfTheSleeplessWitnessRevealRadiusStill = builder
+                .comment("Nearby hostile reveal radius while standing still.")
+                .defineInRange("revealRadiusStill", 24.0D, 1.0D, 256.0D);
+        eyeOfTheSleeplessWitnessGlowDurationTicks = builder
+                .comment("Glowing duration applied to nearby hostiles.")
+                .defineInRange("glowDurationTicks", 60, 0, 20 * 60 * 60);
+        eyeOfTheSleeplessWitnessOakskinDurationTicks = builder
+                .comment("Oakskin Resistance duration in ticks.")
+                .defineInRange("oakskinDurationTicks", 80, 0, 20 * 60 * 60);
+        eyeOfTheSleeplessWitnessOakskinAmplifier = builder
+                .comment("Oakskin Resistance amplifier. 0 = Resistance I.")
+                .defineInRange("oakskinAmplifier", 0, 0, 255);
+        eyeOfTheSleeplessWitnessOakskinMovementThreshold = builder
+                .comment("Maximum horizontal movement squared for Oakskin to count as 'holding your ground'.")
+                .defineInRange("oakskinMovementThreshold", 0.02D, 0.0D, 4.0D);
+        builder.pop();
+
+        builder.push("censer_of_hollow_prayer");
+        enableCenserOfHollowPrayer = builder
+                .comment("If true, Censer of Hollow Prayer is enabled.")
+                .define("enabled", true);
+        censerOfHollowPrayerRadius = builder
+                .comment("Effect radius in blocks around the wearer.")
+                .defineInRange("radius", 5.0D, 1.0D, 256.0D);
+        censerOfHollowPrayerWeaknessDurationTicks = builder
+                .comment("Weakness duration applied to nearby monsters.")
+                .defineInRange("weaknessDurationTicks", 80, 0, 20 * 60 * 60);
+        censerOfHollowPrayerWeaknessAmplifier = builder
+                .comment("Weakness amplifier. 0 = Weakness I.")
+                .defineInRange("weaknessAmplifier", 0, 0, 255);
+        censerOfHollowPrayerSlownessDurationTicks = builder
+                .comment("Slowness duration applied to nearby monsters.")
+                .defineInRange("slownessDurationTicks", 80, 0, 20 * 60 * 60);
+        censerOfHollowPrayerSlownessAmplifier = builder
+                .comment("Slowness amplifier. 0 = Slowness I.")
+                .defineInRange("slownessAmplifier", 0, 0, 255);
+        censerOfHollowPrayerRegenerationDurationTicks = builder
+                .comment("Regeneration duration granted while enemies are nearby.")
+                .defineInRange("regenerationDurationTicks", 80, 0, 20 * 60 * 60);
+        censerOfHollowPrayerRegenerationAmplifier = builder
+                .comment("Regeneration amplifier. 0 = Regeneration I.")
+                .defineInRange("regenerationAmplifier", 0, 0, 255);
+        censerOfHollowPrayerCrowdThreshold = builder
+                .comment("How many nearby monsters count as a crowd.")
+                .defineInRange("crowdThreshold", 3, 1, 64);
+        censerOfHollowPrayerAbsorptionDurationTicks = builder
+                .comment("Absorption duration granted in crowds.")
+                .defineInRange("absorptionDurationTicks", 100, 0, 20 * 60 * 60);
+        censerOfHollowPrayerAbsorptionAmplifier = builder
+                .comment("Absorption amplifier in crowds. 1 = Absorption II.")
+                .defineInRange("absorptionAmplifier", 1, 0, 255);
+        builder.pop();
+
+        builder.push("nail_of_the_first_martyr");
+        enableNailOfTheFirstMartyr = builder
+                .comment("If true, Nail of the First Martyr is enabled.")
+                .define("enabled", true);
+        nailOfTheFirstMartyrClaimDurationTicks = builder
+                .comment("Martyr's Claim stack duration in ticks.")
+                .defineInRange("claimDurationTicks", 120, 0, 20 * 60 * 60);
+        nailOfTheFirstMartyrMaxStacks = builder
+                .comment("How many Martyr's Claim stacks are needed before the target becomes Judged.")
+                .defineInRange("maxStacks", 5, 1, 64);
+        nailOfTheFirstMartyrJudgedDurationTicks = builder
+                .comment("Judged duration in ticks.")
+                .defineInRange("judgedDurationTicks", 200, 0, 20 * 60 * 60);
+        nailOfTheFirstMartyrHasteDurationTicks = builder
+                .comment("Haste duration granted when slaying a Judged target.")
+                .defineInRange("hasteDurationTicks", 200, 0, 20 * 60 * 60);
+        nailOfTheFirstMartyrHasteAmplifier = builder
+                .comment("Haste amplifier. 1 = Haste II.")
+                .defineInRange("hasteAmplifier", 1, 0, 255);
+        nailOfTheFirstMartyrAbsorptionDurationTicks = builder
+                .comment("Absorption duration granted when slaying a Judged target.")
+                .defineInRange("absorptionDurationTicks", 200, 0, 20 * 60 * 60);
+        nailOfTheFirstMartyrAbsorptionAmplifier = builder
+                .comment("Absorption amplifier. 1 = Absorption II.")
+                .defineInRange("absorptionAmplifier", 1, 0, 255);
+        builder.pop();
+
+        builder.pop();
+        builder.push("basic_rings");
+
+        builder.push("gold_ring");
+        enableGoldRing = builder
+                .comment("If true, Gold Ring is enabled.")
+                .define("enabled", true);
+        goldRingArmorBonus = builder
+                .comment("Armor bonus granted by Gold Ring.")
+                .defineInRange("armorBonus", 1.0D, 0.0D, 100.0D);
+        builder.pop();
+
+        builder.push("cyan_ring");
+        enableCyanRing = builder
+                .comment("If true, Cyan Ring is enabled.")
+                .define("enabled", true);
+        cyanRingArmorBonus = builder
+                .comment("Armor bonus granted by Cyan Ring.")
+                .defineInRange("armorBonus", 2.0D, 0.0D, 100.0D);
+        builder.pop();
+
+        builder.push("nebula_ring");
+        enableNebulaRing = builder
+                .comment("If true, Nebula Ring is enabled.")
+                .define("enabled", true);
+        nebulaRingArmorBonus = builder
+                .comment("Armor bonus granted by Nebula Ring.")
+                .defineInRange("armorBonus", 3.0D, 0.0D, 100.0D);
+        nebulaRingExtraRingSlots = builder
+                .comment("Additional ring slots granted by Nebula Ring while worn.")
+                .defineInRange("extraRingSlots", 1, 0, 8);
+        builder.pop();
 
         builder.pop();
     }
@@ -543,10 +836,6 @@ public final class OathboundConfig {
     public static double vultureCharmXpMultiplier() { return CONFIG.vultureCharmXpMultiplier.get(); }
 
     public static boolean enableHollowEye() { return CONFIG.enableHollowEye.get(); }
-    public static int hollowEyeNightVisionDurationTicks() { return CONFIG.hollowEyeNightVisionDurationTicks.get(); }
-    public static double hollowEyeRevealRadius() { return CONFIG.hollowEyeRevealRadius.get(); }
-    public static int hollowEyeRevealDurationTicks() { return CONFIG.hollowEyeRevealDurationTicks.get(); }
-    public static int hollowEyeRevealIntervalTicks() { return CONFIG.hollowEyeRevealIntervalTicks.get(); }
 
     public static boolean enableCenserOfAsh() { return CONFIG.enableCenserOfAsh.get(); }
     public static double censerOfAshDamageMultiplier() { return CONFIG.censerOfAshDamageMultiplier.get(); }
@@ -587,4 +876,76 @@ public final class OathboundConfig {
     public static double lethargicFlailInventoryExhaustionPerSecond() { return CONFIG.lethargicFlailInventoryExhaustionPerSecond.get(); }
     public static long slothWeaponMaxBrandedTicks() {return CONFIG.slothWeaponMaxBrandedTicks.get();}
     public static double slothWeaponRequiredBrandedPercent() {return CONFIG.slothWeaponRequiredBrandedPercent.get();}
+    public static boolean hollowEyeClearBlindness() { return CONFIG.hollowEyeClearBlindness.get(); }
+    public static boolean hollowEyeClearDarkness() { return CONFIG.hollowEyeClearDarkness.get(); }
+    public static double hollowEyeRevealInvisibleRadius() { return CONFIG.hollowEyeRevealInvisibleRadius.get(); }
+    public static int hollowEyeRevealInvisibleDurationTicks() { return CONFIG.hollowEyeRevealInvisibleDurationTicks.get(); }
+    public static int hollowEyeRevealInvisibleIntervalTicks() { return CONFIG.hollowEyeRevealInvisibleIntervalTicks.get(); }
+
+    public static boolean enableOathboundReliquary() { return CONFIG.enableOathboundReliquary.get(); }
+    public static int oathboundReliquaryBonusCharmSlots() { return CONFIG.oathboundReliquaryBonusCharmSlots.get(); }
+    public static double oathboundReliquaryLowHealthThreshold() { return CONFIG.oathboundReliquaryLowHealthThreshold.get(); }
+    public static int oathboundReliquaryAbsorptionDurationTicks() { return CONFIG.oathboundReliquaryAbsorptionDurationTicks.get(); }
+    public static int oathboundReliquaryAbsorptionAmplifier() { return CONFIG.oathboundReliquaryAbsorptionAmplifier.get(); }
+    public static int oathboundReliquaryRegenerationDurationTicks() { return CONFIG.oathboundReliquaryRegenerationDurationTicks.get(); }
+    public static int oathboundReliquaryRegenerationAmplifier() { return CONFIG.oathboundReliquaryRegenerationAmplifier.get(); }
+    public static int oathboundReliquaryHungerCurioThreshold() { return CONFIG.oathboundReliquaryHungerCurioThreshold.get(); }
+    public static int oathboundReliquaryHungerDurationTicks() { return CONFIG.oathboundReliquaryHungerDurationTicks.get(); }
+    public static int oathboundReliquaryHungerAmplifier() { return CONFIG.oathboundReliquaryHungerAmplifier.get(); }
+
+    public static boolean enableChainOfThePenitent() { return CONFIG.enableChainOfThePenitent.get(); }
+    public static double chainOfThePenitentPenanceGainMultiplier() { return CONFIG.chainOfThePenitentPenanceGainMultiplier.get(); }
+    public static double chainOfThePenitentMaxPenance() { return CONFIG.chainOfThePenitentMaxPenance.get(); }
+    public static double chainOfThePenitentMaxBonusDamage() { return CONFIG.chainOfThePenitentMaxBonusDamage.get(); }
+    public static int chainOfThePenitentMarkDurationTicks() { return CONFIG.chainOfThePenitentMarkDurationTicks.get(); }
+
+    public static boolean enableEyeOfTheSleeplessWitness() { return CONFIG.enableEyeOfTheSleeplessWitness.get(); }
+    public static boolean eyeOfTheSleeplessWitnessNightVision() { return CONFIG.eyeOfTheSleeplessWitnessNightVision.get(); }
+    public static double eyeOfTheSleeplessWitnessRevealRadiusMoving() { return CONFIG.eyeOfTheSleeplessWitnessRevealRadiusMoving.get(); }
+    public static double eyeOfTheSleeplessWitnessRevealRadiusStill() { return CONFIG.eyeOfTheSleeplessWitnessRevealRadiusStill.get(); }
+    public static int eyeOfTheSleeplessWitnessGlowDurationTicks() { return CONFIG.eyeOfTheSleeplessWitnessGlowDurationTicks.get(); }
+    public static int eyeOfTheSleeplessWitnessOakskinDurationTicks() { return CONFIG.eyeOfTheSleeplessWitnessOakskinDurationTicks.get(); }
+    public static int eyeOfTheSleeplessWitnessOakskinAmplifier() { return CONFIG.eyeOfTheSleeplessWitnessOakskinAmplifier.get(); }
+    public static double eyeOfTheSleeplessWitnessOakskinMovementThreshold() { return CONFIG.eyeOfTheSleeplessWitnessOakskinMovementThreshold.get(); }
+
+    public static boolean enableCenserOfHollowPrayer() { return CONFIG.enableCenserOfHollowPrayer.get(); }
+    public static double censerOfHollowPrayerRadius() { return CONFIG.censerOfHollowPrayerRadius.get(); }
+    public static int censerOfHollowPrayerWeaknessDurationTicks() { return CONFIG.censerOfHollowPrayerWeaknessDurationTicks.get(); }
+    public static int censerOfHollowPrayerWeaknessAmplifier() { return CONFIG.censerOfHollowPrayerWeaknessAmplifier.get(); }
+    public static int censerOfHollowPrayerSlownessDurationTicks() { return CONFIG.censerOfHollowPrayerSlownessDurationTicks.get(); }
+    public static int censerOfHollowPrayerSlownessAmplifier() { return CONFIG.censerOfHollowPrayerSlownessAmplifier.get(); }
+    public static int censerOfHollowPrayerRegenerationDurationTicks() { return CONFIG.censerOfHollowPrayerRegenerationDurationTicks.get(); }
+    public static int censerOfHollowPrayerRegenerationAmplifier() { return CONFIG.censerOfHollowPrayerRegenerationAmplifier.get(); }
+    public static int censerOfHollowPrayerCrowdThreshold() { return CONFIG.censerOfHollowPrayerCrowdThreshold.get(); }
+    public static int censerOfHollowPrayerAbsorptionDurationTicks() { return CONFIG.censerOfHollowPrayerAbsorptionDurationTicks.get(); }
+    public static int censerOfHollowPrayerAbsorptionAmplifier() { return CONFIG.censerOfHollowPrayerAbsorptionAmplifier.get(); }
+
+    public static boolean enableNailOfTheFirstMartyr() { return CONFIG.enableNailOfTheFirstMartyr.get(); }
+    public static int nailOfTheFirstMartyrClaimDurationTicks() { return CONFIG.nailOfTheFirstMartyrClaimDurationTicks.get(); }
+    public static int nailOfTheFirstMartyrMaxStacks() { return CONFIG.nailOfTheFirstMartyrMaxStacks.get(); }
+    public static int nailOfTheFirstMartyrJudgedDurationTicks() { return CONFIG.nailOfTheFirstMartyrJudgedDurationTicks.get(); }
+    public static int nailOfTheFirstMartyrHasteDurationTicks() { return CONFIG.nailOfTheFirstMartyrHasteDurationTicks.get(); }
+    public static int nailOfTheFirstMartyrHasteAmplifier() { return CONFIG.nailOfTheFirstMartyrHasteAmplifier.get(); }
+    public static int nailOfTheFirstMartyrAbsorptionDurationTicks() { return CONFIG.nailOfTheFirstMartyrAbsorptionDurationTicks.get(); }
+    public static int nailOfTheFirstMartyrAbsorptionAmplifier() { return CONFIG.nailOfTheFirstMartyrAbsorptionAmplifier.get(); }
+
+    public static boolean enableGoldRing() { return CONFIG.enableGoldRing.get(); }
+    public static double goldRingArmorBonus() { return CONFIG.goldRingArmorBonus.get(); }
+
+    public static boolean enableCyanRing() { return CONFIG.enableCyanRing.get(); }
+    public static double cyanRingArmorBonus() { return CONFIG.cyanRingArmorBonus.get(); }
+
+    public static boolean enableNebulaRing() { return CONFIG.enableNebulaRing.get(); }
+    public static double nebulaRingArmorBonus() { return CONFIG.nebulaRingArmorBonus.get(); }
+    public static int nebulaRingExtraRingSlots() { return CONFIG.nebulaRingExtraRingSlots.get(); }
+
+    public static boolean enableCreativeBrandedTimeBypass() { return CONFIG.enableCreativeBrandedTimeBypass.get(); }
+    public static int lethargicFlailLazinessDurationTicks() { return CONFIG.lethargicFlailLazinessDurationTicks.get(); }
+    public static int lethargicFlailSweepLazinessStacks() { return CONFIG.lethargicFlailSweepLazinessStacks.get(); }
+    public static double lethargicFlailSweepDamageMultiplier() { return CONFIG.lethargicFlailSweepDamageMultiplier.get(); }
+    public static double lethargicFlailSweepRadius() { return CONFIG.lethargicFlailSweepRadius.get(); }
+    public static int lethargicFlailSweepEnemyDebuffDurationTicks() { return CONFIG.lethargicFlailSweepEnemyDebuffDurationTicks.get(); }
+    public static int lethargicFlailCubeCooldownTicks() { return CONFIG.lethargicFlailCubeCooldownTicks.get(); }
+    public static int lethargicFlailCubeStunDurationTicks() { return CONFIG.lethargicFlailCubeStunDurationTicks.get(); }
+    public static double lethargicFlailCubeDamageMultiplier() { return CONFIG.lethargicFlailCubeDamageMultiplier.get(); }
 }

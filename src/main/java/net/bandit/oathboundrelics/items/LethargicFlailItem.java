@@ -9,6 +9,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -35,7 +37,7 @@ public class LethargicFlailItem extends SwordItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, net.minecraft.world.entity.player.Player player, InteractionHand usedHand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
 
         if (!SlothWeaponUtil.canUseLethargicFlail(player)) {
@@ -59,11 +61,14 @@ public class LethargicFlailItem extends SwordItem {
                     player
             );
 
-            cube.setBaseDamage((float) player.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE) * 0.75F);
+            cube.setBaseDamage(
+                    (float) player.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE)
+                            * (float) OathboundConfig.lethargicFlailCubeDamageMultiplier()
+            );
             cube.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.1F, 0.0F);
 
             level.addFreshEntity(cube);
-            player.getCooldowns().addCooldown(this, 20 * 30);
+            player.getCooldowns().addCooldown(this, OathboundConfig.lethargicFlailCubeCooldownTicks());
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);

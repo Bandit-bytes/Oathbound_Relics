@@ -29,7 +29,7 @@ public final class SlothWeaponUtil {
             return false;
         }
 
-        if (player.isCreative()) {
+        if (player.isCreative() && OathboundConfig.enableCreativeBrandedTimeBypass()) {
             return true;
         }
 

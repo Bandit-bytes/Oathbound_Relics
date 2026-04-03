@@ -3,6 +3,7 @@ package net.bandit.oathboundrelics.curio.items;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.bandit.oathboundrelics.OathboundRelicsMod;
+import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -19,7 +20,6 @@ public class NebulaRingItem extends ArmorRingItem {
     public NebulaRingItem(Properties properties) {
         super(
                 properties,
-                3.0D,
                 "tooltip.oathboundrelics.nebula_ring.flavor",
                 "tooltip.oathboundrelics.nebula_ring.desc_1",
                 "tooltip.oathboundrelics.nebula_ring.desc_2",
@@ -36,13 +36,16 @@ public class NebulaRingItem extends ArmorRingItem {
         Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
         modifiers.putAll(super.getAttributeModifiers(slotContext, id, stack));
 
-        CuriosApi.addSlotModifier(
-                modifiers,
-                "ring",
-                RING_SLOT_MODIFIER_ID,
-                1.0D,
-                AttributeModifier.Operation.ADD_VALUE
-        );
+        if (OathboundConfig.enableNebulaRing()
+                && OathboundConfig.nebulaRingExtraRingSlots() > 0) {
+            CuriosApi.addSlotModifier(
+                    modifiers,
+                    "ring",
+                    RING_SLOT_MODIFIER_ID,
+                    OathboundConfig.nebulaRingExtraRingSlots(),
+                    AttributeModifier.Operation.ADD_VALUE
+            );
+        }
 
         return modifiers;
     }
@@ -55,5 +58,14 @@ public class NebulaRingItem extends ArmorRingItem {
         return CuriosApi.getCuriosInventory(player)
                 .map(handler -> !handler.isEquipped(stack1 -> stack1.is(this)))
                 .orElse(true);
+    }
+    @Override
+    protected boolean isRingEnabled() {
+        return OathboundConfig.enableNebulaRing();
+    }
+
+    @Override
+    protected double getArmorBonus() {
+        return OathboundConfig.nebulaRingArmorBonus();
     }
 }

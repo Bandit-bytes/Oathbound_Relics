@@ -3,6 +3,7 @@ package net.bandit.oathboundrelics.curio.items;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.bandit.oathboundrelics.OathboundRelicsMod;
+import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -33,13 +34,16 @@ public class OathboundReliquaryItem extends RelicCurioItem {
     ) {
         Multimap<Holder<Attribute>, AttributeModifier> modifiers = HashMultimap.create();
 
-        CuriosApi.addSlotModifier(
-                modifiers,
-                "charm",
-                CHARM_SLOT_MODIFIER_ID,
-                2.0D,
-                AttributeModifier.Operation.ADD_VALUE
-        );
+        if (OathboundConfig.enableOathboundReliquary()
+                && OathboundConfig.oathboundReliquaryBonusCharmSlots() > 0) {
+            CuriosApi.addSlotModifier(
+                    modifiers,
+                    "charm",
+                    CHARM_SLOT_MODIFIER_ID,
+                    OathboundConfig.oathboundReliquaryBonusCharmSlots(),
+                    AttributeModifier.Operation.ADD_VALUE
+            );
+        }
 
         return modifiers;
     }

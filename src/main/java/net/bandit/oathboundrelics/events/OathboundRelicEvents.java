@@ -288,16 +288,16 @@ public final class OathboundRelicEvents {
             if (OathboundConfig.enableHollowEye()
                     && OathboundUtil.hasCurio(player, ItemRegistry.HOLLOW_EYE.get())) {
 
-                if (player.hasEffect(MobEffects.BLINDNESS)) {
+                if (OathboundConfig.hollowEyeClearBlindness() && player.hasEffect(MobEffects.BLINDNESS)) {
                     player.removeEffect(MobEffects.BLINDNESS);
                 }
 
-                if (player.hasEffect(MobEffects.DARKNESS)) {
+                if (OathboundConfig.hollowEyeClearDarkness() && player.hasEffect(MobEffects.DARKNESS)) {
                     player.removeEffect(MobEffects.DARKNESS);
                 }
 
-                if (player.tickCount % OathboundConfig.hollowEyeRevealIntervalTicks() == 0) {
-                    AABB area = player.getBoundingBox().inflate(OathboundConfig.hollowEyeRevealRadius());
+                if (player.tickCount % OathboundConfig.hollowEyeRevealInvisibleIntervalTicks() == 0) {
+                    AABB area = player.getBoundingBox().inflate(OathboundConfig.hollowEyeRevealInvisibleRadius());
 
                     for (LivingEntity living : player.level().getEntitiesOfClass(
                             LivingEntity.class,
@@ -307,7 +307,7 @@ public final class OathboundRelicEvents {
                         if (living.isInvisible()) {
                             living.addEffect(new MobEffectInstance(
                                     MobEffects.GLOWING,
-                                    OathboundConfig.hollowEyeRevealDurationTicks(),
+                                    OathboundConfig.hollowEyeRevealInvisibleDurationTicks(),
                                     0,
                                     false,
                                     false

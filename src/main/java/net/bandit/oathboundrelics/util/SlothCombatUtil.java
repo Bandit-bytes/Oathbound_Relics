@@ -1,5 +1,6 @@
 package net.bandit.oathboundrelics.util;
 
+import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.registry.EffectRegistry;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,7 +26,7 @@ public final class SlothCombatUtil {
 
         entity.addEffect(new MobEffectInstance(
                 EffectRegistry.LAZINESS,
-                LAZINESS_DURATION,
+                OathboundConfig.lethargicFlailLazinessDurationTicks(),
                 newStacks - 1,
                 false,
                 true,
@@ -36,7 +37,7 @@ public final class SlothCombatUtil {
     public static void applySlothWeakness(LivingEntity target) {
         target.addEffect(new MobEffectInstance(
                 EffectRegistry.SLOTH_WEAKNESS,
-                ENEMY_SLOTH_DURATION,
+                OathboundConfig.lethargicFlailSweepEnemyDebuffDurationTicks(),
                 0,
                 false,
                 true,
@@ -47,7 +48,7 @@ public final class SlothCombatUtil {
     public static void applyHeavyStun(LivingEntity target) {
         target.addEffect(new MobEffectInstance(
                 EffectRegistry.HEAVY_STUN,
-                STUN_DURATION,
+                OathboundConfig.lethargicFlailCubeStunDurationTicks(),
                 0,
                 false,
                 true,

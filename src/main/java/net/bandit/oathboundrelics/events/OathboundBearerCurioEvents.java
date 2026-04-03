@@ -2,6 +2,7 @@ package net.bandit.oathboundrelics.events;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.bandit.oathboundrelics.registry.EffectRegistry;
+import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.registry.ItemRegistry;
 import net.bandit.oathboundrelics.util.BearerCurioUtil;
 import net.minecraft.core.Holder;
@@ -16,6 +17,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+
 
 import java.util.List;
 
@@ -48,41 +50,86 @@ public final class OathboundBearerCurioEvents {
     }
 
     private static void tickReliquary(Player player) {
-        if (!BearerCurioUtil.hasEquipped(player, ItemRegistry.OATHBOUND_RELIQUARY.get())) {
+        if (!OathboundConfig.enableOathboundReliquary()
+                || !BearerCurioUtil.hasEquipped(player, ItemRegistry.OATHBOUND_RELIQUARY.get())) {
             return;
         }
 
-        refreshEffectIfNeeded(player, MobEffects.ABSORPTION, 220, 0, 80, false, false, true);
+        refreshEffectIfNeeded(
+                player,
+                MobEffects.ABSORPTION,
+                OathboundConfig.oathboundReliquaryAbsorptionDurationTicks(),
+                OathboundConfig.oathboundReliquaryAbsorptionAmplifier(),
+                80,
+                false,
+                false,
+                true
+        );
 
-        if (player.getHealth() <= player.getMaxHealth() * 0.5F) {
-            refreshEffectIfNeeded(player, MobEffects.REGENERATION, 80, 0, 20, false, false, true);
+        if (player.getHealth() <= OathboundConfig.oathboundReliquaryLowHealthThreshold()) {
+            refreshEffectIfNeeded(
+                    player,
+                    MobEffects.REGENERATION,
+                    OathboundConfig.oathboundReliquaryRegenerationDurationTicks(),
+                    OathboundConfig.oathboundReliquaryRegenerationAmplifier(),
+                    20,
+                    false,
+                    false,
+                    true
+            );
         }
 
-        if (BearerCurioUtil.countNewBearerCurios(player) >= 3) {
-            refreshEffectIfNeeded(player, MobEffects.HUNGER, 120, 0, 40, false, false, true);
+        if (BearerCurioUtil.countNewBearerCurios(player) >= OathboundConfig.oathboundReliquaryHungerCurioThreshold()) {
+            refreshEffectIfNeeded(
+                    player,
+                    MobEffects.HUNGER,
+                    OathboundConfig.oathboundReliquaryHungerDurationTicks(),
+                    OathboundConfig.oathboundReliquaryHungerAmplifier(),
+                    40,
+                    false,
+                    false,
+                    true
+            );
         }
     }
 
     private static void tickSleeplessEye(Player player) {
-        boolean equipped = BearerCurioUtil.hasEquipped(player, ItemRegistry.EYE_OF_THE_SLEEPLESS_WITNESS.get());
+        boolean equipped = OathboundConfig.enableEyeOfTheSleeplessWitness()
+                && BearerCurioUtil.hasEquipped(player, ItemRegistry.EYE_OF_THE_SLEEPLESS_WITNESS.get());
 
         if (!equipped) {
             removeInfiniteEffectIfOwned(player, MobEffects.NIGHT_VISION, 0);
             return;
         }
 
-        ensureInfiniteEffect(player, MobEffects.NIGHT_VISION, 0, false, false, true);
+        if (OathboundConfig.eyeOfTheSleeplessWitnessNightVision()) {
+            ensureInfiniteEffect(player, MobEffects.NIGHT_VISION, 0, false, false, true);
+        } else {
+            removeInfiniteEffectIfOwned(player, MobEffects.NIGHT_VISION, 0);
+        }
 
         boolean oakskinActive =
                 player.onGround()
                         && !player.isSprinting()
-                        && player.getDeltaMovement().horizontalDistanceSqr() < 0.02D;
+                        && player.getDeltaMovement().horizontalDistanceSqr()
+                        < OathboundConfig.eyeOfTheSleeplessWitnessOakskinMovementThreshold();
 
         if (oakskinActive) {
-            refreshEffectIfNeeded(player, MobEffects.DAMAGE_RESISTANCE, 80, 0, 20, false, false, true);
+            refreshEffectIfNeeded(
+                    player,
+                    MobEffects.DAMAGE_RESISTANCE,
+                    OathboundConfig.eyeOfTheSleeplessWitnessOakskinDurationTicks(),
+                    OathboundConfig.eyeOfTheSleeplessWitnessOakskinAmplifier(),
+                    20,
+                    false,
+                    false,
+                    true
+            );
         }
 
-        double radius = oakskinActive ? 24.0D : 14.0D;
+        double radius = oakskinActive
+                ? OathboundConfig.eyeOfTheSleeplessWitnessRevealRadiusStill()
+                : OathboundConfig.eyeOfTheSleeplessWitnessRevealRadiusMoving();
 
         List<Monster> monsters = player.level().getEntitiesOfClass(
                 Monster.class,
@@ -91,32 +138,79 @@ public final class OathboundBearerCurioEvents {
         );
 
         for (Monster monster : monsters) {
-            refreshEffectIfNeeded(monster, MobEffects.GLOWING, 60, 0, 20, false, false, true);
+            refreshEffectIfNeeded(
+                    monster,
+                    MobEffects.GLOWING,
+                    OathboundConfig.eyeOfTheSleeplessWitnessGlowDurationTicks(),
+                    0,
+                    20,
+                    false,
+                    false,
+                    true
+            );
         }
     }
 
     private static void tickCenser(Player player) {
-        if (!BearerCurioUtil.hasEquipped(player, ItemRegistry.CENSER_OF_HOLLOW_PRAYER.get())) {
+        if (!OathboundConfig.enableCenserOfHollowPrayer()
+                || !BearerCurioUtil.hasEquipped(player, ItemRegistry.CENSER_OF_HOLLOW_PRAYER.get())) {
             return;
         }
 
         List<Monster> monsters = player.level().getEntitiesOfClass(
                 Monster.class,
-                player.getBoundingBox().inflate(5.0D),
+                player.getBoundingBox().inflate(OathboundConfig.censerOfHollowPrayerRadius()),
                 monster -> monster.isAlive()
         );
 
         for (Monster monster : monsters) {
-            refreshEffectIfNeeded(monster, MobEffects.WEAKNESS, 80, 0, 20, false, true, true);
-            refreshEffectIfNeeded(monster, MobEffects.MOVEMENT_SLOWDOWN, 80, 0, 20, false, true, true);
+            refreshEffectIfNeeded(
+                    monster,
+                    MobEffects.WEAKNESS,
+                    OathboundConfig.censerOfHollowPrayerWeaknessDurationTicks(),
+                    OathboundConfig.censerOfHollowPrayerWeaknessAmplifier(),
+                    20,
+                    false,
+                    true,
+                    true
+            );
+
+            refreshEffectIfNeeded(
+                    monster,
+                    MobEffects.MOVEMENT_SLOWDOWN,
+                    OathboundConfig.censerOfHollowPrayerSlownessDurationTicks(),
+                    OathboundConfig.censerOfHollowPrayerSlownessAmplifier(),
+                    20,
+                    false,
+                    true,
+                    true
+            );
         }
 
         if (!monsters.isEmpty()) {
-            refreshEffectIfNeeded(player, MobEffects.REGENERATION, 80, 0, 20, false, false, true);
+            refreshEffectIfNeeded(
+                    player,
+                    MobEffects.REGENERATION,
+                    OathboundConfig.censerOfHollowPrayerRegenerationDurationTicks(),
+                    OathboundConfig.censerOfHollowPrayerRegenerationAmplifier(),
+                    20,
+                    false,
+                    false,
+                    true
+            );
         }
 
-        if (monsters.size() >= 3) {
-            refreshEffectIfNeeded(player, MobEffects.ABSORPTION, 100, 1, 30, false, false, true);
+        if (monsters.size() >= OathboundConfig.censerOfHollowPrayerCrowdThreshold()) {
+            refreshEffectIfNeeded(
+                    player,
+                    MobEffects.ABSORPTION,
+                    OathboundConfig.censerOfHollowPrayerAbsorptionDurationTicks(),
+                    OathboundConfig.censerOfHollowPrayerAbsorptionAmplifier(),
+                    30,
+                    false,
+                    false,
+                    true
+            );
         }
     }
 
@@ -165,11 +259,16 @@ public final class OathboundBearerCurioEvents {
             return;
         }
 
-        if (!BearerCurioUtil.hasEquipped(player, ItemRegistry.CHAIN_OF_THE_PENITENT.get())) {
+        if (!OathboundConfig.enableChainOfThePenitent()
+                || !BearerCurioUtil.hasEquipped(player, ItemRegistry.CHAIN_OF_THE_PENITENT.get())) {
             return;
         }
 
-        BearerCurioUtil.addPenance(player, event.getNewDamage() * 1.5F, MAX_PENANCE);
+        BearerCurioUtil.addPenance(
+                player,
+                (float) (event.getNewDamage() * OathboundConfig.chainOfThePenitentPenanceGainMultiplier()),
+                (float) OathboundConfig.chainOfThePenitentMaxPenance()
+        );
     }
 
     @SubscribeEvent
@@ -190,13 +289,25 @@ public final class OathboundBearerCurioEvents {
             return;
         }
 
-        if (BearerCurioUtil.hasEquipped(player, ItemRegistry.CHAIN_OF_THE_PENITENT.get())) {
+        if (OathboundConfig.enableChainOfThePenitent()
+                && BearerCurioUtil.hasEquipped(player, ItemRegistry.CHAIN_OF_THE_PENITENT.get())) {
             float stored = BearerCurioUtil.getPenance(player);
 
             if (stored > 0.0F) {
-                float bonus = Math.min(stored, 12.0F);
+                float bonus = Math.min(stored, (float) OathboundConfig.chainOfThePenitentMaxBonusDamage());
                 event.setNewDamage(event.getNewDamage() + bonus);
-                refreshEffectIfNeeded(target, MobEffects.GLOWING, 100, 0, 20, false, true, true);
+
+                refreshEffectIfNeeded(
+                        target,
+                        MobEffects.GLOWING,
+                        OathboundConfig.chainOfThePenitentMarkDurationTicks(),
+                        0,
+                        20,
+                        false,
+                        true,
+                        true
+                );
+
                 BearerCurioUtil.clearPenance(player);
             }
         }
@@ -224,7 +335,8 @@ public final class OathboundBearerCurioEvents {
             return;
         }
 
-        if (!BearerCurioUtil.hasEquipped(player, ItemRegistry.NAIL_OF_THE_FIRST_MARTYR.get())) {
+        if (!OathboundConfig.enableNailOfTheFirstMartyr()
+                || !BearerCurioUtil.hasEquipped(player, ItemRegistry.NAIL_OF_THE_FIRST_MARTYR.get())) {
             return;
         }
 
@@ -242,22 +354,22 @@ public final class OathboundBearerCurioEvents {
             currentStacks = existing.getAmplifier() + 1;
         }
 
-        int newStacks = Math.min(5, currentStacks + 1);
+        int newStacks = Math.min(OathboundConfig.nailOfTheFirstMartyrMaxStacks(), currentStacks + 1);
 
         target.addEffect(new MobEffectInstance(
                 EffectRegistry.MARTYRS_CLAIM,
-                120,
+                OathboundConfig.nailOfTheFirstMartyrClaimDurationTicks(),
                 newStacks - 1,
                 false,
                 true,
                 true
         ));
 
-        if (newStacks >= 5) {
+        if (newStacks >= OathboundConfig.nailOfTheFirstMartyrMaxStacks()) {
             target.removeEffect(EffectRegistry.MARTYRS_CLAIM);
             target.addEffect(new MobEffectInstance(
                     EffectRegistry.JUDGED,
-                    LONG,
+                    OathboundConfig.nailOfTheFirstMartyrJudgedDurationTicks(),
                     0,
                     false,
                     true,
@@ -276,7 +388,8 @@ public final class OathboundBearerCurioEvents {
             return;
         }
 
-        if (!BearerCurioUtil.hasEquipped(player, ItemRegistry.NAIL_OF_THE_FIRST_MARTYR.get())) {
+        if (!OathboundConfig.enableNailOfTheFirstMartyr()
+                || !BearerCurioUtil.hasEquipped(player, ItemRegistry.NAIL_OF_THE_FIRST_MARTYR.get())) {
             return;
         }
 
@@ -284,8 +397,27 @@ public final class OathboundBearerCurioEvents {
             return;
         }
 
-        refreshEffectIfNeeded(player, MobEffects.DIG_SPEED, LONG, 1, 40, false, true, true);
-        refreshEffectIfNeeded(player, MobEffects.ABSORPTION, LONG, 1, 40, false, true, true);
+        refreshEffectIfNeeded(
+                player,
+                MobEffects.DIG_SPEED,
+                OathboundConfig.nailOfTheFirstMartyrHasteDurationTicks(),
+                OathboundConfig.nailOfTheFirstMartyrHasteAmplifier(),
+                40,
+                false,
+                true,
+                true
+        );
+
+        refreshEffectIfNeeded(
+                player,
+                MobEffects.ABSORPTION,
+                OathboundConfig.nailOfTheFirstMartyrAbsorptionDurationTicks(),
+                OathboundConfig.nailOfTheFirstMartyrAbsorptionAmplifier(),
+                40,
+                false,
+                true,
+                true
+        );
         BearerCurioUtil.clearLastMartyrTarget(player);
     }
     private static void ensureInfiniteEffect(
