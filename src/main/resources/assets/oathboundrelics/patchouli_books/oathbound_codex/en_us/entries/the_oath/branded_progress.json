@@ -1,0 +1,26 @@
+{
+  "name": "Branded Progress",
+  "icon": "oathboundrelics:branded_time_checker",
+  "category": "oathboundrelics:00_the_oath",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Late weapons are not unlocked by a short quest. They are tied to $(l)Branded Progress$(), which rises while you are Branded. The default requirement for the true weapon gate is $(l)99.5%$() of the full progress track."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:branded_time_checker",
+      "text": "The $(l)Branded Time Checker$() shows total observed time, branded time, progress ratio, and whether the burden is sufficient for the late-game weapons.",
+      "title": "Branded Time Checker"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Shared rule for Sloth, Pride, and Envy$()$(br)All three current sin weapons use the same Branded-time gate in the code path you shared. In creative mode, the config can optionally bypass that requirement for testing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Practical advice$()$(br)If players ask why a weapon is locked, the short answer is almost always: $(br)$(li)You must be Branded$(li)You must have endured enough Branded Time$(li)The weapon will stay dormant until both are true"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Oathbound Reliquary",
+  "icon": "oathboundrelics:oathbound_reliquary",
+  "category": "oathboundrelics:20_bearer_curios",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:oathbound_reliquary",
+      "text": "The Reliquary is a capacity relic. Its whole identity is carrying more power than should really be safe."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default behavior$()$(br)$(li)Provides steady Absorption while worn$(li)If your health drops low enough, it also refreshes Regeneration$(li)Its intended slot utility is extra charm capacity$(br2)This is one of the clearest places where the book's term $(l)Renewal$() applies: the Reliquary gives repeat emergency sustain."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Drawback$()$(br)If you equip too many of the newer bearer curios at once, the Reliquary begins applying Hunger. In other words, the relic lets you carry too much power, but it makes you pay for it."
+    }
+  ]
+}

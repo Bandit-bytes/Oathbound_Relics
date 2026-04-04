@@ -1,0 +1,21 @@
+{
+  "name": "Nebula Lens",
+  "icon": "oathboundrelics:nebula_lens",
+  "category": "oathboundrelics:30_titans_remnants",
+  "sortnum": 25,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:nebula_lens",
+      "text": "Dormant: heavily resists magic and ignores the self-damage from using Ender Pearls."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Awakened: while Branded, some attacks trigger a $(l)Reactive Blink$() that teleports you away from the attacker, negates the hit, and empowers your next strike for massive bonus damage."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Weakness: water makes the wearer dangerously unstable and incoming damage increases there."
+    }
+  ]
+}

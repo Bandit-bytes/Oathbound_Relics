@@ -1,0 +1,16 @@
+{
+  "name": "Using This Reference",
+  "icon": "oathboundrelics:branded_time_checker",
+  "category": "oathboundrelics:60_effects_and_states",
+  "sortnum": -10,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This section exists to answer the most common player question in Oathbound Relics: $(thing)\"What does that actually mean?\"$()$(br2)If a tooltip uses a named state such as $(item)Laziness$(), $(item)Judged$(), $(item)Impact$(), $(item)Heat$(), or $(item)Hollow Dominion$(), look it up here for a plain-English explanation."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Not every term in this category is a separate potion effect. Some are $(thing)custom meters$(), $(thing)weapon states$(), or $(thing)player-facing names$() for a group of buffs and debuffs. When that is the case, the entry will say so directly."
+    }
+  ]
+}

@@ -35,7 +35,7 @@ public class OathboundCurioItem extends Item implements ICurioItem {
         if (shouldRevealTooltip()) {
             tooltip.add(line.withStyle(ChatFormatting.GOLD));
         } else {
-            tooltip.add(line.withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.OBFUSCATED));
+            tooltip.add(line.withStyle(ChatFormatting.RED,ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
         }
     }
 
@@ -55,7 +55,37 @@ public class OathboundCurioItem extends Item implements ICurioItem {
         if (shouldRevealTooltip()) {
             tooltip.add(line.withStyle(ChatFormatting.GRAY));
         } else {
-            tooltip.add(line.withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.OBFUSCATED));
+            tooltip.add(line.withStyle(ChatFormatting.RED,ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
+        }
+    }
+
+    protected void addVisibleLine(List<Component> tooltip, String translationKey, Object... args) {
+        MutableComponent line = Component.translatable(translationKey, args);
+        tooltip.add(line.withStyle(ChatFormatting.GRAY));
+    }
+
+    protected void addDormantLine(List<Component> tooltip, String translationKey, Object... args) {
+        MutableComponent line = Component.translatable(translationKey, args);
+        tooltip.add(line.withStyle(ChatFormatting.GRAY));
+    }
+
+    protected void addAwakenedLine(List<Component> tooltip, String translationKey, Object... args) {
+        MutableComponent line = Component.translatable(translationKey, args);
+
+        if (shouldRevealTooltip()) {
+            tooltip.add(line.withStyle(ChatFormatting.LIGHT_PURPLE));
+        } else {
+            tooltip.add(line.withStyle(ChatFormatting.RED,ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
+        }
+    }
+
+    protected void addStateLine(List<Component> tooltip, boolean awakened) {
+        if (awakened) {
+            tooltip.add(Component.translatable("tooltip.oathboundrelics.state_awakened")
+                    .withStyle(ChatFormatting.LIGHT_PURPLE));
+        } else {
+            tooltip.add(Component.translatable("tooltip.oathboundrelics.state_dormant")
+                    .withStyle(ChatFormatting.DARK_GRAY));
         }
     }
 
@@ -79,7 +109,7 @@ public class OathboundCurioItem extends Item implements ICurioItem {
                     .withStyle(ChatFormatting.DARK_GRAY));
         } else {
             tooltip.add(Component.translatable("tooltip.oathboundrelics.forbidden_text")
-                    .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.OBFUSCATED));
+                    .withStyle(ChatFormatting.RED,ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
         }
     }
 }

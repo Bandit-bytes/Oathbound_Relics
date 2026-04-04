@@ -1,0 +1,20 @@
+{
+  "name": "Titan's Remnants Overview",
+  "icon": "oathboundrelics:colossus_heart",
+  "category": "oathboundrelics:30_titans_remnants",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Titan's Remnants are a separate curio line with their own slot: $(l)Titan's Remnant$(). Each remnant has a $(l)Dormant$() state that anyone can benefit from, and an $(l)Oath Awakened$() state that activates while the wearer is Branded."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This makes them much easier to understand if you frame them in two parts:$(br)$(li)Dormant = what it always does$(li)Awakened = what the Oath adds on top$(br2)Their state is also shown in the tooltip, which is the right place to tell players whether the remnant is sleeping or answering."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Common remnant terms are explained in the $(l:glossary/remnant_terms)Glossary$(). If your players ask what $(l)Impact$(), $(l)Heat$(), or $(l)Hollow Dominion$() mean, send them there."
+    }
+  ]
+}

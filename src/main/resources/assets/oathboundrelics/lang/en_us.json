@@ -346,5 +346,67 @@
   "tooltip.oathboundrelics.void_ashes.flavor": "What remains when End-born power is burned past memory.",
   "tooltip.oathboundrelics.void_ashes.line_1": " - Rare ash used in the highest Oathbound rites",
   "tooltip.oathboundrelics.void_ashes.line_2": " - Can be gathered from slain Shulkers",
-  "tooltip.oathboundrelics.void_ashes.line_3": " - The last fuel before awakening"
+  "tooltip.oathboundrelics.void_ashes.line_3": " - The last fuel before awakening",
+
+  "item.oathboundrelics.colossus_heart": "Colossus Heart",
+  "item.oathboundrelics.ember_seed": "Ember Seed",
+  "item.oathboundrelics.tide_pearl": "Tide Pearl",
+  "item.oathboundrelics.skybrand_feather": "Skybrand Feather",
+  "item.oathboundrelics.nebula_lens": "Nebula Lens",
+  "item.oathboundrelics.void_pearl": "Void Pearl",
+
+  "tooltip.oathboundrelics.titans_remnant.slot": "Slot: Titan's Remnant",
+
+  "tooltip.oathboundrelics.state_dormant": "State: Dormant",
+  "tooltip.oathboundrelics.state_awakened": "State: Oath Awakened",
+
+
+  "tooltip.oathboundrelics.colossus_heart.flavor": "It beats only when struck.",
+  "tooltip.oathboundrelics.colossus_heart.dormant_header": "Dormant:",
+  "tooltip.oathboundrelics.colossus_heart.dormant_1": " - Grants armor and knockback resistance",
+  "tooltip.oathboundrelics.colossus_heart.dormant_2": " - Slows the wearer, but shrugs off pricking and crushing chip damage",
+  "tooltip.oathboundrelics.colossus_heart.awakened_header": "Awakened by the Oath:",
+  "tooltip.oathboundrelics.colossus_heart.awakened_1": " - Heavy hits build Impact",
+  "tooltip.oathboundrelics.colossus_heart.awakened_2": " - Your next melee strike expends Impact in a crushing shockwave",
+
+  "tooltip.oathboundrelics.ember_seed.flavor": "A sleeping cinder that hates to cool.",
+  "tooltip.oathboundrelics.ember_seed.dormant_header": "Dormant:",
+  "tooltip.oathboundrelics.ember_seed.dormant_1": " - Grants fire immunity and burns melee attackers",
+  "tooltip.oathboundrelics.ember_seed.dormant_2": " - Harmful effects fade faster while worn",
+  "tooltip.oathboundrelics.ember_seed.awakened_header": "Awakened by the Oath:",
+  "tooltip.oathboundrelics.ember_seed.awakened_1": " - Taking and dealing damage builds Heat",
+  "tooltip.oathboundrelics.ember_seed.awakened_2": " - High Heat empowers you and scorches nearby enemies",
+
+  "tooltip.oathboundrelics.tide_pearl.flavor": "The sea remembers pressure better than mercy.",
+  "tooltip.oathboundrelics.tide_pearl.dormant_header": "Dormant:",
+  "tooltip.oathboundrelics.tide_pearl.dormant_1": " - Grants water breathing, vision, and speed underwater",
+  "tooltip.oathboundrelics.tide_pearl.dormant_2": " - Softens blows from underwater creatures",
+  "tooltip.oathboundrelics.tide_pearl.awakened_header": "Awakened by the Oath:",
+  "tooltip.oathboundrelics.tide_pearl.awakened_1": " - Underwater foes are slowed, weakened, and dragged downward",
+  "tooltip.oathboundrelics.tide_pearl.awakened_2": " - Fire becomes more dangerous to the bearer",
+
+  "tooltip.oathboundrelics.skybrand_feather.flavor": "It never forgot what it felt like to fall correctly.",
+  "tooltip.oathboundrelics.skybrand_feather.dormant_header": "Dormant:",
+  "tooltip.oathboundrelics.skybrand_feather.dormant_1": " - Negates fall damage and may deflect projectiles",
+  "tooltip.oathboundrelics.skybrand_feather.dormant_2": " - Wither and void are more dangerous to the wearer",
+  "tooltip.oathboundrelics.skybrand_feather.awakened_header": "Awakened by the Oath:",
+  "tooltip.oathboundrelics.skybrand_feather.awakened_1": " - Grants aerial control while airborne",
+  "tooltip.oathboundrelics.skybrand_feather.awakened_2": " - Hard landings release a gust that scatters nearby enemies",
+
+  "tooltip.oathboundrelics.nebula_lens.flavor": "Space bends around it like a frightened thing.",
+  "tooltip.oathboundrelics.nebula_lens.dormant_header": "Dormant:",
+  "tooltip.oathboundrelics.nebula_lens.dormant_1": " - Greatly resists magic and ignores ender pearl damage",
+  "tooltip.oathboundrelics.nebula_lens.dormant_2": " - Water makes the wearer dangerously unstable",
+  "tooltip.oathboundrelics.nebula_lens.awakened_header": "Awakened by the Oath:",
+  "tooltip.oathboundrelics.nebula_lens.awakened_1": " - Some attacks are escaped by a reactive blink",
+  "tooltip.oathboundrelics.nebula_lens.awakened_2": " - A successful blink empowers your next hit",
+
+  "tooltip.oathboundrelics.void_pearl.flavor": "It is most awake when the world goes dark.",
+  "tooltip.oathboundrelics.void_pearl.dormant_header": "Dormant:",
+  "tooltip.oathboundrelics.void_pearl.dormant_1": " - Grants airless survival and strips harmful effects",
+  "tooltip.oathboundrelics.void_pearl.dormant_2": " - Your attacks inflict withering decay and death may fail to claim you",
+  "tooltip.oathboundrelics.void_pearl.awakened_header": "Awakened by the Oath:",
+  "tooltip.oathboundrelics.void_pearl.awakened_1": " - In darkness, nearby enemies are afflicted with Hollow Dominion",
+  "tooltip.oathboundrelics.void_pearl.awakened_2": " - The relic is strongest where sight and hope both fail"
+
 }

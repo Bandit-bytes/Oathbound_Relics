@@ -4,6 +4,8 @@
   "package": "net.bandit.oathboundrelics.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "EnchantmentMenuMixin",
+    "EnchantmentTooltipMixin"
   ],
   "client": [
   ],

@@ -5,12 +5,16 @@ import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.registry.ItemRegistry;
 import net.bandit.oathboundrelics.util.OathboundUtil;
 import net.bandit.oathboundrelics.util.SlothWeaponUtil;
+import net.minecraft.core.Holder;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.EnchantmentMenu;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.neoforged.bus.api.EventPriority;
@@ -37,6 +41,12 @@ public final class OathboundRelicEvents {
 
     private static final Map<UUID, Long> SHROUD_COOLDOWNS = new HashMap<>();
     private static final Map<UUID, Long> LAST_BREATH_COOLDOWNS = new HashMap<>();
+    private static final int OVER_ENCHANT_THRESHOLD = 30;
+    private static final int MAX_OVER_ENCHANT_BONUS = 1;
+
+    private static boolean canAttemptOverEnchant(int enchantingPower) {
+        return enchantingPower > OVER_ENCHANT_THRESHOLD;
+    }
 
     private OathboundRelicEvents() {
     }
@@ -141,7 +151,6 @@ public final class OathboundRelicEvents {
             }
         }
     }
-
     @SubscribeEvent
     public static void onOutgoingDamage(LivingDamageEvent.Pre event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
@@ -422,8 +431,35 @@ public final class OathboundRelicEvents {
                 .anyMatch(OathboundUtil::isBranded);
 
         if (brandedNearby) {
-            event.setEnchantLevel(event.getEnchantLevel() + OathboundConfig.enchantingPowerBonus());
+            int boosted = event.getEnchantLevel() + OathboundConfig.enchantingPowerBonus();
+            event.setEnchantLevel(Math.min(40, boosted));
         }
+    }
+
+    private static float getOverEnchantChance(int enchantingPower) {
+        return Math.min(0.90F, (enchantingPower - OVER_ENCHANT_THRESHOLD) * 0.10F);
+    }
+
+    private static int applyOneLevelOvercapIfEligible(
+            Holder<Enchantment> enchantment,
+            int rolledLevel,
+            int enchantingPower,
+            RandomSource random
+    ) {
+        int vanillaMax = enchantment.value().getMaxLevel();
+        if (!canAttemptOverEnchant(enchantingPower)) {
+            return Math.min(rolledLevel, vanillaMax);
+        }
+
+        if (rolledLevel < vanillaMax) {
+            return rolledLevel;
+        }
+
+        if (random.nextFloat() < getOverEnchantChance(enchantingPower)) {
+            return vanillaMax + MAX_OVER_ENCHANT_BONUS;
+        }
+
+        return vanillaMax;
     }
 
     @SubscribeEvent

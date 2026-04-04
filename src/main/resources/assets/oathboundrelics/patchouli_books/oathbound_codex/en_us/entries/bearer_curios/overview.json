@@ -1,0 +1,16 @@
+{
+  "name": "Bearer Curios Overview",
+  "icon": "oathboundrelics:oathbound_reliquary",
+  "category": "oathboundrelics:20_bearer_curios",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Bearer curios are the more elaborate relics. They are not just simple passives; they shape the entire fight or the way the wearer survives pressure.$(br2)This section is also where the book uses the term $(l)Renewal$(): in this codex, Renewal means sustained recovery or emergency healing support, usually through $(l)Regeneration$(), $(l)Absorption$(), or both."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Examples$()$(br)$(li)The Reliquary provides defensive Renewal and can punish overloading yourself with too many bearer curios$(li)The Chain turns damage taken into bonus damage later$(li)The Sleepless Eye is about information and holding ground$(li)The Hollow Prayer Censer creates a hostile zone while sustaining the bearer$(li)The First Martyr Nail rewards pressure on a single target"
+    }
+  ]
+}

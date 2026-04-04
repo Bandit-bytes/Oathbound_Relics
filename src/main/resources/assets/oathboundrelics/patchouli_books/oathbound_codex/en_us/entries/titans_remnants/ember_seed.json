@@ -1,0 +1,21 @@
+{
+  "name": "Ember Seed",
+  "icon": "oathboundrelics:ember_seed",
+  "category": "oathboundrelics:30_titans_remnants",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:ember_seed",
+      "text": "Dormant: grants Fire Resistance, burns melee attackers, and shortens existing harmful effects on the wearer over time."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Awakened: while Branded, both taking and dealing damage build $(l)Heat$(). Heat slowly decays. At 3+ Heat you move faster; at 8+ Heat nearby enemies begin igniting automatically."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Extra note: while Branded, Heat also adds bonus melee damage."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Eye of the Sleepless Witness",
+  "icon": "oathboundrelics:eye_of_the_sleepless_witness",
+  "category": "oathboundrelics:20_bearer_curios",
+  "sortnum": 15,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:eye_of_the_sleepless_witness",
+      "text": "A relic of watchfulness rather than speed. It is strongest when you hold your ground and let the Eye do the seeing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default behavior$()$(br)$(li)Can grant permanent Night Vision$(li)Reveals nearby monsters with Glowing$(li)Reveals farther while still than while moving$(li)When you are grounded, not sprinting, and moving slowly enough, you gain an Oakskin-like Resistance effect"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)In plain English$()$(br)The Eye rewards calm footing. If you stop sprinting and stand your ground, it turns from a scouting relic into a defensive one."
+    }
+  ]
+}

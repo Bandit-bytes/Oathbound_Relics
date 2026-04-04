@@ -1,0 +1,21 @@
+{
+  "name": "Void Pearl",
+  "icon": "oathboundrelics:void_pearl",
+  "category": "oathboundrelics:30_titans_remnants",
+  "sortnum": 30,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:void_pearl",
+      "text": "Dormant: grants airless survival, strips harmful effects from the wearer, inflicts Wither on hit, and has a chance to stop lethal damage from killing you outright."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Awakened: while Branded and standing in low light, nearby enemies are afflicted with what the book calls $(l)Hollow Dominion$(): Wither, Weakness, and Glowing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Extra note: darkness also increases your outgoing damage while the Void Pearl is awakened."
+    }
+  ]
+}

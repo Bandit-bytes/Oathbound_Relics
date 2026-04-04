@@ -7,9 +7,6 @@ import net.minecraft.world.entity.LivingEntity;
 
 public final class SlothCombatUtil {
 
-    private static final int LAZINESS_DURATION = 20 * 60;
-    private static final int ENEMY_SLOTH_DURATION = 20 * 10;
-    private static final int STUN_DURATION = 20 * 10;
 
     private SlothCombatUtil() {
     }

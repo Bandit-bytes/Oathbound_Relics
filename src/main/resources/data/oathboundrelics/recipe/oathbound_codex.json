@@ -1,0 +1,12 @@
+{
+  "type": "patchouli:shapeless_book_recipe",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "oathboundrelics:oblivion_stone"
+    }
+  ],
+  "book": "oathboundrelics:oathbound_codex"
+}

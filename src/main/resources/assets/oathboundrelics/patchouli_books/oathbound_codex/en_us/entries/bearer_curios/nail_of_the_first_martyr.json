@@ -1,0 +1,21 @@
+{
+  "name": "Nail of the First Martyr",
+  "icon": "oathboundrelics:nail_of_the_first_martyr",
+  "category": "oathboundrelics:20_bearer_curios",
+  "sortnum": 25,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:nail_of_the_first_martyr",
+      "text": "A focused execution relic for repeated pressure on one enemy."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Repeated direct hits build $(l)Martyr's Claim$() on the same target. When enough stacks are built, the target becomes $(l)Judged$()."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Killing a Judged target grants $(l)Haste$() and $(l)Absorption$(), then clears the tracked martyr target. This relic is not about wide cleave; it is about picking one enemy, staying on them, and earning the execution reward."
+    }
+  ]
+}

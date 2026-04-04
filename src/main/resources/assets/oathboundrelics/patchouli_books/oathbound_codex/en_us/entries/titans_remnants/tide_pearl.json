@@ -1,0 +1,21 @@
+{
+  "name": "Tide Pearl",
+  "icon": "oathboundrelics:tide_pearl",
+  "category": "oathboundrelics:30_titans_remnants",
+  "sortnum": 15,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:tide_pearl",
+      "text": "Dormant: grants Water Breathing, underwater Night Vision, and Dolphin's Grace while submerged. It also reduces damage from water creatures."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Awakened: while Branded and in water, nearby enemies are slowed, weakened, and dragged downward. It turns underwater fights into your territory."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Weakness: fire damage becomes worse while using Tide Pearl."
+    }
+  ]
+}

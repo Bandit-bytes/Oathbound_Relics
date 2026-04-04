@@ -1,0 +1,35 @@
+{
+  "name": "Aredrite",
+  "icon": "oathboundrelics:aredrite_gem",
+  "category": "oathboundrelics:50_materials_and_forging",
+  "sortnum": 15,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:aredrite_gem",
+      "text": "Aredrite is an End-born gemstone used for high-tier armor and late-game progression."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Mining note$()$(br)Aredrite Ore is meant to be found only in the $(l)End$(), and should be mined with a $(l)diamond tool or better$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:aredrite_helmet",
+      "recipe2": "oathboundrelics:aredrite_chestplate",
+      "text": "Helmet and chestplate recipes.",
+      "title": "Aredrite Armor"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:aredrite_leggings",
+      "recipe2": "oathboundrelics:aredrite_boots",
+      "text": "Leggings and boots recipes.",
+      "title": "Aredrite Armor"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The lang and armor data frame Aredrite as a serious End material. Its armor line is not basic ore gear; it is tied to Oblivion Stone and intended to feel like a real step upward."
+    }
+  ]
+}

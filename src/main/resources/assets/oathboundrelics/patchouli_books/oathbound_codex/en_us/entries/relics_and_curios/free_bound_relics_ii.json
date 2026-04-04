@@ -1,0 +1,33 @@
+{
+  "name": "Free-Bound Relics II",
+  "icon": "oathboundrelics:thornbound_carapace",
+  "category": "oathboundrelics:10_relics_and_curios",
+  "sortnum": 20,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:thornbound_carapace",
+      "text": "Reflect $(l)20% of incoming damage$() back at attackers. Best used when you expect repeated direct hits."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:voidstep_band",
+      "text": "Negates fall damage. One of the cleanest traversal and safety relics in the mod."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:executioners_coin",
+      "text": "Deal $(l)30% more damage$() to enemies below $(l)30% health$(). This is a finisher relic."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:relic_of_the_last_breath",
+      "text": "Prevents one lethal hit, then leaves you alive with emergency Absorption and Regeneration. Default cooldown: $(l)5 minutes$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:torch_of_gravesong",
+      "text": "Deal $(l)25% more damage$() to undead, and undead kills grant a burst of Strength. A dedicated anti-undead relic."
+    }
+  ]
+}

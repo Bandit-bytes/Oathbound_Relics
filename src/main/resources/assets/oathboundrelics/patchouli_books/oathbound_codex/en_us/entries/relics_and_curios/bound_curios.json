@@ -1,0 +1,32 @@
+{
+  "name": "Bound Curios",
+  "icon": "oathboundrelics:ashen_nail",
+  "category": "oathboundrelics:10_relics_and_curios",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "These are the tighter Oathbound curios: stronger identity, sharper role, and a closer link to the Branded path. In plain terms, they reward committing to a combat style instead of being generic stat sticks."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:ashen_nail",
+      "text": "While burning, your attacks deal $(l)35% more damage$() by default. This is a high-risk offensive relic for players willing to turn pain into pressure."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:gravebell_locket",
+      "text": "On kill, gain $(l)Speed I for 8s$() and $(l)Regeneration I for 4s$(). It rewards keeping momentum after a kill."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:hunters_sigil",
+      "text": "Deal $(l)25% more damage$() to enemies that are already targeting you. It rewards standing your ground instead of opening from safety."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:pilgrims_thorn",
+      "text": "While Branded, gain $(l)+10% movement speed$(). It is the cleanest mobility relic in the early Oathbound line."
+    }
+  ]
+}

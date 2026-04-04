@@ -1,0 +1,27 @@
+{
+  "name": "Envy: Covetfang",
+  "icon": "oathboundrelics:covetfang",
+  "category": "oathboundrelics:40_sin_weapons",
+  "sortnum": 15,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:covetfang",
+      "text": "Covetfang grows strong when something else is better than you. It wants strength that belongs to someone else."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Core mechanics$()$(br)$(li)Always deals its full damage floor$(li)Compares health, max health, armor, movement speed, and beneficial effects to build an $(l)Envy Score$()$(li)Can claim a $(l)Coveted Target$()$(li)Killing that target can steal vitality, armor, swiftness, or ferocity$(li)Failed kills wound the wielder$(li)At low health it becomes desperate if something stronger is nearby, and hopeless if nothing worthy of envy can be found"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:hollow_fang_idol",
+      "text": "First forge the $(l)Hollow Fang Idol$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:covetfang",
+      "text": "Then combine $(l)Void Ashes$(), the $(l)Tablet of Coveting$(), the $(l)Hollow Fang Idol$(), and a $(l)Nebula Ring$() to forge Covetfang."
+    }
+  ]
+}

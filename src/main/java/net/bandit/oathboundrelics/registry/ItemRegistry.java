@@ -299,6 +299,54 @@ public final class ItemRegistry {
             )
     );
 
+    public static final Supplier<Item> COLOSSUS_HEART = ITEMS.register(
+            "colossus_heart",
+            () -> new TitansRemnantItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    TitanRemnantType.COLOSSUS_HEART
+            )
+    );
+
+    public static final Supplier<Item> EMBER_SEED = ITEMS.register(
+            "ember_seed",
+            () -> new TitansRemnantItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    TitanRemnantType.EMBER_SEED
+            )
+    );
+
+    public static final Supplier<Item> TIDE_PEARL = ITEMS.register(
+            "tide_pearl",
+            () -> new TitansRemnantItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    TitanRemnantType.TIDE_PEARL
+            )
+    );
+
+    public static final Supplier<Item> SKYBRAND_FEATHER = ITEMS.register(
+            "skybrand_feather",
+            () -> new TitansRemnantItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    TitanRemnantType.SKYBRAND_FEATHER
+            )
+    );
+
+    public static final Supplier<Item> NEBULA_LENS = ITEMS.register(
+            "nebula_lens",
+            () -> new TitansRemnantItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    TitanRemnantType.NEBULA_LENS
+            )
+    );
+
+    public static final Supplier<Item> VOID_PEARL = ITEMS.register(
+            "void_pearl",
+            () -> new TitansRemnantItem(
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant(),
+                    TitanRemnantType.VOID_PEARL
+            )
+    );
+
     private ItemRegistry() {
     }
 

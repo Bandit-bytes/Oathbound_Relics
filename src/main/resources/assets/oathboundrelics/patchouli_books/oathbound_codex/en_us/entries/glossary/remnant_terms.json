@@ -1,0 +1,32 @@
+{
+  "name": "Remnant Terms",
+  "icon": "oathboundrelics:colossus_heart",
+  "category": "oathboundrelics:60_effects_and_states",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Branded$()$(br)A player wearing the Oathbound Relic and counted by Oathbound systems as part of the burdened path."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Impact$()$(br)The Colossus Heart meter. Taking strong non-magic hits while Branded builds it. Your next melee hit spends it for bonus damage and a shockwave."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Heat / Heating Up$()$(br)The Ember Seed meter. Taking and dealing damage build Heat while Branded. Heat decays over time. More Heat means more speed and eventually nearby ignition."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Reactive Blink$()$(br)The Nebula Lens awakened trigger. A hit can be dodged by blinking away, and the next strike becomes heavily empowered."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Hollow Dominion$()$(br)A player-facing name for the Void Pearl's awakened darkness aura. In low light while Branded, nearby enemies are afflicted with Wither, Weakness, and Glowing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Renewal$()$(br)A player-facing umbrella term, not a separate registered potion effect. In this codex it means emergency sustain or repeat recovery, usually through Regeneration, Absorption, or both."
+    }
+  ]
+}
