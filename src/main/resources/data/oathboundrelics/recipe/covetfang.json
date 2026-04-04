@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "VVV",
+    "TIT",
+    "VNV"
+  ],
+  "key": {
+    "V": {
+      "item": "oathboundrelics:void_ashes"
+    },
+    "T": {
+      "item": "oathboundrelics:tablet_of_coveting"
+    },
+    "I": {
+      "item": "oathboundrelics:hollow_fang_idol"
+    },
+    "N": {
+      "item": "oathboundrelics:nebula_ring"
+    }
+  },
+  "result": {
+    "id": "oathboundrelics:covetfang",
+    "count": 1
+  }
+}
