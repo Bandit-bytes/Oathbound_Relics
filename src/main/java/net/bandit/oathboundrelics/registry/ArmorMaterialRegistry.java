@@ -24,10 +24,10 @@ public class ArmorMaterialRegistry {
             "aredrite",
             () -> new ArmorMaterial(
                     Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                        map.put(ArmorItem.Type.BOOTS, 4);
-                        map.put(ArmorItem.Type.LEGGINGS, 7);
-                        map.put(ArmorItem.Type.CHESTPLATE, 9);
-                        map.put(ArmorItem.Type.HELMET, 4);
+                        map.put(ArmorItem.Type.BOOTS, 5);
+                        map.put(ArmorItem.Type.LEGGINGS, 8);
+                        map.put(ArmorItem.Type.CHESTPLATE, 12);
+                        map.put(ArmorItem.Type.HELMET, 5);
                         map.put(ArmorItem.Type.BODY, 7);
                     }),
                     22,
