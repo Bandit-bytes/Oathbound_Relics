@@ -1,0 +1,49 @@
+{
+  "parent": "oathboundrelics:forbidden_implements",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:covetfang"
+    },
+    "title": "All Three Sins",
+    "description": "Gather Sloth, Pride, and Envy into your hands.",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_sloth_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:lethargic_greatsword"
+          }
+        ]
+      }
+    },
+    "has_pride_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:vanitys_edge"
+          }
+        ]
+      }
+    },
+    "has_envy_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:covetfang"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_sloth_weapon", "has_pride_weapon", "has_envy_weapon"]
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:oathbound_relic"
+    },
+    "title": "Oathbound Relics",
+    "description": "Carry power that was never meant to be borne lightly.",
+    "background": "minecraft:textures/gui/advancements/backgrounds/end.png",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_oathbound_relic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:oathbound_relic"
+          }
+        ]
+      }
+    }
+  }
+}

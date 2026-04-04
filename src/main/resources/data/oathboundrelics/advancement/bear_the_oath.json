@@ -1,0 +1,26 @@
+{
+  "parent": "oathboundrelics:root",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:oathbound_relic"
+    },
+    "title": "Bear the Oath",
+    "description": "Take up the Oathbound Relic and enter the covenant.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_oathbound_relic": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:oathbound_relic"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "parent": "oathboundrelics:end_born_shard",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:void_ashes"
+    },
+    "title": "Ashes of the Void",
+    "description": "Gather Void Ashes from the End's dead and dying things.",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_void_ashes": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:void_ashes"
+          }
+        ]
+      }
+    }
+  }
+}
