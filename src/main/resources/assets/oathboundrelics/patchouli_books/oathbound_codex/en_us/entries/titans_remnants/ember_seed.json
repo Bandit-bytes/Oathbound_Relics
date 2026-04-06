@@ -1,21 +1,23 @@
 {
   "name": "Ember Seed",
   "icon": "oathboundrelics:ember_seed",
-  "category": "oathboundrelics:30_titans_remnants",
-  "sortnum": 10,
+  "category": "oathboundrelics:titans_remnants",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "oathboundrelics:ember_seed",
-      "text": "Dormant: grants Fire Resistance, burns melee attackers, and shortens existing harmful effects on the wearer over time."
+      "title": "Ember Seed",
+      "text": "A remnant of cinders, attrition, and accelerating aggression. The Seed rewards those who stay in the fight long enough to catch fire from the inside out."
     },
     {
       "type": "patchouli:text",
-      "text": "Awakened: while Branded, both taking and dealing damage build $(l)Heat$(). Heat slowly decays. At 3+ Heat you move faster; at 8+ Heat nearby enemies begin igniting automatically."
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Grants fire resistance, burns melee attackers, and causes harmful effects on the bearer to wear off faster. Even asleep, the Seed answers suffering with heat.$(br2)$(l)Latent$(): Its cleansing grows stronger and its retaliation steadier, turning it from a simple survival tool into a reliquary of contained flame."
     },
     {
       "type": "patchouli:text",
-      "text": "Extra note: while Branded, Heat also adds bonus melee damage."
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): The Seed unlocks $(thing)Heat$(). Taking damage and dealing damage both build it, and each point of Heat adds offensive pressure.$(br2)$(l)Ascended$(): Heat grants more damage and stronger movement speed, turning drawn-out fights into momentum engines.$(br2)$(l)Transcendent$(): When Heat climbs high enough, the Seed begins scorching nearby enemies automatically.$(br2)$(l)Apex$(): The bearer becomes a furnace in motion. Heat grants the highest damage scaling, the strongest speed bonus, and a burst of Strength when fully stoked."
     }
   ]
 }

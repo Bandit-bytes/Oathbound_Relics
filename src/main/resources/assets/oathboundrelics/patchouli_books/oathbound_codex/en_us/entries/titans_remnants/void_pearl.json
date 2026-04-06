@@ -1,21 +1,23 @@
 {
   "name": "Void Pearl",
   "icon": "oathboundrelics:void_pearl",
-  "category": "oathboundrelics:30_titans_remnants",
-  "sortnum": 30,
+  "category": "oathboundrelics:titans_remnants",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "oathboundrelics:void_pearl",
-      "text": "Dormant: grants airless survival, strips harmful effects from the wearer, inflicts Wither on hit, and has a chance to stop lethal damage from killing you outright."
+      "title": "Void Pearl",
+      "text": "A remnant of darkness, decay, and survival that should not be possible. The Pearl grows strongest where light weakens and death starts to lose its claim."
     },
     {
       "type": "patchouli:text",
-      "text": "Awakened: while Branded and standing in low light, nearby enemies are afflicted with what the book calls $(l)Hollow Dominion$(): Wither, Weakness, and Glowing."
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Grants airless survival, regularly strips harmful effects, inflicts withering decay on strikes, and has a chance to deny a lethal blow. Even half-asleep, it already refuses clean endings.$(br2)$(l)Latent$(): Harmful effects are cleared faster and the Pearl grows more reliable at refusing death."
     },
     {
       "type": "patchouli:text",
-      "text": "Extra note: darkness also increases your outgoing damage while the Void Pearl is awakened."
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): In low light, nearby enemies begin suffering $(thing)Hollow Dominion$(), a field of decay, weakness, and exposure.$(br2)$(l)Ascended$(): The bearer hits harder in darkness and the Pearl becomes even harder to kill through.$(br2)$(l)Transcendent$(): The aura spreads wider and punishes more harshly.$(br2)$(l)Apex$(): The Pearl reaches its fullest hunger, with the strongest darkness aura, the best death-denial chance, and a burst of Strength while the bearer stands in low light."
     }
   ]
 }

@@ -2,10 +2,14 @@ package net.bandit.oathboundrelics;
 
 import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.registry.*;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod(OathboundRelicsMod.MOD_ID)
 public final class OathboundRelicsMod {
@@ -22,5 +26,11 @@ public final class OathboundRelicsMod {
         AttachmentRegistry.register(modBus);
 
         modContainer.registerConfig(ModConfig.Type.SERVER, OathboundConfig.SPEC);
+    }
+    @SubscribeEvent
+    public static void onClientSetup(final FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SOUL_LANTERN_BLOCK.get(), RenderType.cutout());
+        });
     }
 }

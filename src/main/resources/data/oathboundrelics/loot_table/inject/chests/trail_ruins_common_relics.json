@@ -7,7 +7,9 @@
         { "type": "minecraft:item", "name": "oathboundrelics:pilgrims_thorn", "weight": 5 },
         { "type": "minecraft:item", "name": "oathboundrelics:vulture_charm", "weight": 4 },
         { "type": "minecraft:item", "name": "oathboundrelics:mourners_thread", "weight": 2 },
-        { "type": "minecraft:item", "name": "oathboundrelics:executioners_coin", "weight": 1 }
+        { "type": "minecraft:item", "name": "oathboundrelics:executioners_coin", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:nebula_lens", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:tide_pearl", "weight": 1 }
       ]
     }
   ]

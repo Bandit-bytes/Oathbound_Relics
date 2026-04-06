@@ -1,12 +1,14 @@
 package net.bandit.oathboundrelics.registry;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
+import net.bandit.oathboundrelics.blocks.SoulLanternBlock;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -33,10 +35,24 @@ public class BlockRegistry {
                             .requiresCorrectToolForDrops()
             ));
 
+    public static final DeferredBlock<Block> SOUL_LANTERN_BLOCK = registerBlockWithoutItem(
+            "soul_lantern",
+            () -> new SoulLanternBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_LANTERN)
+                            .strength(3.5F)
+                            .lightLevel(state -> 15)
+                            .noOcclusion()
+            )
+    );
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
         return toReturn;
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerBlockWithoutItem(String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {

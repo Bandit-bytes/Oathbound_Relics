@@ -1,8 +1,8 @@
 package net.bandit.oathboundrelics.curio.items;
 
 import net.bandit.oathboundrelics.util.OathboundUtil;
+import net.bandit.oathboundrelics.util.TooltipAccess;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +25,7 @@ public class OathboundCurioItem extends Item implements ICurioItem {
     }
 
     protected boolean shouldRevealTooltip() {
-        Player player = Minecraft.getInstance().player;
+        Player player = TooltipAccess.getClientPlayer();
         return player != null && (player.isCreative() || OathboundUtil.isBranded(player));
     }
 
@@ -35,7 +35,7 @@ public class OathboundCurioItem extends Item implements ICurioItem {
         if (shouldRevealTooltip()) {
             tooltip.add(line.withStyle(ChatFormatting.GOLD));
         } else {
-            tooltip.add(line.withStyle(ChatFormatting.RED,ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
+            tooltip.add(line.withStyle(ChatFormatting.RED, ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
         }
     }
 
@@ -49,49 +49,9 @@ public class OathboundCurioItem extends Item implements ICurioItem {
                 .withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.ITALIC));
     }
 
-    protected void addHiddenOrVisibleLine(List<Component> tooltip, String translationKey) {
-        MutableComponent line = Component.translatable(translationKey);
-
-        if (shouldRevealTooltip()) {
-            tooltip.add(line.withStyle(ChatFormatting.GRAY));
-        } else {
-            tooltip.add(line.withStyle(ChatFormatting.RED,ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
-        }
-    }
-
-    protected void addVisibleLine(List<Component> tooltip, String translationKey, Object... args) {
-        MutableComponent line = Component.translatable(translationKey, args);
-        tooltip.add(line.withStyle(ChatFormatting.GRAY));
-    }
-
-    protected void addDormantLine(List<Component> tooltip, String translationKey, Object... args) {
-        MutableComponent line = Component.translatable(translationKey, args);
-        tooltip.add(line.withStyle(ChatFormatting.GRAY));
-    }
-
-    protected void addAwakenedLine(List<Component> tooltip, String translationKey, Object... args) {
-        MutableComponent line = Component.translatable(translationKey, args);
-
-        if (shouldRevealTooltip()) {
-            tooltip.add(line.withStyle(ChatFormatting.LIGHT_PURPLE));
-        } else {
-            tooltip.add(line.withStyle(ChatFormatting.RED,ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
-        }
-    }
-
-    protected void addStateLine(List<Component> tooltip, boolean awakened) {
-        if (awakened) {
-            tooltip.add(Component.translatable("tooltip.oathboundrelics.state_awakened")
-                    .withStyle(ChatFormatting.LIGHT_PURPLE));
-        } else {
-            tooltip.add(Component.translatable("tooltip.oathboundrelics.state_dormant")
-                    .withStyle(ChatFormatting.DARK_GRAY));
-        }
-    }
-
     @Override
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
-        return true;
+        return false;
     }
 
     @Override
@@ -109,7 +69,7 @@ public class OathboundCurioItem extends Item implements ICurioItem {
                     .withStyle(ChatFormatting.DARK_GRAY));
         } else {
             tooltip.add(Component.translatable("tooltip.oathboundrelics.forbidden_text")
-                    .withStyle(ChatFormatting.RED,ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
+                    .withStyle(ChatFormatting.RED, ChatFormatting.ITALIC, ChatFormatting.OBFUSCATED));
         }
     }
 }

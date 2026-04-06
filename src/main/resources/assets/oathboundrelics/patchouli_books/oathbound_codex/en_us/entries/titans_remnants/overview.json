@@ -1,20 +1,22 @@
 {
-  "name": "Titan's Remnants Overview",
+  "name": "Titan's Remnants",
   "icon": "oathboundrelics:colossus_heart",
-  "category": "oathboundrelics:30_titans_remnants",
-  "sortnum": 0,
+  "category": "oathboundrelics:titans_remnants",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Titan's Remnants are a separate curio line with their own slot: $(l)Titan's Remnant$(). Each remnant has a $(l)Dormant$() state that anyone can benefit from, and an $(l)Oath Awakened$() state that activates while the wearer is Branded."
+      "title": "Six States",
+      "text": "Every Titan's Remnant can be raised through $(l)Dormant$(), $(l)Latent$(), $(l)Awakened$(), $(l)Ascended$(), $(l)Transcendent$(), and $(l)Apex$().$(br2)Dormant, Latent, and Awakened can be used by any mortal. Ascended and Transcendent require the bearer to wear the Oathbound Relic. Apex additionally demands near-complete Branded attunement."
     },
     {
       "type": "patchouli:text",
-      "text": "This makes them much easier to understand if you frame them in two parts:$(br)$(li)Dormant = what it always does$(li)Awakened = what the Oath adds on top$(br2)Their state is also shown in the tooltip, which is the right place to tell players whether the remnant is sleeping or answering."
+      "title": "Current Upgrade Path",
+      "text": "Hold the remnant in your $(l)main hand$() and the catalyst in your $(l)offhand$(), then use the remnant.$(br2)Dormant -> Latent: $(item)oathboundrelics:oblivion_stone$()$(br)Latent -> Awakened: $(item)oathboundrelics:void_ashes$()$(br)Awakened -> Ascended: $(item)oathboundrelics:mirrorsteel_idol$()$(br)Ascended -> Transcendent: $(item)minecraft:nether_star$()$(br)Transcendent -> Apex: $(item)oathboundrelics:soul_gem$()"
     },
     {
       "type": "patchouli:text",
-      "text": "Common remnant terms are explained in the $(l:glossary/remnant_terms)Glossary$(). If your players ask what $(l)Impact$(), $(l)Heat$(), or $(l)Hollow Dominion$() mean, send them there."
+      "title": "Suppressed Power",
+      "text": "A remnant keeps its stored stage, but the wearer only gains the highest stage they are worthy to use.$(br2)A non-Branded wearer is capped at $(l)Awakened$().$(br)A Branded wearer with the Oathbound Relic is capped at $(l)Transcendent$().$(br)Only one who has endured roughly $(l)99.5%$() Branded attunement may fully wield $(l)Apex$()."
     }
   ]
 }

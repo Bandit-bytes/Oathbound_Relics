@@ -6,6 +6,9 @@
       "entries": [
         { "type": "minecraft:item", "name": "oathboundrelics:gravebell_locket", "weight": 4 },
         { "type": "minecraft:item", "name": "oathboundrelics:mourners_thread", "weight": 5 },
+        { "type": "minecraft:item", "name": "oathboundrelics:ember_seed", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:nebula_lens", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:tide_pearl", "weight": 1 },
         { "type": "minecraft:item", "name": "oathboundrelics:censer_of_hollow_prayer", "weight": 1 }
       ]
     }

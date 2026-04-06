@@ -1,21 +1,23 @@
 {
   "name": "Nebula Lens",
   "icon": "oathboundrelics:nebula_lens",
-  "category": "oathboundrelics:30_titans_remnants",
-  "sortnum": 25,
+  "category": "oathboundrelics:titans_remnants",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "oathboundrelics:nebula_lens",
-      "text": "Dormant: heavily resists magic and ignores the self-damage from using Ender Pearls."
+      "title": "Nebula Lens",
+      "text": "A remnant of distortion, anti-magic, and retaliatory repositioning. The Lens is at its best when being attacked is merely the first mistake your enemy makes."
     },
     {
       "type": "patchouli:text",
-      "text": "Awakened: while Branded, some attacks trigger a $(l)Reactive Blink$() that teleports you away from the attacker, negates the hit, and empowers your next strike for massive bonus damage."
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Greatly reduces incoming magic damage and prevents ender pearl self-damage. Water remains dangerous, making the bearer unstable.$(br2)$(l)Latent$(): Arcane resistance becomes even stronger, pushing the Lens further toward an anti-sorcery relic before its real signature power fully wakes."
     },
     {
       "type": "patchouli:text",
-      "text": "Weakness: water makes the wearer dangerously unstable and incoming damage increases there."
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): The Lens unlocks $(thing)Reactive Blink$(). Some attacks are negated as the bearer blinks away, and the next hit becomes heavily empowered.$(br2)$(l)Ascended$(): Blink triggers more often, and the stored retaliation grows harsher.$(br2)$(l)Transcendent$(): The next strike becomes more punishing still, and successful blinks grant a brief burst of speed.$(br2)$(l)Apex$(): The Lens reaches its cruelest state, with the highest blink chance and the strongest post-blink retaliation."
     }
   ]
 }

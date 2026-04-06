@@ -9,6 +9,8 @@
         { "type": "minecraft:item", "name": "oathboundrelics:oathbound_reliquary", "weight": 1 },
         { "type": "minecraft:item", "name": "oathboundrelics:tablet_of_coveting", "weight": 2 },
         { "type": "minecraft:item", "name": "oathboundrelics:tablet_of_stillness", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:skybrand_feather", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:void_pearl", "weight": 1 },
         { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone", "weight": 1 }
       ]
     }

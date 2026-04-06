@@ -1,7 +1,4 @@
 {
-  "display": {
-    "hidden": true
-  },
   "criteria": {
     "tick": {
       "trigger": "minecraft:tick"
@@ -9,7 +6,7 @@
   },
   "rewards": {
     "loot": [
-      "oathboundrelics:grant_oathbound_codex"
+      "oathboundrelics:grant_book_on_first_join"
     ]
   }
 }

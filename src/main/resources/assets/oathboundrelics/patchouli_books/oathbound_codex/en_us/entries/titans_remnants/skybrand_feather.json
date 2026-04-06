@@ -1,21 +1,23 @@
 {
   "name": "Skybrand Feather",
   "icon": "oathboundrelics:skybrand_feather",
-  "category": "oathboundrelics:30_titans_remnants",
-  "sortnum": 20,
+  "category": "oathboundrelics:titans_remnants",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "oathboundrelics:skybrand_feather",
-      "text": "Dormant: negates fall damage and can sometimes nullify incoming projectile hits."
+      "title": "Skybrand Feather",
+      "text": "A remnant of descent, deflection, and violent landing. The Feather starts as protection from falling and becomes a weaponized relationship with height."
     },
     {
       "type": "patchouli:text",
-      "text": "Awakened: while Branded and airborne, grants Slow Falling. Hard landings after meaningful falls release a gust that knocks back and slows nearby enemies."
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Completely negates fall damage and grants a chance to nullify incoming projectiles. It already encourages fearlessness with terrain.$(br2)$(l)Latent$(): The projectile negation becomes more reliable, and the remnant's control over motion feels cleaner and more deliberate."
     },
     {
       "type": "patchouli:text",
-      "text": "Weakness: Wither and void damage become more dangerous while wearing the Feather."
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): The Feather grants controlled slow-falling while airborne and stores the force of meaningful falls. Landing releases that force in a burst around the bearer.$(br2)$(l)Ascended$(): The gust becomes stronger and nearby enemies are slowed when thrown back.$(br2)$(l)Transcendent$(): Both the landing burst and projectile evasion sharpen further.$(br2)$(l)Apex$(): The Feather reaches its peak: the strongest landing shock, the best projectile negation, and the cleanest mastery of descent."
     }
   ]
 }

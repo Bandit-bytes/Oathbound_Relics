@@ -1,0 +1,27 @@
+{
+  "name": "Remnant Terms",
+  "icon": "oathboundrelics:nebula_lens",
+  "category": "oathboundrelics:titans_remnants",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Impact",
+      "text": "$(thing)Impact$() is the Colossus Heart's stored force. When the bearer survives a heavy non-magic hit, the Heart builds Impact. The next melee strike consumes it for bonus damage, and later stages release that stored force as a shockwave that scatters nearby foes."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Heat",
+      "text": "$(thing)Heat$() belongs to the Ember Seed. Taking damage and dealing damage both feed it. Heat gradually cools over time, but while it is high the bearer grows faster, stronger, and eventually hot enough to ignite enemies nearby."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Reactive Blink",
+      "text": "$(thing)Reactive Blink$() belongs to the Nebula Lens. Some incoming hits simply fail to land as the bearer snaps away from the attacker. The Lens then loads that stolen moment into the next strike, turning retreat into retaliation."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Hollow Dominion",
+      "text": "$(thing)Hollow Dominion$() belongs to the Void Pearl. In low light, the Pearl radiates a darkened aura that inflicts weakness, decay, and revelation on enemies nearby. Later stages make the radius wider and the punishment harsher."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "parent": "oathboundrelics:root",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:soul_lantern"
+    },
+    "title": "Lantern of Stolen Breath",
+    "description": "Obtain the Soul Lantern.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_oathbound_lantern": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:soul_lantern"
+          }
+        ]
+      }
+    }
+  }
+}

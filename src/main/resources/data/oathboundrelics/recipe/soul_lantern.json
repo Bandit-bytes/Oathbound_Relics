@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CNC",
+    "VSO",
+    "AEA"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "V": {
+      "item": "oathboundrelics:void_ashes"
+    },
+    "S": {
+      "item": "minecraft:soul_lantern"
+    },
+    "O": {
+      "item": "oathboundrelics:oblivion_stone"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "result": {
+    "id": "oathboundrelics:soul_lantern",
+    "count": 1
+  }
+}

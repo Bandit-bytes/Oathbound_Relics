@@ -9,6 +9,9 @@
         { "type": "minecraft:item", "name": "oathboundrelics:executioners_coin", "weight": 5 },
         { "type": "minecraft:item", "name": "oathboundrelics:nail_of_the_first_martyr", "weight": 2 },
         { "type": "minecraft:item", "name": "oathboundrelics:tablet_of_exaltation", "weight": 2 },
+        { "type": "minecraft:item", "name": "oathboundrelics:ember_seed", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:nebula_lens", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:tide_pearl", "weight": 1 },
         { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone", "weight": 3 }
       ]
     }

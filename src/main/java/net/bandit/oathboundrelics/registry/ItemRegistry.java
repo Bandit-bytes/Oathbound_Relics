@@ -28,6 +28,14 @@ public final class ItemRegistry {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()
     );
 
+    public static final Supplier<Item> SOUL_LANTERN = ITEMS.register(
+            "soul_lantern",
+            () -> new SoulLanternItem(
+                    BlockRegistry.SOUL_LANTERN_BLOCK.get(),
+                    new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+            )
+    );
+
     public static final Supplier<Item> GRAVEBELL_LOCKET = ITEMS.registerItem(
             "gravebell_locket",
             GravebellLocketItem::new,

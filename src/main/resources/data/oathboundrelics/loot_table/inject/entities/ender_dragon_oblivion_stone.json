@@ -4,7 +4,8 @@
     {
       "rolls": 1,
       "entries": [
-        { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone" }
+        { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone" },
+        { "type": "minecraft:item", "name": "oathboundrelics:ember_seed", "weight": 1 }
       ]
     }
   ]
