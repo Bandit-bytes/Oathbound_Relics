@@ -661,5 +661,29 @@
   "message.oathboundrelics.soul_gem.restored": "The Soul Gem returns a sliver of your stolen vitality.",
   "block.oathboundrelics.soul_lantern": "Soul Lantern",
   "tooltip.oathboundrelics.soul_lantern.placeable": "Can be placed as a lantern.",
-  "tooltip.oathboundrelics.soul_lantern.placeable_desc": "May be set down as a grim ornament, or worn at the belt."
+  "tooltip.oathboundrelics.soul_lantern.placeable_desc": "May be set down as a grim ornament, or worn at the belt.",
+
+  "block.oathboundrelics.rite_of_severance": "Rite of Severance",
+  "item.oathboundrelics.fractured_relic_ash": "Fractured Relic Ash",
+
+  "message.oathboundrelics.severance.already_active": "The altar is already devouring an oath.",
+  "message.oathboundrelics.severance.need_relic": "You must bear the Oathbound Relic to begin the rite.",
+  "message.oathboundrelics.severance.night_or_end": "The rite may only begin at night, or within the End.",
+  "message.oathboundrelics.severance.need_materials": "The altar demands 1 Oblivion Stone, 4 Echo Shards, 4 Crying Obsidian, and 16 Soul Soil.",
+  "message.oathboundrelics.severance.started": "The Rite of Severance begins. Do not flee.",
+  "message.oathboundrelics.severance.failed_lost": "The rite collapses. The altar is left hungry.",
+  "message.oathboundrelics.severance.failed_dimension": "The rite snaps apart as your presence slips away.",
+  "message.oathboundrelics.severance.failed_relic_missing": "The relic is no longer bound. The rite fails.",
+  "message.oathboundrelics.severance.failed_too_far": "You strayed too far from the altar. The oath tightens once more.",
+  "message.oathboundrelics.severance.success": "The ring splits, blackens, and crumbles to ash. The oath is severed.",
+
+  "message.oathboundrelics.severance.pulse_ember": "Living Ember",
+  "message.oathboundrelics.severance.pulse_fracture": "Soul Fracture",
+  "message.oathboundrelics.severance.pulse_doom": "Wakeful Doom",
+  "message.oathboundrelics.severance.pulse_provocation": "Provocation",
+  "message.oathboundrelics.severance.pulse_plate": "Shattered Plate",
+  "message.oathboundrelics.severance.pulse_oppression": "Oppression",
+
+  "advancement.oathboundrelics.severed_oath.title": "Rite of Severance",
+  "advancement.oathboundrelics.severed_oath.description": "Destroy the Oathbound Relic and free yourself from the brand."
 }

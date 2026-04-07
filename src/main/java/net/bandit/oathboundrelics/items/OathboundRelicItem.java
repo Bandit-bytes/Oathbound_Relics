@@ -52,7 +52,10 @@ public class OathboundRelicItem extends Item implements ICurioItem {
 
     @Override
     public boolean canUnequip(SlotContext slotContext, ItemStack stack) {
-        return slotContext.entity() instanceof Player player && player.isCreative();
+        if (!(slotContext.entity() instanceof Player player)) {
+            return false;
+        }
+        return player.isCreative() || OathboundUtil.canSeverRelic(player);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package net.bandit.oathboundrelics.registry;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
+import net.bandit.oathboundrelics.blocks.RiteOfSeveranceBlock;
 import net.bandit.oathboundrelics.blocks.SoulLanternBlock;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -44,6 +45,14 @@ public class BlockRegistry {
                             .noOcclusion()
             )
     );
+
+    public static final DeferredBlock<Block> RITE_OF_SEVERANCE = registerBlock("rite_of_severance",
+            () -> new RiteOfSeveranceBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.CRYING_OBSIDIAN)
+                            .strength(5.0F, 1200.0F)
+                            .lightLevel(state -> 10)
+                            .noOcclusion()
+            ));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

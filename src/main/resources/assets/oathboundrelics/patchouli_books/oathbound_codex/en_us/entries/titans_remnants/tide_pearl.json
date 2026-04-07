@@ -11,12 +11,12 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Dormant and Latent",
+      "title": "Stages",
       "text": "$(l)Dormant$(): Grants water breathing, underwater sight, underwater speed, and softer blows from aquatic creatures. The Pearl already makes the depths feel familiar.$(br2)$(l)Latent$(): Drowning no longer threatens the bearer at all, allowing the remnant to serve as a true underwater foundation instead of just a convenience."
     },
     {
       "type": "patchouli:text",
-      "title": "Awakened, Ascended, Transcendent, Apex",
+      "title": "Stages Continued",
       "text": "$(l)Awakened$(): Underwater, nearby enemies are slowed, weakened, and dragged downward. The Pearl begins controlling position, not just survival.$(br2)$(l)Ascended$(): The pressure field widens and the bearer begins gaining stronger offensive value underwater.$(br2)$(l)Transcendent$(): The water becomes actively hostile to nearby enemies, making escape and movement much harder.$(br2)$(l)Apex$(): The bearer gains Conduit Power underwater and commands the strongest version of the Pearl's suffocating field."
     }
   ]

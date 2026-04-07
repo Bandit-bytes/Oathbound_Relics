@@ -11,12 +11,12 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Dormant and Latent",
+      "title": "Stages",
       "text": "$(l)Dormant$(): Grants airless survival, regularly strips harmful effects, inflicts withering decay on strikes, and has a chance to deny a lethal blow. Even half-asleep, it already refuses clean endings.$(br2)$(l)Latent$(): Harmful effects are cleared faster and the Pearl grows more reliable at refusing death."
     },
     {
       "type": "patchouli:text",
-      "title": "Awakened, Ascended, Transcendent, Apex",
+      "title": "Stages Continued",
       "text": "$(l)Awakened$(): In low light, nearby enemies begin suffering $(thing)Hollow Dominion$(), a field of decay, weakness, and exposure.$(br2)$(l)Ascended$(): The bearer hits harder in darkness and the Pearl becomes even harder to kill through.$(br2)$(l)Transcendent$(): The aura spreads wider and punishes more harshly.$(br2)$(l)Apex$(): The Pearl reaches its fullest hunger, with the strongest darkness aura, the best death-denial chance, and a burst of Strength while the bearer stands in low light."
     }
   ]

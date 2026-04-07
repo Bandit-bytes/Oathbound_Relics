@@ -11,12 +11,12 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Dormant and Latent",
+      "title": "Stages",
       "text": "$(l)Dormant$(): Grants fire resistance, burns melee attackers, and causes harmful effects on the bearer to wear off faster. Even asleep, the Seed answers suffering with heat.$(br2)$(l)Latent$(): Its cleansing grows stronger and its retaliation steadier, turning it from a simple survival tool into a reliquary of contained flame."
     },
     {
       "type": "patchouli:text",
-      "title": "Awakened, Ascended, Transcendent, Apex",
+      "title": "Stages Continued",
       "text": "$(l)Awakened$(): The Seed unlocks $(thing)Heat$(). Taking damage and dealing damage both build it, and each point of Heat adds offensive pressure.$(br2)$(l)Ascended$(): Heat grants more damage and stronger movement speed, turning drawn-out fights into momentum engines.$(br2)$(l)Transcendent$(): When Heat climbs high enough, the Seed begins scorching nearby enemies automatically.$(br2)$(l)Apex$(): The bearer becomes a furnace in motion. Heat grants the highest damage scaling, the strongest speed bonus, and a burst of Strength when fully stoked."
     }
   ]

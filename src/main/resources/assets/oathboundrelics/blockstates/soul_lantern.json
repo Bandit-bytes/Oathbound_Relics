@@ -1,13 +1,8 @@
 {
   "variants": {
-    "hanging=false,facing=north": { "model": "oathboundrelics:block/soul_lantern", "y": 0,   "uvlock": true },
-    "hanging=false,facing=east":  { "model": "oathboundrelics:block/soul_lantern", "y": 90,  "uvlock": true },
-    "hanging=false,facing=south": { "model": "oathboundrelics:block/soul_lantern", "y": 180, "uvlock": true },
-    "hanging=false,facing=west":  { "model": "oathboundrelics:block/soul_lantern", "y": 270, "uvlock": true },
-
-    "hanging=true,facing=north": { "model": "oathboundrelics:block/soul_lantern_hanging", "y": 0,   "uvlock": true },
-    "hanging=true,facing=east":  { "model": "oathboundrelics:block/soul_lantern_hanging", "y": 90,  "uvlock": true },
-    "hanging=true,facing=south": { "model": "oathboundrelics:block/soul_lantern_hanging", "y": 180, "uvlock": true },
-    "hanging=true,facing=west":  { "model": "oathboundrelics:block/soul_lantern_hanging", "y": 270, "uvlock": true }
+    "hanging=false,waterlogged=false": { "model": "oathboundrelics:block/soul_lantern" },
+    "hanging=true,waterlogged=false":  { "model": "oathboundrelics:block/soul_lantern_hanging" },
+    "hanging=false,waterlogged=true":  { "model": "oathboundrelics:block/soul_lantern" },
+    "hanging=true,waterlogged=true":   { "model": "oathboundrelics:block/soul_lantern_hanging" }
   }
 }

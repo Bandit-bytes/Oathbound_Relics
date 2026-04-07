@@ -11,12 +11,12 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Dormant and Latent",
+      "title": "Stages",
       "text": "$(l)Dormant$(): Grants a small armor increase, a measure of knockback resistance, and immunity to petty environmental harm such as cactus, berry bush, and wall damage. It also slightly slows the wearer.$(br2)$(l)Latent$(): The Heart hardens further, raising armor and poise while also learning to ignore stalagmite damage. At this point it still feels defensive, but there is clearly force gathering beneath the shell."
     },
     {
       "type": "patchouli:text",
-      "title": "Awakened, Ascended, Transcendent, Apex",
+      "title": "Stages Continued",
       "text": "$(l)Awakened$(): Heavy non-magic hits begin building $(thing)Impact$(), and each stack adds damage to the next melee strike.$(br2)$(l)Ascended$(): The stored force strikes harder, rewarding those who endure repeated punishment.$(br2)$(l)Transcendent$(): Spending Impact no longer affects only one target; it erupts outward into a strong shockwave that knocks back and injures nearby enemies.$(br2)$(l)Apex$(): The Heart reaches its most brutal form, with the highest Impact damage and the strongest release. After discharging, it briefly hardens the bearer with resistance."
     }
   ]
