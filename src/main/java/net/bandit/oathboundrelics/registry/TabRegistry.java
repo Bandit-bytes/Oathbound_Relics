@@ -19,6 +19,7 @@ public class TabRegistry {
 
     private static final List<Supplier<? extends ItemLike>> TAB_ITEMS = List.of(
             ItemRegistry.OATHBOUND_RELIC,
+            ItemRegistry.FRACTURED_RELIC_ASH,
             ItemRegistry.ASHEN_NAIL,
             ItemRegistry.GRAVEBELL_LOCKET,
             ItemRegistry.HUNTERS_SIGIL,
@@ -62,6 +63,7 @@ public class TabRegistry {
             ItemRegistry.AREDRITE_CHESTPLATE,
             ItemRegistry.AREDRITE_LEGGINGS,
             ItemRegistry.AREDRITE_BOOTS,
+            BlockRegistry.RITE_OF_SEVERANCE,
             BlockRegistry.AREDRITE_BLOCK,
             BlockRegistry.AREDRITE_ORE,
             ItemRegistry.OBLIVION_STONE,

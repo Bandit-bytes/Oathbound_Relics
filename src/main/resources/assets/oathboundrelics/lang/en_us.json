@@ -685,5 +685,11 @@
   "message.oathboundrelics.severance.pulse_oppression": "Oppression",
 
   "advancement.oathboundrelics.severed_oath.title": "Rite of Severance",
-  "advancement.oathboundrelics.severed_oath.description": "Destroy the Oathbound Relic and free yourself from the brand."
+  "advancement.oathboundrelics.severed_oath.description": "Destroy the Oathbound Relic and free yourself from the brand.",
+
+  "tooltip.oathboundrelics.fractured_relic_ash.note": "What was torn away still lingers in quiet defense.",
+  "tooltip.oathboundrelics.fractured_relic_ash.flavor": "Its warmth is gone, but not its memory.",
+  "tooltip.oathboundrelics.fractured_relic_ash.effect": "Passive: The remains of a broken oath harden the bearer against the world.",
+  "tooltip.oathboundrelics.fractured_relic_ash.detail_1": "Only ash remains where tyranny once circled the hand.",
+  "tooltip.oathboundrelics.fractured_relic_ash.detail_2": "The scar it left behind has learned to shield instead of bind."
 }

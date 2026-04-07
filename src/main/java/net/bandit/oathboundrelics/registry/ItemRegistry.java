@@ -200,7 +200,7 @@ public final class ItemRegistry {
 
     public static final Supplier<Item> FRACTURED_RELIC_ASH = ITEMS.register(
             "fractured_relic_ash",
-            () -> new Item(new Item.Properties().stacksTo(64).rarity(Rarity.RARE).fireResistant())
+            () -> new FracturedRelicAshItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant())
     );
 
     public static final Supplier<Item> AREDRITE_GEM = ITEMS.registerItem(

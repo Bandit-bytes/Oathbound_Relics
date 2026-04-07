@@ -188,8 +188,10 @@ public final class OathboundConfig {
     public final ModConfigSpec.DoubleValue cyanRingArmorBonus;
 
     public final ModConfigSpec.BooleanValue enableNebulaRing;
+    public final ModConfigSpec.BooleanValue enableFracturedRing;
     public final ModConfigSpec.DoubleValue nebulaRingArmorBonus;
     public final ModConfigSpec.IntValue nebulaRingExtraRingSlots;
+    public final ModConfigSpec.IntValue FracturedRingExtraRingSlots;
 
     // Expanded Sloth weapon
     public final ModConfigSpec.BooleanValue enableCreativeBrandedTimeBypass;
@@ -1042,6 +1044,12 @@ public final class OathboundConfig {
         nebulaRingExtraRingSlots = builder
                 .comment("Additional ring slots granted by Nebula Ring while worn.")
                 .defineInRange("extraRingSlots", 1, 0, 8);
+        enableFracturedRing = builder
+                .comment("If true, Fractured Ash Ring is enabled.")
+                .define("enabled", true);
+        FracturedRingExtraRingSlots = builder
+                .comment("Additional ring slots granted by Fractured Ash Ring while worn.")
+                .defineInRange("extraRingSlots", 1, 0, 8);
         builder.pop();
 
         builder.pop();
@@ -1206,8 +1214,10 @@ public final class OathboundConfig {
     public static double cyanRingArmorBonus() { return CONFIG.cyanRingArmorBonus.get(); }
 
     public static boolean enableNebulaRing() { return CONFIG.enableNebulaRing.get(); }
+    public static boolean FracturedAshRing() { return CONFIG.enableFracturedRing.get(); }
     public static double nebulaRingArmorBonus() { return CONFIG.nebulaRingArmorBonus.get(); }
     public static int nebulaRingExtraRingSlots() { return CONFIG.nebulaRingExtraRingSlots.get(); }
+    public static int FracturedRingExtraRingSlots() { return CONFIG.FracturedRingExtraRingSlots.get(); }
 
     public static boolean enableCreativeBrandedTimeBypass() { return CONFIG.enableCreativeBrandedTimeBypass.get(); }
     public static int lethargicFlailLazinessDurationTicks() { return CONFIG.lethargicFlailLazinessDurationTicks.get(); }
