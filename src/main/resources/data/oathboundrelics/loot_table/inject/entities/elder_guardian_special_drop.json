@@ -5,7 +5,7 @@
       "rolls": 1,
       "entries": [
         { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone" },
-        { "type": "minecraft:item", "name": "oathboundrelics:nebula_lens" }
+        { "type": "minecraft:item", "name": "oathboundrelics:tide_pearl" }
       ]
     }
   ]

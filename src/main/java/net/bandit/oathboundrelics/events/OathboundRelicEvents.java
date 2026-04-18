@@ -164,10 +164,6 @@ public final class OathboundRelicEvents {
         boolean branded = OathboundUtil.isBranded(player);
         float damage = event.getContainer().getNewDamage();
 
-        if (branded && OathboundConfig.enableOppression()) {
-            damage *= (float) OathboundConfig.outgoingDamageMultiplier();
-        }
-
         // Bound outgoing relics
         if (branded
                 && OathboundConfig.enableAshenNail()
@@ -191,11 +187,7 @@ public final class OathboundRelicEvents {
             return;
         }
 
-        if (branded && OathboundConfig.enableOppression() && !usingLethargicFlail) {
-            damage *= (float) OathboundConfig.outgoingDamageMultiplier();
-        }
-
-// Free outgoing relics
+        // Free outgoing relics
         if (event.getEntity() instanceof LivingEntity target) {
             if (OathboundConfig.enableExecutionersCoin()
                     && OathboundUtil.hasCurio(player, ItemRegistry.EXECUTIONERS_COIN.get())
@@ -270,6 +262,36 @@ public final class OathboundRelicEvents {
     }
 
     @SubscribeEvent
+    public static void onSuccessfulHit(LivingDamageEvent.Post event) {
+        if (!(event.getSource().getEntity() instanceof Player player)) {
+            return;
+        }
+
+        if (event.getEntity() == player) {
+            return;
+        }
+
+        if (!OathboundUtil.isBranded(player)) {
+            return;
+        }
+
+        if (!OathboundConfig.enableBloodToll()) {
+            return;
+        }
+
+        if (event.getNewDamage() <= 0.0F) {
+            return;
+        }
+
+        float cost = (float) OathboundConfig.bloodTollHealthCost();
+        if (cost <= 0.0F) {
+            return;
+        }
+
+        player.hurt(player.damageSources().generic(), cost);
+    }
+
+    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 
@@ -289,7 +311,8 @@ public final class OathboundRelicEvents {
 
             if (branded
                     && OathboundConfig.enableProvocation()
-                    && player.tickCount % OathboundConfig.neutralAggroInterval() == 0) {
+                    && player.tickCount % OathboundConfig.neutralAggroInterval() == 0
+                    && !OathboundUtil.hasActiveBrandkeepersMercy(player)) {
                 provokeNearbyNeutralMobs(player);
             }
 

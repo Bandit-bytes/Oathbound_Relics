@@ -19,15 +19,18 @@ public final class OathboundConfig {
     public final ModConfigSpec.BooleanValue enableFrailty;
     public final ModConfigSpec.BooleanValue enableProvocation;
     public final ModConfigSpec.BooleanValue enableShatteredPlate;
-    public final ModConfigSpec.BooleanValue enableOppression;
+
+    public final ModConfigSpec.BooleanValue enableBloodToll;
+
     public final ModConfigSpec.BooleanValue enableLivingEmber;
     public final ModConfigSpec.BooleanValue enableSoulFracture;
     public final ModConfigSpec.BooleanValue enableWakefulDoom;
     public final ModConfigSpec.BooleanValue giveStarterOathboundRelic;
-
     public final ModConfigSpec.DoubleValue incomingDamageMultiplier;
     public final ModConfigSpec.DoubleValue armorEffectiveness;
-    public final ModConfigSpec.DoubleValue outgoingDamageMultiplier;
+
+    public final ModConfigSpec.DoubleValue bloodTollHealthCost;
+
     public final ModConfigSpec.IntValue minFireTicks;
     public final ModConfigSpec.IntValue neutralAggroInterval;
     public final ModConfigSpec.DoubleValue neutralAggroRange;
@@ -124,6 +127,8 @@ public final class OathboundConfig {
     public final ModConfigSpec.IntValue lethargicFlailInventoryCheckIntervalTicks;
     public final ModConfigSpec.DoubleValue lethargicFlailInventoryMoveSpeedMultiplier;
     public final ModConfigSpec.DoubleValue lethargicFlailInventoryExhaustionPerSecond;
+
+    public final ModConfigSpec.BooleanValue enableBrandkeepersMercy;
 
     // Revised Hollow Eye
     public final ModConfigSpec.BooleanValue hollowEyeClearBlindness;
@@ -313,14 +318,13 @@ public final class OathboundConfig {
                 .comment("Armor effectiveness multiplier. 0.70 = armor is 30% less effective.")
                 .defineInRange("armorEffectiveness", 0.70D, 0.0D, 1.0D);
 
-        enableOppression = builder
-                .comment("If true, Branded players deal reduced outgoing damage.")
-                .define("enableOppression", true);
+        enableBloodToll = builder
+                .comment("If true, Branded players pay health when their attacks successfully damage a target.")
+                .define("enableBloodToll", true);
 
-        outgoingDamageMultiplier = builder
-                .comment("Outgoing damage multiplier. 0.50 = 50% less damage dealt.")
-                .defineInRange("outgoingDamageMultiplier", 0.50D, 0.0D, 100.0D);
-
+        bloodTollHealthCost = builder
+                .comment("Health points consumed on each successful damaging attack. 1.0 = half a heart.")
+                .defineInRange("bloodTollHealthCost", 1.0D, 0.0D, 20.0D);
         enableLivingEmber = builder
                 .comment("If true, fire lingers longer on Branded players.")
                 .define("enableLivingEmber", true);
@@ -904,6 +908,11 @@ public final class OathboundConfig {
                 .comment("Hunger amplifier. 0 = Hunger I.")
                 .defineInRange("hungerAmplifier", 0, 0, 255);
         builder.pop();
+        builder.push("brandkeepers_mercy");
+        enableBrandkeepersMercy = builder
+                .comment("If true, Brandkeeper's Mercy can suppress the Provocation curse for a nearly fully attuned bearer.")
+                .define("enabled", true);
+        builder.pop();
 
         builder.push("chain_of_the_penitent");
         enableChainOfThePenitent = builder
@@ -1058,14 +1067,14 @@ public final class OathboundConfig {
     public static boolean enableFrailty() { return CONFIG.enableFrailty.get(); }
     public static boolean enableProvocation() { return CONFIG.enableProvocation.get(); }
     public static boolean enableShatteredPlate() { return CONFIG.enableShatteredPlate.get(); }
-    public static boolean enableOppression() { return CONFIG.enableOppression.get(); }
+    public static boolean enableBloodToll() { return CONFIG.enableBloodToll.get(); }
     public static boolean enableLivingEmber() { return CONFIG.enableLivingEmber.get(); }
     public static boolean enableSoulFracture() { return CONFIG.enableSoulFracture.get(); }
     public static boolean enableWakefulDoom() { return CONFIG.enableWakefulDoom.get(); }
 
     public static double incomingDamageMultiplier() { return CONFIG.incomingDamageMultiplier.get(); }
     public static double armorEffectiveness() { return CONFIG.armorEffectiveness.get(); }
-    public static double outgoingDamageMultiplier() { return CONFIG.outgoingDamageMultiplier.get(); }
+    public static double bloodTollHealthCost() { return CONFIG.bloodTollHealthCost.get(); }
     public static int minFireTicks() { return CONFIG.minFireTicks.get(); }
     public static int neutralAggroInterval() { return CONFIG.neutralAggroInterval.get(); }
     public static double neutralAggroRange() { return CONFIG.neutralAggroRange.get(); }
@@ -1295,4 +1304,5 @@ public final class OathboundConfig {
 
     public static double covetfangCovetedPursuitMoveSpeedBonus() { return CONFIG.covetfangCovetedPursuitMoveSpeedBonus.get(); }
     public static boolean giveStarterOathboundRelic() { return CONFIG.giveStarterOathboundRelic.get(); }
+    public static boolean enableBrandkeepersMercy() { return CONFIG.enableBrandkeepersMercy.get(); }
 }

@@ -6,8 +6,6 @@
       "entries": [
         { "type": "minecraft:item", "name": "oathboundrelics:pilgrims_thorn", "weight": 6 },
         { "type": "minecraft:item", "name": "oathboundrelics:vulture_charm", "weight": 6 },
-        { "type": "minecraft:item", "name": "oathboundrelics:nebula_lens", "weight": 1 },
-        { "type": "minecraft:item", "name": "oathboundrelics:tide_pearl", "weight": 1 },
         { "type": "minecraft:item", "name": "oathboundrelics:executioners_coin", "weight": 2 }
       ]
     }

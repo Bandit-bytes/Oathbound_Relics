@@ -1,6 +1,7 @@
 package net.bandit.oathboundrelics.util;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
+import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.data.BrandedTimeData;
 import net.bandit.oathboundrelics.data.EnvyStateData;
 import net.bandit.oathboundrelics.data.PrideStateData;
@@ -185,5 +186,24 @@ public final class OathboundUtil {
         for (String criterion : progress.getRemainingCriteria()) {
             player.getAdvancements().award(advancement, criterion);
         }
+    }
+    public static boolean hasNearTotalBrandedAttunement(Player player) {
+        if (player == null) {
+            return false;
+        }
+
+        BrandedTimeData data = player.getData(AttachmentRegistry.BRANDED_TIME.get());
+        return data.qualifies(
+                OathboundConfig.slothWeaponMaxBrandedTicks(),
+                OathboundConfig.slothWeaponRequiredBrandedPercent()
+        );
+    }
+
+    public static boolean hasActiveBrandkeepersMercy(Player player) {
+        return player != null
+                && isBranded(player)
+                && hasNearTotalBrandedAttunement(player)
+                && OathboundConfig.enableBrandkeepersMercy()
+                && hasCurio(player, ItemRegistry.BRANDKEEPERS_MERCY.get());
     }
 }

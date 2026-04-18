@@ -21,6 +21,7 @@ public class TabRegistry {
             ItemRegistry.OATHBOUND_RELIC,
             ItemRegistry.FRACTURED_RELIC_ASH,
             ItemRegistry.ASHEN_NAIL,
+            ItemRegistry.BRANDKEEPERS_MERCY,
             ItemRegistry.GRAVEBELL_LOCKET,
             ItemRegistry.HUNTERS_SIGIL,
             ItemRegistry.PILGRIMS_THORN,

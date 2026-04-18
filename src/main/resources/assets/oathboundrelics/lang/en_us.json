@@ -37,7 +37,7 @@
   "tooltip.oathboundrelics.oathbound_relic.curse_1": " - Frailty: You take %s more incoming damage.",
   "tooltip.oathboundrelics.oathbound_relic.curse_2": " - Provocation: Neutral creatures within %s blocks turn hostile.",
   "tooltip.oathboundrelics.oathbound_relic.curse_3": " - Shattered Plate: Armor is %s less effective.",
-  "tooltip.oathboundrelics.oathbound_relic.curse_4": " - Oppression: You deal %s less damage.",
+  "tooltip.oathboundrelics.oathbound_relic.curse_4": " - Blood Toll: Successful attacks consume %s HP.",
   "tooltip.oathboundrelics.oathbound_relic.curse_5": " - Living Ember: Fire clings to you for at least %s while burning.",
   "tooltip.oathboundrelics.oathbound_relic.curse_6": " - Soul Fracture: On respawn, part of your soul was left behind. Retrieve it.",
   "tooltip.oathboundrelics.oathbound_relic.curse_7": " - Wakeful Doom: Sleep offers no refuge to the Branded.",
@@ -682,7 +682,7 @@
   "message.oathboundrelics.severance.pulse_doom": "Wakeful Doom",
   "message.oathboundrelics.severance.pulse_provocation": "Provocation",
   "message.oathboundrelics.severance.pulse_plate": "Shattered Plate",
-  "message.oathboundrelics.severance.pulse_oppression": "Oppression",
+  "message.oathboundrelics.severance.pulse_oppression": "Blood Toll",
 
   "advancement.oathboundrelics.severed_oath.title": "Rite of Severance",
   "advancement.oathboundrelics.severed_oath.description": "Destroy the Oathbound Relic and free yourself from the brand.",
@@ -691,5 +691,13 @@
   "tooltip.oathboundrelics.fractured_relic_ash.flavor": "Its warmth is gone, but not its memory.",
   "tooltip.oathboundrelics.fractured_relic_ash.effect": "Passive: The remains of a broken oath harden the bearer against the world.",
   "tooltip.oathboundrelics.fractured_relic_ash.detail_1": "Only ash remains where tyranny once circled the hand.",
-  "tooltip.oathboundrelics.fractured_relic_ash.detail_2": "The scar it left behind has learned to shield instead of bind."
+  "tooltip.oathboundrelics.fractured_relic_ash.detail_2": "The scar it left behind has learned to shield instead of bind.",
+
+  "item.oathboundrelics.brandkeepers_mercy": "Brandkeeper's Mercy",
+
+  "tooltip.oathboundrelics.brandkeepers_mercy.flavor": "Even the gentle things know when the Oath has already taken enough.",
+  "tooltip.oathboundrelics.brandkeepers_mercy.desc_1": "Passive: Neutral creatures no longer turn hostile from Provocation.",
+  "tooltip.oathboundrelics.brandkeepers_mercy.desc_2": "The Mercy quiets the curse that turns harmless life against you.",
+  "tooltip.oathboundrelics.brandkeepers_mercy.desc_3": "It answers only to one who is Branded and has endured nearly all their days beneath the Oath.",
+  "tooltip.oathboundrelics.brandkeepers_mercy.requires_time": "Dormant until the bearer reaches 99.5% Branded attunement."
 }

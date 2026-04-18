@@ -16,7 +16,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Default curses$()$(br)$(li)Frailty: you take extra incoming damage$(li)Provocation: nearby neutral creatures become hostile$(li)Shattered Plate: armor is less effective$(li)Oppression: you deal reduced damage$(li)Living Ember: fire clings longer$(li)Soul Fracture: respawning leaves part of the soul behind$(li)Wakeful Doom: sleep offers no refuge"
+      "text": "$(l)Default curses$()$(br)$(li)Frailty: you take extra incoming damage$(li)Provocation: nearby neutral creatures become hostile$(li)Shattered Plate: armor is less effective$(li)Blood Toll: Each successful damaging attack costs the bearer a small amount of health$(li)Living Ember: fire clings longer$(li)Soul Fracture: respawning leaves part of the soul behind$(li)Wakeful Doom: sleep offers no refuge"
     },
     {
       "type": "patchouli:text",

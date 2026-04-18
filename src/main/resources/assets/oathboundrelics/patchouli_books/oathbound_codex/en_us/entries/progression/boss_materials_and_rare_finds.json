@@ -1,0 +1,20 @@
+{
+  "name": "Boss Mat's & Finds",
+  "icon": "oathboundrelics:void_ashes",
+  "category": "oathboundrelics:90_progression",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Some materials and higher relics do not come from ruins alone. They must be taken from beings powerful enough to stand at the edge of older laws."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Known entity drops$()$(br)$(li)Wither can yield Oblivion Stone or Colossus Heart$(li)Warden can yield Oblivion Stone or Nebula Lens$(li)Ender Dragon can yield Oblivion Stone or Ember Seed$(li)Elder Guardian can yield Oblivion Stone or Tide Pearl$(li)Shulker yields 4 to 7 Void Ashes"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These are not ordinary monster drops. They are signs that the bearer has crossed from scavenging relics into awakening, shaping, and enduring them."
+    }
+  ]
+}

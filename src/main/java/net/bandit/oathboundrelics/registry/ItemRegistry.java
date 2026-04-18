@@ -28,6 +28,12 @@ public final class ItemRegistry {
             new Item.Properties().stacksTo(1).rarity(Rarity.RARE).fireResistant()
     );
 
+    public static final Supplier<Item> BRANDKEEPERS_MERCY = ITEMS.registerItem(
+            "brandkeepers_mercy",
+            BrandkeepersMercyItem::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant()
+    );
+
     public static final Supplier<Item> SOUL_LANTERN = ITEMS.register(
             "soul_lantern",
             () -> new SoulLanternItem(

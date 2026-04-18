@@ -144,9 +144,9 @@ public class OathboundRelicItem extends Item implements ICurioItem {
                 "tooltip.oathboundrelics.oathbound_relic.curse_3",
                 percentReductionFromMultiplier(OathboundConfig.armorEffectiveness()));
 
-        addCurseLine(tooltip, OathboundConfig.enableOppression(),
+        addCurseLine(tooltip, OathboundConfig.enableBloodToll(),
                 "tooltip.oathboundrelics.oathbound_relic.curse_4",
-                percentReductionFromMultiplier(OathboundConfig.outgoingDamageMultiplier()));
+                formatDecimal(OathboundConfig.bloodTollHealthCost()));
 
         addCurseLine(tooltip, OathboundConfig.enableLivingEmber(),
                 "tooltip.oathboundrelics.oathbound_relic.curse_5",

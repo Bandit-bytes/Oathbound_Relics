@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "oathboundrelics:gold_ring"
+    }
+  ],
+  "result": {
+    "id": "oathboundrelics:branded_time_checker",
+    "count": 1
+  }
+}
