@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "oathboundrelics:aredrite_ore",
-    "oathboundrelics:aredrite_block"
+    "oathboundrelics:aredrite_block",
+    "oathboundrelics:soul_lantern"
   ]
 }

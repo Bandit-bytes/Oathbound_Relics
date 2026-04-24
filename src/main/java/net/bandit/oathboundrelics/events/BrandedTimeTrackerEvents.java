@@ -25,8 +25,13 @@ public final class BrandedTimeTrackerEvents {
         }
 
         BrandedTimeData data = player.getData(AttachmentRegistry.BRANDED_TIME.get());
+
+        boolean branded = OathboundUtil.isBranded(player);
+        boolean active = OathboundUtil.isMeaningfullyActive(player);
+
         data.tick(
-                OathboundUtil.isBranded(player),
+                branded,
+                active,
                 OathboundConfig.slothWeaponMaxBrandedTicks()
         );
     }

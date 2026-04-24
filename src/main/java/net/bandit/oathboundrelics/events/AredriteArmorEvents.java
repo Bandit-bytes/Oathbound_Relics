@@ -67,8 +67,8 @@ public final class AredriteArmorEvents {
             applyChestplateEffects(player, branded);
         }
 
-        if (pieces >= 2 && branded) {
-            applyWitnessedBonus(player);
+        if (pieces >= 2) {
+            applyWitnessedBonus(player, branded);
         }
 
         if (pieces >= 3 && branded) {
@@ -130,21 +130,6 @@ public final class AredriteArmorEvents {
         if (player.hasEffect(MobEffects.DARKNESS)) {
             player.removeEffect(MobEffects.DARKNESS);
         }
-
-        double radius = branded ? 16.0D : 10.0D;
-        if (pieces >= 2 && branded) {
-            radius = 20.0D;
-        }
-
-        List<LivingEntity> targets = player.level().getEntitiesOfClass(
-                LivingEntity.class,
-                player.getBoundingBox().inflate(radius),
-                living -> living.isAlive() && living != player && (living instanceof Enemy || living.isInvisible())
-        );
-
-        for (LivingEntity target : targets) {
-            target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false, true));
-        }
     }
 
     private static void applyChestplateEffects(Player player, boolean branded) {
@@ -157,16 +142,42 @@ public final class AredriteArmorEvents {
         player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 40, amplifier, false, false, true));
     }
 
-    private static void applyWitnessedBonus(Player player) {
+    private static void applyWitnessedBonus(Player player, boolean branded) {
+
         List<LivingEntity> hostiles = player.level().getEntitiesOfClass(
+
                 LivingEntity.class,
+
                 player.getBoundingBox().inflate(20.0D),
+
                 living -> living.isAlive() && living != player && living instanceof Enemy
+
         );
 
-        for (LivingEntity hostile : hostiles) {
-            hostile.addEffect(new MobEffectInstance(MobEffects.GLOWING, 80, 0, false, false, true));
+        if (hostiles.isEmpty()) {
+
+            return;
+
         }
+
+        int amplifier = 0;
+
+        player.addEffect(new MobEffectInstance(
+
+                MobEffects.DAMAGE_RESISTANCE,
+
+                60,
+
+                amplifier,
+
+                false,
+
+                false,
+
+                true
+
+        ));
+
     }
 
     private static void applyHollowPressure(Player player) {

@@ -137,11 +137,11 @@ public final class OathboundBearerCurioEvents {
                 monster -> monster.isAlive()
         );
 
-        for (Monster monster : monsters) {
+        if (!oakskinActive && !monsters.isEmpty()) {
             refreshEffectIfNeeded(
-                    monster,
-                    MobEffects.GLOWING,
-                    OathboundConfig.eyeOfTheSleeplessWitnessGlowDurationTicks(),
+                    player,
+                    MobEffects.MOVEMENT_SPEED,
+                    60,
                     0,
                     20,
                     false,

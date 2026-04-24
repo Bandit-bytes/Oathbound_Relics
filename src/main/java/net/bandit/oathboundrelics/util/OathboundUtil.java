@@ -206,4 +206,31 @@ public final class OathboundUtil {
                 && OathboundConfig.enableBrandkeepersMercy()
                 && hasCurio(player, ItemRegistry.BRANDKEEPERS_MERCY.get());
     }
+
+    public static boolean isMeaningfullyActive(Player player) {
+        if (player == null || player.isSpectator()) {
+            return false;
+        }
+
+        if (player.swinging) {
+            return true;
+        }
+
+        if (player.isUsingItem()) {
+            return true;
+        }
+
+        if (player.isSprinting()) {
+            return true;
+        }
+
+        if (!player.onGround()) {
+            return true;
+        }
+
+        double horizontalSpeedSqr = player.getDeltaMovement().x * player.getDeltaMovement().x
+                + player.getDeltaMovement().z * player.getDeltaMovement().z;
+
+        return horizontalSpeedSqr > 0.0025D;
+    }
 }

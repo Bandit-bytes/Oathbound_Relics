@@ -21,6 +21,8 @@ public final class OathboundConfig {
     public final ModConfigSpec.BooleanValue enableShatteredPlate;
 
     public final ModConfigSpec.BooleanValue enableBloodToll;
+    public final ModConfigSpec.DoubleValue bloodTollHealthCost;
+    public final ModConfigSpec.IntValue bloodTollCooldownTicks;
 
     public final ModConfigSpec.BooleanValue enableLivingEmber;
     public final ModConfigSpec.BooleanValue enableSoulFracture;
@@ -29,7 +31,6 @@ public final class OathboundConfig {
     public final ModConfigSpec.DoubleValue incomingDamageMultiplier;
     public final ModConfigSpec.DoubleValue armorEffectiveness;
 
-    public final ModConfigSpec.DoubleValue bloodTollHealthCost;
 
     public final ModConfigSpec.IntValue minFireTicks;
     public final ModConfigSpec.IntValue neutralAggroInterval;
@@ -319,12 +320,16 @@ public final class OathboundConfig {
                 .defineInRange("armorEffectiveness", 0.70D, 0.0D, 1.0D);
 
         enableBloodToll = builder
-                .comment("If true, Branded players pay health when their attacks successfully damage a target.")
+                .comment("If true, Branded players pay health on their first successful damaging attack after the cooldown expires.")
                 .define("enableBloodToll", true);
 
         bloodTollHealthCost = builder
-                .comment("Health points consumed on each successful damaging attack. 1.0 = half a heart.")
+                .comment("Health points consumed by Blood Toll. 1.0 = half a heart.")
                 .defineInRange("bloodTollHealthCost", 1.0D, 0.0D, 20.0D);
+
+        bloodTollCooldownTicks = builder
+                .comment("Cooldown in ticks between Blood Toll triggers. 60 ticks = 3 seconds.")
+                .defineInRange("bloodTollCooldownTicks", 60, 0, 20 * 60 * 60);
         enableLivingEmber = builder
                 .comment("If true, fire lingers longer on Branded players.")
                 .define("enableLivingEmber", true);
@@ -631,7 +636,7 @@ public final class OathboundConfig {
 
         slothWeaponMaxBrandedTicks = builder
                 .comment("How many branded ticks are needed to reach 100% progress.")
-                .defineInRange("slothWeaponMaxBrandedTicks", 7200000L, 1L, Long.MAX_VALUE);
+                .defineInRange("slothWeaponMaxBrandedTicks", 360000L, 1L, Long.MAX_VALUE);
 
         slothWeaponRequiredBrandedPercent = builder
                 .comment("Progress percent required to use Branded weapons. 0.995 = 99.5%")
@@ -1305,4 +1310,5 @@ public final class OathboundConfig {
     public static double covetfangCovetedPursuitMoveSpeedBonus() { return CONFIG.covetfangCovetedPursuitMoveSpeedBonus.get(); }
     public static boolean giveStarterOathboundRelic() { return CONFIG.giveStarterOathboundRelic.get(); }
     public static boolean enableBrandkeepersMercy() { return CONFIG.enableBrandkeepersMercy.get(); }
+    public static int bloodTollCooldownTicks() { return CONFIG.bloodTollCooldownTicks.get(); }
 }

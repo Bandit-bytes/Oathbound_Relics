@@ -2,6 +2,8 @@ package net.bandit.oathboundrelics.events;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.bandit.oathboundrelics.config.OathboundConfig;
+import net.bandit.oathboundrelics.data.BrandedTimeData;
+import net.bandit.oathboundrelics.registry.AttachmentRegistry;
 import net.bandit.oathboundrelics.registry.ItemRegistry;
 import net.bandit.oathboundrelics.util.OathboundUtil;
 import net.bandit.oathboundrelics.util.SlothWeaponUtil;
@@ -28,6 +30,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.enchanting.EnchantmentLevelSetEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -43,6 +46,7 @@ public final class OathboundRelicEvents {
     private static final Map<UUID, Long> LAST_BREATH_COOLDOWNS = new HashMap<>();
     private static final int OVER_ENCHANT_THRESHOLD = 30;
     private static final int MAX_OVER_ENCHANT_BONUS = 1;
+    private static final Map<UUID, Long> BLOOD_TOLL_COOLDOWNS = new HashMap<>();
 
     private static boolean canAttemptOverEnchant(int enchantingPower) {
         return enchantingPower > OVER_ENCHANT_THRESHOLD;
@@ -70,7 +74,9 @@ public final class OathboundRelicEvents {
         }
 
         boolean branded = OathboundUtil.isBranded(player);
-
+        if (branded) {
+            refreshBrandedActivity(player, 20 * 5);
+        }
         if (branded) {
             if (OathboundConfig.enableFrailty()) {
                 event.setAmount((float) (event.getAmount() * OathboundConfig.incomingDamageMultiplier()));
@@ -162,6 +168,9 @@ public final class OathboundRelicEvents {
         }
 
         boolean branded = OathboundUtil.isBranded(player);
+        if (branded) {
+            refreshBrandedActivity(player, 20 * 5);
+        }
         float damage = event.getContainer().getNewDamage();
 
         // Bound outgoing relics
@@ -212,12 +221,54 @@ public final class OathboundRelicEvents {
     }
 
     @SubscribeEvent
+    public static void onSuccessfulHit(LivingDamageEvent.Post event) {
+        if (!(event.getSource().getEntity() instanceof Player player)) {
+            return;
+        }
+
+        if (event.getEntity() == player) {
+            return;
+        }
+
+        if (!OathboundUtil.isBranded(player)) {
+            return;
+        }
+        refreshBrandedActivity(player, 20 * 5);
+
+        if (!OathboundConfig.enableBloodToll()) {
+            return;
+        }
+
+        if (event.getNewDamage() <= 0.0F) {
+            return;
+        }
+
+        long gameTime = player.level().getGameTime();
+        if (isOnCooldown(BLOOD_TOLL_COOLDOWNS, player, gameTime)) {
+            return;
+        }
+
+        float cost = (float) OathboundConfig.bloodTollHealthCost();
+        if (cost <= 0.0F) {
+            return;
+        }
+
+        player.hurt(player.damageSources().generic(), cost);
+        setCooldown(BLOOD_TOLL_COOLDOWNS, player, gameTime, OathboundConfig.bloodTollCooldownTicks());
+    }
+
+    @SubscribeEvent
     public static void onKill(LivingDeathEvent event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
         }
 
         boolean branded = OathboundUtil.isBranded(player);
+        if (branded) {
+            BrandedTimeData data = player.getData(AttachmentRegistry.BRANDED_TIME.get());
+            data.refreshActivity(20 * 8);
+            data.addBrandedProgressTicks(20 * 5);
+        }
 // onKill
         if (branded
                 && OathboundConfig.enableGravebellLocket()
@@ -261,35 +312,6 @@ public final class OathboundRelicEvents {
         }
     }
 
-    @SubscribeEvent
-    public static void onSuccessfulHit(LivingDamageEvent.Post event) {
-        if (!(event.getSource().getEntity() instanceof Player player)) {
-            return;
-        }
-
-        if (event.getEntity() == player) {
-            return;
-        }
-
-        if (!OathboundUtil.isBranded(player)) {
-            return;
-        }
-
-        if (!OathboundConfig.enableBloodToll()) {
-            return;
-        }
-
-        if (event.getNewDamage() <= 0.0F) {
-            return;
-        }
-
-        float cost = (float) OathboundConfig.bloodTollHealthCost();
-        if (cost <= 0.0F) {
-            return;
-        }
-
-        player.hurt(player.damageSources().generic(), cost);
-    }
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
@@ -300,6 +322,23 @@ public final class OathboundRelicEvents {
         }
 
         boolean branded = OathboundUtil.isBranded(player);
+        BrandedTimeData brandedTimeData = player.getData(AttachmentRegistry.BRANDED_TIME.get());
+
+        boolean activeThisCheck = false;
+        if (branded && !player.isCreative() && !player.isSpectator()) {
+            activeThisCheck =
+                    isMeaningfullyMoving(player)
+                            || player.swinging
+                            || player.isUsingItem();
+        }
+
+        if (player.tickCount % 20 == 0) {
+            brandedTimeData.tick(
+                    branded,
+                    activeThisCheck,
+                    OathboundConfig.slothWeaponMaxBrandedTicks()
+            );
+        }
 
         if (!player.isCreative() && !player.isSpectator()) {
             if (branded
@@ -383,6 +422,20 @@ public final class OathboundRelicEvents {
     }
 
     @SubscribeEvent
+    public static void onBreakBlock(BlockEvent.BreakEvent event) {
+        if (!(event.getPlayer() instanceof Player player)) {
+            return;
+        }
+
+        if (!OathboundUtil.isBranded(player)) {
+            return;
+        }
+
+        BrandedTimeData data = player.getData(AttachmentRegistry.BRANDED_TIME.get());
+        data.refreshActivity(20 * 4);
+    }
+
+    @SubscribeEvent
     public static void onRespawn(PlayerEvent.PlayerRespawnEvent event) {
         Player player = event.getEntity();
 
@@ -461,6 +514,19 @@ public final class OathboundRelicEvents {
 
     private static float getOverEnchantChance(int enchantingPower) {
         return Math.min(0.90F, (enchantingPower - OVER_ENCHANT_THRESHOLD) * 0.10F);
+    }
+
+    private static void refreshBrandedActivity(Player player, int ticks) {
+        BrandedTimeData data = player.getData(AttachmentRegistry.BRANDED_TIME.get());
+        data.refreshActivity(ticks);
+    }
+
+    private static boolean isMeaningfullyMoving(Player player) {
+        double horizontalSpeedSqr =
+                player.getDeltaMovement().x * player.getDeltaMovement().x
+                        + player.getDeltaMovement().z * player.getDeltaMovement().z;
+
+        return horizontalSpeedSqr > 0.0025D || player.isSprinting() || !player.onGround();
     }
 
     private static int applyOneLevelOvercapIfEligible(

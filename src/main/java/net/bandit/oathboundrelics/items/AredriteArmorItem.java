@@ -25,7 +25,6 @@ public class AredriteArmorItem extends ArmorItem {
         switch (this.type) {
             case HELMET -> {
                 tooltip.add(Component.translatable("tooltip.oathboundrelics.aredrite_helmet.line_1").withStyle(ChatFormatting.GRAY));
-                tooltip.add(Component.translatable("tooltip.oathboundrelics.aredrite_helmet.line_2").withStyle(ChatFormatting.GRAY));
             }
             case CHESTPLATE -> {
                 tooltip.add(Component.translatable("tooltip.oathboundrelics.aredrite_chestplate.line_1").withStyle(ChatFormatting.GRAY));

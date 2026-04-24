@@ -21,13 +21,24 @@
   "item.oathboundrelics.torch_of_gravesong": "Torch of Gravesong",
   "item.oathboundrelics.branded_time_checker": "Branded Time Checker",
 
-  "tooltip.oathboundrelics.branded_time_checker.flavor": "It measures how much of your life the Oath has consumed.",
+  "message.oathboundrelics.branded_time.total": "Total active burden endured: %s",
+  "message.oathboundrelics.branded_time.branded": "Branded progress: %s",
+  "message.oathboundrelics.branded_time.ready": "The burden is sufficient. Your attunement now answers the higher threshold.",
+  "message.oathboundrelics.branded_time.not_ready": "The burden is not yet enough. Your attunement still falls short.",
+  "message.oathboundrelics.lethargic_flail.locked": "The weapon remains dormant. You have not yet endured enough Branded Progress.",
+  "message.oathboundrelics.vanitys_edge.locked": "The blade rejects you. Your Branded Progress is still lacking.",
 
-  "message.oathboundrelics.branded_time.total": "Total observed time: %s",
-  "message.oathboundrelics.branded_time.branded": "Branded time: %s",
-  "message.oathboundrelics.branded_time.percent": "Branded ratio: %s",
-  "message.oathboundrelics.branded_time.ready": "The burden is sufficient. The Sloth weapon may now be claimed.",
-  "message.oathboundrelics.branded_time.not_ready": "The burden is not yet enough.",
+  "tooltip.oathboundrelics.lethargic_flail.requires_time": "It answers only to those who have endured nearly the full burden of the Oath.",
+  "tooltip.oathboundrelics.vanitys_edge.requires_time": "It answers only to those who have endured nearly the full burden of the Oath.",
+  "tooltip.oathboundrelics.covetfang.requires_time": "It answers only to those who have endured nearly the full burden of the Oath.",
+
+  "tooltip.oathboundrelics.brandkeepers_mercy.desc_3": "It answers only to one who is Branded and has endured enough active burden beneath the Oath.",
+  "tooltip.oathboundrelics.titans_remnant.apex_stage": "Apex answers only to one who bears the Oath and has reached 99.5% Branded attunement.",
+
+  "tooltip.oathboundrelics.branded_time_checker.flavor": "It measures how much of your life the Oath has consumed.",
+  "message.oathboundrelics.branded_time.current": "Current Branded Progress: %s",
+  "message.oathboundrelics.branded_time.max": "Progress Required for Full Attunement: %s",
+  "message.oathboundrelics.branded_time.percent": "Attunement ratio: %s",
 
   "tooltip.oathboundrelics.oathbound_relic.effect": "Brands the bearer and awakens bound relics.",
   "tooltip.oathboundrelics.oathbound_relic.flavor": "A covenant that clings to flesh, soul, and memory.",
@@ -37,7 +48,7 @@
   "tooltip.oathboundrelics.oathbound_relic.curse_1": " - Frailty: You take %s more incoming damage.",
   "tooltip.oathboundrelics.oathbound_relic.curse_2": " - Provocation: Neutral creatures within %s blocks turn hostile.",
   "tooltip.oathboundrelics.oathbound_relic.curse_3": " - Shattered Plate: Armor is %s less effective.",
-  "tooltip.oathboundrelics.oathbound_relic.curse_4": " - Blood Toll: Successful attacks consume %s HP.",
+  "tooltip.oathboundrelics.oathbound_relic.curse_4": " - Blood Toll: Your first successful attack every %s consumes %s HP.",
   "tooltip.oathboundrelics.oathbound_relic.curse_5": " - Living Ember: Fire clings to you for at least %s while burning.",
   "tooltip.oathboundrelics.oathbound_relic.curse_6": " - Soul Fracture: On respawn, part of your soul was left behind. Retrieve it.",
   "tooltip.oathboundrelics.oathbound_relic.curse_7": " - Wakeful Doom: Sleep offers no refuge to the Branded.",
@@ -74,18 +85,11 @@
 
   "item.oathboundrelics.lethargic_greatsword": "Sloth: Lethargic Greatsword",
   "tooltip.oathboundrelics.lethargic_flail.inventory_burden": "While carried, it drags at the body and deepens hunger.",
-
-  "message.oathboundrelics.lethargic_flail.locked": "The weapon remains dormant. You have not yet endured enough Branded Time.",
   "tooltip.oathboundrelics.lethargic_flail.flavor": "You deserve some rest, after those days of suffering.",
   "tooltip.oathboundrelics.lethargic_flail.requires_brand": "Only the Branded may wield its power.",
-  "tooltip.oathboundrelics.lethargic_flail.requires_time": "It answers only to those who have endured nearly all their days beneath the Oath.",
   "tooltip.oathboundrelics.lethargic_flail.held_effects_header": "While held:",
   "tooltip.oathboundrelics.lethargic_flail.held_slow": " - Movement Speed %s",
   "tooltip.oathboundrelics.lethargic_flail.held_hunger": " - Hunger depletes %s faster",
-  "message.oathboundrelics.branded_time.current": "Current Branded Time: %s",
-  "message.oathboundrelics.branded_time.max": "Time Required for Full Attunement: %s",
-
-
   "tooltip.oathboundrelics.lethargic_flail.passive_header": "Passive:",
   "tooltip.oathboundrelics.lethargic_flail.passive_full_damage": " - Always deals full damage",
   "tooltip.oathboundrelics.lethargic_flail.passive_laziness": " - If a hit does not kill, gain 1 Laziness stack for 1 minute",
@@ -119,10 +123,6 @@
   "tooltip.oathboundrelics.chain_of_the_penitent.desc_3": "Marked strikes briefly reveal their victim.",
 
   "tooltip.oathboundrelics.eye_of_the_sleepless_witness.flavor": "It never closes. It only waits for you to look back.",
-  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_1": "Passive: Grants night vision and reveals nearby hostiles through a ghostly glow.",
-  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_2": "Oakskin: While grounded and not sprinting, gain Resistance I.",
-  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_3": "The Eye grows strongest when the bearer stands their ground.",
-
   "tooltip.oathboundrelics.censer_of_hollow_prayer.flavor": "Its smoke smells like old vows and empty sanctuaries.",
   "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_1": "Passive: Nearby monsters are slowed and weakened.",
   "tooltip.oathboundrelics.censer_of_hollow_prayer.desc_2": "The bearer gains renewal while surrounded.",
@@ -226,12 +226,8 @@
 
   "item.oathboundrelics.vanitys_edge": "Pride: Vanity's Edge",
 
-  "message.oathboundrelics.vanitys_edge.locked": "The blade rejects you. Your Branded time is still lacking.",
-
   "tooltip.oathboundrelics.vanitys_edge.flavor": "Pride once lifted the cursed. Now it waits to devour them.",
   "tooltip.oathboundrelics.vanitys_edge.requires_brand": "Only the Branded may wield its power.",
-  "tooltip.oathboundrelics.vanitys_edge.requires_time": "It answers only to those who have spent nearly all their days beneath the Oath.",
-
   "tooltip.oathboundrelics.vanitys_edge.passive_header": "Passives:",
   "tooltip.oathboundrelics.vanitys_edge.passive_full_damage": " - Always deals its full damage",
   "tooltip.oathboundrelics.vanitys_edge.passive_high_health_damage": " - Above half health, gain +2 damage for every 2 HP above the midpoint",
@@ -262,7 +258,6 @@
   "message.oathboundrelics.covetfang.locked": "The blade covets more suffering before it will answer you.",
   "tooltip.oathboundrelics.covetfang.flavor": "It does not want power. It wants the power that belongs to someone else.",
   "tooltip.oathboundrelics.covetfang.requires_brand": "Only the Branded may wield its hunger.",
-  "tooltip.oathboundrelics.covetfang.requires_time": "It answers only to those who have spent nearly all their days beneath the Oath.",
   "tooltip.oathboundrelics.covetfang.passive_header": "Passives:",
   "tooltip.oathboundrelics.covetfang.passive_full_damage": " - Always deals its full damage",
   "tooltip.oathboundrelics.covetfang.passive_superiority": " - Gains bonus damage against targets stronger, healthier, faster, or more blessed than you",
@@ -354,6 +349,10 @@
   "tooltip.oathboundrelics.state_dormant": "State: Dormant",
   "tooltip.oathboundrelics.state_awakened": "State: Oath Awakened",
 
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_1": "Passive: Grants night vision and sharpens the bearer when danger draws near.",
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_2": "Oakskin: While grounded and not sprinting, gain Resistance I.",
+  "tooltip.oathboundrelics.eye_of_the_sleepless_witness.desc_3": "When moving near hostiles, the Eye quickens your step instead.",
+
 
   "tooltip.oathboundrelics.colossus_heart.dormant_header": "Dormant:",
   "tooltip.oathboundrelics.colossus_heart.dormant_1": " - Grants armor and knockback resistance",
@@ -402,7 +401,6 @@
   "tooltip.oathboundrelics.titans_remnant.upgrade_hint": "Upgrade by using the remnant while holding the required catalyst in your offhand.",
   "tooltip.oathboundrelics.titans_remnant.mortal_stages": "Dormant, Latent, and Awakened may be used by any mortal.",
   "tooltip.oathboundrelics.titans_remnant.oath_stages": "Ascended and Transcendent answer only to a bearer of the Oathbound Relic.",
-  "tooltip.oathboundrelics.titans_remnant.apex_stage": "Apex answers only to one who bears the Oath and has endured 99.5% Branded attunement.",
   "tooltip.oathboundrelics.titans_remnant.stage_header": "State:",
   "tooltip.oathboundrelics.titans_remnant.stage.dormant": "Dormant",
   "tooltip.oathboundrelics.titans_remnant.stage.latent": "Latent",
@@ -698,6 +696,5 @@
   "tooltip.oathboundrelics.brandkeepers_mercy.flavor": "Even the gentle things know when the Oath has already taken enough.",
   "tooltip.oathboundrelics.brandkeepers_mercy.desc_1": "Passive: Neutral creatures no longer turn hostile from Provocation.",
   "tooltip.oathboundrelics.brandkeepers_mercy.desc_2": "The Mercy quiets the curse that turns harmless life against you.",
-  "tooltip.oathboundrelics.brandkeepers_mercy.desc_3": "It answers only to one who is Branded and has endured nearly all their days beneath the Oath.",
   "tooltip.oathboundrelics.brandkeepers_mercy.requires_time": "Dormant until the bearer reaches 99.5% Branded attunement."
 }
