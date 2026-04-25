@@ -11,13 +11,13 @@
     },
     {
       "type": "patchouli:text",
-      "title": "Stages",
-      "text": "$(l)Dormant$(): Greatly reduces incoming magic damage and prevents ender pearl self-damage. Water remains dangerous, making the bearer unstable.$(br2)$(l)Latent$(): Arcane resistance becomes even stronger, pushing the Lens further toward an anti-sorcery relic before its real signature power fully wakes."
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Greatly reduces incoming magic damage and prevents ender pearl self-damage, but water remains unstable for the bearer.$(br2)$(l)Latent$(): The Lens becomes even harsher against sorcery and begins occasionally warping space to evade physical attacks entirely. Rain and immersion can also force short unstable jumps."
     },
     {
       "type": "patchouli:text",
-      "title": "Stages Continued",
-      "text": "$(l)Awakened$(): The Lens unlocks $(thing)Reactive Blink$(). Some attacks are negated as the bearer blinks away, and the next hit becomes heavily empowered.$(br2)$(l)Ascended$(): Blink triggers more often, and the stored retaliation grows harsher.$(br2)$(l)Transcendent$(): The next strike becomes more punishing still, and successful blinks grant a brief burst of speed.$(br2)$(l)Apex$(): The Lens reaches its cruelest state, with the highest blink chance and the strongest post-blink retaliation."
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): The Lens fully unlocks $(thing)Reactive Blink$(), turning avoided hits into empowered retaliation.$(br2)$(l)Ascended$(): Post-blink retaliation becomes crueler, and unstable water reactions stop harming the bearer.$(br2)$(l)Transcendent$(): Successful blinks become more frequent and can briefly sharpen the bearer's movement.$(br2)$(l)Apex$(): The Lens reaches its most decisive state, with near-absolute anti-magic pressure and the strongest teleport-based counterattacks."
     }
   ]
 }

@@ -7,17 +7,17 @@
       "type": "patchouli:spotlight",
       "item": "oathboundrelics:tide_pearl",
       "title": "Tide Pearl",
-      "text": "A remnant of drowning pressure, battlefield control, and ownership of the deep. It begins by helping the bearer survive underwater and ends by making underwater combat theirs to command."
+      "text": "A remnant of drowning pressure, battlefield control, and ownership of the deep. It begins as underwater survival and ends by making water itself hostile to your enemies."
     },
     {
       "type": "patchouli:text",
-      "title": "Stages",
-      "text": "$(l)Dormant$(): Grants water breathing, underwater sight, underwater speed, and softer blows from aquatic creatures. The Pearl already makes the depths feel familiar.$(br2)$(l)Latent$(): Drowning no longer threatens the bearer at all, allowing the remnant to serve as a true underwater foundation instead of just a convenience."
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Grants water breathing, underwater sight, underwater speed, and softer blows from aquatic creatures. Fire is far more dangerous to the bearer.$(br2)$(l)Latent$(): Drowning no longer matters, and attacking while submerged or fighting through rain becomes more rewarding. The Pearl begins turning survival into offense."
     },
     {
       "type": "patchouli:text",
-      "title": "Stages Continued",
-      "text": "$(l)Awakened$(): Underwater, nearby enemies are slowed, weakened, and dragged downward. The Pearl begins controlling position, not just survival.$(br2)$(l)Ascended$(): The pressure field widens and the bearer begins gaining stronger offensive value underwater.$(br2)$(l)Transcendent$(): The water becomes actively hostile to nearby enemies, making escape and movement much harder.$(br2)$(l)Apex$(): The bearer gains Conduit Power underwater and commands the strongest version of the Pearl's suffocating field."
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): Underwater, nearby enemies are slowed, weakened, and dragged downward. Strikes can also waterlog foes even outside a full aura.$(br2)$(l)Ascended$(): Rain and water start sustaining the bearer, and a timed ward can blunt heavy incoming hits.$(br2)$(l)Transcendent$(): Fire loses its special advantage, a drowning aura surrounds the bearer, and heavily armored foes can be blasted upward.$(br2)$(l)Apex$(): The Pearl grants Conduit Power underwater and can outright execute weakened prey caught beneath its pressure."
     }
   ]
 }

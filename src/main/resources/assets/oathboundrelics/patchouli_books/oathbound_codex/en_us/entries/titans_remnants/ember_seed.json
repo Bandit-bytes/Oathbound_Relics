@@ -7,17 +7,17 @@
       "type": "patchouli:spotlight",
       "item": "oathboundrelics:ember_seed",
       "title": "Ember Seed",
-      "text": "A remnant of cinders, attrition, and accelerating aggression. The Seed rewards those who stay in the fight long enough to catch fire from the inside out."
+      "text": "A remnant of furnace-heat, attrition, and rising momentum. The Seed rewards those who stay in the fight until the fire starts feeding back into them."
     },
     {
       "type": "patchouli:text",
-      "title": "Stages",
-      "text": "$(l)Dormant$(): Grants fire resistance, burns melee attackers, and causes harmful effects on the bearer to wear off faster. Even asleep, the Seed answers suffering with heat.$(br2)$(l)Latent$(): Its cleansing grows stronger and its retaliation steadier, turning it from a simple survival tool into a reliquary of contained flame."
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Grants fire immunity and scorches melee attackers. Even asleep, the Seed answers pain with heat.$(br2)$(l)Latent$(): Harmful effects begin fading faster, but rain and immersion become dangerous to the bearer. The Seed dislikes being cooled, and that weakness becomes part of its identity."
     },
     {
       "type": "patchouli:text",
-      "title": "Stages Continued",
-      "text": "$(l)Awakened$(): The Seed unlocks $(thing)Heat$(). Taking damage and dealing damage both build it, and each point of Heat adds offensive pressure.$(br2)$(l)Ascended$(): Heat grants more damage and stronger movement speed, turning drawn-out fights into momentum engines.$(br2)$(l)Transcendent$(): When Heat climbs high enough, the Seed begins scorching nearby enemies automatically.$(br2)$(l)Apex$(): The bearer becomes a furnace in motion. Heat grants the highest damage scaling, the strongest speed bonus, and a burst of Strength when fully stoked."
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): The Seed unlocks $(thing)Heat$(). Taking damage and dealing damage both build it, and low health can trigger a fiery recovery burst.$(br2)$(l)Ascended$(): Heat grants stronger speed and attack speed, arrows can burn away before landing, and burning enemies begin feeding life back into the bearer.$(br2)$(l)Transcendent$(): Negative effects are stripped clean and rain no longer matters.$(br2)$(l)Apex$(): At extreme Heat the bearer becomes a furnace in motion, with the strongest scaling and the fiercest offensive pressure."
     }
   ]
 }

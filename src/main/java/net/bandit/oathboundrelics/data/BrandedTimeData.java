@@ -7,7 +7,7 @@ import org.jetbrains.annotations.UnknownNullability;
 
 public class BrandedTimeData implements INBTSerializable<CompoundTag> {
 
-    private static final int MAX_ACTIVITY_TICKS = 20 * 10; // 10 seconds
+    private static final int MAX_ACTIVITY_TICKS = 20 * 10;
 
     private long brandedProgressTicks;
     private int recentActivityTicks;
@@ -38,7 +38,7 @@ public class BrandedTimeData implements INBTSerializable<CompoundTag> {
 
     public void tick(boolean branded, boolean active, long maxTicks) {
         if (active) {
-            refreshActivity(20 * 3); // stay "active" briefly after recent play
+            refreshActivity(20 * 3);
         } else if (recentActivityTicks > 0) {
             recentActivityTicks--;
         }

@@ -7,15 +7,15 @@
     {
       "type": "patchouli:spotlight",
       "item": "oathboundrelics:eye_of_the_sleepless_witness",
-      "text": "A relic of watchfulness rather than speed. It is strongest when you hold your ground and let the Eye do the seeing."
+      "text": "A relic of watchfulness rather than brute force. It sharpens the bearer in danger, but grows strongest when they refuse to panic."
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Default behavior$()$(br)$(li)Can grant permanent Night Vision$(li)Reveals nearby monsters with Glowing$(li)Reveals farther while still than while moving$(li)When you are grounded, not sprinting, and moving slowly enough, you gain an Oakskin-like Resistance effect"
+      "text": "$(l)Default behavior$()$(br)$(li)Can grant permanent Night Vision$(li)While grounded, not sprinting, and moving slowly enough, grants an Oakskin-like Resistance effect$(li)While moving near hostile creatures, the Eye quickens your step$(li)Its stillness and movement states change how the relic supports you"
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)In plain English$()$(br)The Eye rewards calm footing. If you stop sprinting and stand your ground, it turns from a scouting relic into a defensive one."
+      "text": "$(l)In plain English$()$(br)The Eye rewards calm footing. If you hold your ground, it hardens into a defensive relic. If danger presses in and you move, it answers by sharpening your speed instead."
     }
   ]
 }

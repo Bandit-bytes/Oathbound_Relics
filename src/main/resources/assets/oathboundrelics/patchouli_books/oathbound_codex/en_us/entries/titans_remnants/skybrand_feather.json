@@ -7,17 +7,17 @@
       "type": "patchouli:spotlight",
       "item": "oathboundrelics:skybrand_feather",
       "title": "Skybrand Feather",
-      "text": "A remnant of descent, deflection, and violent landing. The Feather starts as protection from falling and becomes a weaponized relationship with height."
+      "text": "A remnant of descent, evasion, and violent landings. The Feather begins as fearlessness with height and ends as a way to weaponize the sky itself."
     },
     {
       "type": "patchouli:text",
       "title": "Dormant and Latent",
-      "text": "$(l)Dormant$(): Completely negates fall damage and grants a chance to nullify incoming projectiles. It already encourages fearlessness with terrain.$(br2)$(l)Latent$(): The projectile negation becomes more reliable, and the remnant's control over motion feels cleaner and more deliberate."
+      "text": "$(l)Dormant$(): Completely negates fall damage and may nullify incoming projectiles. Wither and void remain especially dangerous.$(br2)$(l)Latent$(): Projectile negation becomes more reliable, airborne movement grows cleaner, and attacks made while off the ground become more punishing."
     },
     {
       "type": "patchouli:text",
       "title": "Awakened, Ascended, Transcendent, Apex",
-      "text": "$(l)Awakened$(): The Feather grants controlled slow-falling while airborne and stores the force of meaningful falls. Landing releases that force in a burst around the bearer.$(br2)$(l)Ascended$(): The gust becomes stronger and nearby enemies are slowed when thrown back.$(br2)$(l)Transcendent$(): Both the landing burst and projectile evasion sharpen further.$(br2)$(l)Apex$(): The Feather reaches its peak: the strongest landing shock, the best projectile negation, and the cleanest mastery of descent."
+      "text": "$(l)Awakened$(): The Feather grants controlled slow-falling and turns meaningful drops into plunging strikes that burst on landing.$(br2)$(l)Ascended$(): The landing burst grows stronger, and even some magical attacks can be shrugged away.$(br2)$(l)Transcendent$(): The bearer can launch upward to cleanse harmful effects and reclaim the air.$(br2)$(l)Apex$(): Projectiles fail almost completely, plunging strikes become brutal, and even airborne melee attacks may simply slide past the bearer."
     }
   ]
 }
