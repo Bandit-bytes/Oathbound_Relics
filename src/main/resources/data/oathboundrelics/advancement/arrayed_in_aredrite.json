@@ -1,0 +1,59 @@
+{
+  "parent": "oathboundrelics:nebula_forged",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:aredrite_chestplate"
+    },
+    "title": "Arrayed in Aredrite",
+    "description": "Assemble the full Aredrite armor set.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:aredrite_helmet"
+          }
+        ]
+      }
+    },
+    "has_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:aredrite_chestplate"
+          }
+        ]
+      }
+    },
+    "has_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:aredrite_leggings"
+          }
+        ]
+      }
+    },
+    "has_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:aredrite_boots"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_helmet", "has_chestplate", "has_leggings", "has_boots"]
+  ]
+}

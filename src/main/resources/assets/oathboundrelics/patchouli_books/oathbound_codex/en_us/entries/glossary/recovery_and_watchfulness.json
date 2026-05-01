@@ -1,0 +1,28 @@
+{
+  "name": "Recovery & Watchfulness",
+  "icon": "oathboundrelics:oathbound_reliquary",
+  "category": "oathboundrelics:60_effects_and_states",
+  "sortnum": 30,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Renewal$()$(br)In Oathbound Relics, Renewal is a player-facing term for repeated sustain rather than a separate potion effect. Usually it means $(thing)Regeneration$(), $(thing)Absorption$(), or both refreshing while a relic's conditions are met."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Oakskin$()$(br)The Eye of the Sleepless Witness gains its defensive state while you are grounded, not sprinting, and moving very little. While active, it refreshes $(thing)Resistance$() and also expands how far nearby monsters are revealed."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Penance$()$(br)Chain of the Penitent stores a portion of damage you take as Penance. Your next direct melee hit cashes it out for bonus damage, marks the target with $(thing)Glowing$(), and then empties the stored value."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Desperate Want$()$(br)A Covetfang low-health state. If you fall below the threshold and something stronger is nearby, the weapon rewards your desperation with healing on hit and a movement speed bonus. If nothing worthy is near, the weapon instead becomes weaker and slower."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Over-Enchants$()$(br)Branded enchanting can push table power above 30. In this mod, that gives a chance for an enchantment already rolling at its normal maximum to become $(thing)one level higher$(), such as Protection V or Unbreaking IV. Overleveled enchant lines are shown in light purple."
+    }
+  ]
+}

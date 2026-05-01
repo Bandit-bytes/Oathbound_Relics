@@ -1,0 +1,28 @@
+{
+  "name": "Sloth & Martyr States",
+  "icon": "oathboundrelics:lethargic_greatsword",
+  "category": "oathboundrelics:60_effects_and_states",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Laziness$()$(br)A stacking self-debuff. Each stack reduces attack speed and attack damage by 5%."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Sloth Weakness$()$(br)An enemy debuff that reduces attack speed and attack damage by 30%."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Heavy Stun$()$(br)A near-root. Movement speed is reduced by 95%."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Martyr's Claim$()$(br)The stacking mark used by Nail of the First Martyr. Repeated hits build it on one target."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Judged$()$(br)The execution state created once Martyr's Claim reaches full stacks. Killing a Judged target rewards the attacker with Haste and Absorption."
+    }
+  ]
+}

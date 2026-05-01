@@ -1,0 +1,36 @@
+{
+  "name": "Rite of Severance",
+  "icon": "oathboundrelics:rite_of_severance",
+  "category": "oathboundrelics:rituals",
+  "advancement": "oathboundrelics:oathboundrelics:bear_the_oath",
+  "secret": true,
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Rite of Severance",
+      "text": "Not all who swear the Oath wish to bear it forever. For such cowards—or survivors—there exists one final answer: the $(l)Rite of Severance$(). This altar does not simply remove the brand. It tears it free.$(br2)The Rite destroys the $(item)Oathbound Relic$() utterly. Nothing of the bond remains but ash."
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "The Altar",
+      "recipe": "oathboundrelics:rite_of_severance",
+      "text": "Construct the altar and place it where you intend to be judged. It is not a gentle thing, nor a safe one."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Requirements",
+      "text": "To begin the Rite, the bearer must still have the $(item)Oathbound Relic$() equipped.$(br2)The altar also demands:$(li)1 Oblivion Stone$(li)4 Echo Shards$(li)4 Crying Obsidian$(li)16 Soul Soil$(br2)The Rite may only begin $(thing)at night$() or within $(thing)The End$()."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "What Happens",
+      "text": "Once awakened, the altar binds the bearer to itself for $(thing)60 seconds$(). The branded must remain within $(thing)7 blocks$() of the altar or the Rite fails.$(br2)Every few moments the altar forces the curses of the Oath back through the body: flame, weakness, hunger, darkness, shattered protection, and the rage of nearby creatures."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Completion",
+      "text": "If the bearer survives, the Relic is $(bold)destroyed$(), the brand is $(bold)cleansed$(), and only a trace remains: $(item)Fractured Relic Ash$().$(br2)Should the bearer flee, die, or lose the Relic before the Rite ends, the Severance fails—and the Oath endures."
+    }
+  ]
+}

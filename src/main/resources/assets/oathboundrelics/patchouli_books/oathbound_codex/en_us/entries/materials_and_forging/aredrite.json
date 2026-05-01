@@ -1,0 +1,43 @@
+{
+  "name": "Aredrite",
+  "icon": "oathboundrelics:aredrite_gem",
+  "category": "oathboundrelics:50_materials_and_forging",
+  "sortnum": 15,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:aredrite_gem",
+      "text": "Aredrite is an End-born gemstone used for high-tier armor and late-game progression."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Mining note$()$(br)Aredrite Ore is meant to be found only in the $(l)End$(), and should be mined with a $(l)diamond tool or better$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:aredrite_helmet",
+      "recipe2": "oathboundrelics:aredrite_chestplate",
+      "text": "Helmet and chestplate recipes.",
+      "title": "Aredrite Armor"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:aredrite_leggings",
+      "recipe2": "oathboundrelics:aredrite_boots",
+      "text": "Leggings and boots recipes.",
+      "title": "Aredrite Armor"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Piece effects$()$(br)$(li)$(item)Helmet$(): Removes $(thing)Blindness$() and $(thing)Darkness$() while worn$(li)$(item)Chestplate$(): Grants $(thing)Resistance$() at low health; stronger while $(l)Branded$()$(li)$(item)Leggings$(): Increase movement speed; stronger in the $(l)End$() and stronger still while $(l)Branded$()$(li)$(item)Boots$(): Negate fall damage in the $(l)End$(), and greatly reduce it elsewhere"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Set bonuses$()$(br)$(li)$(thing)2 Pieces — Witnessed$(): Nearby hostile creatures cause the armor to harden around the wearer.$(li)$(thing)3 Pieces — Hollow Pressure$(): If at least 3 hostiles are nearby, they are slowed and weakened while you gain Regeneration$(li)$(thing)4 Pieces — Last Horizon$(): While $(l)Branded$(), a lethal blow is denied, nearby enemies are weakened and revealed, and you gain a brief survival burst. This effect has a long cooldown."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Aredrite is not ordinary armor. It is meant to feel like End-forged survival gear that sharpens further beneath the Oath. The full set turns danger into pressure, recovery, and one final refusal to die."
+    }
+  ]
+}

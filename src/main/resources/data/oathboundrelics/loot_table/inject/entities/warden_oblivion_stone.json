@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone" },
+        { "type": "minecraft:item", "name": "oathboundrelics:nebula_lens" }
+      ]
+    }
+  ]
+}

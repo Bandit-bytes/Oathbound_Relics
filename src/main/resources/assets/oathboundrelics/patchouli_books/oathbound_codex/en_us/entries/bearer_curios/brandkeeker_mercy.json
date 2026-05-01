@@ -1,0 +1,21 @@
+{
+  "name": "Brandkeeper's Mercy",
+  "icon": "oathboundrelics:brandkeepers_mercy",
+  "category": "oathboundrelics:20_bearer_curios",
+  "sortnum": 21,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:brandkeepers_mercy",
+      "text": "A late mercy granted only to those who have endured nearly the full burden of the Oath. While active, it stills the curse of Provocation and keeps neutral creatures from turning hostile."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default behavior$()$(br)$(li)Requires the bearer to be $(l)Branded$()$(li)Requires $(l)99.5% Branded attunement$() before its effect can awaken$(li)While active, neutral creatures no longer become hostile from $(l)Provocation$()"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Brandkeeper's Mercy does not remove the Oath. It only marks the point where the world stops sending its gentler things to finish what the curse already began."
+    }
+  ]
+}

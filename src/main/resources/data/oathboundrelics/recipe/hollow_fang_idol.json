@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " EO",
+    " SD",
+    "B  "
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:echo_shard"
+    },
+    "O": {
+      "item": "oathboundrelics:oblivion_stone"
+    },
+    "S": {
+      "item": "minecraft:ender_pearl"
+    },
+    "D": {
+      "item": "minecraft:obsidian"
+    },
+    "B": {
+      "item": "minecraft:diamond_sword"
+    }
+  },
+  "result": {
+    "id": "oathboundrelics:hollow_fang_idol",
+    "count": 1
+  }
+}

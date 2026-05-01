@@ -1,0 +1,27 @@
+{
+  "name": "Sloth: Lethargic Greatsword",
+  "icon": "oathboundrelics:lethargic_greatsword",
+  "category": "oathboundrelics:40_sin_weapons",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:lethargic_greatsword",
+      "text": "Sloth is built around crushing weight, burden, and exhaustion. It always deals full damage, but every failure leaves the wielder lazier and less effective."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Core mechanics$()$(br)$(li)If a hit does not kill, gain $(l)Laziness$()$(li)Shift + Left Click: wide sweep for 75% damage, grants Laziness, and afflicts enemies with $(l)Sloth Weakness$()$(li)Right Click: throw a heavy cube for 75% damage and inflict $(l)Heavy Stun$()$(li)While held, movement speed drops and hunger drains faster"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:burdened_flail_idol",
+      "text": "First forge the $(l)Burdened Flail Idol$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:lethargic_greatsword",
+      "text": "Then combine $(l)Void Ashes$(), the $(l)Tablet of Stillness$(), the $(l)Burdened Flail Idol$(), and a $(l)Nebula Ring$() to forge the final weapon."
+    }
+  ]
+}

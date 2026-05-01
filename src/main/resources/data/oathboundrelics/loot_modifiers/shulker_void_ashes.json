@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_table",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:entities/shulker"
+    }
+  ],
+  "table": "oathboundrelics:inject/entities/shulker_void_ashes"
+}

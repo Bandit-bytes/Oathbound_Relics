@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "entries": [
+    "oathboundrelics:ancient_city_relics",
+    "oathboundrelics:stronghold_library_relics",
+    "oathboundrelics:stronghold_corridor_relics",
+    "oathboundrelics:stronghold_crossing_relics",
+    "oathboundrelics:nether_bridge_relics",
+    "oathboundrelics:bastion_treasure_relics",
+    "oathboundrelics:woodland_mansion_relics",
+    "oathboundrelics:end_city_treasure_relics",
+    "oathboundrelics:desert_pyramid_relics",
+    "oathboundrelics:trail_ruins_common_relics",
+    "oathboundrelics:trail_ruins_rare_relics",
+    "oathboundrelics:trial_reward_rare_relics",
+    "oathboundrelics:trial_reward_ominous_rare_relics",
+    "oathboundrelics:wither_oblivion_stone",
+    "oathboundrelics:warden_oblivion_stone",
+    "oathboundrelics:ender_dragon_oblivion_stone",
+    "oathboundrelics:jungle_temple_relics",
+    "oathboundrelics:elder_guardian_special_drop",
+    "oathboundrelics:shulker_void_ashes"
+  ]
+}

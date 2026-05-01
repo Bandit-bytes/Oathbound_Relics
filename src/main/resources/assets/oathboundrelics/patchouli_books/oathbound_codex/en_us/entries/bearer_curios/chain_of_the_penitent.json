@@ -1,0 +1,21 @@
+{
+  "name": "Chain of the Penitent",
+  "icon": "oathboundrelics:chain_of_the_penitent",
+  "category": "oathboundrelics:20_bearer_curios",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:chain_of_the_penitent",
+      "text": "Pain remembers. The Chain merely keeps count."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Damage taken is stored as $(l)Penance$(). The next direct melee hit spends that stored Penance for bonus damage, up to a configured cap. When the stored hit is released, the struck target is also revealed briefly with Glowing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Use case$()$(br)The Chain is strongest in fights where you know you will be hit before you get your answer. It is not a passive stat increase; it is delayed retaliation."
+    }
+  ]
+}

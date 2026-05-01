@@ -1,0 +1,23 @@
+{
+  "name": "Nebula Lens",
+  "icon": "oathboundrelics:nebula_lens",
+  "category": "oathboundrelics:titans_remnants",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:nebula_lens",
+      "title": "Nebula Lens",
+      "text": "A remnant of distortion, anti-magic, and retaliatory repositioning. The Lens is at its best when being attacked is merely the first mistake your enemy makes."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Greatly reduces incoming magic damage and prevents ender pearl self-damage, but water remains unstable for the bearer.$(br2)$(l)Latent$(): The Lens becomes even harsher against sorcery and begins occasionally warping space to evade physical attacks entirely. Rain and immersion can also force short unstable jumps."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): The Lens fully unlocks $(thing)Reactive Blink$(), turning avoided hits into empowered retaliation.$(br2)$(l)Ascended$(): Post-blink retaliation becomes crueler, and unstable water reactions stop harming the bearer.$(br2)$(l)Transcendent$(): Successful blinks become more frequent and can briefly sharpen the bearer's movement.$(br2)$(l)Apex$(): The Lens reaches its most decisive state, with near-absolute anti-magic pressure and the strongest teleport-based counterattacks."
+    }
+  ]
+}

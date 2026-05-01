@@ -1,0 +1,5 @@
+{
+  "order": 145,
+  "icon": "curios:slot/titans_remnant",
+  "validators": ["curios:tag"]
+}

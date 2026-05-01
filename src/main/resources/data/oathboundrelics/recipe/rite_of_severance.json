@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CSC",
+    "EOE",
+    "CSC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "S": {
+      "item": "minecraft:stone_bricks"
+    },
+    "E": {
+      "item": "oathboundrelics:soul_gem"
+    },
+    "O": {
+      "item": "oathboundrelics:oblivion_stone"
+    }
+  },
+  "result": {
+    "id": "oathboundrelics:rite_of_severance",
+    "count": 1
+  }
+}

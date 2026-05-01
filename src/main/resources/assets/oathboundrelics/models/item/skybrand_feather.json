@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "oathboundrelics:item/skybrand_feather_dormant"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.2
+      },
+      "model": "oathboundrelics:item/skybrand_feather_latent"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.4
+      },
+      "model": "oathboundrelics:item/skybrand_feather_awakened"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.6
+      },
+      "model": "oathboundrelics:item/skybrand_feather_ascended"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.8
+      },
+      "model": "oathboundrelics:item/skybrand_feather_transcendent"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 1.0
+      },
+      "model": "oathboundrelics:item/skybrand_feather_apex"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "oathboundrelics:aredrite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "oathboundrelics:aredrite_gem"
+  }
+}

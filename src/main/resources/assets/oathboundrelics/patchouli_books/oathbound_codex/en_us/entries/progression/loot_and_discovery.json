@@ -1,0 +1,20 @@
+{
+  "name": "Loot & Discovery",
+  "icon": "oathboundrelics:oblivion_stone",
+  "category": "oathboundrelics:90_progression",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Many Oathbound relics are not crafted first. They are $(l)unearthed$() from cursed ruins, forgotten vaults, and the remains of beings strong enough to leave behind something more than ordinary loot."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Structure caches$()$(br)$(li)Ancient Cities$(li)Strongholds$(li)Nether Fortresses$(li)Bastion Treasures$(li)Woodland Mansions$(li)End Cities$(li)Desert Pyramids$(li)Jungle Temples$(li)Trail Ruins$(li)Trial Chambers"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)General patterns$()$(br)Desert and Trail Ruin finds tend toward lighter relics and scavenger charms. Nether, Bastion, and Trial loot skew harsher and more martial. Strongholds, Ancient Cities, and End structures hold stranger and more burdened relic work."
+    }
+  ]
+}

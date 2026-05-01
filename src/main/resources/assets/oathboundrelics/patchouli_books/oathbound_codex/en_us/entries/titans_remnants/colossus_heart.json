@@ -1,0 +1,23 @@
+{
+  "name": "Colossus Heart",
+  "icon": "oathboundrelics:colossus_heart",
+  "category": "oathboundrelics:titans_remnants",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:colossus_heart",
+      "title": "Colossus Heart",
+      "text": "A remnant of enormous weight and stored violence. The Heart is for bearers who can survive punishment long enough to turn it back outward as ruin."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Grants armor, knockback resistance, and a heavy movement penalty. It also shrugs off petty environmental harm.$(br2)$(l)Latent$(): The Heart hardens further, ignores even more chip damage, and begins building $(thing)Tremor$() when the bearer suffers physical punishment. Tremor slowly fades out of combat, but while it lasts the Heart starts fighting back harder."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): Tremor becomes a true combat mechanic. Heavy hits pulse outward, nearby enemies are staggered, and the bearer becomes fully resistant to knockback.$(br2)$(l)Ascended$(): Tremor grants stronger damage, the Heart bleeds part of incoming physical damage into Absorption, and the base burden eases.$(br2)$(l)Transcendent$(): The movement penalty falls away entirely, letting the Heart keep its mass without feeling anchored.$(br2)$(l)Apex$(): Maximum Tremor turns the next exchange into a siege blow, with the Heart at its hardest and most punishing."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Soul Lantern",
+  "icon": "oathboundrelics:soul_lantern",
+  "category": "oathboundrelics:10_relics_and_curios",
+  "advancement": "oathboundrelics:obtain_soul_lantern",
+  "sortnum": 12,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:soul_lantern",
+      "title": "Soul Lantern",
+      "link_recipe": true,
+      "text": "$(5)Few relics are more profane than this.$() The Soul Lantern does not draw power from the dead. It steals it from the living.$(br2)Only an oathbound bearer may awaken it."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:soul_lantern",
+      "title": "Forging the Lantern",
+      "text": "Its shell is fashioned from grief, ash, and starlight. Even unlit, it feels hungry."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Harvesting a Soul Gem",
+      "text": "With the lantern in hand, $(l)right-click$() to harvest a fragment of your own soul.$(br2)Each use removes $(c)1 HP$() from your permanent max vitality and creates $(6)1 Soul Gem$().$(br2)The lantern will refuse to harvest if too little of you remains."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Purpose",
+      "text": "Soul Gems are used to advance certain $(d)Titan's Remnants$(). Their power is not bought with loot alone, but with the slow unmaking of the bearer."
+    }
+  ]
+}

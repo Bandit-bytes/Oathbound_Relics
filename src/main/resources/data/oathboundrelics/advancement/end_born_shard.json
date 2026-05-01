@@ -1,0 +1,26 @@
+{
+  "parent": "oathboundrelics:bear_the_oath",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:aredrite_gem"
+    },
+    "title": "End-Born Shard",
+    "description": "Obtain an Aredrite Gem from the End.",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_aredrite_gem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:aredrite_gem"
+          }
+        ]
+      }
+    }
+  }
+}

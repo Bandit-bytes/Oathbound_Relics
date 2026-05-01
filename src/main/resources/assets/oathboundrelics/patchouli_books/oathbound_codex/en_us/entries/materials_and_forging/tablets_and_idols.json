@@ -1,0 +1,39 @@
+{
+  "name": "Tablets & Idols",
+  "icon": "oathboundrelics:tablet_of_stillness",
+  "category": "oathboundrelics:50_materials_and_forging",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Tablets$() are the thematic keys. $(l)Idols$() are the forged ritual components. Neither one is the final weapon on its own."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:tablet_of_stillness",
+      "text": "Tablet of Stillness: tied to Sloth and used to awaken the blank form of the Sloth weapon."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:tablet_of_exaltation",
+      "text": "Tablet of Exaltation: tied to Pride and used to awaken Vanity's Edge."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:tablet_of_coveting",
+      "text": "Tablet of Coveting: tied to Envy and used to awaken Covetfang."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:burdened_flail_idol",
+      "recipe2": "oathboundrelics:mirrorsteel_idol",
+      "text": "Two of the three idol recipes. If your recipe file names differ from these IDs, update the page recipe IDs to match.",
+      "title": "Idol Recipes"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:hollow_fang_idol",
+      "text": "The Hollow Fang Idol is the Envy weapon's forged ritual component."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "parent": "oathboundrelics:ashes_of_the_void",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:nebula_ring"
+    },
+    "title": "Nebula Forged",
+    "description": "Craft a Nebula Ring from the earlier ring line.",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "has_nebula_ring": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:nebula_ring"
+          }
+        ]
+      }
+    }
+  }
+}

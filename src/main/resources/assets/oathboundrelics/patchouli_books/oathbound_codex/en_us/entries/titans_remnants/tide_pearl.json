@@ -1,0 +1,23 @@
+{
+  "name": "Tide Pearl",
+  "icon": "oathboundrelics:tide_pearl",
+  "category": "oathboundrelics:titans_remnants",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:tide_pearl",
+      "title": "Tide Pearl",
+      "text": "A remnant of drowning pressure, battlefield control, and ownership of the deep. It begins as underwater survival and ends by making water itself hostile to your enemies."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Grants water breathing, underwater sight, underwater speed, and softer blows from aquatic creatures. Fire is far more dangerous to the bearer.$(br2)$(l)Latent$(): Drowning no longer matters, and attacking while submerged or fighting through rain becomes more rewarding. The Pearl begins turning survival into offense."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): Underwater, nearby enemies are slowed, weakened, and dragged downward. Strikes can also waterlog foes even outside a full aura.$(br2)$(l)Ascended$(): Rain and water start sustaining the bearer, and a timed ward can blunt heavy incoming hits.$(br2)$(l)Transcendent$(): Fire loses its special advantage, a drowning aura surrounds the bearer, and heavily armored foes can be blasted upward.$(br2)$(l)Apex$(): The Pearl grants Conduit Power underwater and can outright execute weakened prey caught beneath its pressure."
+    }
+  ]
+}

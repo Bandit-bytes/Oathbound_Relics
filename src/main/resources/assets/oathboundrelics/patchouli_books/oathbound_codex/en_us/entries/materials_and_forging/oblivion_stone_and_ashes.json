@@ -1,0 +1,26 @@
+{
+  "name": "Oblivion Stone & Void Ashes",
+  "icon": "oathboundrelics:oblivion_stone",
+  "category": "oathboundrelics:50_materials_and_forging",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:oblivion_stone",
+      "text": "A dead stone that remembers what the world was trying to forget. This is the core rare material of higher relic work."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Oblivion Stone$() is used in ring progression, idol forging, Aredrite armor, and other high-tier recipes. The draft wiki places it as a rare reward from dangerous structures and major bosses."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:void_ashes",
+      "text": "What remains when End-born power is burned past memory. Void Ashes are the last fuel before awakening the sin weapons."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The final forge recipes for Sloth, Pride, and Envy all require $(l)Void Ashes$()."
+    }
+  ]
+}

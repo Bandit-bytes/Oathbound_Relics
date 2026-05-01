@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "oathboundrelics:item/colossus_heart_dormant"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.2
+      },
+      "model": "oathboundrelics:item/colossus_heart_latent"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.4
+      },
+      "model": "oathboundrelics:item/colossus_heart_awakened"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.6
+      },
+      "model": "oathboundrelics:item/colossus_heart_ascended"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.8
+      },
+      "model": "oathboundrelics:item/colossus_heart_transcendent"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 1.0
+      },
+      "model": "oathboundrelics:item/colossus_heart_apex"
+    }
+  ]
+}

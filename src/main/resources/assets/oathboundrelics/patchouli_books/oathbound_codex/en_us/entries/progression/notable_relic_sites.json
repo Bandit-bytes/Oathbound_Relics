@@ -1,0 +1,20 @@
+{
+  "name": "Notable Relic Sites",
+  "icon": "oathboundrelics:tablet_of_stillness",
+  "category": "oathboundrelics:90_progression",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Ancient City / Jungle Temple$()$(br)Ancient Cities favor Hollow Eye, Shroud of the Forsaken, Eye of the Sleepless Witness, Tablets of Stillness and Coveting, and Oblivion Stone. Jungle Temples lean toward Hollow Eye, Eye of the Sleepless Witness, Tablets of Stillness and Coveting, and Oblivion Stone."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Strongholds$()$(br)Libraries favor Censer of Hollow Prayer, Eye of the Sleepless Witness, Oathbound Reliquary, and tablets. Support loot favors Gravebell Locket, Mourner's Thread, Nebula Lens, Censer of Hollow Prayer, and one of the current sources of Brandkeeper's Mercy."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)End / Trial / Nether$()$(br)End Cities are one of the current sources of Brandkeeper's Mercy, alongside void-bound relics and Oblivion Stone. Ominous Trial rewards can also yield Brandkeeper's Mercy. Nether and Bastion loot lean toward ash, judgment, penance, martyrdom, and last-breath relics."
+    }
+  ]
+}

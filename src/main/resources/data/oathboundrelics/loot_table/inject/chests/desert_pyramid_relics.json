@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "oathboundrelics:pilgrims_thorn", "weight": 6 },
+        { "type": "minecraft:item", "name": "oathboundrelics:vulture_charm", "weight": 6 },
+        { "type": "minecraft:item", "name": "oathboundrelics:executioners_coin", "weight": 2 }
+      ]
+    }
+  ]
+}

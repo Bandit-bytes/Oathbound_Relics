@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "hanging=false,waterlogged=false": { "model": "oathboundrelics:block/soul_lantern" },
+    "hanging=true,waterlogged=false":  { "model": "oathboundrelics:block/soul_lantern_hanging" },
+    "hanging=false,waterlogged=true":  { "model": "oathboundrelics:block/soul_lantern" },
+    "hanging=true,waterlogged=true":   { "model": "oathboundrelics:block/soul_lantern_hanging" }
+  }
+}

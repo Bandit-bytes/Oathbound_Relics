@@ -1,0 +1,21 @@
+{
+  "name": "Eye of the Sleepless Witness",
+  "icon": "oathboundrelics:eye_of_the_sleepless_witness",
+  "category": "oathboundrelics:20_bearer_curios",
+  "sortnum": 15,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:eye_of_the_sleepless_witness",
+      "text": "A relic of watchfulness rather than brute force. It sharpens the bearer in danger, but grows strongest when they refuse to panic."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default behavior$()$(br)$(li)Can grant permanent Night Vision$(li)While grounded, not sprinting, and moving slowly enough, grants an Oakskin-like Resistance effect$(li)While moving near hostile creatures, the Eye quickens your step$(li)Its stillness and movement states change how the relic supports you"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)In plain English$()$(br)The Eye rewards calm footing. If you hold your ground, it hardens into a defensive relic. If danger presses in and you move, it answers by sharpening your speed instead."
+    }
+  ]
+}

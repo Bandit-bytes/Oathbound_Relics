@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "oathboundrelics",
+  "version": "${version}",
+  "name": "Oathbound Relics",
+  "description": "Oathbound Relics adds cursed curios, powerful relics, unique weapons, and progression tied to the Oathbound Relic.",
+  "authors": ["Bandit-Bytes"],
+  "license": "All Rights Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.bandit.oathboundrelics.OathboundRelicsMod"
+    ],
+    "client": [
+      "net.bandit.oathboundrelics.client.OathboundRelicsClient"
+    ]
+  },
+  "mixins": [
+    "oathboundrelics.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*",
+    "trinkets": ">=3.10.0",
+    "patchouli": "*"
+  },
+  "suggests": {
+    "jei": "*"
+  }
+}

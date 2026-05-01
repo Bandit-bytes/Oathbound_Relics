@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "net.bandit.oathboundrelics.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "EnchantmentMenuMixin",
+    "EnchantmentTooltipMixin",
+    "EntityPersistentDataMixin",
+    "LivingEntityEventMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

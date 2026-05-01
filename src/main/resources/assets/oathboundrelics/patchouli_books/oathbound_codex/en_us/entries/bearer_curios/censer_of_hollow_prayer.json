@@ -1,0 +1,21 @@
+{
+  "name": "Censer of Hollow Prayer",
+  "icon": "oathboundrelics:censer_of_hollow_prayer",
+  "category": "oathboundrelics:20_bearer_curios",
+  "sortnum": 20,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:censer_of_hollow_prayer",
+      "text": "A battlefield censer that weakens nearby monsters while feeding the wearer defensive recovery."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Default behavior$()$(br)$(li)Nearby monsters are afflicted with Weakness and Slowness$(li)If any monsters are nearby, the wearer refreshes Regeneration$(li)If enough monsters are nearby to count as a crowd, the wearer also refreshes Absorption"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "This is another place where $(l)Renewal$() is the right player-facing term. The censer does not grant a separate custom Renewal effect; instead, it keeps refreshing the survival tools that let you hold a dangerous zone."
+    }
+  ]
+}

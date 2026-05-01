@@ -1,0 +1,15 @@
+{
+  "entities": ["player"],
+  "slots": [
+    "head",
+    "necklace",
+    "back",
+    "titans_remnant",
+    "body",
+    "belt",
+    "hands",
+    "ring",
+    "charm",
+    "feet"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Pride & Envy States",
+  "icon": "oathboundrelics:vanitys_edge",
+  "category": "oathboundrelics:60_effects_and_states",
+  "sortnum": 20,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Pride Suppression$()$(br)A debuff that cuts attack speed and attack damage by 50%. Vanity's Edge uses it against nearby allies, pets, and companions while held."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Losing Pride$()$(br)A collapse state. Movement speed, attack speed, and attack damage are all reduced by 80%."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Bravery$()$(br)The rare opposite of Losing Pride. Attack speed and attack damage are massively increased, and the weapon also grants Regeneration through its outcome logic."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Coveted Target$()$(br)The target Covetfang has claimed. Claimed targets are easier to pursue and offer better rewards when slain."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Envy Score$()$(br)Covetfang's comparison system. It checks whether the target has more health, more max health, more armor, more movement speed, or more beneficial effects than you."
+    }
+  ]
+}

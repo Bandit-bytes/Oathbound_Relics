@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "oathboundrelics:hollow_eye", "weight": 8 },
+        { "type": "minecraft:item", "name": "oathboundrelics:shroud_of_the_forsaken", "weight": 5 },
+        { "type": "minecraft:item", "name": "oathboundrelics:eye_of_the_sleepless_witness", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:tablet_of_stillness", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:tablet_of_coveting", "weight": 1 },
+        { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone", "weight": 1 }
+      ]
+    }
+  ]
+}

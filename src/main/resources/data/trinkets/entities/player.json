@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "entities": ["player"],
+  "slots": [
+    "head/hat",
+    "chest/necklace",
+    "chest/back",
+    "legs/belt",
+    "hand/glove",
+    "oathbound/titans_remnant",
+    "hand/ring",
+    "offhand/glove",
+    "feet/shoes",
+    "feet/aglet"
+  ]
+}

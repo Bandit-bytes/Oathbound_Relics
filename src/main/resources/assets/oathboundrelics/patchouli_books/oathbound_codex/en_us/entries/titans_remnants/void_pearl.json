@@ -1,0 +1,23 @@
+{
+  "name": "Void Pearl",
+  "icon": "oathboundrelics:void_pearl",
+  "category": "oathboundrelics:titans_remnants",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:void_pearl",
+      "title": "Void Pearl",
+      "text": "A remnant of darkness, decay, and survival that should not be possible. The Pearl grows strongest where light weakens and death starts to lose its claim."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Dormant and Latent",
+      "text": "$(l)Dormant$(): Grants airless survival, strips away harmful effects, inflicts withering decay on strikes, and may deny a lethal blow.$(br2)$(l)Latent$(): Harmful effects are cleared even faster, and the Pearl becomes more reliable at refusing death without yet revealing its full hunger."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Awakened, Ascended, Transcendent, Apex",
+      "text": "$(l)Awakened$(): In low light, nearby enemies begin suffering a field of wither and weakness, and fatal blows are no longer left to chance.$(br2)$(l)Ascended$(): Darkness now feeds the bearer directly with speed and attack speed, while decayed enemies hit back more weakly.$(br2)$(l)Transcendent$(): The aura widens, strips beneficial effects, and the Pearl's refusal of death becomes far more complete.$(br2)$(l)Apex$(): The bearer becomes hardest to kill in darkness, and decayed prey below the threshold can simply be finished outright."
+    }
+  ]
+}

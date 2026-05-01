@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "AOA",
+    "A A"
+  ],
+  "key": {
+    "A": {
+      "item": "oathboundrelics:aredrite_gem"
+    },
+    "O": {
+      "item": "oathboundrelics:oblivion_stone"
+    }
+  },
+  "result": {
+    "id": "oathboundrelics:aredrite_leggings",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Remnant Terms",
+  "icon": "oathboundrelics:nebula_lens",
+  "category": "oathboundrelics:titans_remnants",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Tremor",
+      "text": "$(thing)Tremor$() belongs to the Colossus Heart. Physical punishment builds Tremor, and while it is high the Heart grows less sluggish and far more violent. Later stages turn a full Tremor bar into sweeping shockwaves and brutal melee pressure."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Heat",
+      "text": "$(thing)Heat$() belongs to the Ember Seed. Taking damage and dealing damage both feed it. Heat gradually cools over time, but while it is high the bearer grows faster, strikes harder, and eventually erupts in fire when it overfills."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Reactive Blink",
+      "text": "$(thing)Reactive Blink$() belongs to the Nebula Lens. Some incoming hits simply fail to land as the bearer snaps away from danger. That stolen instant is then loaded into the next strike, turning escape into retaliation."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Withering Decay",
+      "text": "$(thing)Withering Decay$() belongs to the Void Pearl. The Pearl wounds through darkness and lingering ruin rather than clean force. At higher stages, enemies suffering decay become weaker, easier to finish, and more useful to the bearer than they ever meant to be."
+    }
+  ]
+}

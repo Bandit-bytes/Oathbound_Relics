@@ -1,0 +1,36 @@
+{
+  "name": "Branded Progress",
+  "icon": "oathboundrelics:branded_time_checker",
+  "category": "oathboundrelics:00_the_oath",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Late weapons are not unlocked by a short quest. They are tied to $(l)Branded Progress$(), which rises only while you are $(l)Branded$() and actively enduring the burden through real play. The default requirement for the true weapon gate is $(l)99.5%$() of the full progress track."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:branded_book",
+      "title": "Branded Time Checker",
+      "text": "Craft a $(l)Branded Time Checker$() with a $(item)Book$() and a $(item)Gold Ring$(). This tool helps track your Branded Progress and whether your burden is great enough to meet the late-game weapon gate."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:branded_time_checker",
+      "text": "The $(l)Branded Time Checker$() reveals your current Branded Progress, your ratio toward full attunement, and whether the burden is sufficient for the late-game weapons.",
+      "title": "Branded Time Checker"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Shared rule for Sloth, Pride, and Envy$()$(br)All three current sin weapons use the same Branded Progress gate. In creative mode, the config can optionally bypass that requirement for testing."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)What counts$()$(br)Branded Progress is meant to reflect $(l)active play$(), not idle waiting. Moving, fighting, mining, and otherwise surviving beneath the Oath will advance it. Standing still and going AFK will not meaningfully satisfy the burden."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Practical advice$()$(br)If players ask why a weapon is locked, the short answer is almost always: $(br)$(li)You must be Branded$(li)You must have endured enough active Branded Progress$(li)The weapon will stay dormant until both are true"
+    }
+  ]
+}

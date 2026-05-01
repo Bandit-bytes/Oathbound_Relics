@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "oathboundrelics:gravebell_locket",
+    "oathboundrelics:hunters_sigil",
+    "oathboundrelics:mourners_thread",
+    "oathboundrelics:relic_of_the_last_breath",
+    "oathboundrelics:chain_of_the_penitent"
+  ]
+}

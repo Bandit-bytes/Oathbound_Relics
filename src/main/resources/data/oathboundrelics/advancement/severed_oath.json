@@ -1,0 +1,23 @@
+{
+  "parent": "oathboundrelics:bear_the_oath",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:fractured_relic_ash"
+    },
+    "title": {
+      "translate": "advancement.oathboundrelics.severed_oath.title"
+    },
+    "description": {
+      "translate": "advancement.oathboundrelics.severed_oath.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "severed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Pride: Vanity's Edge",
+  "icon": "oathboundrelics:vanitys_edge",
+  "category": "oathboundrelics:40_sin_weapons",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:vanitys_edge",
+      "text": "Pride rewards superiority, control, and killing cleanly. It becomes terrifying at high health and humiliating when its wielder fails."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Core mechanics$()$(br)$(li)Always deals full damage$(li)Above half health, gains bonus damage for every 2 HP above the midpoint$(li)Above 80% health, gains bonus attack speed$(li)Non-kill hits cost the wielder health$(li)Kills grant temporary attack speed stacks$(li)While held, nearby allies, pets, and companions suffer $(l)Pride Suppression$()$(li)Mid-health weakens the wielder$(li)Low health can force $(l)Losing Pride$() or $(l)Bravery$()"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:mirrorsteel_idol",
+      "text": "First forge the $(l)Mirrorsteel Idol$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:vanitys_edge",
+      "text": "Then combine $(l)Void Ashes$(), the $(l)Tablet of Exaltation$(), the $(l)Mirrorsteel Idol$(), and a $(l)Nebula Ring$() to forge Vanity's Edge."
+    }
+  ]
+}

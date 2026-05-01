@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "oathboundrelics:item/ember_seed_dormant"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.2
+      },
+      "model": "oathboundrelics:item/ember_seed_latent"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.4
+      },
+      "model": "oathboundrelics:item/ember_seed_awakened"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.6
+      },
+      "model": "oathboundrelics:item/ember_seed_ascended"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 0.8
+      },
+      "model": "oathboundrelics:item/ember_seed_transcendent"
+    },
+    {
+      "predicate": {
+        "oathboundrelics:stage": 1.0
+      },
+      "model": "oathboundrelics:item/ember_seed_apex"
+    }
+  ]
+}
