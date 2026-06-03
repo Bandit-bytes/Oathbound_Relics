@@ -3,6 +3,8 @@ package net.bandit.oathboundrelics.config;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.List;
+
 public final class OathboundConfig {
 
     public static final OathboundConfig CONFIG;
@@ -40,6 +42,10 @@ public final class OathboundConfig {
     public final ModConfigSpec.IntValue respawnWeaknessAmplifier;
     public final ModConfigSpec.IntValue respawnSlownessDurationTicks;
     public final ModConfigSpec.IntValue respawnSlownessAmplifier;
+
+
+    //custom attributes
+    public final ModConfigSpec.ConfigValue<List<? extends String>> oathboundRelicCustomAttributes;
 
     // Branded blessings
     public final ModConfigSpec.BooleanValue enableLootingBlessing;
@@ -365,6 +371,23 @@ public final class OathboundConfig {
         builder.pop();
 
         builder.push("blessings");
+
+        oathboundRelicCustomAttributes = builder
+                .comment(
+                        "Optional custom attribute modifiers added to the Oathbound Relic.",
+                        "Blank by default. Add entries only if you want extra blessings or curses.",
+                        "Format: attribute_id;amount;operation;type;display_name",
+                        "operation: ADD_VALUE, ADD_MULTIPLIED_BASE, or ADD_MULTIPLIED_TOTAL",
+                        "type: blessing or curse",
+                        "Example blessing: minecraft:generic.max_health;4.0;ADD_VALUE;blessing;Max Health",
+                        "Example curse: minecraft:generic.movement_speed;-0.10;ADD_MULTIPLIED_TOTAL;curse;Movement Speed"
+                )
+                .defineListAllowEmpty(
+                        "customAttributes",
+                        List.of(),
+                        () -> "minecraft:generic.max_health;4.0;ADD_VALUE;blessing;Max Health",
+                        entry -> entry instanceof String
+                );
 
         enableLootingBlessing = builder
                 .comment("If true, the Branded player gains bonus Looting.")
@@ -1311,4 +1334,8 @@ public final class OathboundConfig {
     public static boolean giveStarterOathboundRelic() { return CONFIG.giveStarterOathboundRelic.get(); }
     public static boolean enableBrandkeepersMercy() { return CONFIG.enableBrandkeepersMercy.get(); }
     public static int bloodTollCooldownTicks() { return CONFIG.bloodTollCooldownTicks.get(); }
+
+    public static List<? extends String> oathboundRelicCustomAttributes() {
+        return CONFIG.oathboundRelicCustomAttributes.get();
+    }
 }
