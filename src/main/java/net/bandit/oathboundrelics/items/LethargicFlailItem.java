@@ -62,7 +62,7 @@ public class LethargicFlailItem extends SwordItem {
             );
 
             cube.setBaseDamage(
-                    (float) player.getAttributeValue(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE)
+                    (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE)
                             * (float) OathboundConfig.lethargicFlailCubeDamageMultiplier()
             );
             cube.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.1F, 0.0F);
