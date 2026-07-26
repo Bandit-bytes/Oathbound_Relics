@@ -281,6 +281,19 @@ public final class OathboundConfig {
 
     public final ModConfigSpec.DoubleValue covetfangCovetedPursuitMoveSpeedBonus;
 
+    // Wrath weapon
+    public final ModConfigSpec.BooleanValue enableRuinwake;
+    public final ModConfigSpec.IntValue ruinwakeMaxGrudgeStacks;
+    public final ModConfigSpec.DoubleValue ruinwakeDamageBonusPerStack;
+    public final ModConfigSpec.IntValue ruinwakeStackDecayTicks;
+    public final ModConfigSpec.DoubleValue ruinwakeReleaseRadius;
+    public final ModConfigSpec.DoubleValue ruinwakeReleaseBaseDamageMultiplier;
+    public final ModConfigSpec.DoubleValue ruinwakeReleaseDamagePerStack;
+    public final ModConfigSpec.DoubleValue ruinwakeReleaseKnockback;
+    public final ModConfigSpec.IntValue ruinwakeWeaknessDurationTicks;
+    public final ModConfigSpec.IntValue ruinwakeReleaseCooldownTicks;
+    public final ModConfigSpec.DoubleValue ruinwakeFailureSelfDamagePerStack;
+
 
     private OathboundConfig(ModConfigSpec.Builder builder) {
         builder.push("oathbound_relic");
@@ -902,6 +915,54 @@ public final class OathboundConfig {
 
         builder.pop();
 
+        builder.push("wrath_weapon");
+
+        enableRuinwake = builder
+                .comment("If true, Wrath: Ruinwake is enabled.")
+                .define("enabled", true);
+
+        ruinwakeMaxGrudgeStacks = builder
+                .comment("Maximum Grudge stacks Ruinwake can hold.")
+                .defineInRange("maxGrudgeStacks", 5, 1, 64);
+
+        ruinwakeDamageBonusPerStack = builder
+                .comment("Multiplicative melee damage gained per Grudge stack. 0.08 = 8 percent.")
+                .defineInRange("damageBonusPerStack", 0.08D, 0.0D, 10.0D);
+
+        ruinwakeStackDecayTicks = builder
+                .comment("Ticks out of combat before one Grudge stack decays.")
+                .defineInRange("stackDecayTicks", 20 * 10, 20, 20 * 60 * 60);
+
+        ruinwakeReleaseRadius = builder
+                .comment("Radius in blocks for Ruinwake's right-click shockwave.")
+                .defineInRange("releaseRadius", 6.0D, 1.0D, 64.0D);
+
+        ruinwakeReleaseBaseDamageMultiplier = builder
+                .comment("Base attack damage multiplier for Ruinwake's shockwave.")
+                .defineInRange("releaseBaseDamageMultiplier", 0.45D, 0.0D, 100.0D);
+
+        ruinwakeReleaseDamagePerStack = builder
+                .comment("Additional shockwave damage multiplier per consumed Grudge stack.")
+                .defineInRange("releaseDamagePerStack", 0.17D, 0.0D, 100.0D);
+
+        ruinwakeReleaseKnockback = builder
+                .comment("Knockback strength applied by Ruinwake's shockwave.")
+                .defineInRange("releaseKnockback", 1.2D, 0.0D, 10.0D);
+
+        ruinwakeWeaknessDurationTicks = builder
+                .comment("Weakness duration applied by Ruinwake's shockwave.")
+                .defineInRange("weaknessDurationTicks", 20 * 8, 0, 20 * 60 * 60);
+
+        ruinwakeReleaseCooldownTicks = builder
+                .comment("Cooldown in ticks for Ruinwake's shockwave.")
+                .defineInRange("releaseCooldownTicks", 20 * 12, 0, 20 * 60 * 60);
+
+        ruinwakeFailureSelfDamagePerStack = builder
+                .comment("Health lost per consumed Grudge stack if the shockwave kills nothing.")
+                .defineInRange("failureSelfDamagePerStack", 1.0D, 0.0D, 20.0D);
+
+        builder.pop();
+
         builder.push("bearer_curios");
 
         builder.push("oathbound_reliquary");
@@ -1331,6 +1392,19 @@ public final class OathboundConfig {
     public static double covetfangHopelessComparisonMoveSpeedPenalty() { return CONFIG.covetfangHopelessComparisonMoveSpeedPenalty.get(); }
 
     public static double covetfangCovetedPursuitMoveSpeedBonus() { return CONFIG.covetfangCovetedPursuitMoveSpeedBonus.get(); }
+
+    public static boolean enableRuinwake() { return CONFIG.enableRuinwake.get(); }
+    public static int ruinwakeMaxGrudgeStacks() { return CONFIG.ruinwakeMaxGrudgeStacks.get(); }
+    public static double ruinwakeDamageBonusPerStack() { return CONFIG.ruinwakeDamageBonusPerStack.get(); }
+    public static int ruinwakeStackDecayTicks() { return CONFIG.ruinwakeStackDecayTicks.get(); }
+    public static double ruinwakeReleaseRadius() { return CONFIG.ruinwakeReleaseRadius.get(); }
+    public static double ruinwakeReleaseBaseDamageMultiplier() { return CONFIG.ruinwakeReleaseBaseDamageMultiplier.get(); }
+    public static double ruinwakeReleaseDamagePerStack() { return CONFIG.ruinwakeReleaseDamagePerStack.get(); }
+    public static double ruinwakeReleaseKnockback() { return CONFIG.ruinwakeReleaseKnockback.get(); }
+    public static int ruinwakeWeaknessDurationTicks() { return CONFIG.ruinwakeWeaknessDurationTicks.get(); }
+    public static int ruinwakeReleaseCooldownTicks() { return CONFIG.ruinwakeReleaseCooldownTicks.get(); }
+    public static double ruinwakeFailureSelfDamagePerStack() { return CONFIG.ruinwakeFailureSelfDamagePerStack.get(); }
+
     public static boolean giveStarterOathboundRelic() { return CONFIG.giveStarterOathboundRelic.get(); }
     public static boolean enableBrandkeepersMercy() { return CONFIG.enableBrandkeepersMercy.get(); }
     public static int bloodTollCooldownTicks() { return CONFIG.bloodTollCooldownTicks.get(); }
