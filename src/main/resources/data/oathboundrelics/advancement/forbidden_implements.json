@@ -41,11 +41,24 @@
           }
         ]
       }
+    },
+    "has_wrath_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:ruinwake"
+          }
+        ]
+      }
     }
   },
   "requirements": [
-    ["has_sloth_weapon"],
-    ["has_pride_weapon"],
-    ["has_envy_weapon"]
+    [
+      "has_sloth_weapon",
+      "has_pride_weapon",
+      "has_envy_weapon",
+      "has_wrath_weapon"
+    ]
   ]
 }

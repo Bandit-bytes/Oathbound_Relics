@@ -23,6 +23,7 @@ public final class OathboundConfig {
         FabricConfigBridge.defineDefault("oathbound_relic.respawnWeaknessAmplifier", 0);
         FabricConfigBridge.defineDefault("oathbound_relic.respawnSlownessDurationTicks", 20 * 15);
         FabricConfigBridge.defineDefault("oathbound_relic.respawnSlownessAmplifier", 0);
+        FabricConfigBridge.defineDefault("blessings.customAttributes", "");
         FabricConfigBridge.defineDefault("blessings.enableLootingBlessing", true);
         FabricConfigBridge.defineDefault("blessings.enableFortuneBlessing", true);
         FabricConfigBridge.defineDefault("blessings.enableXpBlessing", true);
@@ -93,6 +94,17 @@ public final class OathboundConfig {
         FabricConfigBridge.defineDefault("free_relics.hollow_eye.revealInvisibleRadius", 16.0D);
         FabricConfigBridge.defineDefault("free_relics.hollow_eye.revealInvisibleDurationTicks", 60);
         FabricConfigBridge.defineDefault("free_relics.hollow_eye.revealInvisibleIntervalTicks", 20);
+        FabricConfigBridge.defineDefault("wrath_weapon.enabled", true);
+        FabricConfigBridge.defineDefault("wrath_weapon.maxGrudgeStacks", 5);
+        FabricConfigBridge.defineDefault("wrath_weapon.damageBonusPerStack", 0.08D);
+        FabricConfigBridge.defineDefault("wrath_weapon.stackDecayTicks", 20 * 10);
+        FabricConfigBridge.defineDefault("wrath_weapon.releaseRadius", 6.0D);
+        FabricConfigBridge.defineDefault("wrath_weapon.releaseBaseDamageMultiplier", 0.45D);
+        FabricConfigBridge.defineDefault("wrath_weapon.releaseDamagePerStack", 0.17D);
+        FabricConfigBridge.defineDefault("wrath_weapon.releaseKnockback", 1.2D);
+        FabricConfigBridge.defineDefault("wrath_weapon.weaknessDurationTicks", 20 * 8);
+        FabricConfigBridge.defineDefault("wrath_weapon.releaseCooldownTicks", 20 * 12);
+        FabricConfigBridge.defineDefault("wrath_weapon.failureSelfDamagePerStack", 1.0D);
         FabricConfigBridge.defineDefault("bearer_curios.oathbound_reliquary.enabled", true);
         FabricConfigBridge.defineDefault("bearer_curios.oathbound_reliquary.bonusCharmSlots", 2);
         FabricConfigBridge.defineDefault("bearer_curios.oathbound_reliquary.lowHealthThreshold", 10.0D);
@@ -238,6 +250,7 @@ public final class OathboundConfig {
     public static int respawnWeaknessAmplifier() { return I("oathbound_relic.respawnWeaknessAmplifier", 0); }
     public static int respawnSlownessDurationTicks() { return I("oathbound_relic.respawnSlownessDurationTicks", 20 * 15); }
     public static int respawnSlownessAmplifier() { return I("oathbound_relic.respawnSlownessAmplifier", 0); }
+    public static java.util.List<String> oathboundRelicCustomAttributes() { return FabricConfigBridge.getStringList("blessings.customAttributes"); }
     public static boolean enableLootingBlessing() { return B("blessings.enableLootingBlessing", true); }
     public static boolean enableFortuneBlessing() { return B("blessings.enableFortuneBlessing", true); }
     public static boolean enableXpBlessing() { return B("blessings.enableXpBlessing", true); }
@@ -308,6 +321,17 @@ public final class OathboundConfig {
     public static double hollowEyeRevealInvisibleRadius() { return D("free_relics.hollow_eye.revealInvisibleRadius", 16.0D); }
     public static int hollowEyeRevealInvisibleDurationTicks() { return I("free_relics.hollow_eye.revealInvisibleDurationTicks", 60); }
     public static int hollowEyeRevealInvisibleIntervalTicks() { return I("free_relics.hollow_eye.revealInvisibleIntervalTicks", 20); }
+    public static boolean enableRuinwake() { return B("wrath_weapon.enabled", true); }
+    public static int ruinwakeMaxGrudgeStacks() { return I("wrath_weapon.maxGrudgeStacks", 5); }
+    public static double ruinwakeDamageBonusPerStack() { return D("wrath_weapon.damageBonusPerStack", 0.08D); }
+    public static int ruinwakeStackDecayTicks() { return I("wrath_weapon.stackDecayTicks", 20 * 10); }
+    public static double ruinwakeReleaseRadius() { return D("wrath_weapon.releaseRadius", 6.0D); }
+    public static double ruinwakeReleaseBaseDamageMultiplier() { return D("wrath_weapon.releaseBaseDamageMultiplier", 0.45D); }
+    public static double ruinwakeReleaseDamagePerStack() { return D("wrath_weapon.releaseDamagePerStack", 0.17D); }
+    public static double ruinwakeReleaseKnockback() { return D("wrath_weapon.releaseKnockback", 1.2D); }
+    public static int ruinwakeWeaknessDurationTicks() { return I("wrath_weapon.weaknessDurationTicks", 20 * 8); }
+    public static int ruinwakeReleaseCooldownTicks() { return I("wrath_weapon.releaseCooldownTicks", 20 * 12); }
+    public static double ruinwakeFailureSelfDamagePerStack() { return D("wrath_weapon.failureSelfDamagePerStack", 1.0D); }
     public static boolean enableOathboundReliquary() { return B("bearer_curios.oathbound_reliquary.enabled", true); }
     public static int oathboundReliquaryBonusCharmSlots() { return I("bearer_curios.oathbound_reliquary.bonusCharmSlots", 2); }
     public static double oathboundReliquaryLowHealthThreshold() { return D("bearer_curios.oathbound_reliquary.lowHealthThreshold", 10.0D); }

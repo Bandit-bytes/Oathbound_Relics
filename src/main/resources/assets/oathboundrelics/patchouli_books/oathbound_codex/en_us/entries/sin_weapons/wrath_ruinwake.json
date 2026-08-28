@@ -1,0 +1,27 @@
+{
+  "name": "Wrath: Ruinwake",
+  "icon": "oathboundrelics:ruinwake",
+  "category": "oathboundrelics:40_sin_weapons",
+  "sortnum": 20,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:ruinwake",
+      "text": "Ruinwake turns injury into stored violence. It rewards staying in the fight, but punishes a bearer who releases that anger without finishing anything."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Core mechanics$()$(br)$(li)Dealing or taking direct damage builds $(l)Grudge$(), up to five stacks$(li)Each Grudge stack increases direct melee damage$(li)Grudge fades slowly outside combat$(li)Right Click consumes all Grudge in a soul-flame shockwave$(li)The shockwave damages, weakens, and scatters nearby enemies$(li)If the release kills nothing, the stored wrath turns inward and wounds the bearer"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:grudgebound_idol",
+      "text": "First forge the $(l)Grudgebound Idol$() from an Oblivion Stone, a Netherite Sword, Echo Shards, Crying Obsidian, Obsidian, and Soul Sand."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:ruinwake",
+      "text": "Then combine $(l)Void Ashes$(), the $(l)Tablet of Vengeance$(), the $(l)Grudgebound Idol$(), and a $(l)Nebula Ring$() to awaken Ruinwake."
+    }
+  ]
+}

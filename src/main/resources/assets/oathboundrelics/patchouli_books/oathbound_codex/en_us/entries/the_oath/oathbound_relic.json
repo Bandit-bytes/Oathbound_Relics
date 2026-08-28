@@ -6,7 +6,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "The $(l)Oathbound Relic$() is the heart of the mod. Equipping it marks the bearer as $(l:glossary/remnant_terms#branded)Branded$(), awakens Oathbound systems, and opens the path to stronger curios, remnants, and eventually the sin weapons.$(br2)Power is never free in this mod. The Relic gives blessings, but it also imposes curses that define the entire tone of progression."
+      "text": "The $(l)Oathbound Relic$() is the heart of the mod. Equipping it marks the bearer as $(l:oathboundrelics:glossary/remnant_terms#branded)Branded$(), awakens Oathbound systems, and opens the path to stronger curios, remnants, and eventually the sin weapons.$(br2)Power is never free in this mod. The Relic gives blessings, but it also imposes curses that define the entire tone of progression."
     },
     {
       "type": "patchouli:spotlight",

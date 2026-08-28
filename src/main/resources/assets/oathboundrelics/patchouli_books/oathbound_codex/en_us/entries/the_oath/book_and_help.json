@@ -6,11 +6,11 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "This book is meant to solve the exact problem your players keep running into: short tooltips can sound cool without being fully self-explanatory.$(br2)Use the later sections for $(l)recipes$(), $(l)loot and forging paths$(), $(l)plain-English effect explanations$(), and the difference between $(l)dormant$() and $(l)awakened$() states."
+      "text": "This book is meant to solve the exact problem your players keep running into: short tooltips can sound cool without being fully self-explanatory.$(br2)Use the later sections for $(l)recipes$(), $(l)loot and forging paths$(), $(l)plain-English effect explanations$(), and how the six $(l)Titan Remnant stages$() differ."
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Terminology used in this book$()$(br)$(li)Dormant: base power, usable without being Branded$(li)Awakened: the stronger Oath-powered version of a dormant item$(li)Renewal: a player-facing term for regeneration, emergency sustain, or recovery granted by certain relics$(li)Heating Up / Heat: the Ember Seed's internal resource$(li)Impact: the Colossus Heart's stored retaliation power"
+      "text": "$(l)Terminology used in this book$()$(br)$(li)Dormant: the base stored state of a Titan's Remnant$(li)Latent and Awakened: stronger stages that any wearer can wield$(li)Ascended and Transcendent: higher stages that require the Oathbound Relic$(li)Apex: the final stage, requiring near-complete Branded attunement$(li)Renewal: a player-facing term for regeneration, emergency sustain, or recovery granted by certain relics$(li)Heat: the Ember Seed's internal resource$(li)Tremor: the Colossus Heart's stored retaliation resource"
     }
   ]
 }

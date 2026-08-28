@@ -92,26 +92,32 @@ public final class TitansRemnantEvents {
 
     @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
-        if (!(event.getEntity() instanceof Player player)) {
+        // Incoming Remnant effects apply when the damaged entity is a player.
+        if (event.getEntity() instanceof Player player) {
+            TitanRemnantType type = TitansRemnantUtil.getEquippedType(player);
+            if (type != null) {
+                TitanRemnantStage stage = TitansRemnantUtil.getEffectiveEquippedStage(player);
+
+                switch (type) {
+                    case COLOSSUS_HEART -> handleColossusIncoming(player, event, stage);
+                    case EMBER_SEED -> handleEmberIncoming(player, event, stage);
+                    case TIDE_PEARL -> handleTideIncoming(player, event, stage);
+                    case SKYBRAND_FEATHER -> handleSkybrandIncoming(player, event, stage);
+                    case NEBULA_LENS -> handleNebulaIncoming(player, event, stage);
+                    case VOID_PEARL -> handleVoidIncoming(player, event, stage);
+                }
+            }
+        }
+
+        // Secondary damage created by a Remnant should still be allowed to hit
+        // and be defended against, but must not receive the attacker's Remnant
+        // bonuses again.
+        if (PROCESSING_SECONDARY_DAMAGE.get()) {
             return;
         }
 
-        TitanRemnantType type = TitansRemnantUtil.getEquippedType(player);
-        if (type == null) {
-            return;
-        }
-
-        TitanRemnantStage stage = TitansRemnantUtil.getEffectiveEquippedStage(player);
-
-        switch (type) {
-            case COLOSSUS_HEART -> handleColossusIncoming(player, event, stage);
-            case EMBER_SEED -> handleEmberIncoming(player, event, stage);
-            case TIDE_PEARL -> handleTideIncoming(player, event, stage);
-            case SKYBRAND_FEATHER -> handleSkybrandIncoming(player, event, stage);
-            case NEBULA_LENS -> handleNebulaIncoming(player, event, stage);
-            case VOID_PEARL -> handleVoidIncoming(player, event, stage);
-        }
-
+        // Outgoing Remnant effects apply to direct player attacks against any
+        // living target, not only PvP targets.
         if (event.getSource().getEntity() instanceof Player attacker
                 && event.getSource().getDirectEntity() == attacker
                 && event.getEntity() instanceof LivingEntity target) {
@@ -124,8 +130,15 @@ public final class TitansRemnantEvents {
         }
     }
 
+    private static final ThreadLocal<Boolean> PROCESSING_SECONDARY_DAMAGE =
+            ThreadLocal.withInitial(() -> false);
+
     @SubscribeEvent
     public static void onDamagePost(LivingDamageEvent.Post event) {
+        if (PROCESSING_SECONDARY_DAMAGE.get()) {
+            return;
+        }
+
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
         }
@@ -436,7 +449,7 @@ public final class TitansRemnantEvents {
                         default -> 1.0D;
                     });
                     enemy.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 1 : 0, false, false, true));
-                    enemy.hurt(player.damageSources().playerAttack(player), burstDamage);
+                    dealSecondaryDamage(enemy, player, burstDamage);
                 }
             }
 
@@ -655,7 +668,7 @@ public final class TitansRemnantEvents {
 
             for (LivingEntity enemy : getNearbyEnemies(player, 4.0D)) {
                 knockbackFrom(enemy, player, 0.9D);
-                enemy.hurt(player.damageSources().playerAttack(player), 2.0F);
+                dealSecondaryDamage(enemy, player, 2.0F);
             }
         }
     }
@@ -983,7 +996,7 @@ public final class TitansRemnantEvents {
                 living -> living != player && living != target && living.isAlive()
         )) {
             knockbackFrom(enemy, target, 1.2D + (tremor * 0.05D));
-            enemy.hurt(target.damageSources().playerAttack(player), splashDamage);
+            dealSecondaryDamage(enemy, player, splashDamage);
         }
 
         TitansRemnantUtil.setTremor(player, 0);
@@ -1072,7 +1085,7 @@ public final class TitansRemnantEvents {
                 living -> living != player && living != target && living.isAlive()
         )) {
             knockbackFrom(enemy, target, 0.8D);
-            enemy.hurt(target.damageSources().playerAttack(player), splashDamage);
+            dealSecondaryDamage(enemy, player, splashDamage);
         }
 
         if (stage.atLeast(TitanRemnantStage.ASCENDED) && !target.isAlive()) {
@@ -1123,6 +1136,28 @@ public final class TitansRemnantEvents {
 
         if (stage.atLeast(TitanRemnantStage.AWAKENED) && target.hasEffect(MobEffects.WITHER)) {
             player.heal(stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 1.0F : 0.5F);
+        }
+    }
+
+    /**
+     * Applies player-attributed secondary damage without allowing that damage
+     * to re-enter Oathbound Relics' outgoing post-damage handlers.
+     *
+     * This prevents effects such as Colossus and Skybrand splash damage from
+     * recursively triggering themselves through LivingDamageEvent.Post.
+     */
+    private static void dealSecondaryDamage(LivingEntity target, Player player, float damage) {
+        if (damage <= 0.0F || !target.isAlive()) {
+            return;
+        }
+
+        boolean previous = PROCESSING_SECONDARY_DAMAGE.get();
+
+        try {
+            PROCESSING_SECONDARY_DAMAGE.set(true);
+            target.hurt(player.damageSources().playerAttack(player), damage);
+        } finally {
+            PROCESSING_SECONDARY_DAMAGE.set(previous);
         }
     }
 

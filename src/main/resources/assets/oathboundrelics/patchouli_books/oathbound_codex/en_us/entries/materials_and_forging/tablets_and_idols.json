@@ -24,6 +24,11 @@
       "text": "Tablet of Coveting: tied to Envy and used to awaken Covetfang."
     },
     {
+      "type": "patchouli:spotlight",
+      "item": "oathboundrelics:tablet_of_vengeance",
+      "text": "Tablet of Vengeance: tied to Wrath and used to awaken Ruinwake. It can be discovered in Bastion treasure and ominous Trial Chamber rewards."
+    },
+    {
       "type": "patchouli:crafting",
       "recipe": "oathboundrelics:burdened_flail_idol",
       "recipe2": "oathboundrelics:mirrorsteel_idol",
@@ -34,6 +39,11 @@
       "type": "patchouli:crafting",
       "recipe": "oathboundrelics:hollow_fang_idol",
       "text": "The Hollow Fang Idol is the Envy weapon's forged ritual component."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "oathboundrelics:grudgebound_idol",
+      "text": "The Grudgebound Idol is Wrath's forged ritual component."
     }
   ]
 }

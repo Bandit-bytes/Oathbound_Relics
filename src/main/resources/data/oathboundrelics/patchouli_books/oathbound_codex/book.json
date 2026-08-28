@@ -1,7 +1,7 @@
 {
   "name": "The Oathbound Codex",
   "landing_text": "A field guide to burden, relics, forging, and forbidden power.$(br2)This codex explains what your tooltips mean, how the major relic lines work, and how the late-game weapons are forged.",
-  "version": 1,
+  "version": 0,
   "creative_tab": "oathboundrelics:oathbound_tab",
   "use_resource_pack": true,
   "use_blocky_font": false,

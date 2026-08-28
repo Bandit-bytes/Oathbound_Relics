@@ -1,5 +1,6 @@
 package net.bandit.oathboundrelics;
 
+import com.mojang.logging.LogUtils;
 import net.bandit.oathboundrelics.compat.TrinketsCompatRegistry;
 import net.bandit.oathboundrelics.config.FabricConfigBridge;
 import net.bandit.oathboundrelics.events.FabricEventBridge;
@@ -7,10 +8,12 @@ import net.bandit.oathboundrelics.events.FabricWorldgenBridge;
 import net.bandit.oathboundrelics.loot.FabricLootInjection;
 import net.bandit.oathboundrelics.registry.*;
 import net.fabricmc.api.ModInitializer;
+import org.slf4j.Logger;
 
 public final class OathboundRelicsMod implements ModInitializer {
 
     public static final String MOD_ID = "oathboundrelics";
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     @Override
     public void onInitialize() {

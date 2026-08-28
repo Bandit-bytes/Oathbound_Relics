@@ -10,6 +10,11 @@
     },
     {
       "type": "patchouli:text",
+      "title": "Obtaining the Dormant Form",
+      "text": "Dormant Remnants are taken from Titan-bound bosses or hunted from matching creatures. See $(l:oathboundrelics:titans_remnants/acquisition)Finding Dormant Remnants$() for every source and chance."
+    },
+    {
+      "type": "patchouli:text",
       "title": "Current Upgrade Path",
       "text": "Hold the remnant in your $(l)main hand$() and the catalyst in your $(l)offhand$(), then use the remnant.$(br2)Dormant -> Latent: $(item)oathboundrelics:oblivion_stone$()$(br)Latent -> Awakened: $(item)oathboundrelics:void_ashes$()$(br)Awakened -> Ascended: $(item)oathboundrelics:mirrorsteel_idol$()$(br)Ascended -> Transcendent: $(item)minecraft:nether_star$()$(br)Transcendent -> Apex: $(item)oathboundrelics:soul_gem$()"
     },

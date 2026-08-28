@@ -3,25 +3,16 @@
   "pools": [
     {
       "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "oathboundrelics:colossus_heart"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.5
+          "chance": 0.1
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "oathboundrelics:oblivion_stone"
+          "name": "oathboundrelics:skybrand_feather"
         }
       ]
     }

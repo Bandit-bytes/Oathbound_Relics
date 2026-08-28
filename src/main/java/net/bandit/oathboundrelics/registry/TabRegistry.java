@@ -45,9 +45,11 @@ public class TabRegistry {
             ItemRegistry.TABLET_OF_COVETING,
             ItemRegistry.TABLET_OF_EXALTATION,
             ItemRegistry.TABLET_OF_STILLNESS,
+            ItemRegistry.TABLET_OF_VENGEANCE,
             ItemRegistry.BURDENED_FLAIL_IDOL,
             ItemRegistry.MIRRORSTEEL_IDOL,
             ItemRegistry.HOLLOW_FANG_IDOL,
+            ItemRegistry.GRUDGEBOUND_IDOL,
             ItemRegistry.VOID_ASHES,
             ItemRegistry.COLOSSUS_HEART,
             ItemRegistry.EMBER_SEED,
@@ -67,7 +69,8 @@ public class TabRegistry {
             ItemRegistry.OBLIVION_STONE,
             ItemRegistry.LETHARGIC_GREATSWORD,
             ItemRegistry.VANITYS_EDGE,
-            ItemRegistry.COVETFANG
+            ItemRegistry.COVETFANG,
+            ItemRegistry.RUINWAKE
     );
 
     public static final FabricRegistrySupplier<CreativeModeTab> OATHBOUND_TAB = register(

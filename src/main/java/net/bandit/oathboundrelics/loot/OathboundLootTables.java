@@ -36,6 +36,7 @@ public final class OathboundLootTables {
     public static final ResourceLocation ENDER_DRAGON = mc("entities/ender_dragon");
     public static final ResourceLocation SHULKER = mc("entities/shulker");
     public static final ResourceLocation ELDER_GUARDIAN = mc("entities/elder_guardian");
+    public static final ResourceLocation PHANTOM = mc("entities/phantom");
 
     public static final ResourceLocation INJECT_ANCIENT_CITY = mod("inject/chests/ancient_city_relics");
     public static final ResourceLocation INJECT_STRONGHOLD_LIBRARY = mod("inject/chests/stronghold_library_relics");
@@ -46,8 +47,8 @@ public final class OathboundLootTables {
     public static final ResourceLocation INJECT_END_CITY = mod("inject/chests/end_city_treasure_relics");
     public static final ResourceLocation INJECT_DESERT_PYRAMID = mod("inject/chests/desert_pyramid_relics");
     public static final ResourceLocation INJECT_JUNGLE_TEMPLE = mod("inject/chests/jungle_temple_relics");
-    public static final ResourceLocation INJECT_TRAIL_RUINS_COMMON = mod("inject/archaeology/trail_ruins_common_relics");
-    public static final ResourceLocation INJECT_TRAIL_RUINS_RARE = mod("inject/archaeology/trail_ruins_rare_relics");
+    public static final ResourceLocation INJECT_TRAIL_RUINS_COMMON = mod("inject/chests/trail_ruins_common_relics");
+    public static final ResourceLocation INJECT_TRAIL_RUINS_RARE = mod("inject/chests/trail_ruins_rare_relics");
     public static final ResourceLocation INJECT_TRIAL_RARE = mod("inject/chests/trial_reward_rare_relics");
     public static final ResourceLocation INJECT_TRIAL_OMINOUS_RARE = mod("inject/chests/trial_reward_ominous_rare_relics");
 
@@ -55,6 +56,7 @@ public final class OathboundLootTables {
     public static final ResourceLocation INJECT_WARDEN_OBLIVION = mod("inject/entities/warden_oblivion_stone");
     public static final ResourceLocation INJECT_DRAGON_OBLIVION = mod("inject/entities/ender_dragon_oblivion_stone");
     public static final ResourceLocation INJECT_ELDER_GUARDIAN_SPECIAL = mod("inject/entities/elder_guardian_special_drop");
+    public static final ResourceLocation INJECT_PHANTOM_SKYBRAND = mod("inject/entities/phantom_skybrand_feather");
 
     public static final ResourceLocation INJECT_SHULKER_VOID_ASHES = mod("inject/entities/shulker_void_ashes");
 }

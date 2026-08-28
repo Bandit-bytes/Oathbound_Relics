@@ -1,0 +1,23 @@
+{
+  "name": "Finding Dormant Remnants",
+  "icon": "oathboundrelics:skybrand_feather",
+  "category": "oathboundrelics:titans_remnants",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Titan-Bound Foes",
+      "text": "Four Dormant Remnants are guaranteed trophies from creatures carrying the matching power.$(br2)$(li)Wither: $(item)oathboundrelics:colossus_heart$()$(li)Ender Dragon: $(item)oathboundrelics:ember_seed$()$(li)Elder Guardian: $(item)oathboundrelics:tide_pearl$()$(li)Warden: $(item)oathboundrelics:nebula_lens$()$(br2)Each of these foes also has a 50% chance to leave an $(item)oathboundrelics:oblivion_stone$()."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Sky and Void",
+      "text": "The remaining Dormant Remnants have repeatable hunting routes.$(br2)$(li)Phantoms have a 10% chance to drop a $(item)oathboundrelics:skybrand_feather$(). The Feather also remains rare Woodland Mansion and End City treasure.$(li)Shulkers have a 5% chance to drop a $(item)oathboundrelics:void_pearl$(). The Pearl also remains rare End City treasure."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Why Dormant?",
+      "text": "Every remnant enters the world in its $(l)Dormant$() state. The name changes as it is upgraded, but the item itself remains the same relic and remembers its stored stage."
+    }
+  ]
+}

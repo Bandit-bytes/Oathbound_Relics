@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "VVV",
+    "TIT",
+    "VNV"
+  ],
+  "key": {
+    "V": {
+      "item": "oathboundrelics:void_ashes"
+    },
+    "T": {
+      "item": "oathboundrelics:tablet_of_vengeance"
+    },
+    "I": {
+      "item": "oathboundrelics:grudgebound_idol"
+    },
+    "N": {
+      "item": "oathboundrelics:nebula_ring"
+    }
+  },
+  "result": {
+    "id": "oathboundrelics:ruinwake",
+    "count": 1
+  }
+}

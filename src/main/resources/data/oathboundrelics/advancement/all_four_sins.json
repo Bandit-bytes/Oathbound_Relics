@@ -1,11 +1,11 @@
 {
-  "parent": "oathboundrelics:forbidden_implements",
+  "parent": "oathboundrelics:all_three_sins",
   "display": {
     "icon": {
-      "id": "oathboundrelics:covetfang"
+      "id": "oathboundrelics:ruinwake"
     },
-    "title": "All Three Sins",
-    "description": "Gather Sloth, Pride, and Envy into your hands.",
+    "title": "The Fourth Wound",
+    "description": "Gather Sloth, Pride, Envy, and Wrath into your hands.",
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
@@ -41,6 +41,16 @@
           }
         ]
       }
+    },
+    "has_wrath_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:ruinwake"
+          }
+        ]
+      }
     }
   },
   "requirements": [
@@ -52,6 +62,9 @@
     ],
     [
       "has_envy_weapon"
+    ],
+    [
+      "has_wrath_weapon"
     ]
   ]
 }

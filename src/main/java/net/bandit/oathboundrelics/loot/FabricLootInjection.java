@@ -35,6 +35,7 @@ public final class FabricLootInjection {
             Map.entry(OathboundLootTables.WARDEN, OathboundLootTables.INJECT_WARDEN_OBLIVION),
             Map.entry(OathboundLootTables.ENDER_DRAGON, OathboundLootTables.INJECT_DRAGON_OBLIVION),
             Map.entry(OathboundLootTables.ELDER_GUARDIAN, OathboundLootTables.INJECT_ELDER_GUARDIAN_SPECIAL),
+            Map.entry(OathboundLootTables.PHANTOM, OathboundLootTables.INJECT_PHANTOM_SKYBRAND),
             Map.entry(OathboundLootTables.SHULKER, OathboundLootTables.INJECT_SHULKER_VOID_ASHES)
     );
 

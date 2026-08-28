@@ -1,6 +1,5 @@
 package net.bandit.oathboundrelics.events;
 
-import net.bandit.oathboundrelics.util.OathboundUtil;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -41,6 +40,7 @@ public final class FabricEventBridge {
                 CovetfangEvents.onPlayerTick(event);
                 OathboundBearerCurioEvents.onPlayerTick(event);
                 OathboundRelicEvents.onPlayerTick(event);
+                RuinwakeEvents.onPlayerTick(event);
                 SlothWeaponEvents.onPlayerTick(event);
                 SoulLanternEvents.onPlayerTick(event);
                 TitansRemnantEvents.onPlayerTick(event);
@@ -92,7 +92,6 @@ public final class FabricEventBridge {
             PlayerEvent.PlayerLoggedInEvent event = new PlayerEvent.PlayerLoggedInEvent(handler.getPlayer());
             SoulFractureEvents.onPlayerLoggedIn(event);
             ServerPlayer player = handler.getPlayer();
-            OathboundUtil.giveStarterBookOnce(player);
             SoulHarvestEvents.onPlayerLoggedIn(event);
             StarterOathboundRelicEvents.onPlayerLogin(event);
         });
@@ -120,6 +119,7 @@ public final class FabricEventBridge {
         OathboundBearerCurioEvents.onPlayerDealsDamagePre(event);
         OathboundRelicEvents.onOutgoingDamage(event);
         OathboundRelicEvents.onLowHealthDamage(event);
+        RuinwakeEvents.onDamagePre(event);
         SlothCombatEvents.onDamagePre(event);
         TitansRemnantEvents.onDamagePre(event);
         VanitysEdgeEvents.onDamagePre(event);
@@ -132,6 +132,7 @@ public final class FabricEventBridge {
         OathboundBearerCurioEvents.onPlayerDamaged(event);
         OathboundBearerCurioEvents.onPlayerDealsDamagePost(event);
         OathboundRelicEvents.onSuccessfulHit(event);
+        RuinwakeEvents.onDamagePost(event);
         TitansRemnantEvents.onDamagePost(event);
         VanitysEdgeEvents.onDamagePost(event);
     }

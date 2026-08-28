@@ -4,8 +4,25 @@
     {
       "rolls": 1,
       "entries": [
-        { "type": "minecraft:item", "name": "oathboundrelics:oblivion_stone" },
-        { "type": "minecraft:item", "name": "oathboundrelics:ember_seed" }
+        {
+          "type": "minecraft:item",
+          "name": "oathboundrelics:ember_seed"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.5
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "oathboundrelics:oblivion_stone"
+        }
       ]
     }
   ]

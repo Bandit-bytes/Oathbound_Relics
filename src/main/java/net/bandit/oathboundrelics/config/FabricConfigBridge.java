@@ -63,6 +63,23 @@ public final class FabricConfigBridge {
         defineDefaultString(key, Double.toString(defaultValue));
     }
 
+    public static void defineDefault(String key, String defaultValue) {
+        defineDefaultString(key, defaultValue == null ? "" : defaultValue);
+    }
+
+    public static java.util.List<String> getStringList(String key) {
+        defineDefault(key, "");
+        String raw = VALUES.getOrDefault(key, "").trim();
+        if (raw.isEmpty()) {
+            return java.util.List.of();
+        }
+
+        return java.util.Arrays.stream(raw.split("\\|\\|"))
+                .map(String::trim)
+                .filter(value -> !value.isEmpty())
+                .toList();
+    }
+
     public static boolean getBoolean(String key, boolean defaultValue) {
         defineDefault(key, defaultValue);
         String raw = VALUES.getOrDefault(key, Boolean.toString(defaultValue)).trim();
