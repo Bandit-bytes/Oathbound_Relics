@@ -6,6 +6,9 @@ import net.bandit.oathboundrelics.client.renderer.SoulGemRenderer;
 import net.bandit.oathboundrelics.client.renderer.SoulLanternCurioRenderer;
 import net.bandit.oathboundrelics.registry.EntityRegistry;
 import net.bandit.oathboundrelics.registry.ItemRegistry;
+import net.bandit.oathboundrelics.registry.BlockRegistry;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -27,6 +30,7 @@ public final class ClientEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             CuriosRendererRegistry.register(ItemRegistry.SOUL_LANTERN.get(), SoulLanternCurioRenderer::new);
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SOUL_LANTERN_BLOCK.get(), RenderType.cutout());
         });
     }
 

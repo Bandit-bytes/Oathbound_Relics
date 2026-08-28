@@ -6,15 +6,16 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "$(l)Branded$()$(br)A player wearing the Oathbound Relic and counted by Oathbound systems as part of the burdened path."
+      "text": "$(l)Branded$()$(br)A player wearing the Oathbound Relic and counted by Oathbound systems as part of the burdened path.",
+      "anchor": "branded"
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Impact$()$(br)The Colossus Heart meter. Taking strong non-magic hits while Branded builds it. Your next melee hit spends it for bonus damage and a shockwave."
+      "text": "$(l)Tremor$()$(br)The Colossus Heart meter. Physical punishment builds it, and it slowly fades out of combat. Higher stages turn Tremor into attack damage, reduced movement burden, and a splash shockwave when enough is stored."
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Heat / Heating Up$()$(br)The Ember Seed meter. Taking and dealing damage build Heat while Branded. Heat decays over time. More Heat means more speed and eventually nearby ignition."
+      "text": "$(l)Heat / Heating Up$()$(br)The Ember Seed meter. Taking and dealing damage build Heat once its combat mechanics awaken. Heat decays over time. More Heat means more movement speed and attack speed, with stronger effects at later stages."
     },
     {
       "type": "patchouli:text",
@@ -22,7 +23,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Hollow Dominion$()$(br)A player-facing name for the Void Pearl's awakened darkness aura. In low light while Branded, nearby enemies are afflicted with Wither, Weakness, and Glowing."
+      "text": "$(l)Hollow Dominion$()$(br)A player-facing name for the Void Pearl's awakened darkness aura. In low light, nearby enemies are afflicted with Wither and Weakness; at Apex they are also slowed. Transcendent and Apex stages can additionally strip beneficial effects."
     },
     {
       "type": "patchouli:text",

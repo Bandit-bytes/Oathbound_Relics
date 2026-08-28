@@ -22,7 +22,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Shared rule for Sloth, Pride, and Envy$()$(br)All three current sin weapons use the same Branded Progress gate. In creative mode, the config can optionally bypass that requirement for testing."
+      "text": "$(l)Shared rule for Sloth, Pride, Envy, and Wrath$()$(br)All four current sin weapons use the same Branded Progress gate. In creative mode, the config can optionally bypass that requirement for testing."
     },
     {
       "type": "patchouli:text",

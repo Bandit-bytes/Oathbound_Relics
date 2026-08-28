@@ -12,7 +12,7 @@
     {
       "type": "patchouli:text",
       "title": "Dormant and Latent",
-      "text": "$(l)Dormant$(): Grants airless survival, strips away harmful effects, inflicts withering decay on strikes, and may deny a lethal blow.$(br2)$(l)Latent$(): Harmful effects are cleared even faster, and the Pearl becomes more reliable at refusing death without yet revealing its full hunger."
+      "text": "$(l)Dormant$(): Grants airless survival, shortens harmful effects over time, inflicts withering decay on strikes, and may deny a lethal blow.$(br2)$(l)Latent$(): Harmful effects are shortened more aggressively, and the Pearl becomes more reliable at refusing death without yet revealing its full hunger."
     },
     {
       "type": "patchouli:text",
