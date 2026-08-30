@@ -160,6 +160,7 @@ public final class OathboundUtil {
         player.setData(AttachmentRegistry.BRANDED_TIME.get(), brandedTimeData);
 
         player.setData(AttachmentRegistry.SOUL_FRACTURE_COUNT.get(), 0);
+        player.getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get()).setStackInSlot(0, ItemStack.EMPTY);
         player.setData(AttachmentRegistry.PRIDE_STATE.get(), new PrideStateData());
         player.setData(AttachmentRegistry.ENVY_STATE.get(), new EnvyStateData());
     }

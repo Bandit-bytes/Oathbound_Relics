@@ -12,7 +12,6 @@ import java.util.List;
 public final class OathboundEnchantingUtil {
 
     private static final int OVER_ENCHANT_THRESHOLD = 30;
-    private static final int HARD_CAP = 40;
 
     private OathboundEnchantingUtil() {
     }
@@ -31,7 +30,7 @@ public final class OathboundEnchantingUtil {
             return original;
         }
 
-        int effectivePower = Math.min(HARD_CAP, enchantingPower);
+        int effectivePower = enchantingPower;
         if (effectivePower <= OVER_ENCHANT_THRESHOLD) {
             return original;
         }
@@ -76,7 +75,7 @@ public final class OathboundEnchantingUtil {
     }
 
     private static float getOverEnchantChance(int enchantingPower) {
-        return Math.min(0.90F, (Math.min(HARD_CAP, enchantingPower) - OVER_ENCHANT_THRESHOLD) * 0.10F);
+        return Math.min(0.90F, Math.max(0.0F, (enchantingPower - OVER_ENCHANT_THRESHOLD) * 0.10F));
     }
 
     private static long buildSeed(

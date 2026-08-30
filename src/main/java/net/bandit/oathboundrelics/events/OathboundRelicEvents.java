@@ -15,6 +15,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.EnchantmentMenu;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.phys.AABB;
@@ -32,6 +34,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.enchanting.EnchantmentLevelSetEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
 
@@ -41,6 +44,9 @@ import java.util.UUID;
 
 @EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class OathboundRelicEvents {
+
+    private static final String TAG_RELIC_RESTORE_DELAY = OathboundRelicsMod.MOD_ID + "_relic_restore_delay";
+    private static final int RELIC_RESTORE_DELAY_TICKS = 20;
 
     private static final Map<UUID, Long> SHROUD_COOLDOWNS = new HashMap<>();
     private static final Map<UUID, Long> LAST_BREATH_COOLDOWNS = new HashMap<>();
@@ -322,6 +328,7 @@ public final class OathboundRelicEvents {
         }
 
         boolean branded = OathboundUtil.isBranded(player);
+
         BrandedTimeData brandedTimeData = player.getData(AttachmentRegistry.BRANDED_TIME.get());
 
         boolean activeThisCheck = false;
@@ -435,11 +442,175 @@ public final class OathboundRelicEvents {
         data.refreshActivity(20 * 4);
     }
 
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void preserveOathboundRelicBeforeDeath(LivingDeathEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+
+        CuriosApi.getCuriosInventory(player).ifPresent(curiosInventory -> {
+            var matches = curiosInventory.findCurios(ItemRegistry.OATHBOUND_RELIC.get());
+            if (matches.isEmpty()) {
+                return;
+            }
+
+            var result = matches.getFirst();
+            var handlerOpt = curiosInventory.getStacksHandler(result.slotContext().identifier());
+            if (handlerOpt.isEmpty()) {
+                return;
+            }
+
+            var stacks = handlerOpt.get().getStacks();
+            int index = result.slotContext().index();
+            if (index < 0 || index >= stacks.getSlots()) {
+                return;
+            }
+
+            ItemStack equipped = stacks.getStackInSlot(index);
+            if (!equipped.is(ItemRegistry.OATHBOUND_RELIC.get())) {
+                return;
+            }
+
+            // Store the exact stack, including all components, in player-owned data that
+            // NeoForge copies through the death clone. Then remove it from Curios before
+            // grave mods snapshot external inventories.
+            var preserved = player.getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get());
+            preserved.setStackInSlot(0, equipped.copy());
+            stacks.setStackInSlot(index, ItemStack.EMPTY);
+            player.containerMenu.broadcastChanges();
+
+            OathboundRelicsMod.LOGGER.debug(
+                    "Protected Oathbound Relic for {} from death/grave handling (slot {}[{}])",
+                    player.getGameProfile().getName(),
+                    result.slotContext().identifier(),
+                    index
+            );
+        });
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOWEST, receiveCanceled = true)
+    public static void restoreOathboundRelicIfDeathCanceled(LivingDeathEvent event) {
+        if (!event.isCanceled() || !(event.getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+        player.getPersistentData().remove(TAG_RELIC_RESTORE_DELAY);
+        restorePreservedOathboundRelic(player);
+    }
+
+    private static boolean hasOathboundRelicInVanillaInventory(Player player) {
+        for (ItemStack stack : player.getInventory().items) {
+            if (stack.is(ItemRegistry.OATHBOUND_RELIC.get())) {
+                return true;
+            }
+        }
+        for (ItemStack stack : player.getInventory().offhand) {
+            if (stack.is(ItemRegistry.OATHBOUND_RELIC.get())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void restorePreservedOathboundRelic(Player player) {
+        var preservedHandler = player.getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get());
+        ItemStack preserved = preservedHandler.getStackInSlot(0);
+        if (preserved.isEmpty() || !preserved.is(ItemRegistry.OATHBOUND_RELIC.get())) {
+            return;
+        }
+
+        // If the real relic is already present, leave the hidden backup intact.
+        // Grave mods such as YIGD can overwrite Curios/accessory layouts later when
+        // a grave is claimed, so clearing the backup immediately after respawn is unsafe.
+        if (OathboundUtil.isBranded(player) || hasOathboundRelicInVanillaInventory(player)) {
+            return;
+        }
+
+        CuriosApi.getCuriosInventory(player).ifPresent(curiosInventory -> {
+            // The Oathbound Relic is a ring. Prefer ring slots so it returns exactly where
+            // players expect it, while still allowing another valid Curios slot as a
+            // fallback if a pack changes its slot layout.
+            var ringHandler = curiosInventory.getStacksHandler("ring");
+            if (ringHandler.isPresent()) {
+                var stacks = ringHandler.get().getStacks();
+                for (int i = 0; i < stacks.getSlots(); i++) {
+                    if (stacks.getStackInSlot(i).isEmpty() && stacks.isItemValid(i, preserved)) {
+                        curiosInventory.setEquippedCurio("ring", i, preserved.copy());
+                        player.containerMenu.broadcastChanges();
+                        OathboundRelicsMod.LOGGER.debug(
+                                "Restored protected Oathbound Relic to {} after respawn",
+                                player.getGameProfile().getName()
+                        );
+                        return;
+                    }
+                }
+            }
+
+            for (var entry : curiosInventory.getCurios().entrySet()) {
+                if (entry.getKey().equals("ring")) {
+                    continue;
+                }
+                var stacks = entry.getValue().getStacks();
+                for (int i = 0; i < stacks.getSlots(); i++) {
+                    if (stacks.getStackInSlot(i).isEmpty() && stacks.isItemValid(i, preserved)) {
+                        curiosInventory.setEquippedCurio(entry.getKey(), i, preserved.copy());
+                        player.containerMenu.broadcastChanges();
+                        OathboundRelicsMod.LOGGER.debug(
+                                "Restored protected Oathbound Relic to fallback Curios slot {}[{}] for {}",
+                                entry.getKey(),
+                                i,
+                                player.getGameProfile().getName()
+                        );
+                        return;
+                    }
+                }
+            }
+        });
+    }
+
+    @SubscribeEvent
+    public static void retryPreservedRelicRestore(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide()) {
+            return;
+        }
+
+        ItemStack preserved = player
+                .getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get())
+                .getStackInSlot(0);
+        if (preserved.isEmpty()) {
+            return;
+        }
+
+        // Do not write into Curios during PlayerRespawnEvent. Curios and grave mods
+        // can still perform their own clone/sync work immediately afterward, which can
+        // overwrite the slot client-side. Wait one full second so that initialization
+        // settles, then restore through ICuriosItemHandler#setEquippedCurio so Curios
+        // owns the mutation and sends its normal synchronization packet.
+        int delay = player.getPersistentData().getInt(TAG_RELIC_RESTORE_DELAY);
+        if (delay > 0) {
+            player.getPersistentData().putInt(TAG_RELIC_RESTORE_DELAY, delay - 1);
+            return;
+        }
+
+        restorePreservedOathboundRelic(player);
+    }
+
     @SubscribeEvent
     public static void onRespawn(PlayerEvent.PlayerRespawnEvent event) {
         Player player = event.getEntity();
 
-        if (!OathboundConfig.enableSoulFracture() || !OathboundUtil.isBranded(player)) {
+        ItemStack preserved = player
+                .getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get())
+                .getStackInSlot(0);
+        if (!preserved.isEmpty()) {
+            player.getPersistentData().putInt(TAG_RELIC_RESTORE_DELAY, RELIC_RESTORE_DELAY_TICKS);
+        }
+
+        // Soul Fracture should still apply to a bearer whose relic is temporarily held
+        // in the protected attachment during the post-respawn Curios synchronization
+        // window. Do not require the Curios slot to already be restored here.
+        boolean oathboundBearer = OathboundUtil.isBranded(player) || !preserved.isEmpty();
+        if (!OathboundConfig.enableSoulFracture() || !oathboundBearer) {
             return;
         }
 
@@ -507,8 +678,11 @@ public final class OathboundRelicEvents {
                 .anyMatch(OathboundUtil::isBranded);
 
         if (brandedNearby) {
+            // Add the Oathbound blessing to whatever level the enchanting system/modpack
+            // has already calculated. Do not impose a vanilla-style hard cap here:
+            // mods such as Apothic Enchanting legitimately produce levels above 40.
             int boosted = event.getEnchantLevel() + OathboundConfig.enchantingPowerBonus();
-            event.setEnchantLevel(Math.min(40, boosted));
+            event.setEnchantLevel(boosted);
         }
     }
 
