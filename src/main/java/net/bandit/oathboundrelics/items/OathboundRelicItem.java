@@ -24,9 +24,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.storage.loot.LootContext;
 import org.jetbrains.annotations.Nullable;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurio;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.SlotContext;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.type.capability.ICurio;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.type.capability.ICurioItem;
 
 import java.util.ArrayList;
 import java.util.List;

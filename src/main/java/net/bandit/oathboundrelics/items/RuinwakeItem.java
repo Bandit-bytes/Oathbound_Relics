@@ -22,13 +22,13 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.neoforged.neoforge.common.SimpleTier;
+import net.bandit.oathboundrelics.fabricbridge.item.FabricSimpleTier;
 
 import java.util.List;
 
 public class RuinwakeItem extends SwordItem {
 
-    private static final Tier RUINWAKE_TIER = new SimpleTier(
+    private static final Tier RUINWAKE_TIER = new FabricSimpleTier(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
             2400,
             1.0F,

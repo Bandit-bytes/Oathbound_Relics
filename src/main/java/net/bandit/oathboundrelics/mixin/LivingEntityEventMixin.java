@@ -3,7 +3,7 @@ package net.bandit.oathboundrelics.mixin;
 import net.bandit.oathboundrelics.events.FabricEventBridge;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

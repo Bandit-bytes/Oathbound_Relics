@@ -16,8 +16,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.SlotContext;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.type.capability.ICurioItem;
 
 import java.util.List;
 

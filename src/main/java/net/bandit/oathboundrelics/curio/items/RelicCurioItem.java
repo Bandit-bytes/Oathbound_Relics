@@ -6,8 +6,8 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.SlotContext;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.type.capability.ICurioItem;
 
 import java.util.List;
 

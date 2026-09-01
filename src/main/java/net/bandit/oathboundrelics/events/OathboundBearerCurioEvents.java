@@ -12,16 +12,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDeathEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
 
 
 import java.util.List;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class OathboundBearerCurioEvents {
 
     private static final int SHORT = 40;
@@ -31,8 +28,6 @@ public final class OathboundBearerCurioEvents {
 
     private OathboundBearerCurioEvents() {
     }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 
@@ -244,8 +239,6 @@ public final class OathboundBearerCurioEvents {
             entity.addEffect(new MobEffectInstance(effect, duration, amplifier, ambient, visible, showIcon));
         }
     }
-
-    @SubscribeEvent
     public static void onPlayerDamaged(LivingDamageEvent.Post event) {
         if (!(event.getEntity() instanceof Player player)) {
             return;
@@ -270,8 +263,6 @@ public final class OathboundBearerCurioEvents {
                 (float) OathboundConfig.chainOfThePenitentMaxPenance()
         );
     }
-
-    @SubscribeEvent
     public static void onPlayerDealsDamagePre(LivingDamageEvent.Pre event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -312,8 +303,6 @@ public final class OathboundBearerCurioEvents {
             }
         }
     }
-
-    @SubscribeEvent
     public static void onPlayerDealsDamagePost(LivingDamageEvent.Post event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -377,8 +366,6 @@ public final class OathboundBearerCurioEvents {
             ));
         }
     }
-
-    @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;

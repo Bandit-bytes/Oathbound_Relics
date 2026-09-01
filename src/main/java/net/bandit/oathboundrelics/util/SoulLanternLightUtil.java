@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LightBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import top.theillusivec4.curios.api.CuriosApi;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.CuriosApi;
 
 public final class SoulLanternLightUtil {
 

@@ -1,14 +1,14 @@
 package net.bandit.oathboundrelics.util;
 
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.fml.loading.FMLEnvironment;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 
 public final class TooltipAccess {
     private TooltipAccess() {}
 
     public static boolean hasShiftDown() {
-        if (FMLEnvironment.dist != Dist.CLIENT) {
+        if (FabricLoader.getInstance().getEnvironmentType() != EnvType.CLIENT) {
             return false;
         }
 
@@ -21,7 +21,7 @@ public final class TooltipAccess {
     }
 
     public static Player getClientPlayer() {
-        if (FMLEnvironment.dist != Dist.CLIENT) {
+        if (FabricLoader.getInstance().getEnvironmentType() != EnvType.CLIENT) {
             return null;
         }
 

@@ -15,14 +15,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDeathEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.AttackEntityEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class CovetfangEvents {
 
     private static final ResourceLocation STOLEN_VITALITY_ID =
@@ -46,8 +43,6 @@ public final class CovetfangEvents {
 
     private CovetfangEvents() {
     }
-
-    @SubscribeEvent
     public static void onAttackEntity(AttackEntityEvent event) {
         if (!CovetfangUtil.isEnabled()) {
             return;
@@ -72,8 +67,6 @@ public final class CovetfangEvents {
             );
         }
     }
-
-    @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
         if (!CovetfangUtil.isEnabled()) {
             return;
@@ -111,8 +104,6 @@ public final class CovetfangEvents {
             event.setNewDamage(desiredMinimumDamage);
         }
     }
-
-    @SubscribeEvent
     public static void onDamagePost(LivingDamageEvent.Post event) {
         if (!CovetfangUtil.isEnabled()) {
             return;
@@ -179,8 +170,6 @@ public final class CovetfangEvents {
             player.heal(CovetfangUtil.desperateWantHealOnHit());
         }
     }
-
-    @SubscribeEvent
     public static void onKill(LivingDeathEvent event) {
         if (!CovetfangUtil.isEnabled()) {
             return;
@@ -214,8 +203,6 @@ public final class CovetfangEvents {
             state.clearCovetedTarget();
         }
     }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 

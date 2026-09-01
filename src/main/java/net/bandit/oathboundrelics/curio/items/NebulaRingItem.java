@@ -9,8 +9,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotContext;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.CuriosApi;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.SlotContext;
 
 public class NebulaRingItem extends ArmorRingItem {
 

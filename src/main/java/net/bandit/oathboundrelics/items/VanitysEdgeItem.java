@@ -10,13 +10,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.SimpleTier;
+import net.bandit.oathboundrelics.fabricbridge.item.FabricSimpleTier;
 
 import java.util.List;
 
 public class VanitysEdgeItem extends SwordItem {
 
-    private static final Tier VANITYS_EDGE_TIER = new SimpleTier(
+    private static final Tier VANITYS_EDGE_TIER = new FabricSimpleTier(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
             2000,
             1.0F,

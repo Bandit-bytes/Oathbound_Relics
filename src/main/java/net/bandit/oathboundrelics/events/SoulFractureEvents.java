@@ -14,13 +14,10 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDeathEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.PlayerEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class SoulFractureEvents {
 
     private static final ResourceLocation SOUL_FRACTURE_HEALTH_ID =
@@ -28,8 +25,6 @@ public final class SoulFractureEvents {
 
     private SoulFractureEvents() {
     }
-
-    @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         if (!(event.getEntity() instanceof Player player)) {
             return;
@@ -47,9 +42,6 @@ public final class SoulFractureEvents {
             return;
         }
 
-        if (!OathboundUtil.hasCurio(player, ItemRegistry.OATHBOUND_RELIC.get())) {
-            return;
-        }
 
         int current = PlayerDataStorage.soulFractureCount(player);
         PlayerDataStorage.setSoulFractureCount(player, current + 1);
@@ -61,23 +53,15 @@ public final class SoulFractureEvents {
             serverLevel.addFreshEntity(gem);
         }
     }
-
-    @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
         applySoulFracturePenalty(event.getEntity());
     }
-
-    @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         applySoulFracturePenalty(event.getEntity());
     }
-
-    @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         applySoulFracturePenalty(event.getEntity());
     }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 

@@ -17,18 +17,15 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDeathEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingHealEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingIncomingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.AttackEntityEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class VanitysEdgeEvents {
 
     private static final ResourceLocation STACK_ATTACK_SPEED_ID =
@@ -48,8 +45,6 @@ public final class VanitysEdgeEvents {
 
     private VanitysEdgeEvents() {
     }
-
-    @SubscribeEvent
     public static void onAttackEntity(AttackEntityEvent event) {
         Player player = event.getEntity();
 
@@ -70,8 +65,6 @@ public final class VanitysEdgeEvents {
             );
         }
     }
-
-    @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -96,8 +89,6 @@ public final class VanitysEdgeEvents {
             event.setNewDamage(desiredMinimumDamage);
         }
     }
-
-    @SubscribeEvent
     public static void onDamagePost(LivingDamageEvent.Post event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -124,8 +115,6 @@ public final class VanitysEdgeEvents {
             player.setHealth(Math.max(0.0F, player.getHealth() - selfDamage));
         }
     }
-
-    @SubscribeEvent
     public static void onKill(LivingDeathEvent event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -146,8 +135,6 @@ public final class VanitysEdgeEvents {
         PrideStateData state = PlayerDataStorage.prideState(player);
         state.addKillStack(player.level().getGameTime() + OathboundConfig.vanitysEdgeKillStackDurationTicks());
     }
-
-    @SubscribeEvent
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
         LivingEntity entity = event.getEntity();
 
@@ -155,8 +142,6 @@ public final class VanitysEdgeEvents {
             event.setAmount(event.getAmount() * 0.50F);
         }
     }
-
-    @SubscribeEvent
     public static void onHeal(LivingHealEvent event) {
         LivingEntity entity = event.getEntity();
 
@@ -164,8 +149,6 @@ public final class VanitysEdgeEvents {
             event.setAmount((float) (event.getAmount() * OathboundConfig.vanitysEdgeLosingPrideHealingMultiplier()));
         }
     }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 

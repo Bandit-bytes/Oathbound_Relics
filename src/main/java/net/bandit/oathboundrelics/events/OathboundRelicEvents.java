@@ -20,27 +20,22 @@ import net.minecraft.world.inventory.EnchantmentMenu;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.neoforged.bus.api.EventPriority;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.damagesource.DamageContainer;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingExperienceDropEvent;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.enchanting.EnchantmentLevelSetEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import top.theillusivec4.curios.api.event.DropRulesEvent;
-import top.theillusivec4.curios.api.type.capability.ICurio;
+import net.bandit.oathboundrelics.fabricbridge.events.damage.DamageContainer;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDeathEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingExperienceDropEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingIncomingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.CanPlayerSleepEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.PlayerEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.enchanting.EnchantmentLevelSetEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.level.BlockEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.type.capability.ICurio;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class OathboundRelicEvents {
 
     private static final Map<UUID, Long> SHROUD_COOLDOWNS = new HashMap<>();
@@ -63,8 +58,6 @@ public final class OathboundRelicEvents {
     private static void setCooldown(Map<UUID, Long> map, Player player, long gameTime, long ticks) {
         map.put(player.getUUID(), gameTime + ticks);
     }
-
-    @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onIncomingDamage(LivingIncomingDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) {
             return;
@@ -158,7 +151,6 @@ public final class OathboundRelicEvents {
             }
         }
     }
-    @SubscribeEvent
     public static void onOutgoingDamage(LivingDamageEvent.Pre event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -220,8 +212,6 @@ public final class OathboundRelicEvents {
 
         event.getContainer().setNewDamage(damage);
     }
-
-    @SubscribeEvent
     public static void onSuccessfulHit(LivingDamageEvent.Post event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -257,8 +247,6 @@ public final class OathboundRelicEvents {
         player.hurt(player.damageSources().generic(), cost);
         setCooldown(BLOOD_TOLL_COOLDOWNS, player, gameTime, OathboundConfig.bloodTollCooldownTicks());
     }
-
-    @SubscribeEvent
     public static void onKill(LivingDeathEvent event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -312,9 +300,6 @@ public final class OathboundRelicEvents {
             ));
         }
     }
-
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 
@@ -408,8 +393,6 @@ public final class OathboundRelicEvents {
             }
         }
     }
-
-    @SubscribeEvent
     public static void onSleepAttempt(CanPlayerSleepEvent event) {
         if (!OathboundConfig.enableWakefulDoom()) {
             return;
@@ -421,8 +404,6 @@ public final class OathboundRelicEvents {
 
         event.setProblem(Player.BedSleepingProblem.OTHER_PROBLEM);
     }
-
-    @SubscribeEvent
     public static void onBreakBlock(BlockEvent.BreakEvent event) {
         if (!(event.getPlayer() instanceof Player player)) {
             return;
@@ -435,8 +416,6 @@ public final class OathboundRelicEvents {
         BrandedTimeData data = PlayerDataStorage.brandedTime(player);
         data.refreshActivity(20 * 4);
     }
-
-    @SubscribeEvent
     public static void onRespawn(PlayerEvent.PlayerRespawnEvent event) {
         Player player = event.getEntity();
 
@@ -463,8 +442,6 @@ public final class OathboundRelicEvents {
             ));
         }
     }
-
-    @SubscribeEvent
     public static void onXpDrop(LivingExperienceDropEvent event) {
         Player player = event.getAttackingPlayer();
         if (player == null) {
@@ -483,20 +460,6 @@ public final class OathboundRelicEvents {
             event.setDroppedExperience(event.getDroppedExperience() + bonus);
         }
     }
-    @SubscribeEvent
-    public static void onDropRules(DropRulesEvent event) {
-        if (!(event.getEntity() instanceof Player player)) {
-            return;
-        }
-
-        event.addOverride(
-                stack -> stack.is(ItemRegistry.OATHBOUND_RELIC.get()),
-                ICurio.DropRule.ALWAYS_KEEP
-        );
-    }
-
-
-    @SubscribeEvent
     public static void onEnchantingPower(EnchantmentLevelSetEvent event) {
         if (!OathboundConfig.enableEnchantingBlessing()) {
             return;
@@ -509,7 +472,7 @@ public final class OathboundRelicEvents {
 
         if (brandedNearby) {
             int boosted = event.getEnchantLevel() + OathboundConfig.enchantingPowerBonus();
-            event.setEnchantLevel(Math.min(40, boosted));
+            event.setEnchantLevel(boosted);
         }
     }
 
@@ -551,8 +514,6 @@ public final class OathboundRelicEvents {
 
         return vanillaMax;
     }
-
-    @SubscribeEvent
     public static void onLowHealthDamage(LivingDamageEvent.Pre event) {
         if (!(event.getEntity() instanceof Player player)) {
             return;

@@ -8,20 +8,15 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.AttackEntityEvent;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class SlothCombatEvents {
 
     private SlothCombatEvents() {
     }
-
-    @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -44,8 +39,6 @@ public final class SlothCombatEvents {
             event.setNewDamage(fullDamage);
         }
     }
-
-    @SubscribeEvent
     public static void onDamagePost(LivingDamageEvent.Post event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -71,8 +64,6 @@ public final class SlothCombatEvents {
             SlothCombatUtil.addLaziness(player, 1);
         }
     }
-
-    @SubscribeEvent
     public static void onAttackEntity(AttackEntityEvent event) {
         Player player = event.getEntity();
 

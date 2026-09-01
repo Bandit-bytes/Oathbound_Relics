@@ -1,6 +1,7 @@
 package net.bandit.oathboundrelics.events;
 
 import net.bandit.oathboundrelics.data.PersistentData;
+import net.bandit.oathboundrelics.data.PlayerDataStorage;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.bandit.oathboundrelics.config.OathboundConfig;
@@ -9,19 +10,14 @@ import net.bandit.oathboundrelics.util.OathboundUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.PlayerEvent;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class StarterOathboundRelicEvents {
 
     private static final String STARTER_TAG = "oathboundrelics_received_starter_relic";
 
     private StarterOathboundRelicEvents() {
     }
-
-    @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
@@ -35,13 +31,19 @@ public final class StarterOathboundRelicEvents {
             return;
         }
 
-        CompoundTag data = PersistentData.get(player);
-        if (data.getBoolean(STARTER_TAG)) {
+        // Migrate the legacy Fabric persistent flag into the player data store.
+        CompoundTag legacyData = PersistentData.get(player);
+        if (legacyData.getBoolean(STARTER_TAG)) {
+            PlayerDataStorage.setStarterRelicReceived(player, true);
+            legacyData.remove(STARTER_TAG);
+        }
+
+        if (PlayerDataStorage.starterRelicReceived(player)) {
             return;
         }
 
         if (hasRelicAlready(player)) {
-            data.putBoolean(STARTER_TAG, true);
+            PlayerDataStorage.setStarterRelicReceived(player, true);
             return;
         }
 
@@ -52,7 +54,7 @@ public final class StarterOathboundRelicEvents {
             player.drop(relic, false);
         }
 
-        data.putBoolean(STARTER_TAG, true);
+        PlayerDataStorage.setStarterRelicReceived(player, true);
     }
 
     private static boolean hasRelicAlready(ServerPlayer player) {

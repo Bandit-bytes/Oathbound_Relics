@@ -49,6 +49,7 @@ public final class PlayerDataStorage {
             // Soul fracture and branded progress were copy-on-death in the NeoForge attachment setup.
             newData.brandedTime.deserializeNBT(replacement.registryAccess(), oldData.brandedTime.serializeNBT(original.registryAccess()));
             newData.soulFractureCount = oldData.soulFractureCount;
+            newData.starterRelicReceived = oldData.starterRelicReceived;
         }
         saveToPersistent(replacement);
     }
@@ -80,6 +81,16 @@ public final class PlayerDataStorage {
         saveToPersistent(player);
     }
 
+
+    public static boolean starterRelicReceived(Player player) {
+        return get(player).starterRelicReceived;
+    }
+
+    public static void setStarterRelicReceived(Player player, boolean value) {
+        get(player).starterRelicReceived = value;
+        saveToPersistent(player);
+    }
+
     public static EnvyStateData envyState(Player player) {
         return get(player).envyState;
     }
@@ -94,6 +105,7 @@ public final class PlayerDataStorage {
         private int soulFractureCount;
         private PrideStateData prideState = new PrideStateData();
         private EnvyStateData envyState = new EnvyStateData();
+        private boolean starterRelicReceived;
 
         public CompoundTag save() {
             CompoundTag tag = new CompoundTag();
@@ -101,6 +113,7 @@ public final class PlayerDataStorage {
             tag.putInt("SoulFractureCount", soulFractureCount);
             tag.put("PrideState", prideState.serializeNBT(null));
             tag.put("EnvyState", envyState.serializeNBT(null));
+            tag.putBoolean("StarterRelicReceived", starterRelicReceived);
             return tag;
         }
 
@@ -109,6 +122,7 @@ public final class PlayerDataStorage {
             soulFractureCount = tag.getInt("SoulFractureCount");
             prideState.deserializeNBT(null, tag.getCompound("PrideState"));
             envyState.deserializeNBT(null, tag.getCompound("EnvyState"));
+            starterRelicReceived = tag.getBoolean("StarterRelicReceived");
         }
     }
 }

@@ -5,18 +5,13 @@ import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.util.RuinwakeUtil;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class RuinwakeEvents {
 
     private RuinwakeEvents() {
     }
-
-    @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
@@ -38,8 +33,6 @@ public final class RuinwakeEvents {
         float multiplier = (float) (1.0D + grudge * OathboundConfig.ruinwakeDamageBonusPerStack());
         event.setNewDamage(event.getNewDamage() * multiplier);
     }
-
-    @SubscribeEvent
     public static void onDamagePost(LivingDamageEvent.Post event) {
         if (event.getNewDamage() <= 0.0F) {
             return;
@@ -60,8 +53,6 @@ public final class RuinwakeEvents {
             RuinwakeUtil.addGrudge(victim, 1);
         }
     }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 

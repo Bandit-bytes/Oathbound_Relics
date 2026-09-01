@@ -25,15 +25,12 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class TitansRemnantEvents {
 
     private static final ResourceLocation COLOSSUS_ARMOR_ID =
@@ -60,8 +57,6 @@ public final class TitansRemnantEvents {
 
     private TitansRemnantEvents() {
     }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
 
@@ -89,8 +84,6 @@ public final class TitansRemnantEvents {
             case VOID_PEARL -> tickVoid(player, stage);
         }
     }
-
-    @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
         // Incoming Remnant effects apply when the damaged entity is a player.
         if (event.getEntity() instanceof Player player) {
@@ -132,8 +125,6 @@ public final class TitansRemnantEvents {
 
     private static final ThreadLocal<Boolean> PROCESSING_SECONDARY_DAMAGE =
             ThreadLocal.withInitial(() -> false);
-
-    @SubscribeEvent
     public static void onDamagePost(LivingDamageEvent.Post event) {
         if (PROCESSING_SECONDARY_DAMAGE.get()) {
             return;

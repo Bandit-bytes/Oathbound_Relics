@@ -8,6 +8,7 @@ import net.bandit.oathboundrelics.config.OathboundConfig;
 import net.bandit.oathboundrelics.data.BrandedTimeData;
 import net.bandit.oathboundrelics.data.EnvyStateData;
 import net.bandit.oathboundrelics.data.PrideStateData;
+import net.bandit.oathboundrelics.events.FabricOathboundRelicDeathProtection;
 import net.bandit.oathboundrelics.registry.AttachmentRegistry;
 import net.bandit.oathboundrelics.registry.ItemRegistry;
 import net.minecraft.advancements.AdvancementHolder;
@@ -18,7 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import top.theillusivec4.curios.api.CuriosApi;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.CuriosApi;
 import vazkii.patchouli.api.PatchouliAPI;
 
 public final class OathboundUtil {
@@ -31,7 +32,8 @@ public final class OathboundUtil {
     }
 
     public static boolean isBranded(Player player) {
-        return hasCurio(player, ItemRegistry.OATHBOUND_RELIC.get());
+        return hasCurio(player, ItemRegistry.OATHBOUND_RELIC.get())
+                || FabricOathboundRelicDeathProtection.hasProtectedRelic(player);
     }
 
     public static boolean hasCurio(Player player, Item item) {
@@ -180,6 +182,7 @@ public final class OathboundUtil {
 
     public static void clearOathboundState(Player player) {
         clearRitualFlags(player);
+        FabricOathboundRelicDeathProtection.clearBackup(player);
 
         BrandedTimeData brandedTimeData = new BrandedTimeData();
         brandedTimeData.setBrandedProgressTicks(0L);

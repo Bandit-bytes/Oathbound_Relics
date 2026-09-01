@@ -2,38 +2,53 @@ package net.bandit.oathboundrelics.events;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.server.level.ServerPlayer;
+import net.bandit.oathboundrelics.data.PlayerDataStorage;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.neoforged.neoforge.event.RegisterCommandsEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHealEvent;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.RegisterCommandsEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDeathEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingHealEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingIncomingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.AttackEntityEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.player.PlayerEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.level.BlockEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
 
 public final class FabricEventBridge {
     private FabricEventBridge() {
     }
 
     public static void register() {
+        ServerLivingEntityEvents.ALLOW_DEATH.register((entity, damageSource, damageAmount) -> {
+            if (entity instanceof ServerPlayer player) {
+                FabricOathboundRelicDeathProtection.protectBeforeDeath(player);
+            }
+            return true;
+        });
+
+        ServerPlayerEvents.COPY_FROM.register((oldPlayer, newPlayer, alive) -> {
+            PlayerDataStorage.copy(oldPlayer, newPlayer, alive);
+            FabricOathboundRelicDeathProtection.copyAcrossRespawn(oldPlayer, newPlayer, alive);
+        });
+
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
                 CommandEvents.onRegisterCommands(new RegisterCommandsEvent(dispatcher)));
 
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+                FabricOathboundRelicDeathProtection.tick(player);
                 PlayerTickEvent.Post event = new PlayerTickEvent.Post(player);
                 BrandedTimeTrackerEvents.onPlayerTick(event);
                 AredriteArmorEvents.onPlayerTick(event);
@@ -78,6 +93,7 @@ public final class FabricEventBridge {
         });
 
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
+            FabricOathboundRelicDeathProtection.afterRespawn(newPlayer, alive);
             PlayerEvent.Clone clone = new PlayerEvent.Clone(oldPlayer, newPlayer, !alive);
             SoulFractureEvents.onPlayerClone(clone);
             SoulHarvestEvents.onPlayerClone(clone);

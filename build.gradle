@@ -83,6 +83,12 @@ java {
 }
 
 jar {
+    // Never package compatibility stubs into third-party namespaces.
+    // This prevents classpath poisoning (for example Apache Commons Lang / grave mods).
+    exclude "org/apache/commons/lang3/**"
+    exclude "net/neoforged/**"
+    exclude "top/theillusivec4/**"
+
     from("LICENSE") {
         rename { "${it}_${project.archives_base_name}" }
     }

@@ -9,17 +9,12 @@ import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDeathEvent;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class OblivionStoneDropEvents {
 
     private OblivionStoneDropEvents() {
     }
-
-    @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         Entity entity = event.getEntity();
 

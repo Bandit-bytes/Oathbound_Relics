@@ -18,15 +18,12 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDamageEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.entity.living.LivingDeathEvent;
+import net.bandit.oathboundrelics.fabricbridge.events.tick.PlayerTickEvent;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = OathboundRelicsMod.MOD_ID)
 public final class AredriteArmorEvents {
 
     private static final ResourceLocation AREDRITE_SPEED_ID =
@@ -40,8 +37,6 @@ public final class AredriteArmorEvents {
 
     private AredriteArmorEvents() {
     }
-
-    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
         if (player.level().isClientSide()) {
@@ -77,8 +72,6 @@ public final class AredriteArmorEvents {
             applyHollowPressure(player);
         }
     }
-
-    @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
         if (!(event.getEntity() instanceof Player player)) {
             return;
@@ -105,8 +98,6 @@ public final class AredriteArmorEvents {
             event.setNewDamage(Math.max(0.0F, player.getHealth() - 1.0F));
         }
     }
-
-    @SubscribeEvent
     public static void onKill(LivingDeathEvent event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;

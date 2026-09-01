@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.client.ICurioRenderer;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.SlotContext;
+import net.bandit.oathboundrelics.fabricbridge.trinkets.client.ICurioRenderer;
 
 public class SoulLanternCurioRenderer implements ICurioRenderer {
 
