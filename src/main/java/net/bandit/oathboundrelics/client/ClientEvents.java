@@ -4,9 +4,11 @@ import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.bandit.oathboundrelics.client.renderer.HeavyCubeProjectileRenderer;
 import net.bandit.oathboundrelics.client.renderer.SoulGemRenderer;
 import net.bandit.oathboundrelics.client.renderer.SoulLanternCurioRenderer;
+import net.bandit.oathboundrelics.client.altar.RiteOfSeveranceRenderer;
 import net.bandit.oathboundrelics.registry.EntityRegistry;
 import net.bandit.oathboundrelics.registry.ItemRegistry;
 import net.bandit.oathboundrelics.registry.BlockRegistry;
+import net.bandit.oathboundrelics.registry.BlockEntityRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
@@ -43,6 +45,10 @@ public final class ClientEvents {
         event.registerEntityRenderer(
                 EntityRegistry.SOUL_GEM.get(),
                 SoulGemRenderer::new
+        );
+        event.registerBlockEntityRenderer(
+                BlockEntityRegistry.RITE_OF_SEVERANCE_BE.get(),
+                RiteOfSeveranceRenderer::new
         );
     }
 }

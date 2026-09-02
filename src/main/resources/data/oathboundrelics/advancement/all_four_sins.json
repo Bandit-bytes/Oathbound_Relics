@@ -1,0 +1,70 @@
+{
+  "parent": "oathboundrelics:all_three_sins",
+  "display": {
+    "icon": {
+      "id": "oathboundrelics:ruinwake"
+    },
+    "title": "The Fourth Wound",
+    "description": "Gather Sloth, Pride, Envy, and Wrath into your hands.",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "has_sloth_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:lethargic_greatsword"
+          }
+        ]
+      }
+    },
+    "has_pride_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:vanitys_edge"
+          }
+        ]
+      }
+    },
+    "has_envy_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:covetfang"
+          }
+        ]
+      }
+    },
+    "has_wrath_weapon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "oathboundrelics:ruinwake"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sloth_weapon"
+    ],
+    [
+      "has_pride_weapon"
+    ],
+    [
+      "has_envy_weapon"
+    ],
+    [
+      "has_wrath_weapon"
+    ]
+  ]
+}
