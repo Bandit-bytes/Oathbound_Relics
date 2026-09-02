@@ -9,6 +9,9 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -42,6 +45,11 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
     private boolean active = false;
     private UUID activePlayerUuid;
     private int ritualTicks = 0;
+
+    // Client-only animation counters. Gameplay remains completely server-authoritative.
+    private int clientActiveTicks = 0;
+    private int clientClosingTicks = 9999;
+    private boolean clientWasActive = false;
 
     public RiteOfSeveranceBlockEntity(BlockPos pos, BlockState blockState) {
         super(BlockEntityRegistry.RITE_OF_SEVERANCE_BE.get(), pos, blockState);
@@ -100,6 +108,7 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
         this.ritualTicks = 0;
 
         setChanged();
+        syncToClient();
 
         if (level instanceof ServerLevel serverLevel) {
             serverLevel.playSound(
@@ -133,6 +142,11 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, RiteOfSeveranceBlockEntity altar) {
+        if (level.isClientSide) {
+            altar.clientTick();
+            return;
+        }
+
         if (!(level instanceof ServerLevel serverLevel)) {
             return;
         }
@@ -420,6 +434,60 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
         this.activePlayerUuid = null;
         this.ritualTicks = 0;
         setChanged();
+        syncToClient();
+    }
+
+    private void clientTick() {
+        if (active) {
+            if (!clientWasActive) {
+                clientActiveTicks = 0;
+            }
+            clientActiveTicks++;
+            clientClosingTicks = 0;
+        } else {
+            if (clientWasActive) {
+                clientClosingTicks = 0;
+            } else if (clientClosingTicks < 1000) {
+                clientClosingTicks++;
+            }
+        }
+        clientWasActive = active;
+    }
+
+    private void syncToClient() {
+        if (level instanceof ServerLevel serverLevel) {
+            BlockState state = getBlockState();
+            serverLevel.sendBlockUpdated(worldPosition, state, state, 3);
+        }
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public float getClientActiveTicks(float partialTick) {
+        return Math.max(0.0F, clientActiveTicks + (active ? partialTick : 0.0F));
+    }
+
+    public float getClientClosingTicks(float partialTick) {
+        return Math.max(0.0F, clientClosingTicks + (!active && clientClosingTicks < 1000 ? partialTick : 0.0F));
+    }
+
+    public int getClientRitualColorIndex() {
+        // Purple is the resting Oath color; each pulse briefly walks through red/green/blue/purple.
+        if (!active || clientActiveTicks < 30) return 3;
+        int pulse = ((clientActiveTicks - 30) / PULSE_INTERVAL) & 3;
+        return pulse;
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        return saveWithoutMetadata(provider);
     }
 
     @Override
