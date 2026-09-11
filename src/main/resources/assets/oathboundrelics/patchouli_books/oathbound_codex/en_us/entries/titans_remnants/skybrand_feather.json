@@ -17,7 +17,7 @@
     {
       "type": "patchouli:text",
       "title": "Awakened, Ascended, Transcendent, Apex",
-      "text": "$(l)Awakened$(): The Feather grants controlled slow-falling and turns meaningful drops into plunging strikes that burst on landing.$(br2)$(l)Ascended$(): The landing burst grows stronger, and even some magical attacks can be shrugged away.$(br2)$(l)Transcendent$(): The bearer can launch upward to cleanse harmful effects and reclaim the air.$(br2)$(l)Apex$(): Projectiles fail almost completely, plunging strikes become brutal, and even airborne melee attacks may simply slide past the bearer."
+      "text": "$(l)Awakened$(): The Feather grants controlled gliding while Jump is held; release Jump to fall normally and turn meaningful drops into plunging strikes that burst on landing.$(br2)$(l)Ascended$(): The landing burst grows stronger, and even some magical attacks can be shrugged away.$(br2)$(l)Transcendent$(): While airborne, hold Sneak + Jump to launch upward, cleanse harmful effects, and reclaim the air.$(br2)$(l)Apex$(): Projectiles fail almost completely, plunging strikes become brutal, and even airborne melee attacks may simply slide past the bearer."
     }
   ]
 }

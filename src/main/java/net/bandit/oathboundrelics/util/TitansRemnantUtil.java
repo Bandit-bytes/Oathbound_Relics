@@ -272,6 +272,17 @@ public final class TitansRemnantUtil {
         setVoidCharges(player, getVoidCharges(player) + amount);
     }
 
+    public static final String SKYBRAND_GLIDING_TAG =
+            "oathboundrelics_titans_remnant_skybrand_gliding";
+
+    public static boolean isSkybrandGliding(Player player) {
+        return player.getPersistentData().getBoolean(SKYBRAND_GLIDING_TAG);
+    }
+
+    public static void setSkybrandGliding(Player player, boolean value) {
+        player.getPersistentData().putBoolean(SKYBRAND_GLIDING_TAG, value);
+    }
+
 
 
     public static boolean isLowLight(Player player) {

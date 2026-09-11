@@ -22,6 +22,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.monster.Drowned;
+import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.Vec3;
@@ -75,6 +77,7 @@ public final class TitansRemnantEvents {
         if (type == null) {
             TitansRemnantUtil.setWasAirborne(player, false);
             TitansRemnantUtil.setStoredAirborneFall(player, 0.0F);
+            TitansRemnantUtil.setSkybrandGliding(player, false);
             return;
         }
 
@@ -90,9 +93,9 @@ public final class TitansRemnantEvents {
         }
     }
 
+
     @SubscribeEvent
     public static void onDamagePre(LivingDamageEvent.Pre event) {
-        // Incoming Remnant effects apply when the damaged entity is a player.
         if (event.getEntity() instanceof Player player) {
             TitanRemnantType type = TitansRemnantUtil.getEquippedType(player);
             if (type != null) {
@@ -109,15 +112,10 @@ public final class TitansRemnantEvents {
             }
         }
 
-        // Secondary damage created by a Remnant should still be allowed to hit
-        // and be defended against, but must not receive the attacker's Remnant
-        // bonuses again.
         if (PROCESSING_SECONDARY_DAMAGE.get()) {
             return;
         }
 
-        // Outgoing Remnant effects apply to direct player attacks against any
-        // living target, not only PvP targets.
         if (event.getSource().getEntity() instanceof Player attacker
                 && event.getSource().getDirectEntity() == attacker
                 && event.getEntity() instanceof LivingEntity target) {
@@ -175,7 +173,9 @@ public final class TitansRemnantEvents {
     private static void tickColossus(Player player, TitanRemnantStage stage) {
         long gameTime = player.level().getGameTime();
 
-        if (player.tickCount % 20 == 0 && TitansRemnantUtil.shouldDecayTremor(player, gameTime)) {
+        if (!stage.atLeast(TitanRemnantStage.LATENT)) {
+            TitansRemnantUtil.setTremor(player, 0);
+        } else if (player.tickCount % 20 == 0 && TitansRemnantUtil.shouldDecayTremor(player, gameTime)) {
             TitansRemnantUtil.setTremor(player, TitansRemnantUtil.getTremor(player) - 1);
             if (TitansRemnantUtil.getTremor(player) > 0) {
                 TitansRemnantUtil.refreshTremorDecay(player, gameTime, 40L);
@@ -387,31 +387,66 @@ public final class TitansRemnantEvents {
     private static void tickSkybrand(Player player, TitanRemnantStage stage) {
         boolean airborne = !player.onGround();
 
-        if (airborne) {
-            TitansRemnantUtil.setStoredAirborneFall(player, Math.max(TitansRemnantUtil.getStoredAirborneFall(player), player.fallDistance));
-        }
+        boolean gliding =
+                stage.atLeast(TitanRemnantStage.AWAKENED)
+                        && airborne
+                        && TitansRemnantUtil.isSkybrandGliding(player);
 
-        if (stage.atLeast(TitanRemnantStage.AWAKENED) && airborne) {
-            player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 20, 0, false, false, true));
+        if (gliding) {
+            Vec3 motion = player.getDeltaMovement();
+
+            if (motion.y < -0.12D) {
+                player.setDeltaMovement(
+                        motion.x,
+                        -0.12D,
+                        motion.z
+                );
+                player.hurtMarked = true;
+            }
+
+            player.fallDistance = 0.0F;
+        } else if (airborne) {
+            TitansRemnantUtil.setStoredAirborneFall(
+                    player,
+                    Math.max(
+                            TitansRemnantUtil.getStoredAirborneFall(player),
+                            player.fallDistance
+                    )
+            );
         }
 
         if (stage.atLeast(TitanRemnantStage.LATENT) && airborne) {
-            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20, stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 1 : 0, false, false, true));
+            player.addEffect(new MobEffectInstance(
+                    MobEffects.MOVEMENT_SPEED,
+                    20,
+                    stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 1 : 0,
+                    false,
+                    false,
+                    true
+            ));
         }
 
         long gameTime = player.level().getGameTime();
+
         if (stage.atLeast(TitanRemnantStage.TRANSCENDENT)
-                && !player.onGround()
+                && airborne
                 && player.isShiftKeyDown()
+                && TitansRemnantUtil.isSkybrandGliding(player)
                 && TitansRemnantUtil.getSkybrandAscentCooldown(player) <= gameTime) {
 
-            player.setDeltaMovement(player.getDeltaMovement().x, 1.0D, player.getDeltaMovement().z);
+            player.setDeltaMovement(
+                    player.getDeltaMovement().x,
+                    1.0D,
+                    player.getDeltaMovement().z
+            );
+
             player.hurtMarked = true;
             cleanseHarmfulEffects(player);
             TitansRemnantUtil.setSkybrandAscentCooldown(player, gameTime + 100L);
         }
 
         boolean wasAirborne = TitansRemnantUtil.wasAirborne(player);
+
         if (wasAirborne && player.onGround()) {
             float storedFall = TitansRemnantUtil.getStoredAirborneFall(player);
 
@@ -423,7 +458,9 @@ public final class TitansRemnantEvents {
                 default -> 999.0F;
             };
 
-            if (stage.atLeast(TitanRemnantStage.AWAKENED) && storedFall >= requiredFall) {
+            if (stage.atLeast(TitanRemnantStage.AWAKENED)
+                    && storedFall >= requiredFall) {
+
                 double radius = switch (stage) {
                     case AWAKENED -> 4.0D;
                     case ASCENDED -> 4.5D;
@@ -448,7 +485,16 @@ public final class TitansRemnantEvents {
                         case APEX -> 2.0D;
                         default -> 1.0D;
                     });
-                    enemy.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 40, stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 1 : 0, false, false, true));
+
+                    enemy.addEffect(new MobEffectInstance(
+                            MobEffects.MOVEMENT_SLOWDOWN,
+                            40,
+                            stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 1 : 0,
+                            false,
+                            false,
+                            true
+                    ));
+
                     dealSecondaryDamage(enemy, player, burstDamage);
                 }
             }
@@ -562,8 +608,10 @@ public final class TitansRemnantEvents {
         }
 
         long gameTime = player.level().getGameTime();
-        TitansRemnantUtil.addTremor(player, stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 2 : 1);
-        TitansRemnantUtil.refreshTremorDecay(player, gameTime, 200L);
+        if (stage.atLeast(TitanRemnantStage.LATENT)) {
+            TitansRemnantUtil.addTremor(player, stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 2 : 1);
+            TitansRemnantUtil.refreshTremorDecay(player, gameTime, 200L);
+        }
 
         if (stage.atLeast(TitanRemnantStage.AWAKENED) && event.getNewDamage() >= (player.getMaxHealth() * 0.15F)) {
             for (LivingEntity enemy : getNearbyEnemies(player, 4.0D)) {
@@ -640,7 +688,7 @@ public final class TitansRemnantEvents {
         }
 
         Entity attacker = event.getSource().getEntity();
-        if (attacker instanceof WaterAnimal) {
+        if (isAquaticAttacker(attacker)) {
             float reduction = switch (stage) {
                 case DORMANT -> 0.80F;
                 case LATENT -> 0.60F;
@@ -752,7 +800,8 @@ public final class TitansRemnantEvents {
             event.setNewDamage(event.getNewDamage() * multiplier);
         }
 
-        if (stage.atLeast(TitanRemnantStage.LATENT)) {
+        Entity blinkAttacker = event.getSource().getEntity();
+        if (stage.atLeast(TitanRemnantStage.LATENT) && blinkAttacker instanceof LivingEntity) {
             float evadeChance = switch (stage) {
                 case LATENT -> 0.10F;
                 case AWAKENED -> 0.20F;
@@ -766,12 +815,11 @@ public final class TitansRemnantEvents {
             if (TitansRemnantUtil.getNebulaBlinkCooldown(player) <= gameTime
                     && player.getRandom().nextFloat() < evadeChance) {
 
-                Entity attacker = event.getSource().getEntity();
-                if (attacker != null) {
-                    Vec3 away = player.position().subtract(attacker.position()).normalize().scale(4.0D);
-                    player.teleportTo(player.getX() + away.x, player.getY(), player.getZ() + away.z);
-                } else {
+                Vec3 away = player.position().subtract(blinkAttacker.position()).normalize().scale(4.0D);
+                if (away.lengthSqr() < 1.0E-6D) {
                     randomShortTeleport(player, 4.0D);
+                } else {
+                    player.teleportTo(player.getX() + away.x, player.getY(), player.getZ() + away.z);
                 }
 
                 TitansRemnantUtil.setNebulaEmpowered(player, true);
@@ -917,7 +965,8 @@ public final class TitansRemnantEvents {
                     event.setNewDamage(event.getNewDamage() * airborneMultiplier);
                 }
 
-                if (stage.atLeast(TitanRemnantStage.AWAKENED) && player.fallDistance > 5.0F) {
+                if (stage.atLeast(TitanRemnantStage.AWAKENED)
+                        && player.fallDistance >= getSkybrandRequiredFall(stage)) {
                     float plungeMultiplier = 1.0F + Math.min(player.fallDistance, 15.0F) * 0.03F;
                     event.setNewDamage(event.getNewDamage() * plungeMultiplier);
                 }
@@ -993,7 +1042,7 @@ public final class TitansRemnantEvents {
         for (LivingEntity enemy : target.level().getEntitiesOfClass(
                 LivingEntity.class,
                 target.getBoundingBox().inflate(radius),
-                living -> living != player && living != target && living.isAlive()
+                living -> living != player && living != target && living.isAlive() && living instanceof Enemy
         )) {
             knockbackFrom(enemy, target, 1.2D + (tremor * 0.05D));
             dealSecondaryDamage(enemy, player, splashDamage);
@@ -1003,6 +1052,8 @@ public final class TitansRemnantEvents {
     }
 
     private static void handleEmberOutgoingPost(Player player, LivingEntity target, TitanRemnantStage stage) {
+        boolean wasAlreadyBurning = target.isOnFire();
+
         target.igniteForSeconds(switch (stage) {
             case DORMANT -> 3.0F;
             case LATENT -> 4.0F;
@@ -1020,7 +1071,7 @@ public final class TitansRemnantEvents {
             for (LivingEntity enemy : target.level().getEntitiesOfClass(
                     LivingEntity.class,
                     target.getBoundingBox().inflate(4.0D),
-                    living -> living != player && living.isAlive()
+                    living -> living != player && living.isAlive() && living instanceof Enemy
             )) {
                 enemy.igniteForSeconds(stage.atLeast(TitanRemnantStage.TRANSCENDENT) ? 6.0F : 4.0F);
                 enemy.hurt(player.damageSources().inFire(), stage.atLeast(TitanRemnantStage.APEX) ? 6.0F : 3.0F);
@@ -1029,7 +1080,7 @@ public final class TitansRemnantEvents {
             TitansRemnantUtil.setHeat(player, Math.max(0, heat - 5));
         }
 
-        if (stage.atLeast(TitanRemnantStage.ASCENDED) && target.isOnFire()) {
+        if (stage.atLeast(TitanRemnantStage.ASCENDED) && wasAlreadyBurning) {
             player.heal(1.0F);
         }
     }
@@ -1059,7 +1110,8 @@ public final class TitansRemnantEvents {
     }
 
     private static void handleSkybrandOutgoingPost(Player player, LivingEntity target, TitanRemnantStage stage) {
-        if (!stage.atLeast(TitanRemnantStage.AWAKENED) || player.fallDistance <= 5.0F) {
+        if (!stage.atLeast(TitanRemnantStage.AWAKENED)
+                || player.fallDistance < getSkybrandRequiredFall(stage)) {
             return;
         }
 
@@ -1082,7 +1134,7 @@ public final class TitansRemnantEvents {
         for (LivingEntity enemy : target.level().getEntitiesOfClass(
                 LivingEntity.class,
                 target.getBoundingBox().inflate(radius),
-                living -> living != player && living != target && living.isAlive()
+                living -> living != player && living != target && living.isAlive() && living instanceof Enemy
         )) {
             knockbackFrom(enemy, target, 0.8D);
             dealSecondaryDamage(enemy, player, splashDamage);
@@ -1106,7 +1158,7 @@ public final class TitansRemnantEvents {
                 for (LivingEntity enemy : target.level().getEntitiesOfClass(
                         LivingEntity.class,
                         target.getBoundingBox().inflate(3.0D),
-                        living -> living != player && living.isAlive()
+                        living -> living != player && living.isAlive() && living instanceof Enemy
                 )) {
                     knockbackFrom(enemy, target, 0.9D);
                     enemy.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 0, false, false, true));
@@ -1163,6 +1215,21 @@ public final class TitansRemnantEvents {
 
     private static boolean isMagicDamage(LivingDamageEvent.Pre event) {
         return event.getSource().is(DamageTypes.MAGIC) || event.getSource().is(DamageTypes.INDIRECT_MAGIC);
+    }
+
+    private static float getSkybrandRequiredFall(TitanRemnantStage stage) {
+        return switch (stage) {
+            case AWAKENED -> 5.0F;
+            case ASCENDED, TRANSCENDENT -> 4.0F;
+            case APEX -> 3.0F;
+            default -> Float.MAX_VALUE;
+        };
+    }
+
+    private static boolean isAquaticAttacker(Entity attacker) {
+        return attacker instanceof WaterAnimal
+                || attacker instanceof Guardian
+                || attacker instanceof Drowned;
     }
 
     private static List<LivingEntity> getNearbyEnemies(Player player, double radius) {
