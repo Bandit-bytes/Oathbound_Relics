@@ -13,11 +13,9 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.inventory.EnchantmentMenu;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -54,6 +52,10 @@ public final class OathboundRelicEvents {
     private static final int MAX_OVER_ENCHANT_BONUS = 1;
     private static final Map<UUID, Long> BLOOD_TOLL_COOLDOWNS = new HashMap<>();
 
+
+    private static final ThreadLocal<Boolean> RITE_PULSE_DAMAGE =
+            ThreadLocal.withInitial(() -> false);
+
     private static boolean canAttemptOverEnchant(int enchantingPower) {
         return enchantingPower > OVER_ENCHANT_THRESHOLD;
     }
@@ -67,6 +69,20 @@ public final class OathboundRelicEvents {
 
     private static void setCooldown(Map<UUID, Long> map, Player player, long gameTime, long ticks) {
         map.put(player.getUUID(), gameTime + ticks);
+    }
+
+    public static void dealRitePulseDamage(ServerPlayer player, float amount) {
+        if (amount <= 0.0F || !player.isAlive()) {
+            return;
+        }
+
+        boolean previous = RITE_PULSE_DAMAGE.get();
+        try {
+            RITE_PULSE_DAMAGE.set(true);
+            player.hurt(player.damageSources().magic(), amount);
+        } finally {
+            RITE_PULSE_DAMAGE.set(previous);
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)
@@ -84,7 +100,10 @@ public final class OathboundRelicEvents {
             refreshBrandedActivity(player, 20 * 5);
         }
         if (branded) {
-            if (OathboundConfig.enableFrailty()) {
+            boolean ignoreFrailtyForRitePulse =
+                    RITE_PULSE_DAMAGE.get() && OathboundConfig.severancePulseDamageIgnoresFrailty();
+
+            if (OathboundConfig.enableFrailty() && !ignoreFrailtyForRitePulse) {
                 event.setAmount((float) (event.getAmount() * OathboundConfig.incomingDamageMultiplier()));
             }
 
@@ -275,7 +294,7 @@ public final class OathboundRelicEvents {
             data.refreshActivity(20 * 8);
             data.addBrandedProgressTicks(20 * 5);
         }
-// onKill
+
         if (branded
                 && OathboundConfig.enableGravebellLocket()
                 && OathboundUtil.hasCurio(player, ItemRegistry.GRAVEBELL_LOCKET.get())) {
@@ -362,7 +381,6 @@ public final class OathboundRelicEvents {
                 provokeNearbyNeutralMobs(player);
             }
 
-            // onPlayerTick
             if (OathboundConfig.enableHollowEye()
                     && OathboundUtil.hasCurio(player, ItemRegistry.HOLLOW_EYE.get())) {
 
@@ -471,9 +489,6 @@ public final class OathboundRelicEvents {
                 return;
             }
 
-            // Store the exact stack, including all components, in player-owned data that
-            // NeoForge copies through the death clone. Then remove it from Curios before
-            // grave mods snapshot external inventories.
             var preserved = player.getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get());
             preserved.setStackInSlot(0, equipped.copy());
             stacks.setStackInSlot(index, ItemStack.EMPTY);
@@ -518,17 +533,11 @@ public final class OathboundRelicEvents {
             return;
         }
 
-        // If the real relic is already present, leave the hidden backup intact.
-        // Grave mods such as YIGD can overwrite Curios/accessory layouts later when
-        // a grave is claimed, so clearing the backup immediately after respawn is unsafe.
         if (OathboundUtil.isBranded(player) || hasOathboundRelicInVanillaInventory(player)) {
             return;
         }
 
         CuriosApi.getCuriosInventory(player).ifPresent(curiosInventory -> {
-            // The Oathbound Relic is a ring. Prefer ring slots so it returns exactly where
-            // players expect it, while still allowing another valid Curios slot as a
-            // fallback if a pack changes its slot layout.
             var ringHandler = curiosInventory.getStacksHandler("ring");
             if (ringHandler.isPresent()) {
                 var stacks = ringHandler.get().getStacks();
@@ -581,11 +590,6 @@ public final class OathboundRelicEvents {
             return;
         }
 
-        // Do not write into Curios during PlayerRespawnEvent. Curios and grave mods
-        // can still perform their own clone/sync work immediately afterward, which can
-        // overwrite the slot client-side. Wait one full second so that initialization
-        // settles, then restore through ICuriosItemHandler#setEquippedCurio so Curios
-        // owns the mutation and sends its normal synchronization packet.
         int delay = player.getPersistentData().getInt(TAG_RELIC_RESTORE_DELAY);
         if (delay > 0) {
             player.getPersistentData().putInt(TAG_RELIC_RESTORE_DELAY, delay - 1);
@@ -606,9 +610,6 @@ public final class OathboundRelicEvents {
             player.getPersistentData().putInt(TAG_RELIC_RESTORE_DELAY, RELIC_RESTORE_DELAY_TICKS);
         }
 
-        // Soul Fracture should still apply to a bearer whose relic is temporarily held
-        // in the protected attachment during the post-respawn Curios synchronization
-        // window. Do not require the Curios slot to already be restored here.
         boolean oathboundBearer = OathboundUtil.isBranded(player) || !preserved.isEmpty();
         if (!OathboundConfig.enableSoulFracture() || !oathboundBearer) {
             return;
@@ -678,9 +679,6 @@ public final class OathboundRelicEvents {
                 .anyMatch(OathboundUtil::isBranded);
 
         if (brandedNearby) {
-            // Add the Oathbound blessing to whatever level the enchanting system/modpack
-            // has already calculated. Do not impose a vanilla-style hard cap here:
-            // mods such as Apothic Enchanting legitimately produce levels above 40.
             int boosted = event.getEnchantLevel() + OathboundConfig.enchantingPowerBonus();
             event.setEnchantLevel(boosted);
         }

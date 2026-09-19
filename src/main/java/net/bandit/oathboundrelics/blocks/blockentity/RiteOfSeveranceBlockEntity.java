@@ -2,6 +2,8 @@ package net.bandit.oathboundrelics.blocks.blockentity;
 
 import net.bandit.oathboundrelics.OathboundRelicsMod;
 import net.bandit.oathboundrelics.registry.BlockEntityRegistry;
+import net.bandit.oathboundrelics.config.OathboundConfig;
+import net.bandit.oathboundrelics.events.OathboundRelicEvents;
 import net.bandit.oathboundrelics.util.OathboundUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -34,10 +36,6 @@ import net.minecraft.world.phys.AABB;
 import java.util.UUID;
 
 public class RiteOfSeveranceBlockEntity extends BlockEntity {
-
-    private static final int TOTAL_RITUAL_TICKS = 20 * 60;
-    private static final int PULSE_INTERVAL = 40;
-    private static final double MAX_DISTANCE_SQR = 7.0D * 7.0D;
 
     private static final ResourceLocation RITUAL_ARMOR_PENALTY_ID =
             ResourceLocation.fromNamespaceAndPath(OathboundRelicsMod.MOD_ID, "rite_of_severance_armor_penalty");
@@ -176,7 +174,8 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
         double centerY = pos.getY() + 0.5D;
         double centerZ = pos.getZ() + 0.5D;
 
-        if (player.distanceToSqr(centerX, centerY, centerZ) > MAX_DISTANCE_SQR) {
+        double maxDistance = OathboundConfig.severanceMaxDistance();
+        if (player.distanceToSqr(centerX, centerY, centerZ) > (maxDistance * maxDistance)) {
             altar.fail(serverLevel, player, "message.oathboundrelics.severance.failed_too_far");
             return;
         }
@@ -197,17 +196,19 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
             );
         }
 
-        if (altar.ritualTicks % PULSE_INTERVAL == 0) {
+        int pulseInterval = Math.max(1, OathboundConfig.severancePulseIntervalTicks());
+        if (altar.ritualTicks % pulseInterval == 0) {
             altar.performPulse(serverLevel, player);
         }
 
-        if (altar.ritualTicks >= TOTAL_RITUAL_TICKS) {
+        if (altar.ritualTicks >= OathboundConfig.severanceRitualDurationTicks()) {
             altar.complete(serverLevel, player);
         }
     }
 
     private void performPulse(ServerLevel level, ServerPlayer player) {
-        int pulseIndex = (ritualTicks / PULSE_INTERVAL) % 6;
+        int pulseInterval = Math.max(1, OathboundConfig.severancePulseIntervalTicks());
+        int pulseIndex = Math.floorMod((ritualTicks / pulseInterval) - 1, 6);
 
         level.playSound(
                 null,
@@ -242,34 +243,69 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
                 0.01D
         );
 
-        player.hurt(player.damageSources().magic(), 2.0F);
+        double configuredMin = OathboundConfig.severancePulseMinDamage();
+        double configuredMax = OathboundConfig.severancePulseMaxDamage();
+        double minDamage = Math.min(configuredMin, configuredMax);
+        double maxDamage = Math.max(configuredMin, configuredMax);
+        double scaledDamage = player.getMaxHealth() * OathboundConfig.severancePulseDamagePercent();
+        float pulseDamage = (float) Math.max(minDamage, Math.min(scaledDamage, maxDamage));
+
+        OathboundRelicEvents.dealRitePulseDamage(player, pulseDamage);
 
         switch (pulseIndex) {
             case 0 -> {
-                player.setRemainingFireTicks(Math.max(player.getRemainingFireTicks(), 60));
+                player.setRemainingFireTicks(Math.max(
+                        player.getRemainingFireTicks(),
+                        OathboundConfig.severanceEmberFireTicks()
+                ));
                 player.displayClientMessage(
                         Component.translatable("message.oathboundrelics.severance.pulse_ember").withStyle(ChatFormatting.RED),
                         true
                 );
             }
             case 1 -> {
-                player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 1, true, true, true));
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 0, true, true, true));
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.WEAKNESS,
+                        OathboundConfig.severanceFractureWeaknessDurationTicks(),
+                        OathboundConfig.severanceFractureWeaknessAmplifier(),
+                        true, true, true
+                ));
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.MOVEMENT_SLOWDOWN,
+                        OathboundConfig.severanceFractureSlownessDurationTicks(),
+                        OathboundConfig.severanceFractureSlownessAmplifier(),
+                        true, true, true
+                ));
                 player.displayClientMessage(
                         Component.translatable("message.oathboundrelics.severance.pulse_fracture").withStyle(ChatFormatting.GRAY),
                         true
                 );
             }
             case 2 -> {
-                player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 80, 0, true, true, true));
-                player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 80, 1, true, true, true));
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.DARKNESS,
+                        OathboundConfig.severanceDoomDarknessDurationTicks(),
+                        0,
+                        true, true, true
+                ));
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.DIG_SLOWDOWN,
+                        OathboundConfig.severanceDoomMiningFatigueDurationTicks(),
+                        OathboundConfig.severanceDoomMiningFatigueAmplifier(),
+                        true, true, true
+                ));
                 player.displayClientMessage(
                         Component.translatable("message.oathboundrelics.severance.pulse_doom").withStyle(ChatFormatting.DARK_PURPLE),
                         true
                 );
             }
             case 3 -> {
-                player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 80, 1, true, true, true));
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.HUNGER,
+                        OathboundConfig.severanceProvocationHungerDurationTicks(),
+                        OathboundConfig.severanceProvocationHungerAmplifier(),
+                        true, true, true
+                ));
                 provokeNearby(level, player);
                 player.displayClientMessage(
                         Component.translatable("message.oathboundrelics.severance.pulse_provocation").withStyle(ChatFormatting.GOLD),
@@ -284,8 +320,18 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
                 );
             }
             case 5 -> {
-                player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 80, 2, true, true, true));
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 1, true, true, true));
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.WEAKNESS,
+                        OathboundConfig.severanceOppressionWeaknessDurationTicks(),
+                        OathboundConfig.severanceOppressionWeaknessAmplifier(),
+                        true, true, true
+                ));
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.MOVEMENT_SLOWDOWN,
+                        OathboundConfig.severanceOppressionSlownessDurationTicks(),
+                        OathboundConfig.severanceOppressionSlownessAmplifier(),
+                        true, true, true
+                ));
                 player.displayClientMessage(
                         Component.translatable("message.oathboundrelics.severance.pulse_oppression").withStyle(ChatFormatting.DARK_RED),
                         true
@@ -295,7 +341,7 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
     }
 
     private void provokeNearby(ServerLevel level, ServerPlayer player) {
-        AABB box = new AABB(worldPosition).inflate(12.0D);
+        AABB box = new AABB(worldPosition).inflate(OathboundConfig.severanceProvocationRadius());
 
         for (Mob mob : level.getEntitiesOfClass(Mob.class, box)) {
             if (!mob.isAlive()) {
@@ -316,7 +362,7 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
 
         armorAttr.addOrUpdateTransientModifier(new AttributeModifier(
                 RITUAL_ARMOR_PENALTY_ID,
-                -0.35D,
+                -OathboundConfig.severanceArmorPenalty(),
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
         ));
     }
@@ -476,7 +522,8 @@ public class RiteOfSeveranceBlockEntity extends BlockEntity {
     public int getClientRitualColorIndex() {
         // Purple is the resting Oath color; each pulse briefly walks through red/green/blue/purple.
         if (!active || clientActiveTicks < 30) return 3;
-        int pulse = ((clientActiveTicks - 30) / PULSE_INTERVAL) & 3;
+        int pulseInterval = Math.max(1, OathboundConfig.severancePulseIntervalTicks());
+        int pulse = ((clientActiveTicks - 30) / pulseInterval) & 3;
         return pulse;
     }
 

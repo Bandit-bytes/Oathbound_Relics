@@ -33,6 +33,32 @@ public final class OathboundConfig {
     public final ModConfigSpec.DoubleValue incomingDamageMultiplier;
     public final ModConfigSpec.DoubleValue armorEffectiveness;
 
+    // Rite of Severance
+    public final ModConfigSpec.IntValue severanceRitualDurationTicks;
+    public final ModConfigSpec.IntValue severancePulseIntervalTicks;
+    public final ModConfigSpec.DoubleValue severancePulseDamagePercent;
+    public final ModConfigSpec.DoubleValue severancePulseMinDamage;
+    public final ModConfigSpec.DoubleValue severancePulseMaxDamage;
+    public final ModConfigSpec.BooleanValue severancePulseDamageIgnoresFrailty;
+    public final ModConfigSpec.DoubleValue severanceMaxDistance;
+    public final ModConfigSpec.DoubleValue severanceArmorPenalty;
+    public final ModConfigSpec.DoubleValue severanceProvocationRadius;
+
+    public final ModConfigSpec.IntValue severanceEmberFireTicks;
+    public final ModConfigSpec.IntValue severanceFractureWeaknessDurationTicks;
+    public final ModConfigSpec.IntValue severanceFractureWeaknessAmplifier;
+    public final ModConfigSpec.IntValue severanceFractureSlownessDurationTicks;
+    public final ModConfigSpec.IntValue severanceFractureSlownessAmplifier;
+    public final ModConfigSpec.IntValue severanceDoomDarknessDurationTicks;
+    public final ModConfigSpec.IntValue severanceDoomMiningFatigueDurationTicks;
+    public final ModConfigSpec.IntValue severanceDoomMiningFatigueAmplifier;
+    public final ModConfigSpec.IntValue severanceProvocationHungerDurationTicks;
+    public final ModConfigSpec.IntValue severanceProvocationHungerAmplifier;
+    public final ModConfigSpec.IntValue severanceOppressionWeaknessDurationTicks;
+    public final ModConfigSpec.IntValue severanceOppressionWeaknessAmplifier;
+    public final ModConfigSpec.IntValue severanceOppressionSlownessDurationTicks;
+    public final ModConfigSpec.IntValue severanceOppressionSlownessAmplifier;
+
 
     public final ModConfigSpec.IntValue minFireTicks;
     public final ModConfigSpec.IntValue neutralAggroInterval;
@@ -380,6 +406,102 @@ public final class OathboundConfig {
         enableWakefulDoom = builder
                 .comment("If true, Branded players cannot sleep.")
                 .define("enableWakefulDoom", true);
+
+        builder.pop();
+
+        builder.push("rite_of_severance");
+
+        severanceRitualDurationTicks = builder
+                .comment("Total Rite of Severance duration in ticks. 600 ticks = 30 seconds.")
+                .defineInRange("ritualDurationTicks", 20 * 30, 20, 20 * 60 * 30);
+
+        severancePulseIntervalTicks = builder
+                .comment("Ticks between Rite of Severance pulses. 40 ticks = 2 seconds.")
+                .defineInRange("pulseIntervalTicks", 40, 1, 20 * 60);
+
+        severancePulseDamagePercent = builder
+                .comment("Pulse damage as a fraction of the player's max health before the min/max clamp. 0.01 = 1 percent.")
+                .defineInRange("pulseDamagePercent", 0.01D, 0.0D, 1.0D);
+
+        severancePulseMinDamage = builder
+                .comment("Minimum raw health damage dealt by one altar pulse. 0.5 = quarter of a heart.")
+                .defineInRange("pulseMinDamage", 0.5D, 0.0D, 1000.0D);
+
+        severancePulseMaxDamage = builder
+                .comment("Maximum raw health damage dealt by one altar pulse. 1.0 = half a heart.")
+                .defineInRange("pulseMaxDamage", 1.0D, 0.0D, 1000.0D);
+
+        severancePulseDamageIgnoresFrailty = builder
+                .comment("If true, the altar's own pulse damage is not multiplied by the Oathbound Relic's Frailty incoming-damage multiplier. Other damage during the ritual is still affected normally.")
+                .define("pulseDamageIgnoresFrailty", true);
+
+        severanceMaxDistance = builder
+                .comment("Maximum distance in blocks the bound player may move from the altar before the ritual fails.")
+                .defineInRange("maxDistance", 7.0D, 1.0D, 128.0D);
+
+        severanceArmorPenalty = builder
+                .comment("Fraction of armor removed by the Shattered Plate ritual pulse. 0.20 = 20 percent less armor.")
+                .defineInRange("armorPenalty", 0.20D, 0.0D, 1.0D);
+
+        severanceProvocationRadius = builder
+                .comment("Radius in blocks used by the Provocation ritual pulse when forcing nearby neutral/hostile mobs to target the player.")
+                .defineInRange("provocationRadius", 10.0D, 0.0D, 128.0D);
+
+        severanceEmberFireTicks = builder
+                .comment("Minimum fire duration applied by the Ember ritual pulse. 60 ticks = 3 seconds.")
+                .defineInRange("emberFireTicks", 60, 0, 20 * 60 * 10);
+
+        severanceFractureWeaknessDurationTicks = builder
+                .comment("Weakness duration applied by the Fracture ritual pulse.")
+                .defineInRange("fractureWeaknessDurationTicks", 60, 0, 20 * 60 * 10);
+
+        severanceFractureWeaknessAmplifier = builder
+                .comment("Weakness amplifier applied by the Fracture ritual pulse. 0 = Weakness I.")
+                .defineInRange("fractureWeaknessAmplifier", 1, 0, 255);
+
+        severanceFractureSlownessDurationTicks = builder
+                .comment("Slowness duration applied by the Fracture ritual pulse.")
+                .defineInRange("fractureSlownessDurationTicks", 60, 0, 20 * 60 * 10);
+
+        severanceFractureSlownessAmplifier = builder
+                .comment("Slowness amplifier applied by the Fracture ritual pulse. 0 = Slowness I.")
+                .defineInRange("fractureSlownessAmplifier", 0, 0, 255);
+
+        severanceDoomDarknessDurationTicks = builder
+                .comment("Darkness duration applied by the Doom ritual pulse.")
+                .defineInRange("doomDarknessDurationTicks", 80, 0, 20 * 60 * 10);
+
+        severanceDoomMiningFatigueDurationTicks = builder
+                .comment("Mining Fatigue duration applied by the Doom ritual pulse.")
+                .defineInRange("doomMiningFatigueDurationTicks", 80, 0, 20 * 60 * 10);
+
+        severanceDoomMiningFatigueAmplifier = builder
+                .comment("Mining Fatigue amplifier applied by the Doom ritual pulse. 0 = Mining Fatigue I.")
+                .defineInRange("doomMiningFatigueAmplifier", 1, 0, 255);
+
+        severanceProvocationHungerDurationTicks = builder
+                .comment("Hunger duration applied by the Provocation ritual pulse.")
+                .defineInRange("provocationHungerDurationTicks", 80, 0, 20 * 60 * 10);
+
+        severanceProvocationHungerAmplifier = builder
+                .comment("Hunger amplifier applied by the Provocation ritual pulse. 0 = Hunger I.")
+                .defineInRange("provocationHungerAmplifier", 1, 0, 255);
+
+        severanceOppressionWeaknessDurationTicks = builder
+                .comment("Weakness duration applied by the Oppression ritual pulse.")
+                .defineInRange("oppressionWeaknessDurationTicks", 80, 0, 20 * 60 * 10);
+
+        severanceOppressionWeaknessAmplifier = builder
+                .comment("Weakness amplifier applied by the Oppression ritual pulse. 0 = Weakness I.")
+                .defineInRange("oppressionWeaknessAmplifier", 2, 0, 255);
+
+        severanceOppressionSlownessDurationTicks = builder
+                .comment("Slowness duration applied by the Oppression ritual pulse.")
+                .defineInRange("oppressionSlownessDurationTicks", 80, 0, 20 * 60 * 10);
+
+        severanceOppressionSlownessAmplifier = builder
+                .comment("Slowness amplifier applied by the Oppression ritual pulse. 0 = Slowness I.")
+                .defineInRange("oppressionSlownessAmplifier", 1, 0, 255);
 
         builder.pop();
 
@@ -1163,6 +1285,31 @@ public final class OathboundConfig {
 
     public static double incomingDamageMultiplier() { return CONFIG.incomingDamageMultiplier.get(); }
     public static double armorEffectiveness() { return CONFIG.armorEffectiveness.get(); }
+
+    public static int severanceRitualDurationTicks() { return CONFIG.severanceRitualDurationTicks.get(); }
+    public static int severancePulseIntervalTicks() { return CONFIG.severancePulseIntervalTicks.get(); }
+    public static double severancePulseDamagePercent() { return CONFIG.severancePulseDamagePercent.get(); }
+    public static double severancePulseMinDamage() { return CONFIG.severancePulseMinDamage.get(); }
+    public static double severancePulseMaxDamage() { return CONFIG.severancePulseMaxDamage.get(); }
+    public static boolean severancePulseDamageIgnoresFrailty() { return CONFIG.severancePulseDamageIgnoresFrailty.get(); }
+    public static double severanceMaxDistance() { return CONFIG.severanceMaxDistance.get(); }
+    public static double severanceArmorPenalty() { return CONFIG.severanceArmorPenalty.get(); }
+    public static double severanceProvocationRadius() { return CONFIG.severanceProvocationRadius.get(); }
+    public static int severanceEmberFireTicks() { return CONFIG.severanceEmberFireTicks.get(); }
+    public static int severanceFractureWeaknessDurationTicks() { return CONFIG.severanceFractureWeaknessDurationTicks.get(); }
+    public static int severanceFractureWeaknessAmplifier() { return CONFIG.severanceFractureWeaknessAmplifier.get(); }
+    public static int severanceFractureSlownessDurationTicks() { return CONFIG.severanceFractureSlownessDurationTicks.get(); }
+    public static int severanceFractureSlownessAmplifier() { return CONFIG.severanceFractureSlownessAmplifier.get(); }
+    public static int severanceDoomDarknessDurationTicks() { return CONFIG.severanceDoomDarknessDurationTicks.get(); }
+    public static int severanceDoomMiningFatigueDurationTicks() { return CONFIG.severanceDoomMiningFatigueDurationTicks.get(); }
+    public static int severanceDoomMiningFatigueAmplifier() { return CONFIG.severanceDoomMiningFatigueAmplifier.get(); }
+    public static int severanceProvocationHungerDurationTicks() { return CONFIG.severanceProvocationHungerDurationTicks.get(); }
+    public static int severanceProvocationHungerAmplifier() { return CONFIG.severanceProvocationHungerAmplifier.get(); }
+    public static int severanceOppressionWeaknessDurationTicks() { return CONFIG.severanceOppressionWeaknessDurationTicks.get(); }
+    public static int severanceOppressionWeaknessAmplifier() { return CONFIG.severanceOppressionWeaknessAmplifier.get(); }
+    public static int severanceOppressionSlownessDurationTicks() { return CONFIG.severanceOppressionSlownessDurationTicks.get(); }
+    public static int severanceOppressionSlownessAmplifier() { return CONFIG.severanceOppressionSlownessAmplifier.get(); }
+
     public static double bloodTollHealthCost() { return CONFIG.bloodTollHealthCost.get(); }
     public static int minFireTicks() { return CONFIG.minFireTicks.get(); }
     public static int neutralAggroInterval() { return CONFIG.neutralAggroInterval.get(); }
