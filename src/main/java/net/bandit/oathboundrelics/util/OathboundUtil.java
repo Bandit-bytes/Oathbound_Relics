@@ -21,6 +21,8 @@ public final class OathboundUtil {
 
     private static final String TAG_SEVERANCE_ACTIVE = OathboundRelicsMod.MOD_ID + "_severance_active";
     private static final String TAG_SEVERANCE_ALLOW_UNEQUIP = OathboundRelicsMod.MOD_ID + "_severance_allow_unequip";
+    private static final String TAG_ADMIN_UNEQUIP_UNTIL = OathboundRelicsMod.MOD_ID + "_admin_unequip_until";
+    private static final String TAG_DEATH_PRESERVATION_ACTIVE = OathboundRelicsMod.MOD_ID + "_death_preservation_active";
 
     private OathboundUtil() {
     }
@@ -41,6 +43,53 @@ public final class OathboundUtil {
 
     public static boolean canSeverRelic(Player player) {
         return player != null && player.getPersistentData().getBoolean(TAG_SEVERANCE_ALLOW_UNEQUIP);
+    }
+
+    public static boolean canAdministrativelyRemoveRelic(Player player) {
+        if (player == null) {
+            return false;
+        }
+        CompoundTag tag = player.getPersistentData();
+        if (!tag.contains(TAG_ADMIN_UNEQUIP_UNTIL)) {
+            return false;
+        }
+        long allowedUntil = tag.getLong(TAG_ADMIN_UNEQUIP_UNTIL);
+        return allowedUntil >= player.level().getGameTime();
+    }
+
+    public static boolean canIntentionallyUnequipRelic(Player player) {
+        return player != null
+                && (player.isCreative() || canSeverRelic(player) || canAdministrativelyRemoveRelic(player));
+    }
+
+    public static void authorizeAdministrativeRelicRemoval(Player player) {
+        if (player == null) {
+            return;
+        }
+
+        player.getPersistentData().putLong(TAG_ADMIN_UNEQUIP_UNTIL, player.level().getGameTime() + 5L);
+        clearPreservedOathboundRelic(player);
+    }
+
+    public static void clearAdministrativeRelicRemoval(Player player) {
+        if (player != null) {
+            player.getPersistentData().remove(TAG_ADMIN_UNEQUIP_UNTIL);
+        }
+    }
+
+    public static void setDeathPreservationActive(Player player, boolean active) {
+        if (player == null) {
+            return;
+        }
+        if (active) {
+            player.getPersistentData().putBoolean(TAG_DEATH_PRESERVATION_ACTIVE, true);
+        } else {
+            player.getPersistentData().remove(TAG_DEATH_PRESERVATION_ACTIVE);
+        }
+    }
+
+    public static boolean isDeathPreservationActive(Player player) {
+        return player != null && player.getPersistentData().getBoolean(TAG_DEATH_PRESERVATION_ACTIVE);
     }
 
     public static boolean isInSeveranceRitual(Player player) {
@@ -152,15 +201,22 @@ public final class OathboundUtil {
         setSeveranceUnequipAllowed(player, false);
     }
 
+    public static void clearPreservedOathboundRelic(Player player) {
+        if (player != null) {
+            player.getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get()).setStackInSlot(0, ItemStack.EMPTY);
+        }
+    }
+
     public static void clearOathboundState(Player player) {
         clearRitualFlags(player);
+        clearAdministrativeRelicRemoval(player);
 
         BrandedTimeData brandedTimeData = new BrandedTimeData();
         brandedTimeData.setBrandedProgressTicks(0L);
         player.setData(AttachmentRegistry.BRANDED_TIME.get(), brandedTimeData);
 
         player.setData(AttachmentRegistry.SOUL_FRACTURE_COUNT.get(), 0);
-        player.getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get()).setStackInSlot(0, ItemStack.EMPTY);
+        clearPreservedOathboundRelic(player);
         player.setData(AttachmentRegistry.PRIDE_STATE.get(), new PrideStateData());
         player.setData(AttachmentRegistry.ENVY_STATE.get(), new EnvyStateData());
     }

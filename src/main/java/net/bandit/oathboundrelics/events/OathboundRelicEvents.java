@@ -491,8 +491,14 @@ public final class OathboundRelicEvents {
 
             var preserved = player.getData(AttachmentRegistry.PRESERVED_OATHBOUND_RELIC.get());
             preserved.setStackInSlot(0, equipped.copy());
-            stacks.setStackInSlot(index, ItemStack.EMPTY);
-            player.containerMenu.broadcastChanges();
+
+            OathboundUtil.setDeathPreservationActive(player, true);
+            try {
+                stacks.setStackInSlot(index, ItemStack.EMPTY);
+                player.containerMenu.broadcastChanges();
+            } finally {
+                OathboundUtil.setDeathPreservationActive(player, false);
+            }
 
             OathboundRelicsMod.LOGGER.debug(
                     "Protected Oathbound Relic for {} from death/grave handling (slot {}[{}])",

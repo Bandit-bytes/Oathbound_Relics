@@ -70,7 +70,22 @@ public class OathboundRelicItem extends Item implements ICurioItem {
         if (!(slotContext.entity() instanceof Player player)) {
             return false;
         }
-        return player.isCreative() || OathboundUtil.canSeverRelic(player);
+        return OathboundUtil.canIntentionallyUnequipRelic(player);
+    }
+
+    @Override
+    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
+        if (!(slotContext.entity() instanceof Player player) || player.level().isClientSide()) {
+            return;
+        }
+
+        // Only explicit escape hatches may invalidate the death-protection backup.
+        // Grave/corpse mods remove the slot without receiving one of these permissions.
+        if (!OathboundUtil.isDeathPreservationActive(player)
+                && OathboundUtil.canIntentionallyUnequipRelic(player)) {
+            OathboundUtil.clearPreservedOathboundRelic(player);
+            OathboundUtil.clearAdministrativeRelicRemoval(player);
+        }
     }
 
     @Override
